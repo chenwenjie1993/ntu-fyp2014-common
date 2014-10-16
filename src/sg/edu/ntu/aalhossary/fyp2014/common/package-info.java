@@ -1,7 +1,5 @@
 /**
- * 
- */
-/**
+ * Here we leave only common non generated classes.
  * @author Amr
  *
  */
