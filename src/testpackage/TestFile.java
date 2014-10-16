@@ -5,5 +5,5 @@ package testpackage;
  *
  */
 public class TestFile {
-
+	private int test = -1;
 }
