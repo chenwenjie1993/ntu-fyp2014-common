@@ -1,0 +1,5 @@
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+
+public enum BondType {
+	AMIDE, ESTER, AMINE, UREA, ETHER, OLEFIN, QUARTERNITRO, ARONITRO_ALICARBON, LACNTIRO_ALICARBON, AROCARBON_AROCARBON, SULPHONAMIDE
+}

@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="src" path="VParadigm/NTU_2014FYP_Common/gen"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/BioJava"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jmol"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

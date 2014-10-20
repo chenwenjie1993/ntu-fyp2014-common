@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build">
+	<path id="build.classpath">
+		<pathelement location="classes"/>
+	</path>
+	<target name="init">
+		<mkdir dir="classes"/>
+	</target>
+	<target name="clean">
+		<delete dir="classes"/>
+	</target>
+	<target depends="init" name="build">
+		<javac srcdir="." destdir="classes" source="1.5" target="1.5" fork="yes">
+			<classpath refid="build.classpath"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/BondType.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/DataManager.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/DisplayType.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/DisplayMolecule.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/EventListener.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/FileReader.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/FileWriter.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/JMolSelectionListener.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/ToolPanel.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/Main.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/MyJmolStatusListener.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/RasmolFieldListener.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/UserActionType.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/UserActionListener.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/JmolDisplay.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/moleculeeditor/MenuCreator.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/AminoAcid.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Particle.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Bond.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Interaction.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Atom.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Residue.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Chain.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Molecule.java"/>
+			<include name="sg/edu/ntu/aalhossary/fyp2014/commonmodel/Model.java"/>
+		</javac>
+	</target>
+</project>
