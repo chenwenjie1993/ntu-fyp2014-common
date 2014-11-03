@@ -2,7 +2,7 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
 
-public class Molecule implements Particle {
+public class Molecule extends AbstractParticle {
 
 	protected String name;
 	protected float molecularMass;

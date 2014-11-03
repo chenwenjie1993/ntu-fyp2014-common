@@ -2,7 +2,9 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
 
-public class Atom implements Particle {
+import org.w3c.dom.views.AbstractView;
+
+public class Atom extends AbstractParticle {
 
 	public java.lang.String name;
 	public java.lang.Object symbol;

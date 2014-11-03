@@ -3,7 +3,7 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Residue implements Particle {
+public class Residue extends AbstractParticle {
 
 	protected String name;
 	protected int chainSeqNum;
