@@ -4,9 +4,11 @@ import org.biojava.bio.structure.Structure;
 import org.biojava.bio.structure.align.gui.*;
 import org.jmol.adapter.smarter.SmarterJmolAdapter;
 import org.jmol.api.JmolViewer;
+import org.jmol.java.BS;
 import org.jmol.util.Logger;
 
-import sg.edu.ntu.aalhossary.fyp2014.commonmodel.Model;
+import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
+import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -14,6 +16,7 @@ import java.awt.event.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class JmolDisplay extends JPrintPanel implements ActionListener {
 
@@ -26,7 +29,8 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 	public org.biojava.bio.structure.Structure structure;
 	private boolean verbose;
 	private JMolSelectionListener jMolSelectionListener;
-	public Model model;
+	public static Model model;
+	public static ArrayList<Atom> selectedAtoms;
 	
 	public JmolDisplay() {
 		super();
@@ -37,7 +41,7 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 		viewer.setJmolCallbackListener(statusListener);
 		jMolSelectionListener = new JMolSelectionListener();
 		viewer.addSelectionListener(jMolSelectionListener);
-		viewer.evalString("load menu \"jmol.mnu\"");
+		viewer.evalString("load menu \"res/jmol.mnu\"");
 	}
 	
 	/**
@@ -118,10 +122,36 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 				writer.write("Molecule: " + model.getMolecules().get(i).getName());
 				writer.newLine();
 				for(int j=0;j<model.getMolecules().get(i).getChains().size();j++){
-					writer.write("Chain Name: " + model.getMolecules().get(i).getChains().get(j).getChainName());
+					writer.write("Chain Name: " + model.getMolecules().get(i).getChains().get(j).getName());
 					writer.newLine();
 					for(int k=0;k<model.getMolecules().get(i).getChains().get(j).getResidues().size();k++){
 						writer.write("Residues: " + model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getName() + ", " + model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getResidueSeqNum());
+						writer.write("\tAtoms: ");
+						for(int l=0;l<model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().size();l++){
+							writer.write(model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().get(l).name + "("+ model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().get(l).getAtomSeqNum()+ "), ");
+						}
+						writer.newLine();
+					}
+					for(int k=0;k<model.getMolecules().get(i).getChains().get(j).getAtoms().size();k++){
+						writer.write("Atom: " + model.getMolecules().get(i).getChains().get(j).getAtoms().get(k).getName() + ", " + model.getMolecules().get(i).getChains().get(j).getAtoms().get(k).getChainSeqNum());
+						writer.newLine();
+					}
+				}
+			}
+			writer.close();
+			writer = new BufferedWriter(new FileWriter("bonds.txt"));
+			for(int i=0;i<model.getMolecules().size();i++){
+				for(int j=0;j<model.getMolecules().get(i).getChains().size();j++){
+					for(int k=0;k<model.getMolecules().get(i).getChains().get(j).getResidues().size();k++){
+						writer.write("Residues: " + model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getName() + ", " + model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getResidueSeqNum());
+						writer.newLine();
+						for(int l=0;l<model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().size();l++){
+							writer.write(model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().get(l).name + "("+ model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().get(l).getAtomSeqNum()+ ") ");
+							for(int m=0;m<model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().get(l).getBond().size();m++){
+								writer.write(model.getMolecules().get(i).getChains().get(j).getResidues().get(k).getAtomList().get(l).getBond().get(m).getBondType() + ", ");
+							}
+							writer.newLine();
+						}
 						writer.newLine();
 					}
 					for(int k=0;k<model.getMolecules().get(i).getChains().get(j).getAtoms().size();k++){
@@ -135,6 +165,35 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public static void getSelected(BS values) {
+		System.out.println("Selected: " + values);
+		// clear the list to update latest selected atoms
+		if(selectedAtoms==null)
+			selectedAtoms = new ArrayList<Atom>();
+		else
+			selectedAtoms.clear();
+		
+		String[] valueGet = values.toString().split("[{ }]");
+		System.out.print("NUM: ");
+		for(int i=0;i<valueGet.length;i++){
+			if(valueGet[i].compareTo("")==1 || valueGet[i].compareTo(" ")==1){
+				// if its list of continuous atoms
+				if(valueGet[i].contains(":")){
+					int start = Integer.parseInt(valueGet[i].split(":")[0]);
+					int end = Integer.parseInt(valueGet[i].split(":")[1]);
+					for(int j=start;j<=end;j++){
+						selectedAtoms.add(model.getMolecules().get(0).getAtom(j));
+					}
+				}
+				else{
+					System.out.println("[" + valueGet[i] + "]");
+					//selectedAtoms.add(model.getMolecules().get(0).getAtom(Integer.parseInt(valueGet[i])));
+				}
+			}
+		}
+		System.out.println();
 	}
 
 }

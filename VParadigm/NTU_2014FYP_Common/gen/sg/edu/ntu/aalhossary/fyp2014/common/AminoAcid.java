@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.commonmodel;
+package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.*;
 

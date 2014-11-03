@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.commonmodel;
+package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
 
@@ -47,6 +47,12 @@ public class Molecule implements Particle {
 
 	public void setInteraction(Interaction interaction) {
 		this.interaction = interaction;
+	}
+
+	@Override
+	public Atom getAtom(int pos) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

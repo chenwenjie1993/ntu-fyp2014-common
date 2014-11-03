@@ -1,0 +1,806 @@
+Molecule: 4HHB
+Chain Name: A
+Residues: VAL, 1	Atoms: N(1), CA(2), C(3), O(4), CB(5), CG1(6), CG2(7), 
+Residues: LEU, 2	Atoms: N(8), CA(9), C(10), O(11), CB(12), CG(13), CD1(14), CD2(15), 
+Residues: SER, 3	Atoms: N(16), CA(17), C(18), O(19), CB(20), OG(21), 
+Residues: PRO, 4	Atoms: N(22), CA(23), C(24), O(25), CB(26), CG(27), CD(28), 
+Residues: ALA, 5	Atoms: N(29), CA(30), C(31), O(32), CB(33), 
+Residues: ASP, 6	Atoms: N(34), CA(35), C(36), O(37), CB(38), CG(39), OD1(40), OD2(41), 
+Residues: LYS, 7	Atoms: N(42), CA(43), C(44), O(45), CB(46), CG(47), CD(48), CE(49), NZ(50), 
+Residues: THR, 8	Atoms: N(51), CA(52), C(53), O(54), CB(55), OG1(56), CG2(57), 
+Residues: ASN, 9	Atoms: N(58), CA(59), C(60), O(61), CB(62), CG(63), OD1(64), ND2(65), 
+Residues: VAL, 10	Atoms: N(66), CA(67), C(68), O(69), CB(70), CG1(71), CG2(72), 
+Residues: LYS, 11	Atoms: N(73), CA(74), C(75), O(76), CB(77), CG(78), CD(79), CE(80), NZ(81), 
+Residues: ALA, 12	Atoms: N(82), CA(83), C(84), O(85), CB(86), 
+Residues: ALA, 13	Atoms: N(87), CA(88), C(89), O(90), CB(91), 
+Residues: TRP, 14	Atoms: N(92), CA(93), C(94), O(95), CB(96), CG(97), CD1(98), CD2(99), NE1(100), CE2(101), CE3(102), CZ2(103), CZ3(104), CH2(105), 
+Residues: GLY, 15	Atoms: N(106), CA(107), C(108), O(109), 
+Residues: LYS, 16	Atoms: N(110), CA(111), C(112), O(113), CB(114), CG(115), CD(116), CE(117), NZ(118), 
+Residues: VAL, 17	Atoms: N(119), CA(120), C(121), O(122), CB(123), CG1(124), CG2(125), 
+Residues: GLY, 18	Atoms: N(126), CA(127), C(128), O(129), 
+Residues: ALA, 19	Atoms: N(130), CA(131), C(132), O(133), CB(134), 
+Residues: HIS, 20	Atoms: N(135), CA(136), C(137), O(138), CB(139), CG(140), ND1(141), CD2(142), CE1(143), NE2(144), 
+Residues: ALA, 21	Atoms: N(145), CA(146), C(147), O(148), CB(149), 
+Residues: GLY, 22	Atoms: N(150), CA(151), C(152), O(153), 
+Residues: GLU, 23	Atoms: N(154), CA(155), C(156), O(157), CB(158), CG(159), CD(160), OE1(161), OE2(162), 
+Residues: TYR, 24	Atoms: N(163), CA(164), C(165), O(166), CB(167), CG(168), CD1(169), CD2(170), CE1(171), CE2(172), CZ(173), OH(174), 
+Residues: GLY, 25	Atoms: N(175), CA(176), C(177), O(178), 
+Residues: ALA, 26	Atoms: N(179), CA(180), C(181), O(182), CB(183), 
+Residues: GLU, 27	Atoms: N(184), CA(185), C(186), O(187), CB(188), CG(189), CD(190), OE1(191), OE2(192), 
+Residues: ALA, 28	Atoms: N(193), CA(194), C(195), O(196), CB(197), 
+Residues: LEU, 29	Atoms: N(198), CA(199), C(200), O(201), CB(202), CG(203), CD1(204), CD2(205), 
+Residues: GLU, 30	Atoms: N(206), CA(207), C(208), O(209), CB(210), CG(211), CD(212), OE1(213), OE2(214), 
+Residues: ARG, 31	Atoms: N(215), CA(216), C(217), O(218), CB(219), CG(220), CD(221), NE(222), CZ(223), NH1(224), NH2(225), 
+Residues: MET, 32	Atoms: N(226), CA(227), C(228), O(229), CB(230), CG(231), SD(232), CE(233), 
+Residues: PHE, 33	Atoms: N(234), CA(235), C(236), O(237), CB(238), CG(239), CD1(240), CD2(241), CE1(242), CE2(243), CZ(244), 
+Residues: LEU, 34	Atoms: N(245), CA(246), C(247), O(248), CB(249), CG(250), CD1(251), CD2(252), 
+Residues: SER, 35	Atoms: N(253), CA(254), C(255), O(256), CB(257), OG(258), 
+Residues: PHE, 36	Atoms: N(259), CA(260), C(261), O(262), CB(263), CG(264), CD1(265), CD2(266), CE1(267), CE2(268), CZ(269), 
+Residues: PRO, 37	Atoms: N(270), CA(271), C(272), O(273), CB(274), CG(275), CD(276), 
+Residues: THR, 38	Atoms: N(277), CA(278), C(279), O(280), CB(281), OG1(282), CG2(283), 
+Residues: THR, 39	Atoms: N(284), CA(285), C(286), O(287), CB(288), OG1(289), CG2(290), 
+Residues: LYS, 40	Atoms: N(291), CA(292), C(293), O(294), CB(295), CG(296), CD(297), CE(298), NZ(299), 
+Residues: THR, 41	Atoms: N(300), CA(301), C(302), O(303), CB(304), OG1(305), CG2(306), 
+Residues: TYR, 42	Atoms: N(307), CA(308), C(309), O(310), CB(311), CG(312), CD1(313), CD2(314), CE1(315), CE2(316), CZ(317), OH(318), 
+Residues: PHE, 43	Atoms: N(319), CA(320), C(321), O(322), CB(323), CG(324), CD1(325), CD2(326), CE1(327), CE2(328), CZ(329), 
+Residues: PRO, 44	Atoms: N(330), CA(331), C(332), O(333), CB(334), CG(335), CD(336), 
+Residues: HIS, 45	Atoms: N(337), CA(338), C(339), O(340), CB(341), CG(342), ND1(343), CD2(344), CE1(345), NE2(346), 
+Residues: PHE, 46	Atoms: N(347), CA(348), C(349), O(350), CB(351), CG(352), CD1(353), CD2(354), CE1(355), CE2(356), CZ(357), 
+Residues: ASP, 47	Atoms: N(358), CA(359), C(360), O(361), CB(362), CG(363), OD1(364), OD2(365), 
+Residues: LEU, 48	Atoms: N(366), CA(367), C(368), O(369), CB(370), CG(371), CD1(372), CD2(373), 
+Residues: SER, 49	Atoms: N(374), CA(375), C(376), O(377), CB(378), OG(379), 
+Residues: HIS, 50	Atoms: N(380), CA(381), C(382), O(383), CB(384), CG(385), ND1(386), CD2(387), CE1(388), NE2(389), 
+Residues: GLY, 51	Atoms: N(390), CA(391), C(392), O(393), 
+Residues: SER, 52	Atoms: N(394), CA(395), C(396), O(397), CB(398), OG(399), 
+Residues: ALA, 53	Atoms: N(400), CA(401), C(402), O(403), CB(404), 
+Residues: GLN, 54	Atoms: N(405), CA(406), C(407), O(408), CB(409), CG(410), CD(411), OE1(412), NE2(413), 
+Residues: VAL, 55	Atoms: N(414), CA(415), C(416), O(417), CB(418), CG1(419), CG2(420), 
+Residues: LYS, 56	Atoms: N(421), CA(422), C(423), O(424), CB(425), CG(426), CD(427), CE(428), NZ(429), 
+Residues: GLY, 57	Atoms: N(430), CA(431), C(432), O(433), 
+Residues: HIS, 58	Atoms: N(434), CA(435), C(436), O(437), CB(438), CG(439), ND1(440), CD2(441), CE1(442), NE2(443), 
+Residues: GLY, 59	Atoms: N(444), CA(445), C(446), O(447), 
+Residues: LYS, 60	Atoms: N(448), CA(449), C(450), O(451), CB(452), CG(453), CD(454), CE(455), NZ(456), 
+Residues: LYS, 61	Atoms: N(457), CA(458), C(459), O(460), CB(461), CG(462), CD(463), CE(464), NZ(465), 
+Residues: VAL, 62	Atoms: N(466), CA(467), C(468), O(469), CB(470), CG1(471), CG2(472), 
+Residues: ALA, 63	Atoms: N(473), CA(474), C(475), O(476), CB(477), 
+Residues: ASP, 64	Atoms: N(478), CA(479), C(480), O(481), CB(482), CG(483), OD1(484), OD2(485), 
+Residues: ALA, 65	Atoms: N(486), CA(487), C(488), O(489), CB(490), 
+Residues: LEU, 66	Atoms: N(491), CA(492), C(493), O(494), CB(495), CG(496), CD1(497), CD2(498), 
+Residues: THR, 67	Atoms: N(499), CA(500), C(501), O(502), CB(503), OG1(504), CG2(505), 
+Residues: ASN, 68	Atoms: N(506), CA(507), C(508), O(509), CB(510), CG(511), OD1(512), ND2(513), 
+Residues: ALA, 69	Atoms: N(514), CA(515), C(516), O(517), CB(518), 
+Residues: VAL, 70	Atoms: N(519), CA(520), C(521), O(522), CB(523), CG1(524), CG2(525), 
+Residues: ALA, 71	Atoms: N(526), CA(527), C(528), O(529), CB(530), 
+Residues: HIS, 72	Atoms: N(531), CA(532), C(533), O(534), CB(535), CG(536), ND1(537), CD2(538), CE1(539), NE2(540), 
+Residues: VAL, 73	Atoms: N(541), CA(542), C(543), O(544), CB(545), CG1(546), CG2(547), 
+Residues: ASP, 74	Atoms: N(548), CA(549), C(550), O(551), CB(552), CG(553), OD1(554), OD2(555), 
+Residues: ASP, 75	Atoms: N(556), CA(557), C(558), O(559), CB(560), CG(561), OD1(562), OD2(563), 
+Residues: MET, 76	Atoms: N(564), CA(565), C(566), O(567), CB(568), CG(569), SD(570), CE(571), 
+Residues: PRO, 77	Atoms: N(572), CA(573), C(574), O(575), CB(576), CG(577), CD(578), 
+Residues: ASN, 78	Atoms: N(579), CA(580), C(581), O(582), CB(583), CG(584), OD1(585), ND2(586), 
+Residues: ALA, 79	Atoms: N(587), CA(588), C(589), O(590), CB(591), 
+Residues: LEU, 80	Atoms: N(592), CA(593), C(594), O(595), CB(596), CG(597), CD1(598), CD2(599), 
+Residues: SER, 81	Atoms: N(600), CA(601), C(602), O(603), CB(604), OG(605), 
+Residues: ALA, 82	Atoms: N(606), CA(607), C(608), O(609), CB(610), 
+Residues: LEU, 83	Atoms: N(611), CA(612), C(613), O(614), CB(615), CG(616), CD1(617), CD2(618), 
+Residues: SER, 84	Atoms: N(619), CA(620), C(621), O(622), CB(623), OG(624), 
+Residues: ASP, 85	Atoms: N(625), CA(626), C(627), O(628), CB(629), CG(630), OD1(631), OD2(632), 
+Residues: LEU, 86	Atoms: N(633), CA(634), C(635), O(636), CB(637), CG(638), CD1(639), CD2(640), 
+Residues: HIS, 87	Atoms: N(641), CA(642), C(643), O(644), CB(645), CG(646), ND1(647), CD2(648), CE1(649), NE2(650), 
+Residues: ALA, 88	Atoms: N(651), CA(652), C(653), O(654), CB(655), 
+Residues: HIS, 89	Atoms: N(656), CA(657), C(658), O(659), CB(660), CG(661), ND1(662), CD2(663), CE1(664), NE2(665), 
+Residues: LYS, 90	Atoms: N(666), CA(667), C(668), O(669), CB(670), CG(671), CD(672), CE(673), NZ(674), 
+Residues: LEU, 91	Atoms: N(675), CA(676), C(677), O(678), CB(679), CG(680), CD1(681), CD2(682), 
+Residues: ARG, 92	Atoms: N(683), CA(684), C(685), O(686), CB(687), CG(688), CD(689), NE(690), CZ(691), NH1(692), NH2(693), 
+Residues: VAL, 93	Atoms: N(694), CA(695), C(696), O(697), CB(698), CG1(699), CG2(700), 
+Residues: ASP, 94	Atoms: N(701), CA(702), C(703), O(704), CB(705), CG(706), OD1(707), OD2(708), 
+Residues: PRO, 95	Atoms: N(709), CA(710), C(711), O(712), CB(713), CG(714), CD(715), 
+Residues: VAL, 96	Atoms: N(716), CA(717), C(718), O(719), CB(720), CG1(721), CG2(722), 
+Residues: ASN, 97	Atoms: N(723), CA(724), C(725), O(726), CB(727), CG(728), OD1(729), ND2(730), 
+Residues: PHE, 98	Atoms: N(731), CA(732), C(733), O(734), CB(735), CG(736), CD1(737), CD2(738), CE1(739), CE2(740), CZ(741), 
+Residues: LYS, 99	Atoms: N(742), CA(743), C(744), O(745), CB(746), CG(747), CD(748), CE(749), NZ(750), 
+Residues: LEU, 100	Atoms: N(751), CA(752), C(753), O(754), CB(755), CG(756), CD1(757), CD2(758), 
+Residues: LEU, 101	Atoms: N(759), CA(760), C(761), O(762), CB(763), CG(764), CD1(765), CD2(766), 
+Residues: SER, 102	Atoms: N(767), CA(768), C(769), O(770), CB(771), OG(772), 
+Residues: HIS, 103	Atoms: N(773), CA(774), C(775), O(776), CB(777), CG(778), ND1(779), CD2(780), CE1(781), NE2(782), 
+Residues: CYS, 104	Atoms: N(783), CA(784), C(785), O(786), CB(787), SG(788), 
+Residues: LEU, 105	Atoms: N(789), CA(790), C(791), O(792), CB(793), CG(794), CD1(795), CD2(796), 
+Residues: LEU, 106	Atoms: N(797), CA(798), C(799), O(800), CB(801), CG(802), CD1(803), CD2(804), 
+Residues: VAL, 107	Atoms: N(805), CA(806), C(807), O(808), CB(809), CG1(810), CG2(811), 
+Residues: THR, 108	Atoms: N(812), CA(813), C(814), O(815), CB(816), OG1(817), CG2(818), 
+Residues: LEU, 109	Atoms: N(819), CA(820), C(821), O(822), CB(823), CG(824), CD1(825), CD2(826), 
+Residues: ALA, 110	Atoms: N(827), CA(828), C(829), O(830), CB(831), 
+Residues: ALA, 111	Atoms: N(832), CA(833), C(834), O(835), CB(836), 
+Residues: HIS, 112	Atoms: N(837), CA(838), C(839), O(840), CB(841), CG(842), ND1(843), CD2(844), CE1(845), NE2(846), 
+Residues: LEU, 113	Atoms: N(847), CA(848), C(849), O(850), CB(851), CG(852), CD1(853), CD2(854), 
+Residues: PRO, 114	Atoms: N(855), CA(856), C(857), O(858), CB(859), CG(860), CD(861), 
+Residues: ALA, 115	Atoms: N(862), CA(863), C(864), O(865), CB(866), 
+Residues: GLU, 116	Atoms: N(867), CA(868), C(869), O(870), CB(871), CG(872), CD(873), OE1(874), OE2(875), 
+Residues: PHE, 117	Atoms: N(876), CA(877), C(878), O(879), CB(880), CG(881), CD1(882), CD2(883), CE1(884), CE2(885), CZ(886), 
+Residues: THR, 118	Atoms: N(887), CA(888), C(889), O(890), CB(891), OG1(892), CG2(893), 
+Residues: PRO, 119	Atoms: N(894), CA(895), C(896), O(897), CB(898), CG(899), CD(900), 
+Residues: ALA, 120	Atoms: N(901), CA(902), C(903), O(904), CB(905), 
+Residues: VAL, 121	Atoms: N(906), CA(907), C(908), O(909), CB(910), CG1(911), CG2(912), 
+Residues: HIS, 122	Atoms: N(913), CA(914), C(915), O(916), CB(917), CG(918), ND1(919), CD2(920), CE1(921), NE2(922), 
+Residues: ALA, 123	Atoms: N(923), CA(924), C(925), O(926), CB(927), 
+Residues: SER, 124	Atoms: N(928), CA(929), C(930), O(931), CB(932), OG(933), 
+Residues: LEU, 125	Atoms: N(934), CA(935), C(936), O(937), CB(938), CG(939), CD1(940), CD2(941), 
+Residues: ASP, 126	Atoms: N(942), CA(943), C(944), O(945), CB(946), CG(947), OD1(948), OD2(949), 
+Residues: LYS, 127	Atoms: N(950), CA(951), C(952), O(953), CB(954), CG(955), CD(956), CE(957), NZ(958), 
+Residues: PHE, 128	Atoms: N(959), CA(960), C(961), O(962), CB(963), CG(964), CD1(965), CD2(966), CE1(967), CE2(968), CZ(969), 
+Residues: LEU, 129	Atoms: N(970), CA(971), C(972), O(973), CB(974), CG(975), CD1(976), CD2(977), 
+Residues: ALA, 130	Atoms: N(978), CA(979), C(980), O(981), CB(982), 
+Residues: SER, 131	Atoms: N(983), CA(984), C(985), O(986), CB(987), OG(988), 
+Residues: VAL, 132	Atoms: N(989), CA(990), C(991), O(992), CB(993), CG1(994), CG2(995), 
+Residues: SER, 133	Atoms: N(996), CA(997), C(998), O(999), CB(1000), OG(1001), 
+Residues: THR, 134	Atoms: N(1002), CA(1003), C(1004), O(1005), CB(1006), OG1(1007), CG2(1008), 
+Residues: VAL, 135	Atoms: N(1009), CA(1010), C(1011), O(1012), CB(1013), CG1(1014), CG2(1015), 
+Residues: LEU, 136	Atoms: N(1016), CA(1017), C(1018), O(1019), CB(1020), CG(1021), CD1(1022), CD2(1023), 
+Residues: THR, 137	Atoms: N(1024), CA(1025), C(1026), O(1027), CB(1028), OG1(1029), CG2(1030), 
+Residues: SER, 138	Atoms: N(1031), CA(1032), C(1033), O(1034), CB(1035), OG(1036), 
+Residues: LYS, 139	Atoms: N(1037), CA(1038), C(1039), O(1040), CB(1041), CG(1042), CD(1043), CE(1044), NZ(1045), 
+Residues: TYR, 140	Atoms: N(1046), CA(1047), C(1048), O(1049), CB(1050), CG(1051), CD1(1052), CD2(1053), CE1(1054), CE2(1055), CZ(1056), OH(1057), 
+Residues: ARG, 141	Atoms: N(1058), CA(1059), C(1060), O(1061), CB(1062), CG(1063), CD(1064), NE(1065), CZ(1066), NH1(1067), NH2(1068), OXT(1069), 
+Atom: HEM, 142
+Atom: HOH, 143
+Atom: HOH, 144
+Atom: HOH, 145
+Atom: HOH, 146
+Atom: HOH, 147
+Atom: HOH, 148
+Atom: HOH, 149
+Atom: HOH, 150
+Atom: HOH, 151
+Atom: HOH, 152
+Atom: HOH, 153
+Atom: HOH, 154
+Atom: HOH, 155
+Atom: HOH, 156
+Atom: HOH, 157
+Atom: HOH, 158
+Atom: HOH, 159
+Atom: HOH, 160
+Atom: HOH, 161
+Atom: HOH, 162
+Atom: HOH, 163
+Atom: HOH, 164
+Atom: HOH, 165
+Atom: HOH, 166
+Atom: HOH, 167
+Atom: HOH, 168
+Atom: HOH, 169
+Atom: HOH, 170
+Atom: HOH, 171
+Atom: HOH, 172
+Atom: HOH, 173
+Atom: HOH, 174
+Atom: HOH, 175
+Atom: HOH, 176
+Atom: HOH, 177
+Atom: HOH, 178
+Atom: HOH, 179
+Atom: HOH, 180
+Atom: HOH, 181
+Atom: HOH, 182
+Atom: HOH, 183
+Atom: HOH, 184
+Atom: HOH, 185
+Atom: HOH, 186
+Atom: HOH, 187
+Atom: HOH, 188
+Atom: HOH, 189
+Atom: HOH, 190
+Atom: HOH, 191
+Atom: HOH, 192
+Atom: HOH, 193
+Atom: HOH, 194
+Atom: HOH, 195
+Atom: HOH, 196
+Atom: HOH, 197
+Atom: HOH, 198
+Chain Name: B
+Residues: VAL, 1	Atoms: N(1071), CA(1072), C(1073), O(1074), CB(1075), CG1(1076), CG2(1077), 
+Residues: HIS, 2	Atoms: N(1078), CA(1079), C(1080), O(1081), CB(1082), CG(1083), ND1(1084), CD2(1085), CE1(1086), NE2(1087), 
+Residues: LEU, 3	Atoms: N(1088), CA(1089), C(1090), O(1091), CB(1092), CG(1093), CD1(1094), CD2(1095), 
+Residues: THR, 4	Atoms: N(1096), CA(1097), C(1098), O(1099), CB(1100), OG1(1101), CG2(1102), 
+Residues: PRO, 5	Atoms: N(1103), CA(1104), C(1105), O(1106), CB(1107), CG(1108), CD(1109), 
+Residues: GLU, 6	Atoms: N(1110), CA(1111), C(1112), O(1113), CB(1114), CG(1115), CD(1116), OE1(1117), OE2(1118), 
+Residues: GLU, 7	Atoms: N(1119), CA(1120), C(1121), O(1122), CB(1123), CG(1124), CD(1125), OE1(1126), OE2(1127), 
+Residues: LYS, 8	Atoms: N(1128), CA(1129), C(1130), O(1131), CB(1132), CG(1133), CD(1134), CE(1135), NZ(1136), 
+Residues: SER, 9	Atoms: N(1137), CA(1138), C(1139), O(1140), CB(1141), OG(1142), 
+Residues: ALA, 10	Atoms: N(1143), CA(1144), C(1145), O(1146), CB(1147), 
+Residues: VAL, 11	Atoms: N(1148), CA(1149), C(1150), O(1151), CB(1152), CG1(1153), CG2(1154), 
+Residues: THR, 12	Atoms: N(1155), CA(1156), C(1157), O(1158), CB(1159), OG1(1160), CG2(1161), 
+Residues: ALA, 13	Atoms: N(1162), CA(1163), C(1164), O(1165), CB(1166), 
+Residues: LEU, 14	Atoms: N(1167), CA(1168), C(1169), O(1170), CB(1171), CG(1172), CD1(1173), CD2(1174), 
+Residues: TRP, 15	Atoms: N(1175), CA(1176), C(1177), O(1178), CB(1179), CG(1180), CD1(1181), CD2(1182), NE1(1183), CE2(1184), CE3(1185), CZ2(1186), CZ3(1187), CH2(1188), 
+Residues: GLY, 16	Atoms: N(1189), CA(1190), C(1191), O(1192), 
+Residues: LYS, 17	Atoms: N(1193), CA(1194), C(1195), O(1196), CB(1197), CG(1198), CD(1199), CE(1200), NZ(1201), 
+Residues: VAL, 18	Atoms: N(1202), CA(1203), C(1204), O(1205), CB(1206), CG1(1207), CG2(1208), 
+Residues: ASN, 19	Atoms: N(1209), CA(1210), C(1211), O(1212), CB(1213), CG(1214), OD1(1215), ND2(1216), 
+Residues: VAL, 20	Atoms: N(1217), CA(1218), C(1219), O(1220), CB(1221), CG1(1222), CG2(1223), 
+Residues: ASP, 21	Atoms: N(1224), CA(1225), C(1226), O(1227), CB(1228), CG(1229), OD1(1230), OD2(1231), 
+Residues: GLU, 22	Atoms: N(1232), CA(1233), C(1234), O(1235), CB(1236), CG(1237), CD(1238), OE1(1239), OE2(1240), 
+Residues: VAL, 23	Atoms: N(1241), CA(1242), C(1243), O(1244), CB(1245), CG1(1246), CG2(1247), 
+Residues: GLY, 24	Atoms: N(1248), CA(1249), C(1250), O(1251), 
+Residues: GLY, 25	Atoms: N(1252), CA(1253), C(1254), O(1255), 
+Residues: GLU, 26	Atoms: N(1256), CA(1257), C(1258), O(1259), CB(1260), CG(1261), CD(1262), OE1(1263), OE2(1264), 
+Residues: ALA, 27	Atoms: N(1265), CA(1266), C(1267), O(1268), CB(1269), 
+Residues: LEU, 28	Atoms: N(1270), CA(1271), C(1272), O(1273), CB(1274), CG(1275), CD1(1276), CD2(1277), 
+Residues: GLY, 29	Atoms: N(1278), CA(1279), C(1280), O(1281), 
+Residues: ARG, 30	Atoms: N(1282), CA(1283), C(1284), O(1285), CB(1286), CG(1287), CD(1288), NE(1289), CZ(1290), NH1(1291), NH2(1292), 
+Residues: LEU, 31	Atoms: N(1293), CA(1294), C(1295), O(1296), CB(1297), CG(1298), CD1(1299), CD2(1300), 
+Residues: LEU, 32	Atoms: N(1301), CA(1302), C(1303), O(1304), CB(1305), CG(1306), CD1(1307), CD2(1308), 
+Residues: VAL, 33	Atoms: N(1309), CA(1310), C(1311), O(1312), CB(1313), CG1(1314), CG2(1315), 
+Residues: VAL, 34	Atoms: N(1316), CA(1317), C(1318), O(1319), CB(1320), CG1(1321), CG2(1322), 
+Residues: TYR, 35	Atoms: N(1323), CA(1324), C(1325), O(1326), CB(1327), CG(1328), CD1(1329), CD2(1330), CE1(1331), CE2(1332), CZ(1333), OH(1334), 
+Residues: PRO, 36	Atoms: N(1335), CA(1336), C(1337), O(1338), CB(1339), CG(1340), CD(1341), 
+Residues: TRP, 37	Atoms: N(1342), CA(1343), C(1344), O(1345), CB(1346), CG(1347), CD1(1348), CD2(1349), NE1(1350), CE2(1351), CE3(1352), CZ2(1353), CZ3(1354), CH2(1355), 
+Residues: THR, 38	Atoms: N(1356), CA(1357), C(1358), O(1359), CB(1360), OG1(1361), CG2(1362), 
+Residues: GLN, 39	Atoms: N(1363), CA(1364), C(1365), O(1366), CB(1367), CG(1368), CD(1369), OE1(1370), NE2(1371), 
+Residues: ARG, 40	Atoms: N(1372), CA(1373), C(1374), O(1375), CB(1376), CG(1377), CD(1378), NE(1379), CZ(1380), NH1(1381), NH2(1382), 
+Residues: PHE, 41	Atoms: N(1383), CA(1384), C(1385), O(1386), CB(1387), CG(1388), CD1(1389), CD2(1390), CE1(1391), CE2(1392), CZ(1393), 
+Residues: PHE, 42	Atoms: N(1394), CA(1395), C(1396), O(1397), CB(1398), CG(1399), CD1(1400), CD2(1401), CE1(1402), CE2(1403), CZ(1404), 
+Residues: GLU, 43	Atoms: N(1405), CA(1406), C(1407), O(1408), CB(1409), CG(1410), CD(1411), OE1(1412), OE2(1413), 
+Residues: SER, 44	Atoms: N(1414), CA(1415), C(1416), O(1417), CB(1418), OG(1419), 
+Residues: PHE, 45	Atoms: N(1420), CA(1421), C(1422), O(1423), CB(1424), CG(1425), CD1(1426), CD2(1427), CE1(1428), CE2(1429), CZ(1430), 
+Residues: GLY, 46	Atoms: N(1431), CA(1432), C(1433), O(1434), 
+Residues: ASP, 47	Atoms: N(1435), CA(1436), C(1437), O(1438), CB(1439), CG(1440), OD1(1441), OD2(1442), 
+Residues: LEU, 48	Atoms: N(1443), CA(1444), C(1445), O(1446), CB(1447), CG(1448), CD1(1449), CD2(1450), 
+Residues: SER, 49	Atoms: N(1451), CA(1452), C(1453), O(1454), CB(1455), OG(1456), 
+Residues: THR, 50	Atoms: N(1457), CA(1458), C(1459), O(1460), CB(1461), OG1(1462), CG2(1463), 
+Residues: PRO, 51	Atoms: N(1464), CA(1465), C(1466), O(1467), CB(1468), CG(1469), CD(1470), 
+Residues: ASP, 52	Atoms: N(1471), CA(1472), C(1473), O(1474), CB(1475), CG(1476), OD1(1477), OD2(1478), 
+Residues: ALA, 53	Atoms: N(1479), CA(1480), C(1481), O(1482), CB(1483), 
+Residues: VAL, 54	Atoms: N(1484), CA(1485), C(1486), O(1487), CB(1488), CG1(1489), CG2(1490), 
+Residues: MET, 55	Atoms: N(1491), CA(1492), C(1493), O(1494), CB(1495), CG(1496), SD(1497), CE(1498), 
+Residues: GLY, 56	Atoms: N(1499), CA(1500), C(1501), O(1502), 
+Residues: ASN, 57	Atoms: N(1503), CA(1504), C(1505), O(1506), CB(1507), CG(1508), OD1(1509), ND2(1510), 
+Residues: PRO, 58	Atoms: N(1511), CA(1512), C(1513), O(1514), CB(1515), CG(1516), CD(1517), 
+Residues: LYS, 59	Atoms: N(1518), CA(1519), C(1520), O(1521), CB(1522), CG(1523), CD(1524), CE(1525), NZ(1526), 
+Residues: VAL, 60	Atoms: N(1527), CA(1528), C(1529), O(1530), CB(1531), CG1(1532), CG2(1533), 
+Residues: LYS, 61	Atoms: N(1534), CA(1535), C(1536), O(1537), CB(1538), CG(1539), CD(1540), CE(1541), NZ(1542), 
+Residues: ALA, 62	Atoms: N(1543), CA(1544), C(1545), O(1546), CB(1547), 
+Residues: HIS, 63	Atoms: N(1548), CA(1549), C(1550), O(1551), CB(1552), CG(1553), ND1(1554), CD2(1555), CE1(1556), NE2(1557), 
+Residues: GLY, 64	Atoms: N(1558), CA(1559), C(1560), O(1561), 
+Residues: LYS, 65	Atoms: N(1562), CA(1563), C(1564), O(1565), CB(1566), CG(1567), CD(1568), CE(1569), NZ(1570), 
+Residues: LYS, 66	Atoms: N(1571), CA(1572), C(1573), O(1574), CB(1575), CG(1576), CD(1577), CE(1578), NZ(1579), 
+Residues: VAL, 67	Atoms: N(1580), CA(1581), C(1582), O(1583), CB(1584), CG1(1585), CG2(1586), 
+Residues: LEU, 68	Atoms: N(1587), CA(1588), C(1589), O(1590), CB(1591), CG(1592), CD1(1593), CD2(1594), 
+Residues: GLY, 69	Atoms: N(1595), CA(1596), C(1597), O(1598), 
+Residues: ALA, 70	Atoms: N(1599), CA(1600), C(1601), O(1602), CB(1603), 
+Residues: PHE, 71	Atoms: N(1604), CA(1605), C(1606), O(1607), CB(1608), CG(1609), CD1(1610), CD2(1611), CE1(1612), CE2(1613), CZ(1614), 
+Residues: SER, 72	Atoms: N(1615), CA(1616), C(1617), O(1618), CB(1619), OG(1620), 
+Residues: ASP, 73	Atoms: N(1621), CA(1622), C(1623), O(1624), CB(1625), CG(1626), OD1(1627), OD2(1628), 
+Residues: GLY, 74	Atoms: N(1629), CA(1630), C(1631), O(1632), 
+Residues: LEU, 75	Atoms: N(1633), CA(1634), C(1635), O(1636), CB(1637), CG(1638), CD1(1639), CD2(1640), 
+Residues: ALA, 76	Atoms: N(1641), CA(1642), C(1643), O(1644), CB(1645), 
+Residues: HIS, 77	Atoms: N(1646), CA(1647), C(1648), O(1649), CB(1650), CG(1651), ND1(1652), CD2(1653), CE1(1654), NE2(1655), 
+Residues: LEU, 78	Atoms: N(1656), CA(1657), C(1658), O(1659), CB(1660), CG(1661), CD1(1662), CD2(1663), 
+Residues: ASP, 79	Atoms: N(1664), CA(1665), C(1666), O(1667), CB(1668), CG(1669), OD1(1670), OD2(1671), 
+Residues: ASN, 80	Atoms: N(1672), CA(1673), C(1674), O(1675), CB(1676), CG(1677), OD1(1678), ND2(1679), 
+Residues: LEU, 81	Atoms: N(1680), CA(1681), C(1682), O(1683), CB(1684), CG(1685), CD1(1686), CD2(1687), 
+Residues: LYS, 82	Atoms: N(1688), CA(1689), C(1690), O(1691), CB(1692), CG(1693), CD(1694), CE(1695), NZ(1696), 
+Residues: GLY, 83	Atoms: N(1697), CA(1698), C(1699), O(1700), 
+Residues: THR, 84	Atoms: N(1701), CA(1702), C(1703), O(1704), CB(1705), OG1(1706), CG2(1707), 
+Residues: PHE, 85	Atoms: N(1708), CA(1709), C(1710), O(1711), CB(1712), CG(1713), CD1(1714), CD2(1715), CE1(1716), CE2(1717), CZ(1718), 
+Residues: ALA, 86	Atoms: N(1719), CA(1720), C(1721), O(1722), CB(1723), 
+Residues: THR, 87	Atoms: N(1724), CA(1725), C(1726), O(1727), CB(1728), OG1(1729), CG2(1730), 
+Residues: LEU, 88	Atoms: N(1731), CA(1732), C(1733), O(1734), CB(1735), CG(1736), CD1(1737), CD2(1738), 
+Residues: SER, 89	Atoms: N(1739), CA(1740), C(1741), O(1742), CB(1743), OG(1744), 
+Residues: GLU, 90	Atoms: N(1745), CA(1746), C(1747), O(1748), CB(1749), CG(1750), CD(1751), OE1(1752), OE2(1753), 
+Residues: LEU, 91	Atoms: N(1754), CA(1755), C(1756), O(1757), CB(1758), CG(1759), CD1(1760), CD2(1761), 
+Residues: HIS, 92	Atoms: N(1762), CA(1763), C(1764), O(1765), CB(1766), CG(1767), ND1(1768), CD2(1769), CE1(1770), NE2(1771), 
+Residues: CYS, 93	Atoms: N(1772), CA(1773), C(1774), O(1775), CB(1776), SG(1777), 
+Residues: ASP, 94	Atoms: N(1778), CA(1779), C(1780), O(1781), CB(1782), CG(1783), OD1(1784), OD2(1785), 
+Residues: LYS, 95	Atoms: N(1786), CA(1787), C(1788), O(1789), CB(1790), CG(1791), CD(1792), CE(1793), NZ(1794), 
+Residues: LEU, 96	Atoms: N(1795), CA(1796), C(1797), O(1798), CB(1799), CG(1800), CD1(1801), CD2(1802), 
+Residues: HIS, 97	Atoms: N(1803), CA(1804), C(1805), O(1806), CB(1807), CG(1808), ND1(1809), CD2(1810), CE1(1811), NE2(1812), 
+Residues: VAL, 98	Atoms: N(1813), CA(1814), C(1815), O(1816), CB(1817), CG1(1818), CG2(1819), 
+Residues: ASP, 99	Atoms: N(1820), CA(1821), C(1822), O(1823), CB(1824), CG(1825), OD1(1826), OD2(1827), 
+Residues: PRO, 100	Atoms: N(1828), CA(1829), C(1830), O(1831), CB(1832), CG(1833), CD(1834), 
+Residues: GLU, 101	Atoms: N(1835), CA(1836), C(1837), O(1838), CB(1839), CG(1840), CD(1841), OE1(1842), OE2(1843), 
+Residues: ASN, 102	Atoms: N(1844), CA(1845), C(1846), O(1847), CB(1848), CG(1849), OD1(1850), ND2(1851), 
+Residues: PHE, 103	Atoms: N(1852), CA(1853), C(1854), O(1855), CB(1856), CG(1857), CD1(1858), CD2(1859), CE1(1860), CE2(1861), CZ(1862), 
+Residues: ARG, 104	Atoms: N(1863), CA(1864), C(1865), O(1866), CB(1867), CG(1868), CD(1869), NE(1870), CZ(1871), NH1(1872), NH2(1873), 
+Residues: LEU, 105	Atoms: N(1874), CA(1875), C(1876), O(1877), CB(1878), CG(1879), CD1(1880), CD2(1881), 
+Residues: LEU, 106	Atoms: N(1882), CA(1883), C(1884), O(1885), CB(1886), CG(1887), CD1(1888), CD2(1889), 
+Residues: GLY, 107	Atoms: N(1890), CA(1891), C(1892), O(1893), 
+Residues: ASN, 108	Atoms: N(1894), CA(1895), C(1896), O(1897), CB(1898), CG(1899), OD1(1900), ND2(1901), 
+Residues: VAL, 109	Atoms: N(1902), CA(1903), C(1904), O(1905), CB(1906), CG1(1907), CG2(1908), 
+Residues: LEU, 110	Atoms: N(1909), CA(1910), C(1911), O(1912), CB(1913), CG(1914), CD1(1915), CD2(1916), 
+Residues: VAL, 111	Atoms: N(1917), CA(1918), C(1919), O(1920), CB(1921), CG1(1922), CG2(1923), 
+Residues: CYS, 112	Atoms: N(1924), CA(1925), C(1926), O(1927), CB(1928), SG(1929), 
+Residues: VAL, 113	Atoms: N(1930), CA(1931), C(1932), O(1933), CB(1934), CG1(1935), CG2(1936), 
+Residues: LEU, 114	Atoms: N(1937), CA(1938), C(1939), O(1940), CB(1941), CG(1942), CD1(1943), CD2(1944), 
+Residues: ALA, 115	Atoms: N(1945), CA(1946), C(1947), O(1948), CB(1949), 
+Residues: HIS, 116	Atoms: N(1950), CA(1951), C(1952), O(1953), CB(1954), CG(1955), ND1(1956), CD2(1957), CE1(1958), NE2(1959), 
+Residues: HIS, 117	Atoms: N(1960), CA(1961), C(1962), O(1963), CB(1964), CG(1965), ND1(1966), CD2(1967), CE1(1968), NE2(1969), 
+Residues: PHE, 118	Atoms: N(1970), CA(1971), C(1972), O(1973), CB(1974), CG(1975), CD1(1976), CD2(1977), CE1(1978), CE2(1979), CZ(1980), 
+Residues: GLY, 119	Atoms: N(1981), CA(1982), C(1983), O(1984), 
+Residues: LYS, 120	Atoms: N(1985), CA(1986), C(1987), O(1988), CB(1989), CG(1990), CD(1991), CE(1992), NZ(1993), 
+Residues: GLU, 121	Atoms: N(1994), CA(1995), C(1996), O(1997), CB(1998), CG(1999), CD(2000), OE1(2001), OE2(2002), 
+Residues: PHE, 122	Atoms: N(2003), CA(2004), C(2005), O(2006), CB(2007), CG(2008), CD1(2009), CD2(2010), CE1(2011), CE2(2012), CZ(2013), 
+Residues: THR, 123	Atoms: N(2014), CA(2015), C(2016), O(2017), CB(2018), OG1(2019), CG2(2020), 
+Residues: PRO, 124	Atoms: N(2021), CA(2022), C(2023), O(2024), CB(2025), CG(2026), CD(2027), 
+Residues: PRO, 125	Atoms: N(2028), CA(2029), C(2030), O(2031), CB(2032), CG(2033), CD(2034), 
+Residues: VAL, 126	Atoms: N(2035), CA(2036), C(2037), O(2038), CB(2039), CG1(2040), CG2(2041), 
+Residues: GLN, 127	Atoms: N(2042), CA(2043), C(2044), O(2045), CB(2046), CG(2047), CD(2048), OE1(2049), NE2(2050), 
+Residues: ALA, 128	Atoms: N(2051), CA(2052), C(2053), O(2054), CB(2055), 
+Residues: ALA, 129	Atoms: N(2056), CA(2057), C(2058), O(2059), CB(2060), 
+Residues: TYR, 130	Atoms: N(2061), CA(2062), C(2063), O(2064), CB(2065), CG(2066), CD1(2067), CD2(2068), CE1(2069), CE2(2070), CZ(2071), OH(2072), 
+Residues: GLN, 131	Atoms: N(2073), CA(2074), C(2075), O(2076), CB(2077), CG(2078), CD(2079), OE1(2080), NE2(2081), 
+Residues: LYS, 132	Atoms: N(2082), CA(2083), C(2084), O(2085), CB(2086), CG(2087), CD(2088), CE(2089), NZ(2090), 
+Residues: VAL, 133	Atoms: N(2091), CA(2092), C(2093), O(2094), CB(2095), CG1(2096), CG2(2097), 
+Residues: VAL, 134	Atoms: N(2098), CA(2099), C(2100), O(2101), CB(2102), CG1(2103), CG2(2104), 
+Residues: ALA, 135	Atoms: N(2105), CA(2106), C(2107), O(2108), CB(2109), 
+Residues: GLY, 136	Atoms: N(2110), CA(2111), C(2112), O(2113), 
+Residues: VAL, 137	Atoms: N(2114), CA(2115), C(2116), O(2117), CB(2118), CG1(2119), CG2(2120), 
+Residues: ALA, 138	Atoms: N(2121), CA(2122), C(2123), O(2124), CB(2125), 
+Residues: ASN, 139	Atoms: N(2126), CA(2127), C(2128), O(2129), CB(2130), CG(2131), OD1(2132), ND2(2133), 
+Residues: ALA, 140	Atoms: N(2134), CA(2135), C(2136), O(2137), CB(2138), 
+Residues: LEU, 141	Atoms: N(2139), CA(2140), C(2141), O(2142), CB(2143), CG(2144), CD1(2145), CD2(2146), 
+Residues: ALA, 142	Atoms: N(2147), CA(2148), C(2149), O(2150), CB(2151), 
+Residues: HIS, 143	Atoms: N(2152), CA(2153), C(2154), O(2155), CB(2156), CG(2157), ND1(2158), CD2(2159), CE1(2160), NE2(2161), 
+Residues: LYS, 144	Atoms: N(2162), CA(2163), C(2164), O(2165), CB(2166), CG(2167), CD(2168), CE(2169), NZ(2170), 
+Residues: TYR, 145	Atoms: N(2171), CA(2172), C(2173), O(2174), CB(2175), CG(2176), CD1(2177), CD2(2178), CE1(2179), CE2(2180), CZ(2181), OH(2182), 
+Residues: HIS, 146	Atoms: N(2183), CA(2184), C(2185), O(2186), CB(2187), CG(2188), ND1(2189), CD2(2190), CE1(2191), NE2(2192), OXT(2193), 
+Atom: PO4, 147
+Atom: HEM, 148
+Atom: HOH, 149
+Atom: HOH, 150
+Atom: HOH, 151
+Atom: HOH, 152
+Atom: HOH, 153
+Atom: HOH, 154
+Atom: HOH, 155
+Atom: HOH, 156
+Atom: HOH, 157
+Atom: HOH, 158
+Atom: HOH, 159
+Atom: HOH, 160
+Atom: HOH, 161
+Atom: HOH, 162
+Atom: HOH, 163
+Atom: HOH, 164
+Atom: HOH, 165
+Atom: HOH, 166
+Atom: HOH, 167
+Atom: HOH, 168
+Atom: HOH, 169
+Atom: HOH, 170
+Atom: HOH, 171
+Atom: HOH, 172
+Atom: HOH, 173
+Atom: HOH, 174
+Atom: HOH, 175
+Atom: HOH, 176
+Atom: HOH, 177
+Atom: HOH, 178
+Atom: HOH, 179
+Atom: HOH, 180
+Atom: HOH, 181
+Atom: HOH, 182
+Atom: HOH, 183
+Atom: HOH, 184
+Atom: HOH, 185
+Atom: HOH, 186
+Atom: HOH, 187
+Atom: HOH, 188
+Atom: HOH, 189
+Atom: HOH, 190
+Atom: HOH, 191
+Atom: HOH, 192
+Atom: HOH, 193
+Atom: HOH, 194
+Atom: HOH, 195
+Atom: HOH, 196
+Atom: HOH, 197
+Atom: HOH, 198
+Atom: HOH, 199
+Atom: HOH, 200
+Atom: HOH, 201
+Atom: HOH, 202
+Atom: HOH, 203
+Atom: HOH, 204
+Atom: HOH, 205
+Chain Name: C
+Residues: VAL, 1	Atoms: N(2195), CA(2196), C(2197), O(2198), CB(2199), CG1(2200), CG2(2201), 
+Residues: LEU, 2	Atoms: N(2202), CA(2203), C(2204), O(2205), CB(2206), CG(2207), CD1(2208), CD2(2209), 
+Residues: SER, 3	Atoms: N(2210), CA(2211), C(2212), O(2213), CB(2214), OG(2215), 
+Residues: PRO, 4	Atoms: N(2216), CA(2217), C(2218), O(2219), CB(2220), CG(2221), CD(2222), 
+Residues: ALA, 5	Atoms: N(2223), CA(2224), C(2225), O(2226), CB(2227), 
+Residues: ASP, 6	Atoms: N(2228), CA(2229), C(2230), O(2231), CB(2232), CG(2233), OD1(2234), OD2(2235), 
+Residues: LYS, 7	Atoms: N(2236), CA(2237), C(2238), O(2239), CB(2240), CG(2241), CD(2242), CE(2243), NZ(2244), 
+Residues: THR, 8	Atoms: N(2245), CA(2246), C(2247), O(2248), CB(2249), OG1(2250), CG2(2251), 
+Residues: ASN, 9	Atoms: N(2252), CA(2253), C(2254), O(2255), CB(2256), CG(2257), OD1(2258), ND2(2259), 
+Residues: VAL, 10	Atoms: N(2260), CA(2261), C(2262), O(2263), CB(2264), CG1(2265), CG2(2266), 
+Residues: LYS, 11	Atoms: N(2267), CA(2268), C(2269), O(2270), CB(2271), CG(2272), CD(2273), CE(2274), NZ(2275), 
+Residues: ALA, 12	Atoms: N(2276), CA(2277), C(2278), O(2279), CB(2280), 
+Residues: ALA, 13	Atoms: N(2281), CA(2282), C(2283), O(2284), CB(2285), 
+Residues: TRP, 14	Atoms: N(2286), CA(2287), C(2288), O(2289), CB(2290), CG(2291), CD1(2292), CD2(2293), NE1(2294), CE2(2295), CE3(2296), CZ2(2297), CZ3(2298), CH2(2299), 
+Residues: GLY, 15	Atoms: N(2300), CA(2301), C(2302), O(2303), 
+Residues: LYS, 16	Atoms: N(2304), CA(2305), C(2306), O(2307), CB(2308), CG(2309), CD(2310), CE(2311), NZ(2312), 
+Residues: VAL, 17	Atoms: N(2313), CA(2314), C(2315), O(2316), CB(2317), CG1(2318), CG2(2319), 
+Residues: GLY, 18	Atoms: N(2320), CA(2321), C(2322), O(2323), 
+Residues: ALA, 19	Atoms: N(2324), CA(2325), C(2326), O(2327), CB(2328), 
+Residues: HIS, 20	Atoms: N(2329), CA(2330), C(2331), O(2332), CB(2333), CG(2334), ND1(2335), CD2(2336), CE1(2337), NE2(2338), 
+Residues: ALA, 21	Atoms: N(2339), CA(2340), C(2341), O(2342), CB(2343), 
+Residues: GLY, 22	Atoms: N(2344), CA(2345), C(2346), O(2347), 
+Residues: GLU, 23	Atoms: N(2348), CA(2349), C(2350), O(2351), CB(2352), CG(2353), CD(2354), OE1(2355), OE2(2356), 
+Residues: TYR, 24	Atoms: N(2357), CA(2358), C(2359), O(2360), CB(2361), CG(2362), CD1(2363), CD2(2364), CE1(2365), CE2(2366), CZ(2367), OH(2368), 
+Residues: GLY, 25	Atoms: N(2369), CA(2370), C(2371), O(2372), 
+Residues: ALA, 26	Atoms: N(2373), CA(2374), C(2375), O(2376), CB(2377), 
+Residues: GLU, 27	Atoms: N(2378), CA(2379), C(2380), O(2381), CB(2382), CG(2383), CD(2384), OE1(2385), OE2(2386), 
+Residues: ALA, 28	Atoms: N(2387), CA(2388), C(2389), O(2390), CB(2391), 
+Residues: LEU, 29	Atoms: N(2392), CA(2393), C(2394), O(2395), CB(2396), CG(2397), CD1(2398), CD2(2399), 
+Residues: GLU, 30	Atoms: N(2400), CA(2401), C(2402), O(2403), CB(2404), CG(2405), CD(2406), OE1(2407), OE2(2408), 
+Residues: ARG, 31	Atoms: N(2409), CA(2410), C(2411), O(2412), CB(2413), CG(2414), CD(2415), NE(2416), CZ(2417), NH1(2418), NH2(2419), 
+Residues: MET, 32	Atoms: N(2420), CA(2421), C(2422), O(2423), CB(2424), CG(2425), SD(2426), CE(2427), 
+Residues: PHE, 33	Atoms: N(2428), CA(2429), C(2430), O(2431), CB(2432), CG(2433), CD1(2434), CD2(2435), CE1(2436), CE2(2437), CZ(2438), 
+Residues: LEU, 34	Atoms: N(2439), CA(2440), C(2441), O(2442), CB(2443), CG(2444), CD1(2445), CD2(2446), 
+Residues: SER, 35	Atoms: N(2447), CA(2448), C(2449), O(2450), CB(2451), OG(2452), 
+Residues: PHE, 36	Atoms: N(2453), CA(2454), C(2455), O(2456), CB(2457), CG(2458), CD1(2459), CD2(2460), CE1(2461), CE2(2462), CZ(2463), 
+Residues: PRO, 37	Atoms: N(2464), CA(2465), C(2466), O(2467), CB(2468), CG(2469), CD(2470), 
+Residues: THR, 38	Atoms: N(2471), CA(2472), C(2473), O(2474), CB(2475), OG1(2476), CG2(2477), 
+Residues: THR, 39	Atoms: N(2478), CA(2479), C(2480), O(2481), CB(2482), OG1(2483), CG2(2484), 
+Residues: LYS, 40	Atoms: N(2485), CA(2486), C(2487), O(2488), CB(2489), CG(2490), CD(2491), CE(2492), NZ(2493), 
+Residues: THR, 41	Atoms: N(2494), CA(2495), C(2496), O(2497), CB(2498), OG1(2499), CG2(2500), 
+Residues: TYR, 42	Atoms: N(2501), CA(2502), C(2503), O(2504), CB(2505), CG(2506), CD1(2507), CD2(2508), CE1(2509), CE2(2510), CZ(2511), OH(2512), 
+Residues: PHE, 43	Atoms: N(2513), CA(2514), C(2515), O(2516), CB(2517), CG(2518), CD1(2519), CD2(2520), CE1(2521), CE2(2522), CZ(2523), 
+Residues: PRO, 44	Atoms: N(2524), CA(2525), C(2526), O(2527), CB(2528), CG(2529), CD(2530), 
+Residues: HIS, 45	Atoms: N(2531), CA(2532), C(2533), O(2534), CB(2535), CG(2536), ND1(2537), CD2(2538), CE1(2539), NE2(2540), 
+Residues: PHE, 46	Atoms: N(2541), CA(2542), C(2543), O(2544), CB(2545), CG(2546), CD1(2547), CD2(2548), CE1(2549), CE2(2550), CZ(2551), 
+Residues: ASP, 47	Atoms: N(2552), CA(2553), C(2554), O(2555), CB(2556), CG(2557), OD1(2558), OD2(2559), 
+Residues: LEU, 48	Atoms: N(2560), CA(2561), C(2562), O(2563), CB(2564), CG(2565), CD1(2566), CD2(2567), 
+Residues: SER, 49	Atoms: N(2568), CA(2569), C(2570), O(2571), CB(2572), OG(2573), 
+Residues: HIS, 50	Atoms: N(2574), CA(2575), C(2576), O(2577), CB(2578), CG(2579), ND1(2580), CD2(2581), CE1(2582), NE2(2583), 
+Residues: GLY, 51	Atoms: N(2584), CA(2585), C(2586), O(2587), 
+Residues: SER, 52	Atoms: N(2588), CA(2589), C(2590), O(2591), CB(2592), OG(2593), 
+Residues: ALA, 53	Atoms: N(2594), CA(2595), C(2596), O(2597), CB(2598), 
+Residues: GLN, 54	Atoms: N(2599), CA(2600), C(2601), O(2602), CB(2603), CG(2604), CD(2605), OE1(2606), NE2(2607), 
+Residues: VAL, 55	Atoms: N(2608), CA(2609), C(2610), O(2611), CB(2612), CG1(2613), CG2(2614), 
+Residues: LYS, 56	Atoms: N(2615), CA(2616), C(2617), O(2618), CB(2619), CG(2620), CD(2621), CE(2622), NZ(2623), 
+Residues: GLY, 57	Atoms: N(2624), CA(2625), C(2626), O(2627), 
+Residues: HIS, 58	Atoms: N(2628), CA(2629), C(2630), O(2631), CB(2632), CG(2633), ND1(2634), CD2(2635), CE1(2636), NE2(2637), 
+Residues: GLY, 59	Atoms: N(2638), CA(2639), C(2640), O(2641), 
+Residues: LYS, 60	Atoms: N(2642), CA(2643), C(2644), O(2645), CB(2646), CG(2647), CD(2648), CE(2649), NZ(2650), 
+Residues: LYS, 61	Atoms: N(2651), CA(2652), C(2653), O(2654), CB(2655), CG(2656), CD(2657), CE(2658), NZ(2659), 
+Residues: VAL, 62	Atoms: N(2660), CA(2661), C(2662), O(2663), CB(2664), CG1(2665), CG2(2666), 
+Residues: ALA, 63	Atoms: N(2667), CA(2668), C(2669), O(2670), CB(2671), 
+Residues: ASP, 64	Atoms: N(2672), CA(2673), C(2674), O(2675), CB(2676), CG(2677), OD1(2678), OD2(2679), 
+Residues: ALA, 65	Atoms: N(2680), CA(2681), C(2682), O(2683), CB(2684), 
+Residues: LEU, 66	Atoms: N(2685), CA(2686), C(2687), O(2688), CB(2689), CG(2690), CD1(2691), CD2(2692), 
+Residues: THR, 67	Atoms: N(2693), CA(2694), C(2695), O(2696), CB(2697), OG1(2698), CG2(2699), 
+Residues: ASN, 68	Atoms: N(2700), CA(2701), C(2702), O(2703), CB(2704), CG(2705), OD1(2706), ND2(2707), 
+Residues: ALA, 69	Atoms: N(2708), CA(2709), C(2710), O(2711), CB(2712), 
+Residues: VAL, 70	Atoms: N(2713), CA(2714), C(2715), O(2716), CB(2717), CG1(2718), CG2(2719), 
+Residues: ALA, 71	Atoms: N(2720), CA(2721), C(2722), O(2723), CB(2724), 
+Residues: HIS, 72	Atoms: N(2725), CA(2726), C(2727), O(2728), CB(2729), CG(2730), ND1(2731), CD2(2732), CE1(2733), NE2(2734), 
+Residues: VAL, 73	Atoms: N(2735), CA(2736), C(2737), O(2738), CB(2739), CG1(2740), CG2(2741), 
+Residues: ASP, 74	Atoms: N(2742), CA(2743), C(2744), O(2745), CB(2746), CG(2747), OD1(2748), OD2(2749), 
+Residues: ASP, 75	Atoms: N(2750), CA(2751), C(2752), O(2753), CB(2754), CG(2755), OD1(2756), OD2(2757), 
+Residues: MET, 76	Atoms: N(2758), CA(2759), C(2760), O(2761), CB(2762), CG(2763), SD(2764), CE(2765), 
+Residues: PRO, 77	Atoms: N(2766), CA(2767), C(2768), O(2769), CB(2770), CG(2771), CD(2772), 
+Residues: ASN, 78	Atoms: N(2773), CA(2774), C(2775), O(2776), CB(2777), CG(2778), OD1(2779), ND2(2780), 
+Residues: ALA, 79	Atoms: N(2781), CA(2782), C(2783), O(2784), CB(2785), 
+Residues: LEU, 80	Atoms: N(2786), CA(2787), C(2788), O(2789), CB(2790), CG(2791), CD1(2792), CD2(2793), 
+Residues: SER, 81	Atoms: N(2794), CA(2795), C(2796), O(2797), CB(2798), OG(2799), 
+Residues: ALA, 82	Atoms: N(2800), CA(2801), C(2802), O(2803), CB(2804), 
+Residues: LEU, 83	Atoms: N(2805), CA(2806), C(2807), O(2808), CB(2809), CG(2810), CD1(2811), CD2(2812), 
+Residues: SER, 84	Atoms: N(2813), CA(2814), C(2815), O(2816), CB(2817), OG(2818), 
+Residues: ASP, 85	Atoms: N(2819), CA(2820), C(2821), O(2822), CB(2823), CG(2824), OD1(2825), OD2(2826), 
+Residues: LEU, 86	Atoms: N(2827), CA(2828), C(2829), O(2830), CB(2831), CG(2832), CD1(2833), CD2(2834), 
+Residues: HIS, 87	Atoms: N(2835), CA(2836), C(2837), O(2838), CB(2839), CG(2840), ND1(2841), CD2(2842), CE1(2843), NE2(2844), 
+Residues: ALA, 88	Atoms: N(2845), CA(2846), C(2847), O(2848), CB(2849), 
+Residues: HIS, 89	Atoms: N(2850), CA(2851), C(2852), O(2853), CB(2854), CG(2855), ND1(2856), CD2(2857), CE1(2858), NE2(2859), 
+Residues: LYS, 90	Atoms: N(2860), CA(2861), C(2862), O(2863), CB(2864), CG(2865), CD(2866), CE(2867), NZ(2868), 
+Residues: LEU, 91	Atoms: N(2869), CA(2870), C(2871), O(2872), CB(2873), CG(2874), CD1(2875), CD2(2876), 
+Residues: ARG, 92	Atoms: N(2877), CA(2878), C(2879), O(2880), CB(2881), CG(2882), CD(2883), NE(2884), CZ(2885), NH1(2886), NH2(2887), 
+Residues: VAL, 93	Atoms: N(2888), CA(2889), C(2890), O(2891), CB(2892), CG1(2893), CG2(2894), 
+Residues: ASP, 94	Atoms: N(2895), CA(2896), C(2897), O(2898), CB(2899), CG(2900), OD1(2901), OD2(2902), 
+Residues: PRO, 95	Atoms: N(2903), CA(2904), C(2905), O(2906), CB(2907), CG(2908), CD(2909), 
+Residues: VAL, 96	Atoms: N(2910), CA(2911), C(2912), O(2913), CB(2914), CG1(2915), CG2(2916), 
+Residues: ASN, 97	Atoms: N(2917), CA(2918), C(2919), O(2920), CB(2921), CG(2922), OD1(2923), ND2(2924), 
+Residues: PHE, 98	Atoms: N(2925), CA(2926), C(2927), O(2928), CB(2929), CG(2930), CD1(2931), CD2(2932), CE1(2933), CE2(2934), CZ(2935), 
+Residues: LYS, 99	Atoms: N(2936), CA(2937), C(2938), O(2939), CB(2940), CG(2941), CD(2942), CE(2943), NZ(2944), 
+Residues: LEU, 100	Atoms: N(2945), CA(2946), C(2947), O(2948), CB(2949), CG(2950), CD1(2951), CD2(2952), 
+Residues: LEU, 101	Atoms: N(2953), CA(2954), C(2955), O(2956), CB(2957), CG(2958), CD1(2959), CD2(2960), 
+Residues: SER, 102	Atoms: N(2961), CA(2962), C(2963), O(2964), CB(2965), OG(2966), 
+Residues: HIS, 103	Atoms: N(2967), CA(2968), C(2969), O(2970), CB(2971), CG(2972), ND1(2973), CD2(2974), CE1(2975), NE2(2976), 
+Residues: CYS, 104	Atoms: N(2977), CA(2978), C(2979), O(2980), CB(2981), SG(2982), 
+Residues: LEU, 105	Atoms: N(2983), CA(2984), C(2985), O(2986), CB(2987), CG(2988), CD1(2989), CD2(2990), 
+Residues: LEU, 106	Atoms: N(2991), CA(2992), C(2993), O(2994), CB(2995), CG(2996), CD1(2997), CD2(2998), 
+Residues: VAL, 107	Atoms: N(2999), CA(3000), C(3001), O(3002), CB(3003), CG1(3004), CG2(3005), 
+Residues: THR, 108	Atoms: N(3006), CA(3007), C(3008), O(3009), CB(3010), OG1(3011), CG2(3012), 
+Residues: LEU, 109	Atoms: N(3013), CA(3014), C(3015), O(3016), CB(3017), CG(3018), CD1(3019), CD2(3020), 
+Residues: ALA, 110	Atoms: N(3021), CA(3022), C(3023), O(3024), CB(3025), 
+Residues: ALA, 111	Atoms: N(3026), CA(3027), C(3028), O(3029), CB(3030), 
+Residues: HIS, 112	Atoms: N(3031), CA(3032), C(3033), O(3034), CB(3035), CG(3036), ND1(3037), CD2(3038), CE1(3039), NE2(3040), 
+Residues: LEU, 113	Atoms: N(3041), CA(3042), C(3043), O(3044), CB(3045), CG(3046), CD1(3047), CD2(3048), 
+Residues: PRO, 114	Atoms: N(3049), CA(3050), C(3051), O(3052), CB(3053), CG(3054), CD(3055), 
+Residues: ALA, 115	Atoms: N(3056), CA(3057), C(3058), O(3059), CB(3060), 
+Residues: GLU, 116	Atoms: N(3061), CA(3062), C(3063), O(3064), CB(3065), CG(3066), CD(3067), OE1(3068), OE2(3069), 
+Residues: PHE, 117	Atoms: N(3070), CA(3071), C(3072), O(3073), CB(3074), CG(3075), CD1(3076), CD2(3077), CE1(3078), CE2(3079), CZ(3080), 
+Residues: THR, 118	Atoms: N(3081), CA(3082), C(3083), O(3084), CB(3085), OG1(3086), CG2(3087), 
+Residues: PRO, 119	Atoms: N(3088), CA(3089), C(3090), O(3091), CB(3092), CG(3093), CD(3094), 
+Residues: ALA, 120	Atoms: N(3095), CA(3096), C(3097), O(3098), CB(3099), 
+Residues: VAL, 121	Atoms: N(3100), CA(3101), C(3102), O(3103), CB(3104), CG1(3105), CG2(3106), 
+Residues: HIS, 122	Atoms: N(3107), CA(3108), C(3109), O(3110), CB(3111), CG(3112), ND1(3113), CD2(3114), CE1(3115), NE2(3116), 
+Residues: ALA, 123	Atoms: N(3117), CA(3118), C(3119), O(3120), CB(3121), 
+Residues: SER, 124	Atoms: N(3122), CA(3123), C(3124), O(3125), CB(3126), OG(3127), 
+Residues: LEU, 125	Atoms: N(3128), CA(3129), C(3130), O(3131), CB(3132), CG(3133), CD1(3134), CD2(3135), 
+Residues: ASP, 126	Atoms: N(3136), CA(3137), C(3138), O(3139), CB(3140), CG(3141), OD1(3142), OD2(3143), 
+Residues: LYS, 127	Atoms: N(3144), CA(3145), C(3146), O(3147), CB(3148), CG(3149), CD(3150), CE(3151), NZ(3152), 
+Residues: PHE, 128	Atoms: N(3153), CA(3154), C(3155), O(3156), CB(3157), CG(3158), CD1(3159), CD2(3160), CE1(3161), CE2(3162), CZ(3163), 
+Residues: LEU, 129	Atoms: N(3164), CA(3165), C(3166), O(3167), CB(3168), CG(3169), CD1(3170), CD2(3171), 
+Residues: ALA, 130	Atoms: N(3172), CA(3173), C(3174), O(3175), CB(3176), 
+Residues: SER, 131	Atoms: N(3177), CA(3178), C(3179), O(3180), CB(3181), OG(3182), 
+Residues: VAL, 132	Atoms: N(3183), CA(3184), C(3185), O(3186), CB(3187), CG1(3188), CG2(3189), 
+Residues: SER, 133	Atoms: N(3190), CA(3191), C(3192), O(3193), CB(3194), OG(3195), 
+Residues: THR, 134	Atoms: N(3196), CA(3197), C(3198), O(3199), CB(3200), OG1(3201), CG2(3202), 
+Residues: VAL, 135	Atoms: N(3203), CA(3204), C(3205), O(3206), CB(3207), CG1(3208), CG2(3209), 
+Residues: LEU, 136	Atoms: N(3210), CA(3211), C(3212), O(3213), CB(3214), CG(3215), CD1(3216), CD2(3217), 
+Residues: THR, 137	Atoms: N(3218), CA(3219), C(3220), O(3221), CB(3222), OG1(3223), CG2(3224), 
+Residues: SER, 138	Atoms: N(3225), CA(3226), C(3227), O(3228), CB(3229), OG(3230), 
+Residues: LYS, 139	Atoms: N(3231), CA(3232), C(3233), O(3234), CB(3235), CG(3236), CD(3237), CE(3238), NZ(3239), 
+Residues: TYR, 140	Atoms: N(3240), CA(3241), C(3242), O(3243), CB(3244), CG(3245), CD1(3246), CD2(3247), CE1(3248), CE2(3249), CZ(3250), OH(3251), 
+Residues: ARG, 141	Atoms: N(3252), CA(3253), C(3254), O(3255), CB(3256), CG(3257), CD(3258), NE(3259), CZ(3260), NH1(3261), NH2(3262), OXT(3263), 
+Atom: HEM, 142
+Atom: HOH, 143
+Atom: HOH, 144
+Atom: HOH, 145
+Atom: HOH, 146
+Atom: HOH, 147
+Atom: HOH, 148
+Atom: HOH, 149
+Atom: HOH, 150
+Atom: HOH, 151
+Atom: HOH, 152
+Atom: HOH, 153
+Atom: HOH, 154
+Atom: HOH, 155
+Atom: HOH, 156
+Atom: HOH, 157
+Atom: HOH, 158
+Atom: HOH, 159
+Atom: HOH, 160
+Atom: HOH, 161
+Atom: HOH, 162
+Atom: HOH, 163
+Atom: HOH, 164
+Atom: HOH, 165
+Atom: HOH, 166
+Atom: HOH, 167
+Atom: HOH, 168
+Atom: HOH, 169
+Atom: HOH, 170
+Atom: HOH, 171
+Atom: HOH, 172
+Atom: HOH, 173
+Atom: HOH, 174
+Atom: HOH, 175
+Atom: HOH, 176
+Atom: HOH, 177
+Atom: HOH, 178
+Atom: HOH, 179
+Atom: HOH, 180
+Atom: HOH, 181
+Atom: HOH, 182
+Atom: HOH, 183
+Atom: HOH, 184
+Atom: HOH, 185
+Atom: HOH, 186
+Atom: HOH, 187
+Atom: HOH, 188
+Atom: HOH, 189
+Atom: HOH, 190
+Atom: HOH, 191
+Atom: HOH, 192
+Atom: HOH, 193
+Atom: HOH, 194
+Atom: HOH, 195
+Atom: HOH, 196
+Atom: HOH, 197
+Atom: HOH, 198
+Atom: HOH, 199
+Atom: HOH, 200
+Atom: HOH, 201
+Chain Name: D
+Residues: VAL, 1	Atoms: N(3265), CA(3266), C(3267), O(3268), CB(3269), CG1(3270), CG2(3271), 
+Residues: HIS, 2	Atoms: N(3272), CA(3273), C(3274), O(3275), CB(3276), CG(3277), ND1(3278), CD2(3279), CE1(3280), NE2(3281), 
+Residues: LEU, 3	Atoms: N(3282), CA(3283), C(3284), O(3285), CB(3286), CG(3287), CD1(3288), CD2(3289), 
+Residues: THR, 4	Atoms: N(3290), CA(3291), C(3292), O(3293), CB(3294), OG1(3295), CG2(3296), 
+Residues: PRO, 5	Atoms: N(3297), CA(3298), C(3299), O(3300), CB(3301), CG(3302), CD(3303), 
+Residues: GLU, 6	Atoms: N(3304), CA(3305), C(3306), O(3307), CB(3308), CG(3309), CD(3310), OE1(3311), OE2(3312), 
+Residues: GLU, 7	Atoms: N(3313), CA(3314), C(3315), O(3316), CB(3317), CG(3318), CD(3319), OE1(3320), OE2(3321), 
+Residues: LYS, 8	Atoms: N(3322), CA(3323), C(3324), O(3325), CB(3326), CG(3327), CD(3328), CE(3329), NZ(3330), 
+Residues: SER, 9	Atoms: N(3331), CA(3332), C(3333), O(3334), CB(3335), OG(3336), 
+Residues: ALA, 10	Atoms: N(3337), CA(3338), C(3339), O(3340), CB(3341), 
+Residues: VAL, 11	Atoms: N(3342), CA(3343), C(3344), O(3345), CB(3346), CG1(3347), CG2(3348), 
+Residues: THR, 12	Atoms: N(3349), CA(3350), C(3351), O(3352), CB(3353), OG1(3354), CG2(3355), 
+Residues: ALA, 13	Atoms: N(3356), CA(3357), C(3358), O(3359), CB(3360), 
+Residues: LEU, 14	Atoms: N(3361), CA(3362), C(3363), O(3364), CB(3365), CG(3366), CD1(3367), CD2(3368), 
+Residues: TRP, 15	Atoms: N(3369), CA(3370), C(3371), O(3372), CB(3373), CG(3374), CD1(3375), CD2(3376), NE1(3377), CE2(3378), CE3(3379), CZ2(3380), CZ3(3381), CH2(3382), 
+Residues: GLY, 16	Atoms: N(3383), CA(3384), C(3385), O(3386), 
+Residues: LYS, 17	Atoms: N(3387), CA(3388), C(3389), O(3390), CB(3391), CG(3392), CD(3393), CE(3394), NZ(3395), 
+Residues: VAL, 18	Atoms: N(3396), CA(3397), C(3398), O(3399), CB(3400), CG1(3401), CG2(3402), 
+Residues: ASN, 19	Atoms: N(3403), CA(3404), C(3405), O(3406), CB(3407), CG(3408), OD1(3409), ND2(3410), 
+Residues: VAL, 20	Atoms: N(3411), CA(3412), C(3413), O(3414), CB(3415), CG1(3416), CG2(3417), 
+Residues: ASP, 21	Atoms: N(3418), CA(3419), C(3420), O(3421), CB(3422), CG(3423), OD1(3424), OD2(3425), 
+Residues: GLU, 22	Atoms: N(3426), CA(3427), C(3428), O(3429), CB(3430), CG(3431), CD(3432), OE1(3433), OE2(3434), 
+Residues: VAL, 23	Atoms: N(3435), CA(3436), C(3437), O(3438), CB(3439), CG1(3440), CG2(3441), 
+Residues: GLY, 24	Atoms: N(3442), CA(3443), C(3444), O(3445), 
+Residues: GLY, 25	Atoms: N(3446), CA(3447), C(3448), O(3449), 
+Residues: GLU, 26	Atoms: N(3450), CA(3451), C(3452), O(3453), CB(3454), CG(3455), CD(3456), OE1(3457), OE2(3458), 
+Residues: ALA, 27	Atoms: N(3459), CA(3460), C(3461), O(3462), CB(3463), 
+Residues: LEU, 28	Atoms: N(3464), CA(3465), C(3466), O(3467), CB(3468), CG(3469), CD1(3470), CD2(3471), 
+Residues: GLY, 29	Atoms: N(3472), CA(3473), C(3474), O(3475), 
+Residues: ARG, 30	Atoms: N(3476), CA(3477), C(3478), O(3479), CB(3480), CG(3481), CD(3482), NE(3483), CZ(3484), NH1(3485), NH2(3486), 
+Residues: LEU, 31	Atoms: N(3487), CA(3488), C(3489), O(3490), CB(3491), CG(3492), CD1(3493), CD2(3494), 
+Residues: LEU, 32	Atoms: N(3495), CA(3496), C(3497), O(3498), CB(3499), CG(3500), CD1(3501), CD2(3502), 
+Residues: VAL, 33	Atoms: N(3503), CA(3504), C(3505), O(3506), CB(3507), CG1(3508), CG2(3509), 
+Residues: VAL, 34	Atoms: N(3510), CA(3511), C(3512), O(3513), CB(3514), CG1(3515), CG2(3516), 
+Residues: TYR, 35	Atoms: N(3517), CA(3518), C(3519), O(3520), CB(3521), CG(3522), CD1(3523), CD2(3524), CE1(3525), CE2(3526), CZ(3527), OH(3528), 
+Residues: PRO, 36	Atoms: N(3529), CA(3530), C(3531), O(3532), CB(3533), CG(3534), CD(3535), 
+Residues: TRP, 37	Atoms: N(3536), CA(3537), C(3538), O(3539), CB(3540), CG(3541), CD1(3542), CD2(3543), NE1(3544), CE2(3545), CE3(3546), CZ2(3547), CZ3(3548), CH2(3549), 
+Residues: THR, 38	Atoms: N(3550), CA(3551), C(3552), O(3553), CB(3554), OG1(3555), CG2(3556), 
+Residues: GLN, 39	Atoms: N(3557), CA(3558), C(3559), O(3560), CB(3561), CG(3562), CD(3563), OE1(3564), NE2(3565), 
+Residues: ARG, 40	Atoms: N(3566), CA(3567), C(3568), O(3569), CB(3570), CG(3571), CD(3572), NE(3573), CZ(3574), NH1(3575), NH2(3576), 
+Residues: PHE, 41	Atoms: N(3577), CA(3578), C(3579), O(3580), CB(3581), CG(3582), CD1(3583), CD2(3584), CE1(3585), CE2(3586), CZ(3587), 
+Residues: PHE, 42	Atoms: N(3588), CA(3589), C(3590), O(3591), CB(3592), CG(3593), CD1(3594), CD2(3595), CE1(3596), CE2(3597), CZ(3598), 
+Residues: GLU, 43	Atoms: N(3599), CA(3600), C(3601), O(3602), CB(3603), CG(3604), CD(3605), OE1(3606), OE2(3607), 
+Residues: SER, 44	Atoms: N(3608), CA(3609), C(3610), O(3611), CB(3612), OG(3613), 
+Residues: PHE, 45	Atoms: N(3614), CA(3615), C(3616), O(3617), CB(3618), CG(3619), CD1(3620), CD2(3621), CE1(3622), CE2(3623), CZ(3624), 
+Residues: GLY, 46	Atoms: N(3625), CA(3626), C(3627), O(3628), 
+Residues: ASP, 47	Atoms: N(3629), CA(3630), C(3631), O(3632), CB(3633), CG(3634), OD1(3635), OD2(3636), 
+Residues: LEU, 48	Atoms: N(3637), CA(3638), C(3639), O(3640), CB(3641), CG(3642), CD1(3643), CD2(3644), 
+Residues: SER, 49	Atoms: N(3645), CA(3646), C(3647), O(3648), CB(3649), OG(3650), 
+Residues: THR, 50	Atoms: N(3651), CA(3652), C(3653), O(3654), CB(3655), OG1(3656), CG2(3657), 
+Residues: PRO, 51	Atoms: N(3658), CA(3659), C(3660), O(3661), CB(3662), CG(3663), CD(3664), 
+Residues: ASP, 52	Atoms: N(3665), CA(3666), C(3667), O(3668), CB(3669), CG(3670), OD1(3671), OD2(3672), 
+Residues: ALA, 53	Atoms: N(3673), CA(3674), C(3675), O(3676), CB(3677), 
+Residues: VAL, 54	Atoms: N(3678), CA(3679), C(3680), O(3681), CB(3682), CG1(3683), CG2(3684), 
+Residues: MET, 55	Atoms: N(3685), CA(3686), C(3687), O(3688), CB(3689), CG(3690), SD(3691), CE(3692), 
+Residues: GLY, 56	Atoms: N(3693), CA(3694), C(3695), O(3696), 
+Residues: ASN, 57	Atoms: N(3697), CA(3698), C(3699), O(3700), CB(3701), CG(3702), OD1(3703), ND2(3704), 
+Residues: PRO, 58	Atoms: N(3705), CA(3706), C(3707), O(3708), CB(3709), CG(3710), CD(3711), 
+Residues: LYS, 59	Atoms: N(3712), CA(3713), C(3714), O(3715), CB(3716), CG(3717), CD(3718), CE(3719), NZ(3720), 
+Residues: VAL, 60	Atoms: N(3721), CA(3722), C(3723), O(3724), CB(3725), CG1(3726), CG2(3727), 
+Residues: LYS, 61	Atoms: N(3728), CA(3729), C(3730), O(3731), CB(3732), CG(3733), CD(3734), CE(3735), NZ(3736), 
+Residues: ALA, 62	Atoms: N(3737), CA(3738), C(3739), O(3740), CB(3741), 
+Residues: HIS, 63	Atoms: N(3742), CA(3743), C(3744), O(3745), CB(3746), CG(3747), ND1(3748), CD2(3749), CE1(3750), NE2(3751), 
+Residues: GLY, 64	Atoms: N(3752), CA(3753), C(3754), O(3755), 
+Residues: LYS, 65	Atoms: N(3756), CA(3757), C(3758), O(3759), CB(3760), CG(3761), CD(3762), CE(3763), NZ(3764), 
+Residues: LYS, 66	Atoms: N(3765), CA(3766), C(3767), O(3768), CB(3769), CG(3770), CD(3771), CE(3772), NZ(3773), 
+Residues: VAL, 67	Atoms: N(3774), CA(3775), C(3776), O(3777), CB(3778), CG1(3779), CG2(3780), 
+Residues: LEU, 68	Atoms: N(3781), CA(3782), C(3783), O(3784), CB(3785), CG(3786), CD1(3787), CD2(3788), 
+Residues: GLY, 69	Atoms: N(3789), CA(3790), C(3791), O(3792), 
+Residues: ALA, 70	Atoms: N(3793), CA(3794), C(3795), O(3796), CB(3797), 
+Residues: PHE, 71	Atoms: N(3798), CA(3799), C(3800), O(3801), CB(3802), CG(3803), CD1(3804), CD2(3805), CE1(3806), CE2(3807), CZ(3808), 
+Residues: SER, 72	Atoms: N(3809), CA(3810), C(3811), O(3812), CB(3813), OG(3814), 
+Residues: ASP, 73	Atoms: N(3815), CA(3816), C(3817), O(3818), CB(3819), CG(3820), OD1(3821), OD2(3822), 
+Residues: GLY, 74	Atoms: N(3823), CA(3824), C(3825), O(3826), 
+Residues: LEU, 75	Atoms: N(3827), CA(3828), C(3829), O(3830), CB(3831), CG(3832), CD1(3833), CD2(3834), 
+Residues: ALA, 76	Atoms: N(3835), CA(3836), C(3837), O(3838), CB(3839), 
+Residues: HIS, 77	Atoms: N(3840), CA(3841), C(3842), O(3843), CB(3844), CG(3845), ND1(3846), CD2(3847), CE1(3848), NE2(3849), 
+Residues: LEU, 78	Atoms: N(3850), CA(3851), C(3852), O(3853), CB(3854), CG(3855), CD1(3856), CD2(3857), 
+Residues: ASP, 79	Atoms: N(3858), CA(3859), C(3860), O(3861), CB(3862), CG(3863), OD1(3864), OD2(3865), 
+Residues: ASN, 80	Atoms: N(3866), CA(3867), C(3868), O(3869), CB(3870), CG(3871), OD1(3872), ND2(3873), 
+Residues: LEU, 81	Atoms: N(3874), CA(3875), C(3876), O(3877), CB(3878), CG(3879), CD1(3880), CD2(3881), 
+Residues: LYS, 82	Atoms: N(3882), CA(3883), C(3884), O(3885), CB(3886), CG(3887), CD(3888), CE(3889), NZ(3890), 
+Residues: GLY, 83	Atoms: N(3891), CA(3892), C(3893), O(3894), 
+Residues: THR, 84	Atoms: N(3895), CA(3896), C(3897), O(3898), CB(3899), OG1(3900), CG2(3901), 
+Residues: PHE, 85	Atoms: N(3902), CA(3903), C(3904), O(3905), CB(3906), CG(3907), CD1(3908), CD2(3909), CE1(3910), CE2(3911), CZ(3912), 
+Residues: ALA, 86	Atoms: N(3913), CA(3914), C(3915), O(3916), CB(3917), 
+Residues: THR, 87	Atoms: N(3918), CA(3919), C(3920), O(3921), CB(3922), OG1(3923), CG2(3924), 
+Residues: LEU, 88	Atoms: N(3925), CA(3926), C(3927), O(3928), CB(3929), CG(3930), CD1(3931), CD2(3932), 
+Residues: SER, 89	Atoms: N(3933), CA(3934), C(3935), O(3936), CB(3937), OG(3938), 
+Residues: GLU, 90	Atoms: N(3939), CA(3940), C(3941), O(3942), CB(3943), CG(3944), CD(3945), OE1(3946), OE2(3947), 
+Residues: LEU, 91	Atoms: N(3948), CA(3949), C(3950), O(3951), CB(3952), CG(3953), CD1(3954), CD2(3955), 
+Residues: HIS, 92	Atoms: N(3956), CA(3957), C(3958), O(3959), CB(3960), CG(3961), ND1(3962), CD2(3963), CE1(3964), NE2(3965), 
+Residues: CYS, 93	Atoms: N(3966), CA(3967), C(3968), O(3969), CB(3970), SG(3971), 
+Residues: ASP, 94	Atoms: N(3972), CA(3973), C(3974), O(3975), CB(3976), CG(3977), OD1(3978), OD2(3979), 
+Residues: LYS, 95	Atoms: N(3980), CA(3981), C(3982), O(3983), CB(3984), CG(3985), CD(3986), CE(3987), NZ(3988), 
+Residues: LEU, 96	Atoms: N(3989), CA(3990), C(3991), O(3992), CB(3993), CG(3994), CD1(3995), CD2(3996), 
+Residues: HIS, 97	Atoms: N(3997), CA(3998), C(3999), O(4000), CB(4001), CG(4002), ND1(4003), CD2(4004), CE1(4005), NE2(4006), 
+Residues: VAL, 98	Atoms: N(4007), CA(4008), C(4009), O(4010), CB(4011), CG1(4012), CG2(4013), 
+Residues: ASP, 99	Atoms: N(4014), CA(4015), C(4016), O(4017), CB(4018), CG(4019), OD1(4020), OD2(4021), 
+Residues: PRO, 100	Atoms: N(4022), CA(4023), C(4024), O(4025), CB(4026), CG(4027), CD(4028), 
+Residues: GLU, 101	Atoms: N(4029), CA(4030), C(4031), O(4032), CB(4033), CG(4034), CD(4035), OE1(4036), OE2(4037), 
+Residues: ASN, 102	Atoms: N(4038), CA(4039), C(4040), O(4041), CB(4042), CG(4043), OD1(4044), ND2(4045), 
+Residues: PHE, 103	Atoms: N(4046), CA(4047), C(4048), O(4049), CB(4050), CG(4051), CD1(4052), CD2(4053), CE1(4054), CE2(4055), CZ(4056), 
+Residues: ARG, 104	Atoms: N(4057), CA(4058), C(4059), O(4060), CB(4061), CG(4062), CD(4063), NE(4064), CZ(4065), NH1(4066), NH2(4067), 
+Residues: LEU, 105	Atoms: N(4068), CA(4069), C(4070), O(4071), CB(4072), CG(4073), CD1(4074), CD2(4075), 
+Residues: LEU, 106	Atoms: N(4076), CA(4077), C(4078), O(4079), CB(4080), CG(4081), CD1(4082), CD2(4083), 
+Residues: GLY, 107	Atoms: N(4084), CA(4085), C(4086), O(4087), 
+Residues: ASN, 108	Atoms: N(4088), CA(4089), C(4090), O(4091), CB(4092), CG(4093), OD1(4094), ND2(4095), 
+Residues: VAL, 109	Atoms: N(4096), CA(4097), C(4098), O(4099), CB(4100), CG1(4101), CG2(4102), 
+Residues: LEU, 110	Atoms: N(4103), CA(4104), C(4105), O(4106), CB(4107), CG(4108), CD1(4109), CD2(4110), 
+Residues: VAL, 111	Atoms: N(4111), CA(4112), C(4113), O(4114), CB(4115), CG1(4116), CG2(4117), 
+Residues: CYS, 112	Atoms: N(4118), CA(4119), C(4120), O(4121), CB(4122), SG(4123), 
+Residues: VAL, 113	Atoms: N(4124), CA(4125), C(4126), O(4127), CB(4128), CG1(4129), CG2(4130), 
+Residues: LEU, 114	Atoms: N(4131), CA(4132), C(4133), O(4134), CB(4135), CG(4136), CD1(4137), CD2(4138), 
+Residues: ALA, 115	Atoms: N(4139), CA(4140), C(4141), O(4142), CB(4143), 
+Residues: HIS, 116	Atoms: N(4144), CA(4145), C(4146), O(4147), CB(4148), CG(4149), ND1(4150), CD2(4151), CE1(4152), NE2(4153), 
+Residues: HIS, 117	Atoms: N(4154), CA(4155), C(4156), O(4157), CB(4158), CG(4159), ND1(4160), CD2(4161), CE1(4162), NE2(4163), 
+Residues: PHE, 118	Atoms: N(4164), CA(4165), C(4166), O(4167), CB(4168), CG(4169), CD1(4170), CD2(4171), CE1(4172), CE2(4173), CZ(4174), 
+Residues: GLY, 119	Atoms: N(4175), CA(4176), C(4177), O(4178), 
+Residues: LYS, 120	Atoms: N(4179), CA(4180), C(4181), O(4182), CB(4183), CG(4184), CD(4185), CE(4186), NZ(4187), 
+Residues: GLU, 121	Atoms: N(4188), CA(4189), C(4190), O(4191), CB(4192), CG(4193), CD(4194), OE1(4195), OE2(4196), 
+Residues: PHE, 122	Atoms: N(4197), CA(4198), C(4199), O(4200), CB(4201), CG(4202), CD1(4203), CD2(4204), CE1(4205), CE2(4206), CZ(4207), 
+Residues: THR, 123	Atoms: N(4208), CA(4209), C(4210), O(4211), CB(4212), OG1(4213), CG2(4214), 
+Residues: PRO, 124	Atoms: N(4215), CA(4216), C(4217), O(4218), CB(4219), CG(4220), CD(4221), 
+Residues: PRO, 125	Atoms: N(4222), CA(4223), C(4224), O(4225), CB(4226), CG(4227), CD(4228), 
+Residues: VAL, 126	Atoms: N(4229), CA(4230), C(4231), O(4232), CB(4233), CG1(4234), CG2(4235), 
+Residues: GLN, 127	Atoms: N(4236), CA(4237), C(4238), O(4239), CB(4240), CG(4241), CD(4242), OE1(4243), NE2(4244), 
+Residues: ALA, 128	Atoms: N(4245), CA(4246), C(4247), O(4248), CB(4249), 
+Residues: ALA, 129	Atoms: N(4250), CA(4251), C(4252), O(4253), CB(4254), 
+Residues: TYR, 130	Atoms: N(4255), CA(4256), C(4257), O(4258), CB(4259), CG(4260), CD1(4261), CD2(4262), CE1(4263), CE2(4264), CZ(4265), OH(4266), 
+Residues: GLN, 131	Atoms: N(4267), CA(4268), C(4269), O(4270), CB(4271), CG(4272), CD(4273), OE1(4274), NE2(4275), 
+Residues: LYS, 132	Atoms: N(4276), CA(4277), C(4278), O(4279), CB(4280), CG(4281), CD(4282), CE(4283), NZ(4284), 
+Residues: VAL, 133	Atoms: N(4285), CA(4286), C(4287), O(4288), CB(4289), CG1(4290), CG2(4291), 
+Residues: VAL, 134	Atoms: N(4292), CA(4293), C(4294), O(4295), CB(4296), CG1(4297), CG2(4298), 
+Residues: ALA, 135	Atoms: N(4299), CA(4300), C(4301), O(4302), CB(4303), 
+Residues: GLY, 136	Atoms: N(4304), CA(4305), C(4306), O(4307), 
+Residues: VAL, 137	Atoms: N(4308), CA(4309), C(4310), O(4311), CB(4312), CG1(4313), CG2(4314), 
+Residues: ALA, 138	Atoms: N(4315), CA(4316), C(4317), O(4318), CB(4319), 
+Residues: ASN, 139	Atoms: N(4320), CA(4321), C(4322), O(4323), CB(4324), CG(4325), OD1(4326), ND2(4327), 
+Residues: ALA, 140	Atoms: N(4328), CA(4329), C(4330), O(4331), CB(4332), 
+Residues: LEU, 141	Atoms: N(4333), CA(4334), C(4335), O(4336), CB(4337), CG(4338), CD1(4339), CD2(4340), 
+Residues: ALA, 142	Atoms: N(4341), CA(4342), C(4343), O(4344), CB(4345), 
+Residues: HIS, 143	Atoms: N(4346), CA(4347), C(4348), O(4349), CB(4350), CG(4351), ND1(4352), CD2(4353), CE1(4354), NE2(4355), 
+Residues: LYS, 144	Atoms: N(4356), CA(4357), C(4358), O(4359), CB(4360), CG(4361), CD(4362), CE(4363), NZ(4364), 
+Residues: TYR, 145	Atoms: N(4365), CA(4366), C(4367), O(4368), CB(4369), CG(4370), CD1(4371), CD2(4372), CE1(4373), CE2(4374), CZ(4375), OH(4376), 
+Residues: HIS, 146	Atoms: N(4377), CA(4378), C(4379), O(4380), CB(4381), CG(4382), ND1(4383), CD2(4384), CE1(4385), NE2(4386), OXT(4387), 
+Atom: PO4, 147
+Atom: HEM, 148
+Atom: HOH, 149
+Atom: HOH, 150
+Atom: HOH, 151
+Atom: HOH, 152
+Atom: HOH, 153
+Atom: HOH, 154
+Atom: HOH, 155
+Atom: HOH, 156
+Atom: HOH, 157
+Atom: HOH, 158
+Atom: HOH, 159
+Atom: HOH, 160
+Atom: HOH, 161
+Atom: HOH, 162
+Atom: HOH, 163
+Atom: HOH, 164
+Atom: HOH, 165
+Atom: HOH, 166
+Atom: HOH, 167
+Atom: HOH, 168
+Atom: HOH, 169
+Atom: HOH, 170
+Atom: HOH, 171
+Atom: HOH, 172
+Atom: HOH, 173
+Atom: HOH, 174
+Atom: HOH, 175
+Atom: HOH, 176
+Atom: HOH, 177
+Atom: HOH, 178
+Atom: HOH, 179
+Atom: HOH, 180
+Atom: HOH, 181
+Atom: HOH, 182
+Atom: HOH, 183
+Atom: HOH, 184
+Atom: HOH, 185
+Atom: HOH, 186
+Atom: HOH, 187
+Atom: HOH, 188
+Atom: HOH, 189
+Atom: HOH, 190
+Atom: HOH, 191
+Atom: HOH, 192
+Atom: HOH, 193
+Atom: HOH, 194
+Atom: HOH, 195
+Atom: HOH, 196
+Atom: HOH, 197

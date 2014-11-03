@@ -15,7 +15,7 @@ public class JMolSelectionListener implements JmolSelectionListener {
 	 * @param values
 	 */
 	public void selectionChanged(org.jmol.java.BS values) {
-		System.out.println("Value of selection: " + values);
+		JmolDisplay.getSelected(values);
 	}
 
 }

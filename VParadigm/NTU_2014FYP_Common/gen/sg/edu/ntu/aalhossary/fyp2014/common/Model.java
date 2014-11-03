@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.commonmodel;
+package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class Model {
 			modelList.add(molecule.getName());
 			for(int j=0;j<molecule.getChains().size();j++){
 				Chain chain = molecule.getChains().get(j);
-				modelList.add(chain.getChainName());
+				modelList.add(chain.getName());
 			}
 		}
 		return modelList.toArray();

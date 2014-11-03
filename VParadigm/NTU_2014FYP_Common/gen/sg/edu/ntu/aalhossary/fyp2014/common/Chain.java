@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.commonmodel;
+package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.*;
 
@@ -16,7 +16,7 @@ public class Chain implements Particle {
 		atomSeq = new ArrayList<Atom>();
 	}
 	
-	public String getChainName() {
+	public String getName() {
 		return this.name;
 	}
 
@@ -48,6 +48,7 @@ public class Chain implements Particle {
 				res.setName(((org.biojava.bio.structure.AminoAcid)g).getPDBName());
 				res.setResidueSeqNum(((org.biojava.bio.structure.AminoAcid)g).getResidueNumber().getSeqNum());
 				((AminoAcid) res).setAminoChar(((org.biojava.bio.structure.AminoAcid)g).getAminoType());
+				res.setAtomList(((org.biojava.bio.structure.AminoAcid)g).getAtoms());
 				residues.add(res);
 			}
 			else if(g instanceof HetatomImpl){
@@ -57,6 +58,12 @@ public class Chain implements Particle {
 				atomSeq.add(atom);
 			}
 		}
+	}
+
+	@Override
+	public Atom getAtom(int pos) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -6,7 +6,6 @@ import org.jmol.c.CBK;
 public class MyJmolStatusListener implements JmolStatusListener {
 
 	private boolean verbose;
-	private boolean _verbose;
 	public JmolDisplay jmolPanel;
 	
 	/**
@@ -41,8 +40,9 @@ public class MyJmolStatusListener implements JmolStatusListener {
 	    case RESIZE: return false;
 	    case SYNC: return false;
 	      // applet only (but you could change this for your listener)
+	    default:
+	    	return false;
 	    }
-	    return false;
 	}
 
 	/**
@@ -61,7 +61,9 @@ public class MyJmolStatusListener implements JmolStatusListener {
     			notifyFileLoaded((String) data[1], (String) data[2], (String) data[3], (String) data[4]);
     		}
     		return;
-    	case SCRIPT: return;
+    	case SCRIPT: if(data[2].toString().startsWith("own"))
+    					System.out.println("HERE");
+    		return;
     	default: return;
     }
 	}
