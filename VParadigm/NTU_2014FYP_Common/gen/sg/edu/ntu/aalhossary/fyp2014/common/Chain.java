@@ -5,7 +5,7 @@ import java.util.*;
 import org.biojava.bio.structure.Group;
 import org.biojava.bio.structure.HetatomImpl;
 
-public class Chain extends AbstractParticle {
+public class Chain extends sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.AbstractParticle {
 
 	protected String name;
 	public ArrayList<Residue> residues;
