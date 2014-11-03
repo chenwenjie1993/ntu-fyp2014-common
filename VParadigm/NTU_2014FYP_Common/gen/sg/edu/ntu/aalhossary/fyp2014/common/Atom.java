@@ -16,6 +16,7 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Abst
 	public Chain chain;
 	public Residue residue;
 	public ArrayList<Bond> bonds;
+	public double vdw_radius;	// waiyan: jmol should have vdw_radius?
 	
 	public Atom() {
 		bonds = new ArrayList<Bond>();
@@ -63,6 +64,14 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Abst
 	
 	public ArrayList<Bond> getBond(){
 		return bonds;
+	}
+	
+	public void setVdWRadius(double vdw_radius){
+		this.vdw_radius = vdw_radius;
+	}
+	
+	public double getVdWRadius(){
+		return vdw_radius;
 	}
 
 	@Override
