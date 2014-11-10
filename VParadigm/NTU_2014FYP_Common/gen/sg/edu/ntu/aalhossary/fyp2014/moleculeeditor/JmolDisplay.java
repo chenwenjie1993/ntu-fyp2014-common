@@ -16,6 +16,9 @@ import java.awt.event.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class JmolDisplay extends JPrintPanel implements ActionListener {
@@ -26,11 +29,13 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 	private org.jmol.api.JmolStatusListener statusListener;
 	final java.awt.Dimension currentSize = new Dimension();
 	final java.awt.Rectangle rectClip = new Rectangle();
-	public org.biojava.bio.structure.Structure structure;
+	public static org.biojava.bio.structure.Structure structure;
 	private boolean verbose;
 	private JMolSelectionListener jMolSelectionListener;
 	public static Model model;
 	public static ArrayList<Atom> selectedAtoms;
+	static ServerSocket serverSocket;
+	static Socket clientSocket;
 	
 	public JmolDisplay() {
 		super();
@@ -52,6 +57,10 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 		getSize(currentSize);
 		g.getClipBounds(rectClip);
 		viewer.renderScreenImage(g, currentSize.width, currentSize.height);
+	}
+	
+	public void refreshDisplay(){
+		viewer.refresh(3, "");
 	}
 	
 	/**
@@ -84,6 +93,10 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 			model = null;
 			structure = null;
 		}
+	}
+	
+	public Structure getStructure(){
+		return structure;
 	}
 
 	public void setStructure(Structure structure) {
@@ -196,4 +209,49 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 		System.out.println();
 	}
 
+	public void setConnection() {
+		try {
+			int clientNumber = 0;
+			serverSocket = new ServerSocket(8765);
+			System.out.println("Done server setup");
+			while(true) {
+				new ClientConnect(serverSocket.accept(), clientNumber++).start();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	 private static class ClientConnect extends Thread {
+		 private Socket socket;
+	     private int clientNumber;
+		 public ClientConnect(Socket socket, int clientNumber) {
+	            this.socket = socket;
+	            this.clientNumber = clientNumber;
+	            System.out.println("New connection with client " + clientNumber + " at " + socket);
+	     }
+		 
+		 public void run() {
+			 try {
+	                //BufferedReader fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	                PrintWriter toClient = new PrintWriter(socket.getOutputStream(), true);
+
+	                if(structure == null)
+	                	toClient.println("No model to send");
+	                else
+	                	toClient.println(structure.toPDB());
+			 }
+			 catch (IOException e) {
+	                e.printStackTrace();
+	            } finally {
+	                try {
+	                    socket.close();
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	                System.out.println("Connection with client " + clientNumber + " closed");
+	            }
+		 }
+	 }
 }

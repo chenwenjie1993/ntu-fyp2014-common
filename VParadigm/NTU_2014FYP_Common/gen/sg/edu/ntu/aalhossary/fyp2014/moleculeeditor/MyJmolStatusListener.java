@@ -3,6 +3,10 @@ package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
 import org.jmol.api.*;
 import org.jmol.c.CBK;
 
+/**
+ * @author 
+ *
+ */
 public class MyJmolStatusListener implements JmolStatusListener {
 
 	private boolean verbose;
@@ -61,8 +65,7 @@ public class MyJmolStatusListener implements JmolStatusListener {
     			notifyFileLoaded((String) data[1], (String) data[2], (String) data[3], (String) data[4]);
     		}
     		return;
-    	case SCRIPT: if(data[2].toString().startsWith("own"))
-    					System.out.println("HERE");
+    	case SCRIPT:	System.out.println("Test: " + data[1]);
     		return;
     	default: return;
     }
