@@ -16,6 +16,7 @@ public class TestEditorInputStream {
 		try {
 			Socket socket = new Socket("localhost",8765);
 			
+			String sline = "";
 			BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	        //PrintWriter toServer = new PrintWriter(socket.getOutputStream(), true);
 	        
