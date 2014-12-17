@@ -1,5 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.Vector3D;
+
 public class BoundingBox implements BoundingPrimitive {
 
 	private double half_size;

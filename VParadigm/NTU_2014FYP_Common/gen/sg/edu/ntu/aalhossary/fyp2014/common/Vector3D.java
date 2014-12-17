@@ -1,4 +1,7 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.common;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Vector3D {
 	public double x;
@@ -16,9 +19,28 @@ public class Vector3D {
 	public Vector3D(double x, double y, double z) {
 		this.x = x; this.y = y; this.z = z;
 	}
+	
+	@Override
+	public boolean equals(Object vector) {
+	    if (vector == null) 
+	        return false;
+	    
+	    if (getClass() != vector.getClass()) 
+	        return false;
+	    
+	    final Vector3D other = (Vector3D) vector;
+	    if(this.x != other.x || this.y != other.y || this.z != other.z)
+	    	return false;
+	    
+	    return true;
+	}
 
 	public void invert() {
 		x=-x; y=-y; z=-z;
+	}
+	
+	public Vector3D getNegativeVector(){
+		return new Vector3D(-x,-y,-z);
 	}
 
 	public void clear() {
@@ -85,6 +107,31 @@ public class Vector3D {
 	}
 	
 	public String print(){
-		return String.valueOf(x) + ", " + String.valueOf(y) + ", " + String.valueOf(z);
+		
+		String x_str = convertMetric(x);
+		String y_str = convertMetric(y);
+		String z_str = convertMetric(z);
+		return x_str + ", " + y_str + ", " + z_str;
+		//return String.valueOf(formatter.format(x)) + ", " + String.valueOf(formatter.format(y)) + ", " + String.valueOf(formatter.format(z));
+	}
+	
+	public String convertMetric(double i){
+		int exponent = (int)(Math.log10(i));
+		NumberFormat formatter = new DecimalFormat("0.00");
+		
+		if (exponent <-9)
+			return formatter.format(i*Math.pow(10, 12)) + "pm";
+		
+		else if (exponent < -6)
+			return formatter.format(i*Math.pow(10, 9)) + "nm";
+	
+		else if (exponent < -3)
+			return formatter.format(i*Math.pow(10, 6)) + " μm";
+	
+		else if (exponent < 0)
+			return formatter.format(i*Math.pow(10, 3)) + "mm";
+		
+		return i + "m";
+		
 	}
 }

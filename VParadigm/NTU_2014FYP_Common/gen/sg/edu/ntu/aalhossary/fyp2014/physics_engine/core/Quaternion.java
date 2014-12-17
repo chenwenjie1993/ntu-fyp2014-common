@@ -1,5 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.Vector3D;
+
 // A Quaternion represents the orientation 
 // r is the angle, i,j,k are axis
 public class Quaternion {

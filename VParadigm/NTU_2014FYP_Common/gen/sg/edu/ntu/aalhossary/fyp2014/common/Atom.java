@@ -2,7 +2,7 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
 
-public class Atom extends sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.AbstractParticle {
+public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
 
 	public java.lang.String name;
 	public java.lang.Object symbol;

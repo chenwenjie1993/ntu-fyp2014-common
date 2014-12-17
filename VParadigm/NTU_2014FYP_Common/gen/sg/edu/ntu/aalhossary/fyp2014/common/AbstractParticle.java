@@ -1,4 +1,9 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.common;
+
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.BoundingPrimitive;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix3;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix4;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Quaternion;
 
 public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.common.Particle {
 	protected Vector3D position;

@@ -3,7 +3,7 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Residue extends sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.AbstractParticle {
+public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
 
 	protected String name;
 	protected int chainSeqNum;

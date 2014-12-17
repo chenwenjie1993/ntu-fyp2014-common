@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+
 public class ForceRegistry {
 	private HashMap<AbstractParticle, ArrayList<Force>> registrations = new HashMap<AbstractParticle,ArrayList<Force>>();
 	
