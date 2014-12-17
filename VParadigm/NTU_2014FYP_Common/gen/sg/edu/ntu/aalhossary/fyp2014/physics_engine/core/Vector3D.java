@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.common;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

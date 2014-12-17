@@ -1,6 +1,5 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-import sg.edu.ntu.aalhossary.fyp2014.common.Vector3D;
 
 public class Matrix3 {
 	private double [] data = new double [9];
@@ -214,7 +213,10 @@ public class Matrix3 {
 		return m;
 	}
 
-	/** Sets this matrix to be the rotation matrix corresponding to the given quaternion.*/
+	/** 
+	 * Sets this matrix to be the rotation matrix corresponding to the given quaternion.
+	 * Transform the quaternion into a 3x3 Matrix 
+	 */
 	public void setOrientation(Quaternion q) {
 		data[0] = 1 - (2*q.j*q.j + 2*q.k*q.k);
         data[1] = 2*q.i*q.j + 2*q.k*q.r;

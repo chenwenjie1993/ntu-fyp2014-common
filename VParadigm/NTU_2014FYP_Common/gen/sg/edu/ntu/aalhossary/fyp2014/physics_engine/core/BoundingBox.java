@@ -1,32 +1,40 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-import sg.edu.ntu.aalhossary.fyp2014.common.Vector3D;
 
+// Bounding Box for residues
 public class BoundingBox implements BoundingPrimitive {
 
-	private double half_size;
+	private double x_length;
+	private double y_length;
+	private double z_length;
 	private Vector3D centre;
 	
-	public BoundingBox(){
-		half_size = 0;
-		centre = new Vector3D();
+	public BoundingBox(double x, double y, double z, Vector3D centre){
+		x_length = x;
+		y_length = y;
+		z_length = z;
+		centre = new Vector3D(centre);
 	}
 	
-	public BoundingBox(double half_size, Vector3D centre){
-		this.half_size = half_size;
-		centre = new Vector3D(centre);
+	public void updateCentre (double x, double y, double z){
+		this.centre.x = x;
+		this.centre.y = y;
+		this.centre.z = z;
 	}
 	
 	public boolean overlap(BoundingPrimitive other) {
 		
 		// The primitives overlap if the position difference (distance) is less than the sum of two half_sizes
 		
-		if(other instanceof BoundingBox) {
-			BoundingBox bBox = (BoundingBox)other; 
+		if(other instanceof BoundingCube) {
+			BoundingCube bCube = (BoundingCube)other; 
 			Vector3D temp = new Vector3D(centre);
-			temp.subtract(bBox.centre);
+			temp.subtract(bCube.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared < (this.half_size + bBox.half_size) * (this.half_size + bBox.half_size);
+			boolean x_con = distanceSquared < Math.pow(this.x_length + bCube.getHalfSize(), 2);
+			boolean y_con = distanceSquared < Math.pow(this.y_length + bCube.getHalfSize(), 2);
+			boolean z_con = distanceSquared < Math.pow(this.z_length + bCube.getHalfSize(), 2);
+			return x_con || y_con || z_con;
 		}
 		
 		else if(other instanceof BoundingSphere) {
@@ -34,7 +42,21 @@ public class BoundingBox implements BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bSphere.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared < (this.half_size + bSphere.getRadius()) * (this.half_size + bSphere.getRadius());
+			boolean x_con = distanceSquared < Math.pow(this.x_length + bSphere.getRadius(), 2);
+			boolean y_con = distanceSquared < Math.pow(this.y_length + bSphere.getRadius(), 2);
+			boolean z_con = distanceSquared < Math.pow(this.z_length + bSphere.getRadius(), 2);
+			return x_con || y_con || z_con;
+		}
+		
+		else if(other instanceof BoundingBox){
+			BoundingBox bBox = (BoundingBox)other; 
+			Vector3D temp = new Vector3D(centre);
+			temp.subtract(bBox.getCentre());
+			double distanceSquared = temp.getSquaredMagnitude();
+			boolean x_con = distanceSquared < Math.pow(this.x_length + bBox.getXLength(), 2);
+			boolean y_con = distanceSquared < Math.pow(this.y_length + bBox.getYLength(), 2);
+			boolean z_con = distanceSquared < Math.pow(this.z_length + bBox.getZLength(), 2);
+			return x_con || y_con || z_con;
 		}
 		
 		return false;
@@ -44,7 +66,15 @@ public class BoundingBox implements BoundingPrimitive {
 		return centre;
 	}
 	
-	public double getHalfSize(){
-		return half_size;
+	public double getXLength(){
+		return x_length;
+	}
+	
+	public double getYLength(){
+		return y_length;
+	}
+	
+	public double getZLength(){
+		return z_length;
 	}
 }
