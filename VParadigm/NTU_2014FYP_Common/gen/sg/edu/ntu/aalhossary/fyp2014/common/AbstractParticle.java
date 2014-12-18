@@ -41,6 +41,12 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		boundingPrimitive.updateCentre(x, y, z);	
 	}
 
+	public void movePositionBy (double dist_x, double dist_y, double dist_z) {
+		position.x += dist_x;
+		position.y += dist_y;
+		position.z += dist_z;
+	}
+	
 	public Vector3D getVelocity() {
 		return this.velocity;
 	}
