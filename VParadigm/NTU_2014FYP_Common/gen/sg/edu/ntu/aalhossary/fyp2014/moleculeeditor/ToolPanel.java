@@ -7,6 +7,9 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.DisplayType;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.UserActionType;
+
 public class ToolPanel extends JPanel {
 
 	static javax.swing.JList list;
@@ -40,7 +43,7 @@ public class ToolPanel extends JPanel {
         JComboBox<DisplayType> styleList = new JComboBox<DisplayType>(DisplayType.values());
         styleList.setSelectedItem(DisplayType.BALLSTICK);
         panel1.add(styleList, gbc);
-        styleList.addActionListener(new UserActionListener(jmolPanel, UserActionType.DISPLAYTYPE));
+        styleList.addActionListener(new ToolPanelActionListener(jmolPanel, UserActionType.DISPLAYTYPE));
         
         JLabel modelDetail = new JLabel("Model Details");
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -68,14 +71,6 @@ public class ToolPanel extends JPanel {
         add(tabbedPane);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 	
-	}
-
-	protected static void makeModelList() {
-		Object [] molecules =  jmolPanel.model.getModelDetailList();
-		listModel.removeAllElements();
-		for(int i=0;i<molecules.length;i++){
-			listModel.addElement(molecules[i]);
-		}
 	}
 
 	/**

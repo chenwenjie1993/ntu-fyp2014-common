@@ -3,14 +3,18 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Xiu Ting
+ *
+ */
 public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
 
 	protected String name;
 	protected int chainSeqNum;
 	protected int moleculeSeqNum;
-	public Chain chain;
-	public ArrayList<Atom> atoms;
-	public ArrayList<Bond> bonds;
+	protected Chain chain;
+	protected ArrayList<Atom> atoms;
+	protected ArrayList<Bond> bonds;
 	
 	public Residue() {
 		name = null;
@@ -26,16 +30,24 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 		this.name = name;
 	}
 	
+	public Chain getParent(){
+		return chain;
+	}
+	
+	public void setParent(Chain chain) {
+		this.chain = chain;
+	}
+	
 	public int getResidueSeqNum() {
 		return this.chainSeqNum;
 	}
 
-	/**
-	 * 
-	 * @param seqNum
-	 */
 	public void setResidueSeqNum(int seqNum) {
 		this.chainSeqNum = seqNum;
+	}
+	
+	public int getChainPosition(){
+		return chain.position;
 	}
 	
 	public ArrayList<Atom> getAtomList(){
@@ -46,7 +58,8 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 		Atom atom;
 		for(int i=0;i<atoms.size();i++){
 			atom = new Atom();
-			atom.setName(atoms.get(i).getName());
+			atom.setParent(this);
+			atom.setSymbol(atoms.get(i).getName());
 			atom.setChainSeqNum(chainSeqNum);
 			atom.setAtomSeqNum(atoms.get(i).getPDBserial());
 			atom.setCoordinates(atoms.get(i).getCoords());
@@ -64,14 +77,17 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 			// add bond to the array of bonds between atom for this residue
 			bonds.add(bond);
 			// add the bond to atom
-			atoms.get(i).addBond(bond);
-			atoms.get(i+1).addBond(bond);
+			atoms.get(i).setBond(bond);
+			atoms.get(i+1).setBond(bond);
 		}
 	}
 
 	@Override
 	public Atom getAtom(int pos) {
-		// TODO Auto-generated method stub
+		for(int i=0;i<atoms.size();i++){
+			if(pos==atoms.get(i).atomSeqNum)
+				return atoms.get(i);
+		}
 		return null;
 	}
 }

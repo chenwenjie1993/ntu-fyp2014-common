@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum;
 
 public enum BondType {
 	AMIDE("AMIDE"), ESTER("ESTER"), 

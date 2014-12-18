@@ -2,6 +2,10 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
 
+/**
+ * @author Xiu Ting
+ *
+ */
 public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
 
 	protected String name;
@@ -36,6 +40,7 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParti
 		for(int i=0;i<chains.size();i++){
 			chain = new Chain();
 			chain.setChainName(chains.get(i).getChainID());
+			chain.setChainPosition(i);
 			chain.setChainSequence(chains.get(i));
 			this.chains.add(chain);
 		}
@@ -51,7 +56,10 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParti
 
 	@Override
 	public Atom getAtom(int pos) {
-		// TODO Auto-generated method stub
+		for(int i=0;i<chains.size();i++){
+			if(chains.get(i).getAtom(pos)!=null)
+				return chains.get(i).getAtom(pos);
+		}
 		return null;
 	}
 

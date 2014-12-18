@@ -7,10 +7,6 @@ public class DataManager {
 	public DataManager() {
 	}
 
-	/**
-	 * 
-	 * @param fileName
-	 */
 	public static Structure readFile(java.lang.String fileName) {
 		Structure struc = null;
 		
@@ -26,13 +22,10 @@ public class DataManager {
 		return struc;
 	}
 
-	/**
-	 * 
-	 * @param aAFilename
-	 */
-	public void writeFile(java.lang.String aAFilename) {
-		// TODO - implement DataManager.writeFile
-		throw new UnsupportedOperationException();
+	public void writeFile(java.lang.String fileName, Structure struc) {
+		String strucToPdb = struc.toPDB();
+		// implement writer to write to file
+		FileWriter.writePDBFile(fileName, strucToPdb);
 	}
 
 }

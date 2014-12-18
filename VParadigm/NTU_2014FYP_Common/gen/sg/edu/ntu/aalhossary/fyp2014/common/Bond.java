@@ -1,7 +1,12 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.BondType;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.AtomType;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.BondType;
 
+/**
+ * @author Xiu Ting
+ *
+ */
 public class Bond implements Interaction {
 
 	BondType bondType = null;
@@ -17,24 +22,24 @@ public class Bond implements Interaction {
 	@Override
 	public void setBondType(Particle a, Particle b) {
 		// check if either particle is C.
-		if(isCarbon(a) || isCarbon(b)){
-			bondType = BondType.COVALENT;
-		}
 		if((isNitrogen(a) && isCarbon(b)) ||  (isNitrogen(b) && isCarbon(a))){
 			bondType = BondType.AMIDE;
+		}
+		else if(isCarbon(a) || isCarbon(b)){
+			bondType = BondType.COVALENT;
 		}
 		else
 			bondType = BondType.COVALENT;
 	}
 
-	private boolean isCarbon(Particle a) {
-		if (a.getName().equals("C"))
+	private boolean isCarbon(Particle p) {
+		if(AtomType.C.getAtomName().compareTo(p.getName())==0)
 			return true;
 		return false;
 	}
 
-	private boolean isNitrogen(Particle a) {
-		if (a.getName().equals("N"))
+	private boolean isNitrogen(Particle p) {
+		if(AtomType.N.getAtomName().compareTo(p.getName())==0)
 			return true;
 		return false;
 	}

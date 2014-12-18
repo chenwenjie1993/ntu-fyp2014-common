@@ -4,7 +4,7 @@ import org.jmol.api.*;
 import org.jmol.c.CBK;
 
 /**
- * @author 
+ * @author Xiu Ting
  *
  */
 public class MyJmolStatusListener implements JmolStatusListener {
@@ -12,10 +12,6 @@ public class MyJmolStatusListener implements JmolStatusListener {
 	private boolean verbose;
 	public JmolDisplay jmolPanel;
 	
-	/**
-	 * 
-	 * @param jmolPanel
-	 */
 	public MyJmolStatusListener(JmolDisplay jmolPanel) {
 		this.jmolPanel = jmolPanel;
 	}
@@ -24,10 +20,6 @@ public class MyJmolStatusListener implements JmolStatusListener {
 		this.verbose = verbose;
 	}
 
-	/**
-	 * 
-	 * @param callbackType
-	 */
 	public boolean notifyEnabled(CBK callbackType) {
 		switch (callbackType) {
 	    case ANIMFRAME: return false;
@@ -49,13 +41,8 @@ public class MyJmolStatusListener implements JmolStatusListener {
 	    }
 	}
 
-	/**
-	 * 
-	 * @param callbackType
-	 * @param data
-	 */
 	public void notifyCallback(org.jmol.c.CBK callbackType, java.lang.Object[] data) {
-		System.out.println(callbackType + " " + data[0] + " " + data[1] + " " + data[2]);
+		//System.out.println(callbackType + " " + data[0] + " " + data[1] + " " + data[2]);
 		
 		switch (callbackType) {
     	case LOADSTRUCT:	
@@ -65,10 +52,15 @@ public class MyJmolStatusListener implements JmolStatusListener {
     			notifyFileLoaded((String) data[1], (String) data[2], (String) data[3], (String) data[4]);
     		}
     		return;
-    	case SCRIPT:	System.out.println("Test: " + data[1]);
+    	case SCRIPT:
+    		// will enter when using edited library of Jmol in "res/resources/editedJmol/Jmol-edited.jar"
+    		if(data[2]!=null && data[2].toString().startsWith("own ")){
+    			System.out.println("Entering own function");
+    			jmolPanel.evaluateOwnAdditionalFunction(data[2].toString());
+    		}
     		return;
     	default: return;
-    }
+		}
 	}
 
 	/**

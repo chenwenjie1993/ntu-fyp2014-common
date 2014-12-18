@@ -6,12 +6,9 @@ import org.biojava.bio.structure.Structure;
 
 public class Model {
 
-	/**
-	 * protected Structure structure;
-	 */
 	protected String modelName = null;
 	protected Structure structure;
-	ArrayList<Molecule> molecules;
+	protected ArrayList<Molecule> molecules;
 	
 	public Model() {
 		molecules = new ArrayList<Molecule>();
@@ -21,16 +18,16 @@ public class Model {
 		return this.molecules;
 	}
 
-	/**
-	 * 
-	 * @param struc
-	 */
 	public void setMolecule(org.biojava.bio.structure.Structure struc) {
 		Molecule molecule;
 		molecule = new Molecule();
 		molecules.add(molecule);
 		molecule.setName(struc.getPdbId());
 		molecule.setChains(struc.getChains());
+	}
+	
+	public void setModelName(String name){
+		modelName = name;
 	}
 
 	public java.lang.String getModelName() {

@@ -4,7 +4,10 @@ import java.awt.event.*;
 
 import javax.swing.JComboBox;
 
-public class UserActionListener implements ActionListener {
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.DisplayType;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.UserActionType;
+
+public class ToolPanelActionListener implements ActionListener {
 
 	public UserActionType userActionType;
 	private JmolDisplay jmolPanel;
@@ -15,7 +18,7 @@ public class UserActionListener implements ActionListener {
 	 * @param jmolPanel
 	 * @param actionType
 	 */
-	public UserActionListener(JmolDisplay jmolPanel, UserActionType actionType) {
+	public ToolPanelActionListener(JmolDisplay jmolPanel, UserActionType actionType) {
 		this.jmolPanel = jmolPanel;
 		this.userActionType = actionType;
 	}

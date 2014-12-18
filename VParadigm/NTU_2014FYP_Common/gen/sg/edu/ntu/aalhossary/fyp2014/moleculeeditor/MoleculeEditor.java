@@ -19,23 +19,25 @@ import javax.swing.JTextField;
 import org.biojava.bio.structure.Structure;
 import org.jmol.api.JmolViewer;
 
+/**
+ * @author Xiu Ting
+ * The main function of the Molecule Editor.
+ * Initialise main display and set up connection
+ */
 public class MoleculeEditor {
 
 	private static Structure structure = null;
 	private static JFrame frame;
-	public static ToolPanel toolPanel;
-	private static JmolDisplay jmolPanel;
+	protected static ToolPanel toolPanel;
+	protected static JmolDisplay jmolPanel;
 
-	/**
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		initDisplay();
-		setConnection();
+		//setConnection();
 	}
 
 	private static void initDisplay() {
+		// create frame for the application
 		frame = new JFrame();
 		JMenuBar menu = MenuCreator.initMenu(frame);
         frame.setJMenuBar(menu);
@@ -45,8 +47,8 @@ public class MoleculeEditor {
         		  }
         		});
         Container contentPane = frame.getContentPane();
+        // allocate jmolPanel for display
         jmolPanel = new JmolDisplay();
-        //setConnection();
         jmolPanel.setPreferredSize(new Dimension(500,500));
         
         Box vBox = Box.createVerticalBox();
@@ -62,24 +64,21 @@ public class MoleculeEditor {
 		Box hBox = Box.createHorizontalBox();
 		hBox.add(vBox);
 		
+		// define the right panel of application
 		toolPanel = new ToolPanel(jmolPanel);
 		toolPanel.setMaximumSize(new Dimension(250,Short.MAX_VALUE));
 		hBox.add(toolPanel);
  
         contentPane.add(hBox);
         
-        
-        
         frame.pack();
         frame.setVisible(true);
-        
+		        
 	}
 
-		
 	public JmolViewer getViewer() {
 		return jmolPanel.getViewer();
 	}
-
 
 	static class ApplicationCloser extends WindowAdapter {
 
@@ -99,6 +98,6 @@ public class MoleculeEditor {
 	}
 	
 	private static void setConnection(){
-		jmolPanel.setConnection();	
+		//jmolPanel.setConnection();	
 	}
 }
