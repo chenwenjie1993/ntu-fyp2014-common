@@ -78,7 +78,7 @@ public class Force{
 	 */
 	public static Vector3D getLennardJonesPotential(AbstractParticle particle1, AbstractParticle particle2){
 		
-		double epsilon = 0.1e-8;					// depth of potential well
+		double epsilon = 0.1e-8;			// depth of potential well
 		double bond_length = 0.28E-9;		// bond length for NaCl
 		// bond length or vdw radius?
 

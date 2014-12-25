@@ -2,10 +2,14 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 
 import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.DISTANCE;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.MASS;
 
 public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements ActiveParticle{
 
@@ -13,21 +17,11 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 	private double mass = 0, atomicRadius=0, covalentRadius=0, vdwRadius=0;
 	private int valence = 0;
 	
-	public Atom(){
-		super();
-		this.fetchAtomicData("001");
-		this.setMass(this.mass);
-		this.setRadius(covalentRadius);
-		this.setNetCharge(valence);
-		this.boundingPrimitive = new BoundingSphere(radius, position);
-		
-	}
-	
 	public Atom(String atomicNumber){
 		super();
 		this.fetchAtomicData(atomicNumber);
 		this.setMass(this.mass);
-		this.setRadius(covalentRadius);
+		this.setRadius(vdwRadius);
 		this.setNetCharge(valence);
 		this.boundingPrimitive = new BoundingSphere(radius, position);
 	}
@@ -59,7 +53,7 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 		        Elements columns = row.select("td");
 		        
 		        if(columns.first().text().equals("Atomic Weight"))
-		        	mass = Double.parseDouble(columns.last().text()) * 1.66053892e-27;		//mass in amu, 1 amu = 1.66053892e-24 grams
+		        	mass = Double.parseDouble(columns.last().text()) * MASS.amu.value();		//mass in amu, 1 amu = 1.66053892e-24 grams
 		        
 		        if(columns.first().text().equals("Valence"))
 		        	valence = Integer.parseInt(columns.last().text());	
@@ -84,13 +78,13 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 			     // All radii are in pm.
 			     
 			     if(columns.first().text().equals("Atomic Radius"))
-			    	 atomicRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * 1e-12;
+			    	 atomicRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * DISTANCE.pm.value();
 			     
 			     if(columns.first().text().equals("Covalent Radius"))
-			    	 covalentRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * 1e-12;
+			    	 covalentRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * DISTANCE.pm.value();
 			     
 			     if(columns.first().text().equals("Van der Waals Radius")) {
-			    	 vdwRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * 1e-12;	
+			    	 vdwRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * DISTANCE.pm.value();	
 			    	break;
 			     }
 			     
@@ -100,11 +94,11 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 			}
 			
 			System.out.println(output);
-			System.out.println(mass);
-			System.out.println(valence);
-			System.out.println(atomicRadius);
-			System.out.println(covalentRadius);
-			System.out.println(vdwRadius);
+			System.out.println("Mass is " + mass + " kg.");
+			System.out.println("Valence is " + valence);
+			System.out.println("Atomic radius is " + atomicRadius + " m.");
+			System.out.println("Covalent radius is " + covalentRadius + " m.");
+			System.out.println("VdW radius is " + vdwRadius + " m.");
 		}
 		catch (IOException e){
 			System.out.println("ERROR: " + e.getMessage());

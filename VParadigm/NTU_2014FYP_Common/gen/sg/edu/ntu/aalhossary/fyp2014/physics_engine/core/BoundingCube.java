@@ -1,20 +1,13 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 
-public class BoundingCube implements BoundingPrimitive {
+public class BoundingCube extends BoundingPrimitive {
 
 	private double half_size;
-	private Vector3D centre;
 	
 	public BoundingCube(double half_size, Vector3D centre){
 		this.half_size = half_size;
-		centre = new Vector3D(centre);
-	}
-	
-	public void updateCentre (double x, double y, double z){
-		this.centre.x = x;
-		this.centre.y = y;
-		this.centre.z = z;
+		super.centre = new Vector3D(centre);
 	}
 	
 	public boolean overlap(BoundingPrimitive other) {
@@ -26,7 +19,7 @@ public class BoundingCube implements BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bCube.centre);
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared < (this.half_size + bCube.half_size) * (this.half_size + bCube.half_size);
+			return distanceSquared <= (this.half_size + bCube.half_size) * (this.half_size + bCube.half_size);
 		}
 		
 		else if(other instanceof BoundingSphere) {
@@ -34,7 +27,7 @@ public class BoundingCube implements BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bSphere.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared < (this.half_size + bSphere.getRadius()) * (this.half_size + bSphere.getRadius());
+			return distanceSquared <= (this.half_size + bSphere.getRadius()) * (this.half_size + bSphere.getRadius());
 		}
 		
 		else if(other instanceof BoundingBox){
@@ -42,9 +35,9 @@ public class BoundingCube implements BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bBox.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			boolean x_con = distanceSquared < Math.pow(this.half_size + bBox.getXLength(), 2);
-			boolean y_con = distanceSquared < Math.pow(this.half_size + bBox.getYLength(), 2);
-			boolean z_con = distanceSquared < Math.pow(this.half_size + bBox.getZLength(), 2);
+			boolean x_con = distanceSquared <= Math.pow(this.half_size + bBox.getXLength(), 2);
+			boolean y_con = distanceSquared <= Math.pow(this.half_size + bBox.getYLength(), 2);
+			boolean z_con = distanceSquared <= Math.pow(this.half_size + bBox.getZLength(), 2);
 			return x_con || y_con || z_con;
 		}
 		

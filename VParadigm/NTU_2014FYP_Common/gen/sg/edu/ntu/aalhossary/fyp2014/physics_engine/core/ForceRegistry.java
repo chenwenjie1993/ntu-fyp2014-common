@@ -39,7 +39,7 @@ public class ForceRegistry {
 		ArrayList<Vector3D> forces = registrations.get(abstractParticle);
 		if(forces!=null){
 			forces.remove(force);
-			Vector3D cancelForce = new Vector3D (-force.x, -force.y, -force.z);
+			Vector3D cancelForce = new Vector3D (-force.x, -force.y, -force.z, force.metric);
 			abstractParticle.addForce(cancelForce);
 		}	
 	}
@@ -55,17 +55,17 @@ public class ForceRegistry {
 		registrations.clear();
 	}
 	
-	public void updateForce(AbstractParticle abstractParticle){
+	public void applyForce(AbstractParticle abstractParticle){
 		ArrayList<Vector3D> forces = registrations.get(abstractParticle);
 		if(forces != null)
 			for (Vector3D force: forces)
 				abstractParticle.addForce(force);
 	}
 	
-	public void updateAllForces(){
+	public void applyForces(){
 		for (Entry<AbstractParticle, ArrayList<Vector3D>> entry: registrations.entrySet()){
 			AbstractParticle abstractParticle = entry.getKey();
-			updateForce(abstractParticle);
+			applyForce(abstractParticle);
 		}
 	}
 

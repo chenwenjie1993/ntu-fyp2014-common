@@ -2,20 +2,13 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 
 // Bounding Sphere is to be used for atoms and molecules
-public class BoundingSphere implements BoundingPrimitive {
+public class BoundingSphere extends BoundingPrimitive {
 
 	private double radius;
-	private Vector3D centre;
 	
 	public BoundingSphere(double radius, Vector3D centre){
 		this.radius = radius;
-		this.centre = new Vector3D(centre);
-	}
-	
-	public void updateCentre (double x, double y, double z){
-		this.centre.x = x;
-		this.centre.y = y;
-		this.centre.z = z;
+		super.centre = new Vector3D(centre);
 	}
 	
 	public boolean overlap(BoundingPrimitive other) {
@@ -27,7 +20,7 @@ public class BoundingSphere implements BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bCube.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared < (this.radius + bCube.getHalfSize()) * (this.radius + bCube.getHalfSize());
+			return distanceSquared <= (this.radius + bCube.getHalfSize()) * (this.radius + bCube.getHalfSize());
 		}
 		
 		else if(other instanceof BoundingSphere) {
@@ -35,7 +28,7 @@ public class BoundingSphere implements BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bSphere.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared < (this.radius + bSphere.getRadius()) * (this.radius + bSphere.getRadius());
+			return distanceSquared <= (this.radius + bSphere.getRadius()) * (this.radius + bSphere.getRadius());
 		}
 		
 		else if(other instanceof BoundingBox){
@@ -43,9 +36,9 @@ public class BoundingSphere implements BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bBox.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			boolean x_con = distanceSquared < Math.pow(this.radius + bBox.getXLength(), 2);
-			boolean y_con = distanceSquared < Math.pow(this.radius + bBox.getYLength(), 2);
-			boolean z_con = distanceSquared < Math.pow(this.radius + bBox.getZLength(), 2);
+			boolean x_con = distanceSquared <= Math.pow(this.radius + bBox.getXLength(), 2);
+			boolean y_con = distanceSquared <= Math.pow(this.radius + bBox.getYLength(), 2);
+			boolean z_con = distanceSquared <= Math.pow(this.radius + bBox.getZLength(), 2);
 			return x_con || y_con || z_con;
 		}
 		

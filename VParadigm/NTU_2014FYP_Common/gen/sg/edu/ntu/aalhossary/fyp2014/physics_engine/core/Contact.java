@@ -1,10 +1,12 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+import java.util.ArrayList;
+
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
 
 public class Contact {
-	private PotentialContact _potentialContact;
+	private ArrayList<AbstractParticle[]> _potentialContact;
 	private double _penetration;
 	private double _restitution;
 	private double _friction;
