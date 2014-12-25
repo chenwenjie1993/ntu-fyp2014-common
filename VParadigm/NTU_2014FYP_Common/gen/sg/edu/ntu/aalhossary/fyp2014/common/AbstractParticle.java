@@ -36,27 +36,73 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		return this.position;
 	}
 
-	public void setPosition(double x, double y, double z) {
-		position.x = x; position.y = y; position.z = z;
-		boundingPrimitive.updateCentre(x, y, z);	
+	public void setPosition(double x, double y, double z, int metric) {
+		position.x = x; position.y = y; position.z = z; position.metric = metric;
+		boundingPrimitive.updateCentre(x, y, z, metric);	
 	}
-
-	public void movePositionBy (double dist_x, double dist_y, double dist_z) {
-		position.x += dist_x;
-		position.y += dist_y;
-		position.z += dist_z;
+	
+	public void setPosition(double x, double y, double z){
+		position.x = x; position.y = y; position.z = z;
+		boundingPrimitive.updateCentre(x, y, z, position.metric);	
+	}
+	
+	public void movePositionBy (double dist_x, double dist_y, double dist_z, int metric) {
+		double metricDiff = metric - position.metric;
+		if(metricDiff == 0) {
+			position.x += dist_x;
+			position.y += dist_y;
+			position.z += dist_z;
+		}
+		else {
+			position.x += dist_x*Math.pow(10, metricDiff);
+			position.y += dist_y*Math.pow(10, metricDiff);
+			position.z += dist_z*Math.pow(10, metricDiff);
+		}
+			
 	}
 	
 	public Vector3D getVelocity() {
 		return this.velocity;
 	}
 
+	public void setVelocity(double x, double y, double z, int metric) {
+		velocity.x = x; velocity.y = y; velocity.z = z; velocity.metric = metric;
+	}
+	
 	public void setVelocity(double x, double y, double z) {
 		velocity.x = x; velocity.y = y; velocity.z = z;
+	}
+	
+	public Vector3D calculateVelocityChange(double other_mass, Vector3D other_velocity){
+		// v1 = u1*(m1-m2) + 2*m2*u2 / m1+m2
+		Vector3D temp = new Vector3D();
+		double mass = 1/this.inverseMass;
+		double metricDiff = other_velocity.metric - velocity.metric;
+		
+		if(metricDiff!=0)
+			other_velocity.scale(Math.pow(10, metricDiff));
+		int ok = 0;
+		if(ok==1){
+		temp.x = (velocity.x*(mass-other_mass) + 2*other_mass*other_velocity.x)/(mass+other_mass);
+		temp.y = (velocity.y*(mass-other_mass) + 2*other_mass*other_velocity.y)/(mass+other_mass);
+		temp.z = (velocity.z*(mass-other_mass) + 2*other_mass*other_velocity.z)/(mass+other_mass);
+		temp.metric = velocity.metric;
+		}
+		else{
+		temp.x = (0*other_mass*(other_velocity.x-velocity.x) + mass*velocity.x + other_mass*other_velocity.x)/(mass+other_mass);
+		temp.y = (0*other_mass*(other_velocity.y-velocity.y) + mass*velocity.y + other_mass*other_velocity.y)/(mass+other_mass);
+		temp.z = (0*other_mass*(other_velocity.z-velocity.z) + mass*velocity.z + other_mass*other_velocity.z)/(mass+other_mass);
+		temp.metric = velocity.metric;
+		}
+		return temp;
 	}
 
 	public Vector3D getAcceleration() {
 		return this.acceleration;
+	}
+
+	public void setAcceleration(double x, double y, double z, int metric) {
+		acceleration.x = x; acceleration.y = y; acceleration.z = z; acceleration.metric = metric;
 	}
 
 	public void setAcceleration(double x, double y, double z) {
@@ -81,11 +127,11 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	public void integrate(double duration) {
 		
 		// Calculate total acceleration without updating the original ( a = F /m )
-		Vector3D currentAcceleration = new Vector3D (acceleration.x, acceleration.y, acceleration.z);
+		Vector3D currentAcceleration = new Vector3D (acceleration.x, acceleration.y, acceleration.z, acceleration.metric);
 		currentAcceleration.addScaledVector(forceAccumulated, inverseMass);
 		
 		// Update current velocity (v = a*t)
-		Vector3D initialVelocity = new Vector3D (velocity.x, velocity.y, velocity.z);
+		Vector3D initialVelocity = new Vector3D (velocity.x, velocity.y, velocity.z, velocity.metric);
 		velocity.addScaledVector(currentAcceleration, duration);
 		
 		// Update current position (s = u*t + 0.5*a*t*t)
@@ -96,7 +142,7 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		clearAccumulator();
 		
 		// Update the centre of the boundingPrimitive 
-		boundingPrimitive.updateCentre(position.x, position.y, position.z);
+		boundingPrimitive.updateCentre(position.x, position.y, position.z, position.metric);
 	}
 	
 
@@ -165,5 +211,20 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	
 	public int getNetCharge(){
 		return netCharge;
+	}
+	
+	@Override
+	public boolean equals(Object particle) {
+	    if (particle == null) 
+	        return false;
+	    
+	    if (getClass() != particle.getClass()) 
+	        return false;
+	    
+	    final AbstractParticle other = (AbstractParticle) particle;
+	    if(this.position != other.position || this.velocity != other.velocity || this.acceleration != other.acceleration || this.inverseMass != other.inverseMass)
+	    	return false;
+	    
+	    return true;
 	}
 }
