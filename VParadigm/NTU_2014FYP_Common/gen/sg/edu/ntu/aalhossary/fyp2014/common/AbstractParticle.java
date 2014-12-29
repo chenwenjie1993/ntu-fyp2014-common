@@ -54,9 +54,10 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 			position.z += dist_z;
 		}
 		else {
-			position.x += dist_x*Math.pow(10, metricDiff);
-			position.y += dist_y*Math.pow(10, metricDiff);
-			position.z += dist_z*Math.pow(10, metricDiff);
+			double scale = Math.pow(10, metricDiff);
+			position.x += dist_x*scale;
+			position.y += dist_y*scale;
+			position.z += dist_z*scale;
 		}
 			
 	}
@@ -81,19 +82,18 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		
 		if(metricDiff!=0)
 			other_velocity.scale(Math.pow(10, metricDiff));
-		int ok = 0;
-		if(ok==1){
-		temp.x = (velocity.x*(mass-other_mass) + 2*other_mass*other_velocity.x)/(mass+other_mass);
-		temp.y = (velocity.y*(mass-other_mass) + 2*other_mass*other_velocity.y)/(mass+other_mass);
-		temp.z = (velocity.z*(mass-other_mass) + 2*other_mass*other_velocity.z)/(mass+other_mass);
-		temp.metric = velocity.metric;
-		}
-		else{
+		
+	//	temp.x = (velocity.x*(mass-other_mass) + 2*other_mass*other_velocity.x)/(mass+other_mass);
+	//	temp.y = (velocity.y*(mass-other_mass) + 2*other_mass*other_velocity.y)/(mass+other_mass);
+	//	temp.z = (velocity.z*(mass-other_mass) + 2*other_mass*other_velocity.z)/(mass+other_mass);
+	//	temp.metric = velocity.metric;
+		
+		// inelastic collision
 		temp.x = (0*other_mass*(other_velocity.x-velocity.x) + mass*velocity.x + other_mass*other_velocity.x)/(mass+other_mass);
 		temp.y = (0*other_mass*(other_velocity.y-velocity.y) + mass*velocity.y + other_mass*other_velocity.y)/(mass+other_mass);
 		temp.z = (0*other_mass*(other_velocity.z-velocity.z) + mass*velocity.z + other_mass*other_velocity.z)/(mass+other_mass);
 		temp.metric = velocity.metric;
-		}
+		
 		return temp;
 	}
 

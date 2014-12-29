@@ -80,15 +80,17 @@ public class Vector3D {
 			z += vector.z;
 		}
 		else if (metricDiff >0) { // 1ms - 500us
-			x = x * Math.pow(10, metricDiff) + vector.x;
-			y = y * Math.pow(10, metricDiff) + vector.y;
-			z = z * Math.pow(10, metricDiff) + vector.z;
+			double scale = Math.pow(10, metricDiff);
+			x = x * scale + vector.x;
+			y = y * scale + vector.y;
+			z = z * scale + vector.z;
 			metric = vector.metric;
 		}
 		else{	//1us - 1ms
-			x += vector.x * Math.pow(10, -metricDiff);
-			y += vector.y * Math.pow(10, -metricDiff);
-			z += vector.z * Math.pow(10, -metricDiff);
+			double scale = Math.pow(10, -metricDiff);
+			x += vector.x * scale;
+			y += vector.y * scale;
+			z += vector.z * scale;
 		}
 	}
 
@@ -111,28 +113,23 @@ public class Vector3D {
 		double metricDiff = vector.metric - this.metric;
 		if(metricDiff == 0)
 			return x*vector.x + y*vector.y + z*vector.z;
-		else
-			return x*Math.pow(10, metricDiff)*vector.x + y*Math.pow(10, metricDiff)*vector.y + z*Math.pow(10, metricDiff)*vector.z;
-	}
-
-	public Vector3D getCrossProduct(Vector3D vector) {
-		double metricDiff = vector.metric - this.metric;
-		if(metricDiff == 0){
-			double new_x = y*vector.z - z*vector.y;
-			double new_y = z*vector.x - x*vector.z;
-			double new_z = x*vector.y - y*vector.x;
-			return new Vector3D(new_x,new_y,new_z,metric);
-		}else {
-			double new_x = (y*vector.z - z*vector.y)*Math.pow(10, metricDiff);
-			double new_y = (z*vector.x - x*vector.z)*Math.pow(10, metricDiff);
-			double new_z = (x*vector.y - y*vector.x)*Math.pow(10, metricDiff);
-			return new Vector3D(new_x,new_y,new_z,metric);
+		else {
+			double scale = Math.pow(10, metricDiff);
+			return x*scale*vector.x + y*scale*vector.y + z*scale*vector.z;
 		}
 	}
 
+	public Vector3D getCrossProduct(Vector3D vector) {
+		double scale = Math.pow(10, vector.metric - this.metric);
+		double new_x = (y*vector.z - z*vector.y)*scale;
+		double new_y = (z*vector.x - x*vector.z)*scale;
+		double new_z = (x*vector.y - y*vector.x)*scale;
+		return new Vector3D(new_x,new_y,new_z,metric);
+	}
+
 	public Vector3D getComponentProduct(Vector3D vector) {
-		double metricDiff = vector.metric - this.metric;
-		return new Vector3D(x*vector.x*Math.pow(10, metricDiff), y*vector.y*Math.pow(10, metricDiff), z*vector.z*Math.pow(10, metricDiff), metric);
+		double scale = Math.pow(10, vector.metric - this.metric);
+		return new Vector3D(x*vector.x*scale, y*vector.y*scale, z*vector.z*scale, metric);
 	}
 	
 	public String print(){
@@ -150,8 +147,7 @@ public class Vector3D {
 		
 		if (exponent <-9)
 			return formatter.format(i*Math.pow(10, 12)) + "pm";
-			
-		
+				
 		else if (exponent < -6)
 			return formatter.format(i*Math.pow(10, 9)) + "nm";
 	
