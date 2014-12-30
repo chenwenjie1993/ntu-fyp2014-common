@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.biojava.bio.structure.Structure;
 import org.jmol.api.JmolViewer;
@@ -32,6 +33,11 @@ public class DataManager {
 		String strucToPdb = struc.toPDB();
 		// implement writer to write to file
 		FileWriter.writePDBFile(fileName, strucToPdb);
+	}
+
+	public static String modelToPDB(List<Model> models) {
+		//int numModel = 
+		return null;
 	}
 
 }

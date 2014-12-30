@@ -1,5 +1,6 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.jmol.java.BS;
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
 
 public class UpdateRegistry {
 	JmolViewer viewer;
@@ -95,16 +97,45 @@ public class UpdateRegistry {
 	
 	// static method to display model from other platform
 	public static void displayModels(List<Model> models, JmolViewer viewer){
-		String pdb = modelsToPDB(models);	// convert model to pdb string
+		// convert model to pdb string
+		String pdb = DataManager.modelToPDB(models);
+		// pdb to viewer
 		viewer.openStringInline(pdb);
-		
 	}
 	
-	private static String modelsToPDB(List<Model> models) {
-		for(int i=0;i<models.size();i++){
-			
+	public void displayParticles(AbstractParticle p1, AbstractParticle p2){
+		DecimalFormat decformat = new DecimalFormat("#.###");
+		String[] coord = new String[6];
+		coord[0] = decformat.format(p1.getPosition().x);
+		coord[1] = decformat.format(p1.getPosition().y);
+		coord[2] = decformat.format(p1.getPosition().z);
+		coord[3] = decformat.format(p2.getPosition().x);
+		coord[4] = decformat.format(p2.getPosition().y);
+		coord[5] = decformat.format(p2.getPosition().z);
+		
+		String[] spaces = new String[6];
+		for(int i=0;i<coord.length;i++){
+			String space = "";
+			for(int j=0;j<(8 - coord[i].length());j++){
+				space += " ";
+			}
+			spaces[i] = space;
 		}
-		return null;
+//							  "         1         2         3         4         5         6         7         8
+//							  "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
+//		String line1=String.format("HETATM%5d  N   TST A", args)
+		Vector3D position1 = p1.getPosition();
+		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x,position1.y,position1.z);
+		Vector3D position2 = p2.getPosition();
+		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x,position2.y,position2.z);
+		String p1Properties = "HETATM    1 NA   TST A   1    "+coords1+"  1.00  0.00";
+		String p2Properties = "HETATM    2 CL   TST A   2    "+coords2+"  1.00  0.00";
+
+		String pdb = "MODEL       1\n" + p1Properties + '\n' + p2Properties + "\nENDMDL";
+System.out.println(pdb);
+		
+		
+		viewer.openStringInline(pdb);
 	}
 
 	public void notifyUpdated(AbstractParticle[] particles){
