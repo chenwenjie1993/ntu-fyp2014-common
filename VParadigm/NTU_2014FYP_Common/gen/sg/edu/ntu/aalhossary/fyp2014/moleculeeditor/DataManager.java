@@ -1,16 +1,22 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
 
+import java.util.ArrayList;
+
 import org.biojava.bio.structure.Structure;
+import org.jmol.api.JmolViewer;
+
+import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 
 public class DataManager {
 
 	public DataManager() {
+		
 	}
 
-	public static Structure readFile(java.lang.String fileName) {
+	public Structure readFile(java.lang.String fileName) {
 		Structure struc = null;
 		
-		if(fileName.endsWith(".pdb")){
+		if(fileName.endsWith(".pdb") || fileName.endsWith(".pdbqt")){
 			struc = FileReader.readPDBFile(fileName); 
 		}
 		else if(fileName.endsWith(".mol2")){

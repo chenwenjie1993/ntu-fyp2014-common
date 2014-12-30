@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author Xiu Ting
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
 
 	protected String name;
+	protected Model parent;
 	protected float molecularMass;
 	protected String formula;
 	protected float internalEnergy;
@@ -16,6 +18,7 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParti
 	public Interaction interaction;
 
 	public Molecule() {
+		super();
 		chains = new ArrayList<Chain>();
 	}
 	
@@ -27,6 +30,13 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParti
 		this.name = name;
 	}
 
+	public Model getParent(){
+		return parent;
+	}
+	
+	public void setParent(Model model){
+		this.parent = model;
+	}
 	public ArrayList<Chain> getChains() {
 		return this.chains;
 	}
@@ -36,13 +46,14 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParti
 	 * @param chains
 	 */
 	protected void setChains(java.util.List<org.biojava.bio.structure.Chain> chains) {
-		Chain chain;
+		AbstractParticle chain;
 		for(int i=0;i<chains.size();i++){
 			chain = new Chain();
-			chain.setChainName(chains.get(i).getChainID());
-			chain.setChainPosition(i);
-			chain.setChainSequence(chains.get(i));
-			this.chains.add(chain);
+			((Chain)chain).setChainName(chains.get(i).getChainID());
+			((Chain)chain).setParent(this);
+			((Chain)chain).setChainPosition(i);
+			((Chain)chain).setChainSequence(chains.get(i));
+			this.chains.add((Chain) chain);
 		}
 	}
 
@@ -54,13 +65,10 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParti
 		this.interaction = interaction;
 	}
 
-	@Override
-	public Atom getAtom(int pos) {
+	public void setAtomHash(HashMap<String, Atom> atomHash, String modelName) {
 		for(int i=0;i<chains.size();i++){
-			if(chains.get(i).getAtom(pos)!=null)
-				return chains.get(i).getAtom(pos);
+			chains.get(i).setAtomHash(atomHash, modelName);
 		}
-		return null;
 	}
 
 }

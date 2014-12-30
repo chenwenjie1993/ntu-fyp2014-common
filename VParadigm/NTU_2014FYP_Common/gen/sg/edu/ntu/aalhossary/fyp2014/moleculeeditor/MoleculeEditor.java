@@ -10,6 +10,8 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
@@ -19,6 +21,9 @@ import javax.swing.JTextField;
 import org.biojava.bio.structure.Structure;
 import org.jmol.api.JmolViewer;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.common.Particle;
+
 /**
  * @author Xiu Ting
  * The main function of the Molecule Editor.
@@ -26,14 +31,23 @@ import org.jmol.api.JmolViewer;
  */
 public class MoleculeEditor {
 
-	private static Structure structure = null;
 	private static JFrame frame;
 	protected static ToolPanel toolPanel;
 	protected static JmolDisplay jmolPanel;
+	protected static UpdateRegistry mediator;
+	protected static List<Model> modelList;
 
 	public static void main(String[] args) {
 		initDisplay();
+		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
+		jmolPanel.setMediator(mediator);
 		//setConnection();
+	}
+	
+	public MoleculeEditor(){
+		initDisplay();
+		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
+		jmolPanel.setMediator(mediator);
 	}
 
 	private static void initDisplay() {
@@ -78,6 +92,10 @@ public class MoleculeEditor {
 
 	public JmolViewer getViewer() {
 		return jmolPanel.getViewer();
+	}
+	
+	public UpdateRegistry getMediator(){
+		return mediator;
 	}
 
 	static class ApplicationCloser extends WindowAdapter {

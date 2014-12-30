@@ -15,8 +15,10 @@ public class Chain extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle
 	protected int position;
 	protected ArrayList<Residue> residues;
 	protected ArrayList<Atom> atomSeq;
+	protected Molecule molecule;
 	
 	public Chain() {
+		super();
 		residues = new ArrayList<Residue>();
 		atomSeq = new ArrayList<Atom>();
 	}
@@ -60,30 +62,37 @@ public class Chain extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle
 			else if(g instanceof HetatomImpl){
 				List<org.biojava.bio.structure.Atom> atomList = ((HetatomImpl)g).getAtoms();
 				for(int i=0;i<atomList.size();i++){
-					Atom atom = new Atom();
-					atom.setParent(this);
-					atom.setSymbol(atomList.get(i).getName());
-					atom.setChainSeqNum(((HetatomImpl)g).getResidueNumber().getSeqNum());
-					atom.setAtomSeqNum(atomList.get(i).getPDBserial());
-					atomSeq.add(atom);
+					AbstractParticle atom = new Atom();
+					((Atom)atom).setParent(this);
+					((Atom)atom).setSymbol(atomList.get(i).getName());
+					((Atom)atom).setChainSeqNum(((HetatomImpl)g).getResidueNumber().getSeqNum());
+					((Atom)atom).setAtomSeqNum(atomList.get(i).getPDBserial());
+					((Atom)atom).setCoordinates(atomList.get(i).getCoords());
+					atomSeq.add(((Atom)atom));
 				}
 			}
 		}
 	}
+	
+	public Molecule getParent(){
+		return molecule;
+	}
+	
+	public void setParent(Molecule molecule){
+		this.molecule = molecule;
+	}
 
-	@Override
-	public Atom getAtom(int pos) {
-		// search within residue
+	public void setAtomHash(HashMap<String, Atom> atomHash, String modelName) {
 		for(int i=0;i<residues.size();i++){
-			if(residues.get(i).getAtom(pos)!=null)
-				return residues.get(i).getAtom(pos);
+			residues.get(i).setAtomHash(atomHash, modelName);
 		}
-		// then search within indiv atom in chain
 		for(int i=0;i<atomSeq.size();i++){
-			if(atomSeq.get(i).atomSeqNum==pos)
-				return atomSeq.get(i);
+			atomHash.put(modelName+atomSeq.get(i).atomSeqNum, atomSeq.get(i));
 		}
-		return null;
+	}
+
+	public String getModelName() {
+		return molecule.getParent().modelName;
 	}
 
 }

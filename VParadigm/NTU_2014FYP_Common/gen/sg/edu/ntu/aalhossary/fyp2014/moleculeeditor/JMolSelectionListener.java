@@ -5,9 +5,10 @@ import org.jmol.api.JmolSelectionListener;
 public class JMolSelectionListener implements JmolSelectionListener {
 
 	public String selectionList;
-	public java.lang.String _selectionList;
+	public JmolDisplay jmolPanel;
 
-	public JMolSelectionListener() {
+	public JMolSelectionListener(JmolDisplay jmolPanel) {
+		this.jmolPanel = jmolPanel;
 	}
 
 	/**
@@ -15,7 +16,7 @@ public class JMolSelectionListener implements JmolSelectionListener {
 	 * @param values
 	 */
 	public void selectionChanged(org.jmol.java.BS values) {
-		JmolDisplay.getSelected(values);
+		jmolPanel.getMediator().setSelectedAtoms(values);
 	}
 
 }

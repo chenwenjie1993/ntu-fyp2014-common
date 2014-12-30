@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.biojava.bio.structure.Structure;
 
@@ -9,6 +10,7 @@ public class Model {
 	protected String modelName = null;
 	protected Structure structure;
 	protected ArrayList<Molecule> molecules;
+	protected HashMap<String, Atom> atomHash;
 	
 	public Model() {
 		molecules = new ArrayList<Molecule>();
@@ -19,11 +21,14 @@ public class Model {
 	}
 
 	public void setMolecule(org.biojava.bio.structure.Structure struc) {
-		Molecule molecule;
+		AbstractParticle molecule;
 		molecule = new Molecule();
-		molecules.add(molecule);
-		molecule.setName(struc.getPdbId());
-		molecule.setChains(struc.getChains());
+		molecules.add(((Molecule)molecule));
+		((Molecule)molecule).setName(struc.getPdbId());
+		((Molecule)molecule).setParent(this);
+		((Molecule)molecule).setChains(struc.getChains());
+		atomHash = new HashMap<String,Atom>();
+		((Molecule)molecule).setAtomHash(atomHash, modelName);
 	}
 	
 	public void setModelName(String name){
@@ -46,5 +51,8 @@ public class Model {
 		}
 		return modelList.toArray();
 	}
-
+	
+	public HashMap<String, Atom> getAtomHash(){
+		return atomHash;
+	}
 }

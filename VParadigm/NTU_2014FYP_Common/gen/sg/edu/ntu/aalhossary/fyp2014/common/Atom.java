@@ -13,14 +13,15 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	protected int ionCharge;
 	protected int chainSeqNum;	// position of atom in specific chain
 	protected int atomSeqNum;	// position of atom in entire molecule (pdb serial #)
-	protected double[] coordinates;
 	protected Interaction interaction;
+	protected float[] coordinates;
 	protected Particle parent;	// can be Residue or Chain
 	protected ArrayList<Bond> bonds;
 	protected double vdw_radius;	// waiyan: jmol should have vdw_radius?
 	
 	public Atom() {
 		bonds = new ArrayList<Bond>();
+		coordinates = new float[3]; 
 	}
 	
 	public String getName() {
@@ -84,26 +85,6 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	public void setAtomSeqNum(int atomSeqNum) {
 		this.atomSeqNum = atomSeqNum;
 	}
-	
-	public int getChainPosition(){
-		if(parent instanceof Chain){
-			return ((Chain) parent).position;
-		}
-		else if(parent instanceof Residue){
-			return ((Residue) parent).getChainPosition();
-		}
-		else{
-			return -1; // TODO: add in exceptions
-		}
-	}
-
-	public double[] getAtomCoordinates(){
-		return coordinates;
-	}
-	
-	public void setCoordinates(double[] coords) {
-		coordinates = coords;
-	}
 
 	public void setBond(Bond bond) {
 		bonds.add(bond);
@@ -113,11 +94,33 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 		return bonds;
 	}
 	
+	public String getModelName(){
+		if(parent instanceof Chain){
+			return ((Chain) parent).getModelName();
+		}
+		else if(parent instanceof Residue){
+			return ((Residue) parent).getModelName();
+		}
+		else{
+			return null; // TODO: add in exceptions
+		}
+	}
+	
 	public void setVdWRadius(double vdw_radius){
 		this.vdw_radius = vdw_radius;
 	}
 	
 	public double getVdWRadius(){
 		return vdw_radius;
+	}
+	
+	public float[] getCoordinates(){
+		return coordinates;
+	}
+
+	public void setCoordinates(double[] coords) {
+		coordinates[0] = (float) coords[0];
+		coordinates[1] = (float) coords[1];
+		coordinates[2] = (float) coords[2];
 	}
 }

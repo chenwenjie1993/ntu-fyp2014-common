@@ -8,16 +8,17 @@ import org.biojava.bio.structure.Group;
 import org.biojava.bio.structure.HetatomImpl;
 import org.biojava.bio.structure.Structure;
 import org.biojava.bio.structure.StructureException;
+import org.jmol.api.JmolViewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.UserActionType;
 
 public class EvaluateUserAction {
 
-	protected JmolDisplay jmolDisplay;
+	protected UpdateRegistry mediator;
 	
-	public EvaluateUserAction(JmolDisplay jmolDisplay) {
-		this.jmolDisplay = jmolDisplay;
+	public EvaluateUserAction(UpdateRegistry mediator) {
+		this.mediator = mediator;
 	}
 
 	public void evaluateAction(String script) {
@@ -38,8 +39,9 @@ public class EvaluateUserAction {
 			findSelectedAtom(UserActionType.CUT);
 			return;
 		case "paste":
-			System.out.println("Entering paste function");
-			findSelectedAtom(UserActionType.PASTE);
+			//JmolViewer viewer = jmolDisplay.getViewer();
+			//System.out.println(viewer.getAtomPoint3f(10).x+  " "+ viewer.getAtomPoint3f(10).y + " " +viewer.getAtomPoint3f(10).z);
+			//findSelectedAtom(UserActionType.PASTE);
 			return;
 		default:
 			System.out.println("Entering no function");
@@ -47,27 +49,13 @@ public class EvaluateUserAction {
 	}
 
 	private void findSelectedAtom(UserActionType userAction) {
-		ArrayList<Atom> atomList = jmolDisplay.getSelectedAtoms();
-		jmolDisplay.selectedTag = userAction;
+		ArrayList<Atom> atomList = mediator.getSelectedAtoms();
 		if(userAction.compareTo(UserActionType.DELETE)==0 || userAction.compareTo(UserActionType.CUT)==0){
 			for(int i=0;i<atomList.size();i++){
-				Chain chain = jmolDisplay.getStructure().getChain(atomList.get(i).getChainPosition());
-				for(Group g: chain.getAtomGroups()){
-					if ( g instanceof org.biojava.bio.structure.AminoAcid ){
-						List<org.biojava.bio.structure.Atom> atomsInRes = ((org.biojava.bio.structure.AminoAcid)g).getAtoms();
-						for(int j=0;j<atomsInRes.size();j++){
-							if(atomsInRes.get(j).getPDBserial() == atomList.get(i).getAtomSeqNum())
-								doDelete(atomsInRes, j, atomsInRes.get(j).getPDBserial());
-						}
-					}
-					else if (g instanceof HetatomImpl){
-						List<org.biojava.bio.structure.Atom> indivAtom = ((HetatomImpl)g).getAtoms();
-						for(int j=0;j<indivAtom.size();j++){
-							if(indivAtom.get(j).getPDBserial() == atomList.get(i).getAtomSeqNum())
-								doDelete(indivAtom, j, indivAtom.get(j).getPDBserial());
-						}
-					}				
-				}
+				String key = atomList.get(i).getModelName();
+				int currentModelIndex = mediator.viewer.getDisplayModelIndex(); 
+				mediator.modelList.get(currentModelIndex).getAtomHash().remove(key);
+				mediator.viewer.evalString("delete atomno=" + (atomList.get(i).getAtomSeqNum()));
 			}
 		}
 		else if(userAction.compareTo(UserActionType.PASTE)==0){
@@ -75,21 +63,5 @@ public class EvaluateUserAction {
 		}
 		else
 			System.out.println("Function copied");
-	}
-
-	private void doDelete(List<org.biojava.bio.structure.Atom> atom, int pos, int pdBserial) {
-		//atom = atom; // set atom in own model to null.
-		// reset structure for jmol to display
-		//jmolDisplay.setStructure(jmolDisplay.getStructure());
-		Structure struct = jmolDisplay.getStructure();
-		atom.remove(pos);
-		jmolDisplay.evaluateString("refresh"); // refresh not deleting atom without hiding
-		// never comment "hide atom" script. atom deleted not tested fully
-		//jmolDisplay.evaluateString("hide atomno=" + pdBserial);
-		System.out.println("atom #" + pdBserial + " deleted");
-	}
-
-	private void doPaste(){
-		
 	}
 }

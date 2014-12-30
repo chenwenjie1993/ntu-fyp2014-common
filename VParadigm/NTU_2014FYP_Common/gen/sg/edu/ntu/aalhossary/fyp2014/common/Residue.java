@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,9 +18,11 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 	protected ArrayList<Bond> bonds;
 	
 	public Residue() {
+		super();
 		name = null;
 		atoms = new ArrayList<Atom>();
 		bonds = new ArrayList<Bond>();
+		
 	}
 	
 	public String getName() {
@@ -55,15 +58,15 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 	}
 
 	public void setAtomList(List<org.biojava.bio.structure.Atom> atoms) {
-		Atom atom;
+		AbstractParticle atom;
 		for(int i=0;i<atoms.size();i++){
 			atom = new Atom();
-			atom.setParent(this);
-			atom.setSymbol(atoms.get(i).getName());
-			atom.setChainSeqNum(chainSeqNum);
-			atom.setAtomSeqNum(atoms.get(i).getPDBserial());
-			atom.setCoordinates(atoms.get(i).getCoords());
-			this.atoms.add(atom);
+			((Atom)atom).setParent(this);
+			((Atom)atom).setSymbol(atoms.get(i).getName());
+			((Atom)atom).setChainSeqNum(chainSeqNum);
+			((Atom)atom).setAtomSeqNum(atoms.get(i).getPDBserial());
+			((Atom)atom).setCoordinates(atoms.get(i).getCoords());
+			this.atoms.add(((Atom)atom));
 		}
 		setBondsBetweenAtoms();
 	}
@@ -82,12 +85,13 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 		}
 	}
 
-	@Override
-	public Atom getAtom(int pos) {
+	public void setAtomHash(HashMap<String, Atom> atomHash, String modelName) {
 		for(int i=0;i<atoms.size();i++){
-			if(pos==atoms.get(i).atomSeqNum)
-				return atoms.get(i);
+			atomHash.put(modelName+atoms.get(i).atomSeqNum, atoms.get(i));
 		}
-		return null;
+	}
+	
+	public String getModelName(){
+		return chain.getModelName();
 	}
 }
