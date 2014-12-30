@@ -39,7 +39,7 @@ public class World {
 		a1.setAcceleration(0, 0, 0);
 		a1.setNetCharge(1);		// find a way to get oxidation state/ net charge
 		
-		a2.setPosition(1e-10, 1e-10, 1e-10);
+		a2.setPosition(5e-10, 5e-10, 5e-10);
 		a2.setVelocity(0, 0, 0);
 		a2.setAcceleration(0, 0, 0);
 		a2.setNetCharge(-1);
@@ -86,8 +86,9 @@ public class World {
 			resolver.resolveContacts(potentialContacts);
 			
 			AbstractParticle[] particles = {a1, a2};
-			editor.getMediator().notifyUpdated(particles);
-			editor.getMediator().displayParticles(a1, a2);
+		//	editor.getMediator().notifyUpdated(particles);
+			if(i%100 == 0)
+				editor.getMediator().displayParticles(a1, a2);
 			
 			
 //			try {
