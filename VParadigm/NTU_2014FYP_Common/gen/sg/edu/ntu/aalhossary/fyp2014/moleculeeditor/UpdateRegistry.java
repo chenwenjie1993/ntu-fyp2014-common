@@ -136,7 +136,7 @@ public class UpdateRegistry {
 
 		String pdb = "MODEL       1\n" + p1Properties + '\n' + p2Properties + "\nENDMDL";
 		
-		//viewer.openStringInline(pdb);
+		viewer.openStringInline(pdb);
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("res/temp/temp.pdb"));
 			writer.write(pdb);
