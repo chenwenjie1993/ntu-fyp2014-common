@@ -56,13 +56,7 @@ public class World {
 		registry.add(a2, vdwForce.getNegativeVector());
 	
 		editor.getMediator().displayParticles(a1, a2);
-		
-		try {
-			Thread.sleep(1000000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
 		for(int i=0; i<10000; i++){

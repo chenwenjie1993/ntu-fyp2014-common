@@ -90,7 +90,7 @@ public class UpdateRegistry {
 		for(int i=0;i<selectedAtoms.size();i++){
 			int atomIndex = selectedAtoms.get(i).getChainSeqNum()-1;
 			double[] coords = {viewer.getAtomPoint3f(atomIndex).x,viewer.getAtomPoint3f(atomIndex).y,viewer.getAtomPoint3f(atomIndex).z};
-			selectedAtoms.get(i).setCoordinates(coords);
+			selectedAtoms.get(i).setCoordinates();
 		}
 	}
 	
@@ -129,9 +129,9 @@ public class UpdateRegistry {
 //							  "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
 //		String line1=String.format("HETATM%5d  N   TST A", args)
 		Vector3D position1 = p1.getPosition();
-		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x,position1.y,position1.z);
+		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x*scale,position1.y*scale,position1.z*scale);
 		Vector3D position2 = p2.getPosition();
-		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x,position2.y,position2.z);
+		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x*scale,position2.y*scale,position2.z*scale);
 		String p1Properties = "HETATM    1 NA   TST A   1    "+coords1+"  1.00  0.00";
 		String p2Properties = "HETATM    2 CL   TST A   2    "+coords2+"  1.00  0.00";
 
