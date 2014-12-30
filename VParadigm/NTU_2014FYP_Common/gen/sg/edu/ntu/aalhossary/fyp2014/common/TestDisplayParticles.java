@@ -19,5 +19,9 @@ public class TestDisplayParticles {
 		AbstractParticle p2 = new Atom();
 		p2.movePositionBy(-5, 0, -5, 0);
 		editor.getMediator().displayParticles(p1, p2);
+		
+		// use this to update the moved particles
+		AbstractParticle[] particles = {p1, p2};
+		editor.getMediator().notifyUpdated(particles);
 	}
 }
