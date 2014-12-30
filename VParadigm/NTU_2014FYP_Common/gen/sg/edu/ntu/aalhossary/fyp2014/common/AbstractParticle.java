@@ -46,6 +46,7 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		boundingPrimitive.updateCentre(x, y, z, position.metric);	
 	}
 	
+	@Deprecated
 	public void movePositionBy (double dist_x, double dist_y, double dist_z, int metric) {
 		double metricDiff = metric - position.metric;
 		if(metricDiff == 0) {

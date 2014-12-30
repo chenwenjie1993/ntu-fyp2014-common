@@ -109,12 +109,13 @@ public class UpdateRegistry {
 	public void displayParticles(AbstractParticle p1, AbstractParticle p2){
 		DecimalFormat decformat = new DecimalFormat("#.###");
 		String[] coord = new String[6];
-		coord[0] = decformat.format(p1.getPosition().x);
-		coord[1] = decformat.format(p1.getPosition().y);
-		coord[2] = decformat.format(p1.getPosition().z);
-		coord[3] = decformat.format(p2.getPosition().x);
-		coord[4] = decformat.format(p2.getPosition().y);
-		coord[5] = decformat.format(p2.getPosition().z);
+		double scale = Math.pow(10, 10);
+		coord[0] = decformat.format(p1.getPosition().x*scale);
+		coord[1] = decformat.format(p1.getPosition().y*scale);
+		coord[2] = decformat.format(p1.getPosition().z*scale);
+		coord[3] = decformat.format(p2.getPosition().x*scale);
+		coord[4] = decformat.format(p2.getPosition().y*scale);
+		coord[5] = decformat.format(p2.getPosition().z*scale);
 		
 		String[] spaces = new String[6];
 		for(int i=0;i<coord.length;i++){

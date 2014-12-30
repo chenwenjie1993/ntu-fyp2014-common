@@ -3,6 +3,8 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 import java.util.ArrayList;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.common.TestDisplayParticles;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
 
 
@@ -20,6 +22,7 @@ public class World {
 	public static NarrowCollisionDetector detector = new NarrowCollisionDetector();
 	public static ContactResolver resolver = new ContactResolver();
 
+	public static MoleculeEditor editor = new MoleculeEditor();
 
 	public static void main (String[] args){
 		
@@ -36,7 +39,7 @@ public class World {
 		a1.setAcceleration(0, 0, 0);
 		a1.setNetCharge(1);		// find a way to get oxidation state/ net charge
 		
-		a2.setPosition(3e-10, 5e-10, 5e-10);
+		a2.setPosition(1e-10, 1e-10, 1e-10);
 		a2.setVelocity(0, 0, 0);
 		a2.setAcceleration(0, 0, 0);
 		a2.setNetCharge(-1);
@@ -52,6 +55,15 @@ public class World {
 		registry.add(a1, vdwForce);
 		registry.add(a2, vdwForce.getNegativeVector());
 	
+		editor.getMediator().displayParticles(a1, a2);
+		
+		try {
+			Thread.sleep(1000000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
 		for(int i=0; i<10000; i++){
 			
@@ -79,6 +91,11 @@ public class World {
 			detector.detectCollision(particles);
 			resolver.resolveContacts(potentialContacts);
 			
+			AbstractParticle[] particles = {a1, a2};
+			editor.getMediator().notifyUpdated(particles);
+			editor.getMediator().displayParticles(a1, a2);
+			
+			
 //			try {
 //				Thread.sleep(10);
 //			} catch (InterruptedException e) {
@@ -86,7 +103,7 @@ public class World {
 //				e.printStackTrace();
 //			}
 		}
-		
+	//	TestDisplayParticles.showTest();
 		
 	}
 	

@@ -5,6 +5,10 @@ import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.MoleculeEditor;
 public class TestDisplayParticles {
 	public static void main(String[] args){
 		
+		showTest();
+	}
+
+	public static void showTest() {
 		MoleculeEditor editor = new MoleculeEditor();
 		// coordinates of atoms must be within -50 to 50
 		// NOTE FROM JMOL
@@ -24,4 +28,6 @@ public class TestDisplayParticles {
 		AbstractParticle[] particles = {p1, p2};
 		editor.getMediator().notifyUpdated(particles);
 	}
+	
+	
 }
