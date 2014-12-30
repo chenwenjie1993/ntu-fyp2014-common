@@ -93,10 +93,20 @@ public class UpdateRegistry {
 	/*** Methods that notify when there's changes in model ***/
 	/*********************************************************/
 	
-	public static void displayModels(List<Model> models){
+	// static method to display model from other platform
+	public static void displayModels(List<Model> models, JmolViewer viewer){
+		String pdb = modelsToPDB(models);	// convert model to pdb string
+		viewer.openStringInline(pdb);
 		
 	}
 	
+	private static String modelsToPDB(List<Model> models) {
+		for(int i=0;i<models.size();i++){
+			
+		}
+		return null;
+	}
+
 	public void notifyUpdated(AbstractParticle[] particles){
 		List<Atom> atomsUpdated = new ArrayList<Atom>();
 		for(int i=0;i<particles.length;i++){
