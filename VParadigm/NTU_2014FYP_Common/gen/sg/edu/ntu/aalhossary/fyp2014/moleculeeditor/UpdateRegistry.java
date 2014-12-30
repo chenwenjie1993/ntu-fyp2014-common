@@ -1,5 +1,8 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -132,10 +135,15 @@ public class UpdateRegistry {
 		String p2Properties = "HETATM    2 CL   TST A   2    "+coords2+"  1.00  0.00";
 
 		String pdb = "MODEL       1\n" + p1Properties + '\n' + p2Properties + "\nENDMDL";
-System.out.println(pdb);
 		
-		
-		viewer.openStringInline(pdb);
+		//viewer.openStringInline(pdb);
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("res/temp/temp.pdb"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		createUserModel("res/temp/temp.pdb");
 	}
 
 	public void notifyUpdated(AbstractParticle[] particles){
