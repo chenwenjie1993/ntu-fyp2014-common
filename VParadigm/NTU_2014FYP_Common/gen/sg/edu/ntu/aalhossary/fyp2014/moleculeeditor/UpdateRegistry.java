@@ -150,9 +150,9 @@ System.out.println(pdb);
 		// update atoms in jmol display
 		for(int i=0;i<atomsUpdated.size();i++){
 			Atom atom = atomsUpdated.get(i);
-			float xOffset = atomsUpdated.get(i).getCoordinates()[0] - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).x;
-			float yOffset = atomsUpdated.get(i).getCoordinates()[1] - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).y;
-			float zOffset = atomsUpdated.get(i).getCoordinates()[2] - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).z;
+			float xOffset = (float)atomsUpdated.get(i).getPosition().x - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).x;
+			float yOffset = (float)atomsUpdated.get(i).getPosition().y - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).y;
+			float zOffset = (float)atomsUpdated.get(i).getPosition().z - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).z;
 			viewer.evalString("select atomno="+ atomsUpdated.get(i).getChainSeqNum());
 			viewer.evalString("translateSelected {" + xOffset + " " + yOffset + " " + zOffset + "}");
 		}
