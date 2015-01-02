@@ -1,30 +1,34 @@
 package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import sg.edu.ntu.aalhossary.fyp2014.ss_predictor.PredictorController.InputMethodEnum;
 
 public class InputManager {
-	public PredictorController _unnamed_PredictorController_;
+	
+	public PredictorController predControl = new PredictorController();
+	public String fileContents = null;
+	
+	//	public  void map(){
+//	EnumMap<input,output> map = new EnumMap<>(input.class);
+//	map.put(input.pdb, output.structure);
+//
+//	}
 
-	public String InputSequence(String pathname) throws FileNotFoundException {
-		File file = new File(pathname);
-		StringBuilder fileContents = new StringBuilder((int)file.length());
-		Scanner scanner = new Scanner(file);
-		String lineSeparator = System.getProperty("line.separator");
-		try{
-			
-			while(scanner.hasNextLine()){
-				fileContents.append(scanner.nextLine() + lineSeparator);
-				
-			}
-			return fileContents.toString();
-		}finally{
-			scanner.close();
-		}
+	InputMethodEnum inputMethod;
+	
+
+
+	public InputMethodEnum getInputMethod() {
+		return inputMethod;
 	}
 
-	public void InputObjects() {
-		throw new UnsupportedOperationException();
+	public void setInputMethod(InputMethodEnum inputMethod) {
+		//No need to check here till now. will check in next methods
+		this.inputMethod = inputMethod;
 	}
+	
+
+
+
+
+	
 }

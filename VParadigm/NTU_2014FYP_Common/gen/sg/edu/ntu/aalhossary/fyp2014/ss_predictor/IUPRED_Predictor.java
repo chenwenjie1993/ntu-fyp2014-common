@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.ProcessBuilder.Redirect;
-import java.util.Map;
 import java.util.Vector;
 
 public class IUPRED_Predictor extends Sequence_based_Prediction {
@@ -32,7 +31,7 @@ public class IUPRED_Predictor extends Sequence_based_Prediction {
 				commands.add("./iupred");
 				commands.add("--");
 				commands.add("long");
-				Map <String, String> env = pb.environment();
+	//			Map <String, String> env = pb.environment();
 //				env.put("IUPred_PATH", strLine);
 				
 			/*	Set<String> keySet = environment.keySet();
