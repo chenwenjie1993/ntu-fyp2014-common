@@ -5,13 +5,18 @@ import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
 public class NarrowCollisionDetector {
 	
-	public void detectCollision(ArrayList<AbstractParticle> particles) {
+	public void detectCollision() {
+		ArrayList<AbstractParticle> particles = World.activeParticles;
 		World.potentialContacts.clear();
 		
-		for (int i=0; i<particles.size(); i++){
+		for (int i=0; i< particles.size(); i++){
 			AbstractParticle a = particles.get(i);
-			for (int j=i+1; j<particles.size(); j++){
-				AbstractParticle b = particles.get(j);
+			ArrayList <AbstractParticle> neighbouringParticles = new ArrayList<>();
+			World.octTree.retrieve(neighbouringParticles, a);
+			filterNeighbouringParticles(neighbouringParticles, particles, i);
+			
+			for (AbstractParticle b: neighbouringParticles){
+	
 				double bond_length = 0.28E-9;
 				double diff_x = a.getPosition().x - b.getPosition().x;
 				double diff_y = a.getPosition().y - b.getPosition().y;
@@ -46,5 +51,15 @@ public class NarrowCollisionDetector {
 			}
 		}
 		*/
+	}
+	private void filterNeighbouringParticles (ArrayList<AbstractParticle> neighbouringParticles, ArrayList<AbstractParticle> processedParticles, int index){
+		for (int j=0; j< index; j++){
+			for(AbstractParticle a: neighbouringParticles){
+				if(a.getPosition() == processedParticles.get(j).getPosition()){
+					neighbouringParticles.remove(a);
+					break;
+				}
+			}
+		}
 	}
 }

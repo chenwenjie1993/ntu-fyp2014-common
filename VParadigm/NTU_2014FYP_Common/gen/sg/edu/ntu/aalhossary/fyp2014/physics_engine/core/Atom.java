@@ -2,6 +2,9 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Arrays;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,17 +16,21 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.MASS;
 
 public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements ActiveParticle{
 
-	private double radius; 
+	private double radius;
+	private boolean print_flag = false;
 	private double mass = 0, atomicRadius=0, covalentRadius=0, vdwRadius=0;
 	private int valence = 0;
+	private String atomicSymbol;
 	
-	public Atom(String atomicNumber){
+	public Atom(String atomicSymbol) throws Exception{
 		super();
-		this.fetchAtomicData(atomicNumber);
+		this.fetchAtomicData(atomicSymbol);
 		this.setMass(this.mass);
 		this.setRadius(vdwRadius);
 		this.setNetCharge(valence);
 		this.boundingPrimitive = new BoundingSphere(radius, position);
+		this.atomicSymbol = atomicSymbol;
+		
 	}
 	
 	public void setNetCharge(int charge){
@@ -33,9 +40,24 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 	private void setRadius (double radius){
 		this.radius = radius;
 	}
+	
+	public void setPrintFlag(boolean flag){
+		this.print_flag = flag;
+	}
+	
+	public String getAtomicSymbol() { return atomicSymbol;}
 
-	private void fetchAtomicData (String atomicNumber){
-		String html = "http://periodictable.com/Elements/" + atomicNumber + "/data.html";
+	private void fetchAtomicData (String atomicSymbol) throws Exception{
+	
+		int index = Arrays.asList(Init.periodicTable).indexOf(atomicSymbol);
+		
+		if(index == -1){
+			throw new Exception("Invalid atomic symbol");
+		}
+		
+		NumberFormat formatter = new DecimalFormat("000");
+		
+		String html = "http://periodictable.com/Elements/" + formatter.format(index+1) + "/data.html";
 		String output = "";
 		boolean flag = true;
 		
@@ -92,13 +114,14 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 			 //  if(columns.size()>1)	output += columns.get(0).text() + ": " + columns.get(1).text() + "\n";
 			     
 			}
-			
-			System.out.println(output);
-			System.out.println("Mass is " + mass + " kg.");
-			System.out.println("Valence is " + valence);
-			System.out.println("Atomic radius is " + atomicRadius + " m.");
-			System.out.println("Covalent radius is " + covalentRadius + " m.");
-			System.out.println("VdW radius is " + vdwRadius + " m.");
+			if(print_flag) {
+				System.out.println(output);
+				System.out.println("Mass is " + mass + " kg.");
+				System.out.println("Valence is " + valence);
+				System.out.println("Atomic radius is " + atomicRadius + " m.");
+				System.out.println("Covalent radius is " + covalentRadius + " m.");
+				System.out.println("VdW radius is " + vdwRadius + " m.");
+			}
 		}
 		catch (IOException e){
 			System.out.println("ERROR: " + e.getMessage());

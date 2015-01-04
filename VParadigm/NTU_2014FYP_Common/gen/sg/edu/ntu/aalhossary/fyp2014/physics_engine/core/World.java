@@ -1,6 +1,9 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.common.TestDisplayParticles;
@@ -9,31 +12,36 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
 
 
 public class World {
-	public static double machineEpsilon;
+	
 	
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
 	public static double mass_metric = MASS.kg.value();
 	
-	
-	public static ArrayList<AbstractParticle> particles = new ArrayList<>();
+	public static ArrayList<AbstractParticle> activeParticles = new ArrayList<>();
+	public static ArrayList<Vector3D> oldPositions= new ArrayList<>();
+	public static ArrayList<AbstractParticle> test = new ArrayList<>();
 	public static ArrayList<AbstractParticle[]> potentialContacts = new ArrayList<>();
 	public static ForceRegistry registry = new ForceRegistry();
+	public static OctTree octTree = new OctTree();
 	public static NarrowCollisionDetector detector = new NarrowCollisionDetector();
 	public static ContactResolver resolver = new ContactResolver();
 
-	public static MoleculeEditor editor = new MoleculeEditor();
+	public static MoleculeEditor editor;
+	public static boolean displayUI = true;
 
-	public static void main (String[] args){
+	public static void main (String[] args) throws Exception{
 		
-		machineEpsilon = calculateMachineEpsilon();
-		AbstractParticle a1 = new Atom("011");	//Na
-		AbstractParticle a2 = new Atom("017");	//Cl
-		
-		particles.add(a1);
-		particles.add(a2);
-		
-		
+		AbstractParticle a1=null, a2=null;
+		try {
+			a1 = new Atom("Na");
+			a2 = new Atom("Cl");
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();			
+		}
+
 		a1.setPosition(0, 0, 0);
 		a1.setVelocity(0, 0, 0);
 		a1.setAcceleration(0, 0, 0);
@@ -43,6 +51,48 @@ public class World {
 		a2.setVelocity(0, 0, 0);
 		a2.setAcceleration(0, 0, 0);
 		a2.setNetCharge(-1);
+		
+		
+		octTree.insert(a1);
+		octTree.insert(a2);
+		
+		AbstractParticle a3 = new Atom ("H");
+		AbstractParticle a4 = new Atom ("He");
+		AbstractParticle a5 = new Atom ("Li");
+		AbstractParticle a6 = new Atom ("Be");
+		AbstractParticle a7 = new Atom ("B");
+		AbstractParticle a8 = new Atom ("C");
+		AbstractParticle a9 = new Atom ("N");
+		AbstractParticle a10 = new Atom ("O");
+		AbstractParticle a11 = new Atom ("F");
+		AbstractParticle a12 = new Atom ("Ne");
+		AbstractParticle a13 = new Atom ("Mg");
+		
+		a3.setPosition(3, 4, 5, -10);
+		a4.setPosition(-30, 4, 5, -10);
+		a5.setPosition(3, 40, 5, -10);
+		a6.setPosition(3, 4, 50, -10);
+		a7.setPosition(3, 40, 5, -10);
+		a8.setPosition(3, -4, 5, -10);
+		a9.setPosition(30, 40, 5, -10);
+		a10.setPosition(3, 4, -5, -10);
+		a11.setPosition(-3, 4, 5, -10);
+		a12.setPosition(-3, 4, -5, -10);
+		a13.setPosition(-30, -4, 5, -10);
+		
+		octTree.insert(a3);
+		octTree.insert(a4);
+		octTree.insert(a5);
+		octTree.insert(a6);
+		
+		octTree.insert(a7);
+		octTree.insert(a8);
+		octTree.insert(a9);
+		octTree.insert(a10);
+		octTree.insert(a11);
+		octTree.insert(a12);
+		octTree.insert(a13);
+		octTree.printTree(octTree);
 		
 		// Registering forces for the first time
 		Vector3D electricForce = Force.getElectricForce(a1, a2) ;
@@ -55,16 +105,30 @@ public class World {
 		registry.add(a1, vdwForce);
 		registry.add(a2, vdwForce.getNegativeVector());
 	
-		editor.getMediator().displayParticles(a1, a2);
-
+	
+		// CALL markAsActive if velocity or acceleration is non zero or added to force registry
+		//	markAsActive(a1);
+		//	markAsActive(a2);
+		
+		// checkForActiveParticles automates the process at a heavier cost
+		checkForActiveParticles();
+		
+		if(displayUI){
+			 editor = new MoleculeEditor();
+			 editor.getMediator().displayParticles(a1, a2);
+		}		
 		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
 		for(int i=0; i<10000; i++){
 			
 			// Applying Forces
 			registry.applyForces();
-			a1.integrate(i*time_metric);
-			a2.integrate(i*time_metric);
+			
+			for(AbstractParticle particle: activeParticles)
+				particle.integrate(i*time_metric);			
+			
+			// Update tree only after integration
+			octTree.updateAllActiveParticles();
 			
 			// Updating Forces
 			Vector3D newElectricForce = Force.getElectricForce(a1, a2);
@@ -73,23 +137,27 @@ public class World {
 			
 			Vector3D newVdWForce = Force.getLennardJonesPotential(a1, a2);
 			registry.updateForce(a2, vdwForce.getNegativeVector(), newVdWForce.getNegativeVector());
-			registry.updateForce(a1, vdwForce, newVdWForce);
-					
+			registry.updateForce(a1, vdwForce, newVdWForce);	
+			
 			System.out.print(i + "\t");
 			printParticleStatus(a1);
 			System.out.print("\t");
 			printParticleStatus(a2);
 			System.out.println();
 			
-			// Collision Detection and Resolution
-			detector.detectCollision(particles);
+			// Collision Detection 
+			detector.detectCollision();    	 
+			
+			// Resolve Collisions and set active particles
 			resolver.resolveContacts(potentialContacts);
 			
-			AbstractParticle[] particles = {a1, a2};
-		//	editor.getMediator().notifyUpdated(particles);
-			if(i%100 == 0)
-				editor.getMediator().displayParticles(a1, a2);
-			
+		
+			if(displayUI){
+				AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
+			//	editor.getMediator().notifyUpdated(temp_particles);
+				if(i%100 == 0)
+					editor.getMediator().displayParticles(a1, a2);
+			}
 			
 //			try {
 //				Thread.sleep(10);
@@ -98,8 +166,28 @@ public class World {
 //				e.printStackTrace();
 //			}
 		}
-	//	TestDisplayParticles.showTest();
 		
+	}
+	
+	public static void markAsActive(AbstractParticle particle){
+		if(oldPositions.contains(particle.getPosition()))
+			return;	
+		World.activeParticles.add(particle);
+		World.oldPositions.add(particle.getPosition());
+	}
+	
+	private static void checkForActiveParticles(){
+		
+		ArrayList <AbstractParticle> particles = new ArrayList<>();
+		octTree.getAllParticles(particles);
+		for(AbstractParticle particle: particles){	
+			if(registry.get().containsKey(particle))
+				markAsActive(particle);
+			else if(particle.getVelocity().getMagnitude() != 0) 
+				markAsActive(particle);
+			else if (particle.getAcceleration().getMagnitude() != 0) 
+				markAsActive(particle);
+		}
 	}
 	
 	private static void printParticleStatus(AbstractParticle p){
@@ -109,11 +197,5 @@ public class World {
 
 	}
 	
-	private static double calculateMachineEpsilon(){
-		double machEps = 1.0;
-		do{
-           machEps /= 2.0;	// operator / is used instead of bit shifting since we do not know the CPU architecture
-		} while ((double) (1.0 + (machEps / 2.0)) != 1.0);
-        return (machEps);
-	}
+
 }

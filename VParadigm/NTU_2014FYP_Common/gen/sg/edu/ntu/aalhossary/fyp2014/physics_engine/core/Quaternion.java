@@ -24,7 +24,7 @@ public class Quaternion {
 
 	public void normalize() {
 		double mag = r*r + i*i + j*j + k*+k;
-		if(mag < World.machineEpsilon){
+		if(mag < Init.machineEpsilon){
 			r = 1;
 			return;
 		}
