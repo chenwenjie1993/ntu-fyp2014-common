@@ -10,11 +10,11 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//stride does not take input from process
 
+public class STRIDE_Predictor extends PredictorWrapper {
 
-public class STRIDE_Predictor extends Structure_based_Prediction {
-
-	public static void Predict(String []args) throws IOException {
+	public void process(String fileContents) throws IOException {
 		
 		ProcessBuilder pb = new ProcessBuilder();
 		
@@ -81,4 +81,6 @@ public class STRIDE_Predictor extends Structure_based_Prediction {
 
 		}
 	}
+
+
 }

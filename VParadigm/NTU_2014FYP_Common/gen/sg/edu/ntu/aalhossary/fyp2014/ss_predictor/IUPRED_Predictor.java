@@ -1,8 +1,8 @@
 package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,9 +11,9 @@ import java.io.OutputStream;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.Vector;
 
-public class IUPRED_Predictor extends Sequence_based_Prediction {
+public class IUPRED_Predictor extends PredictorWrapper {
 
-	public static void Predict(String[]args)throws InterruptedException {
+	public void process(String fileContents)throws IOException {
 		
 			 
 			
@@ -48,14 +48,14 @@ public class IUPRED_Predictor extends Sequence_based_Prediction {
 				
 				Process p =pb.start();
 				try{
-					FileInputStream fstream = new FileInputStream("/temp/iupred/P53_HUMAN.seq");
+					InputStream is = new ByteArrayInputStream(fileContents.getBytes());
 					OutputStream out = p.getOutputStream();
 					
 					int d;
-					while((d = fstream.read()) != -1){
+					while((d = is.read()) != -1){
 						out.write(d);
 					}
-					fstream.close();
+					is.close();
 					out.close();
 				}
 				catch(FileNotFoundException e){
@@ -85,5 +85,9 @@ public class IUPRED_Predictor extends Sequence_based_Prediction {
 
 			
 		}
+
+
+
+
 		
 	}

@@ -1,8 +1,8 @@
 package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 
-import java.awt.im.spi.InputMethod;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -33,17 +33,17 @@ public class PredictorController {
 		inputManager.setInputMethod(input);
 	}
 	public void setPredictor(PredictorEnum predictor){
-		predictionManager.setPredictor(predictor,inputManager.inputMethod);
+		predictionManager.setPredictor(predictor,inputManager.inputMethod); //does this return a predictor?
 	}
 	
-	public void setOutputMethod(OutputMethodEnum output){
-	//	outputManager.SetOutputMethod(output, this.setPredictor());
+	public void setOutputMethod(OutputMethodEnum output,PredictorEnum predictor){
+	//	outputManager.SetOutputMethod(output, this.setPredictor(predictor));
 	
 	}
 	//TODO make set predictor and setOutput and and other needed setters if needed
 	
-	public void perform(PredictionManager Predictor){
-		predictionManager.process();		
+	public void perform(PredictionManager Predictor, String fileContents) throws IOException{
+		predictionManager.process(fileContents);		
 	}
 
 	
