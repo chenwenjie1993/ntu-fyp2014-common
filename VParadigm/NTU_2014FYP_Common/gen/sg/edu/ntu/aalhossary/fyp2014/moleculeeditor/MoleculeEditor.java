@@ -32,6 +32,7 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Particle;
 public class MoleculeEditor {
 
 	private static JFrame frame;
+	protected static Container contentPane;
 	protected static ToolPanel toolPanel;
 	protected static JmolDisplay jmolPanel;
 	protected static UpdateRegistry mediator;
@@ -39,17 +40,52 @@ public class MoleculeEditor {
 
 	public static void main(String[] args) {
 		initDisplay();
+		//addResmolScriptPanel();
 		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
 		jmolPanel.setMediator(mediator);
 		//setConnection();
 	}
 	
 	public MoleculeEditor(){
-		initDisplay();
+		initJmolDisplay();
 		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
 		jmolPanel.setMediator(mediator);
 	}
 
+	private static void initJmolDisplay(){
+		frame = new JFrame();
+		//JMenuBar menu = MenuCreator.initMenu(frame);
+        //frame.setJMenuBar(menu);
+        frame.addWindowListener(new WindowAdapter() {
+        	  public void windowClosing(WindowEvent we) {
+        		    System.exit(0);
+        		  }
+        		});
+        //contentPane = frame.getContentPane();
+        // allocate jmolPanel for display
+        jmolPanel = new JmolDisplay();
+        jmolPanel.setPreferredSize(new Dimension(500,500));
+        
+        frame.add(jmolPanel);
+        
+        //contentPane.add(jmolPanel);
+        
+        frame.pack();
+        frame.setVisible(true);
+	}
+	
+	public static void addResmolScriptPanel(){
+		 Box vBox = Box.createVerticalBox();
+	     vBox.add(jmolPanel);
+	        
+	     JTextField field = new JTextField();
+	     field.setMaximumSize(new Dimension(Short.MAX_VALUE,30));
+	     field.setText("enter RASMOL like command...");
+	     RasmolFieldListener rasmolcmd = new RasmolFieldListener(jmolPanel, field);
+	     field.addActionListener(rasmolcmd);
+	     vBox.add(field);
+	     contentPane.add(field);
+	}
 	private static void initDisplay() {
 		// create frame for the application
 		frame = new JFrame();
