@@ -24,7 +24,7 @@ public class MyJmolStatusListener implements JmolStatusListener {
 	}
 
 	public boolean notifyEnabled(CBK callbackType) {
-		System.out.println("Callback Type: " + callbackType);
+		//System.out.println("Callback Type: " + callbackType);
 		switch (callbackType) {
 	    case ANIMFRAME: return true;
 	    case ATOMMOVED: return true;

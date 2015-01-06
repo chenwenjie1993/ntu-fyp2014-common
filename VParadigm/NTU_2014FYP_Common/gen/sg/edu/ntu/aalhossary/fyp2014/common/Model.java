@@ -2,6 +2,7 @@ package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.biojava.bio.structure.Structure;
 
@@ -20,13 +21,13 @@ public class Model {
 		return this.molecules;
 	}
 
-	public void setMolecule(org.biojava.bio.structure.Structure struc) {
+	public void setMolecule(List<org.biojava.bio.structure.Chain> list) {
 		AbstractParticle molecule;
 		molecule = new Molecule();
 		molecules.add(((Molecule)molecule));
-		((Molecule)molecule).setName(struc.getPdbId());
+		((Molecule)molecule).setName(list.get(0).getParent().getPdbId());
 		((Molecule)molecule).setParent(this);
-		((Molecule)molecule).setChains(struc.getChains());
+		((Molecule)molecule).setChains(list);
 		atomHash = new HashMap<String,Atom>();
 		((Molecule)molecule).setAtomHash(atomHash, modelName);
 	}

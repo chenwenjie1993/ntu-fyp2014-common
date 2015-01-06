@@ -6,7 +6,11 @@ import org.jmol.adapter.smarter.SmarterJmolAdapter;
 import org.jmol.api.JmolSelectionListener;
 import org.jmol.api.JmolViewer;
 import org.jmol.java.BS;
+import org.jmol.modelkit.ModelKitPopup;
+import org.jmol.modelkit.ModelKitPopupResourceBundle;
+import org.jmol.popup.PopupResource;
 import org.jmol.util.Logger;
+import org.jmol.viewer.Viewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;

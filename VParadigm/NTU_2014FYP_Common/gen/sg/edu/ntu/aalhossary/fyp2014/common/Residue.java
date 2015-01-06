@@ -65,7 +65,7 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 			((Atom)atom).setSymbol(atoms.get(i).getName());
 			((Atom)atom).setChainSeqNum(chainSeqNum);
 			((Atom)atom).setAtomSeqNum(atoms.get(i).getPDBserial());
-			((Atom)atom).setCoordinates();
+			((Atom)atom).setCoordinates(atoms.get(i).getCoords());
 			this.atoms.add(((Atom)atom));
 		}
 		setBondsBetweenAtoms();

@@ -7,8 +7,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javajs.util.P3;
-
 import org.biojava.bio.structure.Structure;
 import org.jmol.api.JmolViewer;
 import org.jmol.java.BS;
@@ -43,13 +41,13 @@ public class UpdateRegistry {
 			// for each model, create and add to model list
 			model = new Model();
 			model.setModelName(structure.getPdbId());
-			model.setMolecule(structure);	// set the model
+			model.setMolecule(structure.getModel(i));	// set the model
 			modelList.add(model);
 		}
 	}
 
 	public void setSelectedAtoms(BS values) {
-		System.out.println("Selected: " + values);
+		//System.out.println("Selected: " + values);
 		if(selectedAtoms==null)
 			selectedAtoms = new ArrayList<Atom>();
 		else
@@ -99,23 +97,22 @@ public class UpdateRegistry {
 	/*********************************************************/
 	
 	// static method to display model from other platform
-	public static void displayModels(List<Model> models, JmolViewer viewer){
+	public static void displayModels(List<Model> models, JmolViewer jmolViewer){
 		// convert model to pdb string
 		String pdb = DataManager.modelToPDB(models);
 		// pdb to viewer
-		viewer.openStringInline(pdb);
+		jmolViewer.openStringInline(pdb);
 	}
 	
 	public void displayParticles(AbstractParticle p1, AbstractParticle p2){
 		DecimalFormat decformat = new DecimalFormat("#.###");
 		String[] coord = new String[6];
-		double scale = Math.pow(10, 10);
-		coord[0] = decformat.format(p1.getPosition().x*scale);
-		coord[1] = decformat.format(p1.getPosition().y*scale);
-		coord[2] = decformat.format(p1.getPosition().z*scale);
-		coord[3] = decformat.format(p2.getPosition().x*scale);
-		coord[4] = decformat.format(p2.getPosition().y*scale);
-		coord[5] = decformat.format(p2.getPosition().z*scale);
+		coord[0] = decformat.format(p1.getPosition().x);
+		coord[1] = decformat.format(p1.getPosition().y);
+		coord[2] = decformat.format(p1.getPosition().z);
+		coord[3] = decformat.format(p2.getPosition().x);
+		coord[4] = decformat.format(p2.getPosition().y);
+		coord[5] = decformat.format(p2.getPosition().z);
 		
 		String[] spaces = new String[6];
 		for(int i=0;i<coord.length;i++){
@@ -127,11 +124,10 @@ public class UpdateRegistry {
 		}
 //							  "         1         2         3         4         5         6         7         8
 //							  "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
-//		String line1=String.format("HETATM%5d  N   TST A", args)
 		Vector3D position1 = p1.getPosition();
-		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x*scale,position1.y*scale,position1.z*scale);
+		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x,position1.y,position1.z);
 		Vector3D position2 = p2.getPosition();
-		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x*scale,position2.y*scale,position2.z*scale);
+		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x,position2.y,position2.z);
 		String p1Properties = "HETATM    1 NA   TST A   1    "+coords1+"  1.00  0.00";
 		String p2Properties = "HETATM    2 CL   TST A   2    "+coords2+"  1.00  0.00";
 
@@ -151,21 +147,24 @@ public class UpdateRegistry {
 
 	public void notifyUpdated(AbstractParticle[] particles){
 		List<Atom> atomsUpdated = new ArrayList<Atom>();
-		for(int i=0;i<particles.length;i++){
-			if(particles[i] instanceof Atom){ // if particle is Atom type
-				// get the updated atom from model
-				atomsUpdated.add(modelList.get(0).getAtomHash().get(modelList.get(0).getModelName()+((Atom)particles[i]).getChainSeqNum()));
-			}
-		}
 		
-		// update atoms in jmol display
-		for(int i=0;i<atomsUpdated.size();i++){
-			Atom atom = atomsUpdated.get(i);
-			float xOffset = (float)atomsUpdated.get(i).getPosition().x - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).x;
-			float yOffset = (float)atomsUpdated.get(i).getPosition().y - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).y;
-			float zOffset = (float)atomsUpdated.get(i).getPosition().z - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).z;
-			viewer.evalString("select atomno="+ atomsUpdated.get(i).getChainSeqNum());
-			viewer.evalString("translateSelected {" + xOffset + " " + yOffset + " " + zOffset + "}");
+		// When the two particles are part of common model
+		if(modelList.size()!=0){
+			for(int i=0;i<particles.length;i++){
+				if(particles[i] instanceof Atom){ // if particle is Atom type
+					// get the updated atom from model
+					atomsUpdated.add(modelList.get(0).getAtomHash().get(modelList.get(0).getModelName()+((Atom)particles[i]).getChainSeqNum()));
+				}
+			}
+			// update atoms in jmol display
+			for(int i=0;i<atomsUpdated.size();i++){
+				Atom atom = atomsUpdated.get(i);
+				float xOffset = (float)atomsUpdated.get(i).getPosition().x - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).x;
+				float yOffset = (float)atomsUpdated.get(i).getPosition().y - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).y;
+				float zOffset = (float)atomsUpdated.get(i).getPosition().z - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).z;
+				viewer.evalString("select atomno="+ atomsUpdated.get(i).getChainSeqNum());
+				viewer.evalString("translateSelected {" + xOffset + " " + yOffset + " " + zOffset + "}");
+			}
 		}
 	}
 

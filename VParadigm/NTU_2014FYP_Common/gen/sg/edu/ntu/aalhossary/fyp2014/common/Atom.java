@@ -119,9 +119,16 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	}
 
 	public void setCoordinates() {
+		if(coordinates[0]==0.00f && coordinates[1]==0.00f && coordinates[2]==0.00f){
 		coordinates[0] = (float) position.x;
 		coordinates[1] = (float) position.y;
 		coordinates[2] = (float) position.z;
+		}
 	}
 	
+	public void setCoordinates(double[] coord) {
+		coordinates[0] = (float) coord[0];
+		coordinates[1] = (float) coord[1];
+		coordinates[2] = (float) coord[2];
+	}
 }

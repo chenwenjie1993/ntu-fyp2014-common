@@ -1,11 +1,25 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.MoleculeEditor;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.UpdateRegistry;
 
 public class TestDisplayParticles {
 	public static void main(String[] args){
 		
 		showTest();
+		showTest2();
+	}
+	public static void showTest2() {
+		MoleculeEditor editor = new MoleculeEditor();
+		List<Model>models = new ArrayList<Model>();
+		UpdateRegistry.displayModels(models, editor.getViewer());
+		AbstractParticle p1 = new Atom();
+		AbstractParticle p2 = new Atom();
+		AbstractParticle[] particles = {p1, p2};
+		editor.getMediator().notifyUpdated(particles);
 	}
 
 	public static void showTest() {
