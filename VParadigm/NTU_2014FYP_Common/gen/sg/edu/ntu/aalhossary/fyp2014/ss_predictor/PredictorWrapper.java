@@ -4,6 +4,6 @@ import java.io.IOException;
 
 public abstract class PredictorWrapper {
 
-	public abstract void process(String input) throws IOException;
+	public abstract void process() throws IOException;
 
 }

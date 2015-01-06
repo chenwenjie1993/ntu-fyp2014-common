@@ -5,20 +5,14 @@ import java.io.IOException;
 import sg.edu.ntu.aalhossary.fyp2014.ss_predictor.PredictorController.InputMethodEnum;
 import sg.edu.ntu.aalhossary.fyp2014.ss_predictor.PredictorController.PredictorEnum;
 
-import org.biojava.bio.structure.Chain;
-import org.biojava.bio.structure.Structure;
-import org.biojava3.structure.StructureIO;
-
 public class PredictionManager {
 
 	PredictorWrapper predictor = null;
-	String pathname;
 
-	public void process(String fileContents) throws IOException{
-		
-			predictor.process(fileContents);
-	
+	public void process() throws IOException{
+			predictor.process();
 	}
+
 	public void setPredictor(PredictorEnum predictor, InputMethodEnum inputMethod) {
 		if (inputMethod==null) {
 			throw new IllegalStateException("Input Method is not yet set");
@@ -27,10 +21,10 @@ public class PredictionManager {
 		switch (inputMethod) {
 		case fasta:
 			if (predictor.equals(PredictorEnum.IUPRED)) {
-				//ok, do all necessary assignments
+				//OK, do all necessary assignments
 				this.predictor=new IUPRED_Predictor();
 			} else {
-				throw new IllegalArgumentException("Can't instantiate instance based on inputs");
+				throw new IllegalArgumentException("Can't instantiate instance based on input");
 			}
 			break;
 		case objects:
@@ -40,12 +34,11 @@ public class PredictionManager {
 			break;
 		case pdb:
 			//TODO check
-			if(predictor.equals(PredictorEnum.STRIDE)){
+			if(predictor ==PredictorEnum.STRIDE){
 				this.predictor=new STRIDE_Predictor();
 			}
-			//TODO prepare (PDB to fasta) pipeline (if you need)
-			if(predictor.equals(PredictorEnum.IUPRED)){
-				this.PDBtoFasta(pathname);
+			//TODO prepare (PDB to FASTA) pipeline (if you need)
+			else if(predictor==PredictorEnum.IUPRED){
 				this.predictor=new IUPRED_Predictor();
 			}
 			//TODO assign
@@ -57,22 +50,5 @@ public class PredictionManager {
 
 	}
 	
-	public String PDBtoFasta (String pathname){
-		String fasta = null;
-		try{
-		Structure s = StructureIO.getStructure("pathname");
-        for ( Chain c : s.getChains()) {
-            fasta = c.getAtomSequence();
-        }
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return fasta;
-	}  
-	
-	public String ObjectstoFasta(){
-		return null;
-		
-		
-	}
+
 }

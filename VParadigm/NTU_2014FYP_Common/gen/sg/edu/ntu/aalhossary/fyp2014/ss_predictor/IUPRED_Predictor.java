@@ -13,16 +13,10 @@ import java.util.Vector;
 
 public class IUPRED_Predictor extends PredictorWrapper {
 
-	public void process(String fileContents)throws IOException {
+	public void process()throws IOException {
 		
-			 
-			
-			
 			ProcessBuilder pb = new ProcessBuilder();
-			
 			pb.directory(new File("/temp/iupred"));
-			
-			
 			String line = null;
 			try {
 
@@ -39,9 +33,6 @@ public class IUPRED_Predictor extends PredictorWrapper {
 					String value = environment.get(key);
 					System.out.println(key+"\t\t:\t"+value);
 				}*/
-			//	commands.add("./iupred");
-			//	commands.add("--");
-			//	commands.add("long");
 				pb.command(commands);
 				pb.redirectOutput(Redirect.PIPE);
 				pb.redirectErrorStream(true);
@@ -61,20 +52,10 @@ public class IUPRED_Predictor extends PredictorWrapper {
 				catch(FileNotFoundException e){
 					
 				}
-				
-				
-			
-			
-				
-			
-		
-				
 				InputStream is = p.getInputStream();
 				BufferedReader br = new BufferedReader(new InputStreamReader(is));
 				while ((line = br.readLine()) != null)
-						   System.out.println(line);
-				
-				
+						   System.out.println(line);	
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
