@@ -1,12 +1,15 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.BoundingCube;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.BoundingPrimitive;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix3;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix4;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Quaternion;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
 
 public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.common.Particle {
+	protected int guid;
 	protected Vector3D position;
 	protected Vector3D velocity;
 	protected Vector3D acceleration;
@@ -30,6 +33,8 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		orientation = new Quaternion(0,0,0,0);
 		rotation = new Vector3D(0,0,0);
 		netCharge = 0;
+		guid = World.particleCount;
+		World.particleCount ++;
 	}
 
 	public Vector3D getPosition() {
@@ -75,27 +80,13 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		velocity.x = x; velocity.y = y; velocity.z = z;
 	}
 	
-	public Vector3D calculateVelocityChange(double other_mass, Vector3D other_velocity){
-		// v1 = u1*(m1-m2) + 2*m2*u2 / m1+m2
-		Vector3D temp = new Vector3D();
-		double mass = 1/this.inverseMass;
-		double metricDiff = other_velocity.metric - velocity.metric;
+	public Vector3D calculateVelocityChange(double other_mass, Vector3D other_velocity, double COEFFICIENT_OF_RESTITUTION){
 		
-		if(metricDiff!=0)
-			other_velocity.scale(Math.pow(10, metricDiff));
-		
-	//	temp.x = (velocity.x*(mass-other_mass) + 2*other_mass*other_velocity.x)/(mass+other_mass);
-	//	temp.y = (velocity.y*(mass-other_mass) + 2*other_mass*other_velocity.y)/(mass+other_mass);
-	//	temp.z = (velocity.z*(mass-other_mass) + 2*other_mass*other_velocity.z)/(mass+other_mass);
-	//	temp.metric = velocity.metric;
-		
-		// inelastic collision
-		temp.x = (0*other_mass*(other_velocity.x-velocity.x) + mass*velocity.x + other_mass*other_velocity.x)/(mass+other_mass);
-		temp.y = (0*other_mass*(other_velocity.y-velocity.y) + mass*velocity.y + other_mass*other_velocity.y)/(mass+other_mass);
-		temp.z = (0*other_mass*(other_velocity.z-velocity.z) + mass*velocity.z + other_mass*other_velocity.z)/(mass+other_mass);
-		temp.metric = velocity.metric;
-		
-		return temp;
+		if(this instanceof Atom) {
+			Atom atom = (Atom) this;
+			return atom.calculateVelocityChange(other_mass, other_velocity, COEFFICIENT_OF_RESTITUTION);
+		}
+		return null;
 	}
 
 	public Vector3D getAcceleration() {
@@ -127,23 +118,11 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	
 	public void integrate(double duration) {
 		
-		// Calculate total acceleration without updating the original ( a = F /m )
-		Vector3D currentAcceleration = new Vector3D (acceleration.x, acceleration.y, acceleration.z, acceleration.metric);
-		currentAcceleration.addScaledVector(forceAccumulated, inverseMass);
+		if(this instanceof Atom) {
+			Atom atom = (Atom) this;
+			atom.integrate(duration);
+		}
 		
-		// Update current velocity (v = a*t)
-		Vector3D initialVelocity = new Vector3D (velocity.x, velocity.y, velocity.z, velocity.metric);
-		velocity.addScaledVector(currentAcceleration, duration);
-		
-		// Update current position (s = u*t + 0.5*a*t*t)
-		position.addScaledVector(initialVelocity, duration);
-		position.addScaledVector(currentAcceleration, duration * duration /2);
-		
-		// Clear forces
-		clearAccumulator();
-		
-		// Update the centre of the boundingPrimitive 
-		boundingPrimitive.updateCentre(position.x, position.y, position.z, position.metric);
 	}
 	
 
@@ -223,7 +202,9 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	        return false;
 	    
 	    final AbstractParticle other = (AbstractParticle) particle;
-	    if(this.position != other.position || this.velocity != other.velocity || this.acceleration != other.acceleration || this.inverseMass != other.inverseMass)
+	    
+	    //if(this.position != other.position || this.velocity != other.velocity || this.acceleration != other.acceleration || this.inverseMass != other.inverseMass)
+	    if(this.guid != other.guid)	
 	    	return false;
 	    
 	    return true;
