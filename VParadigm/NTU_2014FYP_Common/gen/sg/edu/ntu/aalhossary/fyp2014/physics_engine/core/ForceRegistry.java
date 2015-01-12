@@ -34,6 +34,31 @@ public class ForceRegistry {
 			
 		}
 	}
+	/***
+	 * Apply forces to particles
+	 */
+	public void updateAllForces(){
+
+		// electric force, vdw force etc are not stored in force registry
+		for(AbstractParticle particle: World.activeParticles){
+			for(AbstractParticle particle2: World.activeParticles){
+				if(!particle.equals(particle2)){
+					Force electricForce = new ElectricForce(particle,particle2);
+					Force lennardJonesForce = new LennardJonesForce (particle, particle2);
+					
+					// calculating the total force here saves computation then letting the force registry to handle
+					Vector3D totalForce = electricForce.getForce();
+					totalForce.add(lennardJonesForce.getForce());
+					
+					particle.addForce(totalForce);
+					particle2.addForce(totalForce.getNegativeVector());
+				}
+			}
+		}
+		
+		// apply forces that are in the force registry
+		applyForces();
+	}
 	
 	public void remove(AbstractParticle abstractParticle, Vector3D force) {
 		ArrayList<Vector3D> forces = registrations.get(abstractParticle);

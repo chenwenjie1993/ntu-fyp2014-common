@@ -34,7 +34,7 @@ public class Units {
 	}
 
 	public enum TIME {
-		s (1e0), ms (1e-3), μs (1e-6), ns (1e-9), ps (1e-12), fs (1e-15), as (1e-18);
+		s (1e0), ms (1e-3), μs (1e-6), ns (1e-9), ps (1e-12), fs (1e-15), as (1e-18), zs(1e-21);
 		private double value;
 		
 		private TIME (double value){

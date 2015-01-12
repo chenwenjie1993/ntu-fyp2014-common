@@ -7,13 +7,15 @@ import java.util.HashMap;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.common.TestDisplayParticles;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.JmolDisplay;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
 
 
 public class World {
 	
-	
+	public static double COEFFICENT_OF_RESTITUTION = 1;
+	public static int particleCount = 0;
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
 	public static double mass_metric = MASS.kg.value();
@@ -28,6 +30,8 @@ public class World {
 	public static ContactResolver resolver = new ContactResolver();
 
 	public static MoleculeEditor editor;
+	public static MainWindow window;
+	
 	public static boolean displayUI = true;
 
 	public static void main (String[] args) throws Exception{
@@ -56,7 +60,7 @@ public class World {
 		octTree.insert(a1);
 		octTree.insert(a2);
 		
-		AbstractParticle a3 = new Atom ("H");
+	/*	AbstractParticle a3 = new Atom ("H");
 		AbstractParticle a4 = new Atom ("He");
 		AbstractParticle a5 = new Atom ("Li");
 		AbstractParticle a6 = new Atom ("Be");
@@ -93,80 +97,58 @@ public class World {
 		octTree.insert(a12);
 		octTree.insert(a13);
 		octTree.printTree(octTree);
-		
-		// Registering forces for the first time
-		Vector3D electricForce = Force.getElectricForce(a1, a2) ;
-		System.out.println("Electric (Coulomb) Force between atoms is: " + electricForce.print());
-		registry.add(a1, electricForce);
-		registry.add(a2, electricForce.getNegativeVector());
-		
-		Vector3D vdwForce = Force.getLennardJonesPotential(a1, a2);
-		System.out.println("vdW Force between atoms is: " + vdwForce.print());
-		registry.add(a1, vdwForce);
-		registry.add(a2, vdwForce.getNegativeVector());
+*/
 	
-	
-		// CALL markAsActive if velocity or acceleration is non zero or added to force registry
-		//	markAsActive(a1);
-		//	markAsActive(a2);
 		
-		// checkForActiveParticles automates the process at a heavier cost
+		// checks which particles will be involved in calculations
 		checkForActiveParticles();
 		
 		if(displayUI){
-			 editor = new MoleculeEditor();
-			 editor.getMediator().displayParticles(a1, a2);
+		//	 editor = new MoleculeEditor();
+		//	 editor.getMediator().displayParticles(a1, a2);
+			 
+			 window = new MainWindow();
 		}		
 		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
-		for(int i=0; i<10000; i++){
+		int i = 0;
+		while(true) {
 			
 			// Applying Forces
-			registry.applyForces();
-			
-			for(AbstractParticle particle: activeParticles)
-				particle.integrate(i*time_metric);			
+			registry.updateAllForces();
+					
+			for(AbstractParticle particle: activeParticles){
+				particle.integrate(i*time_metric);	
+			}
 			
 			// Update tree only after integration
 			octTree.updateAllActiveParticles();
 			
-			// Updating Forces
-			Vector3D newElectricForce = Force.getElectricForce(a1, a2);
-			registry.updateForce(a2, electricForce.getNegativeVector(), newElectricForce.getNegativeVector());
-			registry.updateForce(a1, electricForce, newElectricForce);		// important! update the negative first. otherwise, old value will be lost and getNegativeVector will return error
-			
-			Vector3D newVdWForce = Force.getLennardJonesPotential(a1, a2);
-			registry.updateForce(a2, vdwForce.getNegativeVector(), newVdWForce.getNegativeVector());
-			registry.updateForce(a1, vdwForce, newVdWForce);	
 			
 			System.out.print(i + "\t");
 			printParticleStatus(a1);
-			System.out.print("\t");
+			//System.out.println();
 			printParticleStatus(a2);
 			System.out.println();
 			
 			// Collision Detection 
 			detector.detectCollision();    	 
-			
+
 			// Resolve Collisions and set active particles
-			resolver.resolveContacts(potentialContacts);
+			resolver.resolveContacts(potentialContacts);			
 			
-		
 			if(displayUI){
 				AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
 			//	editor.getMediator().notifyUpdated(temp_particles);
-				if(i%100 == 0)
-					editor.getMediator().displayParticles(a1, a2);
+				if(i%100 == 0){
+			//		editor.getMediator().displayParticles(a1, a2);
+					window.getMediator().displayParticles(a1, a2);
+				}
 			}
-			
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			i++;
+			if(i == 30001) 
+				i = 0;
 		}
-		
 	}
 	
 	public static void markAsActive(AbstractParticle particle){
@@ -180,6 +162,9 @@ public class World {
 		
 		ArrayList <AbstractParticle> particles = new ArrayList<>();
 		octTree.getAllParticles(particles);
+		for(AbstractParticle particle: particles)
+			markAsActive(particle);
+		/*
 		for(AbstractParticle particle: particles){	
 			if(registry.get().containsKey(particle))
 				markAsActive(particle);
@@ -188,13 +173,46 @@ public class World {
 			else if (particle.getAcceleration().getMagnitude() != 0) 
 				markAsActive(particle);
 		}
+		*/
 	}
 	
 	private static void printParticleStatus(AbstractParticle p){
 		System.out.print(p.getPosition().print()+"\t");
-		//System.out.println(p.getVelocity().print());	
-		//System.out.println("Acceleration: " + p.acceleration.print());
+		//System.out.print(p.getVelocity().print());	
+		//System.out.println("Acceleration: " + p.getAcceleration().print());
 
+	}
+	
+	public static void setCommand(String command) throws Exception{
+		String [] args = command.split(" ");
+		
+		if(args[0].equalsIgnoreCase("create")){
+			if(args[1].equalsIgnoreCase("atom")){
+				AbstractParticle a1 = new Atom (args[2]);
+				octTree.insert(a1);
+				int i = 3;
+				while(i<args.length){
+					if(args[i].equalsIgnoreCase("-pos")){
+						String pos[] = args[i+1].split(",");
+						a1.setPosition(Double.parseDouble(pos[0]), Double.parseDouble(pos[1]), Double.parseDouble(pos[2]));
+					}
+					else if (args[i].equalsIgnoreCase("-vel")){
+						String vel[] = args[i+1].split(",");
+						a1.setVelocity(Double.parseDouble(vel[0]), Double.parseDouble(vel[1]), Double.parseDouble(vel[2]));
+					}
+					else if (args[i].equalsIgnoreCase("-acc")){
+						String acc[] = args[i+1].split(",");
+						a1.setAcceleration(Double.parseDouble(acc[0]), Double.parseDouble(acc[1]), Double.parseDouble(acc[2]));
+					}
+					else {
+						i--;	// else increment one, decrement one instead to cancel it out with i+=2
+					}
+					i += 2;
+				}
+				
+			}
+		}
+		
 	}
 	
 

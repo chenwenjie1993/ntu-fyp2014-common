@@ -143,7 +143,7 @@ public class Vector3D {
 	
 	public String convertMetric(double i){
 		int exponent = (int)(Math.log10(i));
-		NumberFormat formatter = new DecimalFormat("0.00");
+		NumberFormat formatter = new DecimalFormat("0.000");
 		
 		if (exponent <-9)
 			return formatter.format(i*Math.pow(10, 12)) + "pm";
