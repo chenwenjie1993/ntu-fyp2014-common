@@ -13,7 +13,7 @@ import java.util.Vector;
 
 public class IUPRED_Predictor extends PredictorWrapper {
 
-	public void process()throws IOException {
+	public void process(InputStream is)throws IOException {
 		
 			ProcessBuilder pb = new ProcessBuilder();
 			pb.directory(new File("/temp/iupred"));
@@ -39,7 +39,6 @@ public class IUPRED_Predictor extends PredictorWrapper {
 				
 				Process p =pb.start();
 				try{
-					InputStream is = new ByteArrayInputStream(fileContents.getBytes());
 					OutputStream out = p.getOutputStream();
 					
 					int d;
@@ -52,8 +51,8 @@ public class IUPRED_Predictor extends PredictorWrapper {
 				catch(FileNotFoundException e){
 					
 				}
-				InputStream is = p.getInputStream();
-				BufferedReader br = new BufferedReader(new InputStreamReader(is));
+				InputStream is1 = p.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(is1));
 				while ((line = br.readLine()) != null)
 						   System.out.println(line);	
 			} catch (IOException e) {

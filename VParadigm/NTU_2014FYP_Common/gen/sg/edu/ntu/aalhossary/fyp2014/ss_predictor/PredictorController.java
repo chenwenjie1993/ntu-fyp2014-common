@@ -1,24 +1,25 @@
 package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 
-import java.io.IOException;
 
 
 public class PredictorController {
 	
+	
 	public InputManager inputManager = new InputManager();
 	public OutputManager outputManager = new OutputManager();
 	public PredictionManager predictionManager = new PredictionManager();
+	
+	
 
 	
 	public enum InputMethodEnum {
-		pdb, fasta, objects
+		pdb_string, pdb_file,fasta_string, fasta_file, objects
 	}
-	InputMethodEnum input;
+
 	
 	public enum PredictorEnum{
 		STRIDE,IUPRED;
 	}
-	
 	
 	public enum OutputMethodEnum{
 		FILE, OBJECTS
@@ -28,7 +29,7 @@ public class PredictorController {
 		inputManager.setInputMethod(input);
 	}
 	public void setPredictor(PredictorEnum predictor){
-		predictionManager.setPredictor(predictor,inputManager.inputMethod); 
+		predictionManager.setPredictor(predictor,inputManager.inputMethod,inputManager.inputs); 
 	}
 	
 	public void setOutputMethod(OutputMethodEnum output, PredictorEnum predictor){
@@ -37,10 +38,8 @@ public class PredictorController {
 	}
 	//TODO make set predictor and setOutput and and other needed setters if needed
 	
-	public void perform(/*PredictionManager Predictor, String fileContents*/) throws IOException{
-		predictionManager.process(/*fileContents*/);		
-	}
-
+	
+	
 	
 
 }

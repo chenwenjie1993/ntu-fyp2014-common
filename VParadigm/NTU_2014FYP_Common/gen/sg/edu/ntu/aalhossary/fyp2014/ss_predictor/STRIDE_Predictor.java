@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class STRIDE_Predictor extends PredictorWrapper {
 
-	public void process() throws IOException {
+	public void process(String pathname) throws IOException {
 		
 		ProcessBuilder pb = new ProcessBuilder();
 		

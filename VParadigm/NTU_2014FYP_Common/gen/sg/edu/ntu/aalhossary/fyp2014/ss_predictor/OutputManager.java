@@ -35,4 +35,11 @@ public class OutputManager {
 			}
 		}
 	}
+	public void OutputFile(){
+		
+		
+	}
+	public void OutputObjects(){
+		
+	}
 }
