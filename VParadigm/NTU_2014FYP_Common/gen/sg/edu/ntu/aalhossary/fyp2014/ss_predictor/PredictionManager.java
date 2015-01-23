@@ -28,30 +28,28 @@ public class PredictionManager {
 		}
 	
 	@SuppressWarnings("unchecked")
-	public void setPredictor(PredictorEnum predictor, InputMethodEnum inputMethod,ArrayList<Object> inputs) {
+	
+	public void setPredictor(PredictorEnum predictor, InputMethodEnum inputMethod,Object input) {
 		if (inputMethod==null) {
 			throw new IllegalStateException("Input Method is not yet set");
 		}
 		switch (inputMethod) {
 		case fasta_file:
 			if (predictor.equals(PredictorEnum.IUPRED)) {
-				for(Object o:inputs){
-					if(o instanceof File){
-						String filepath = ((File)o).getAbsolutePath();
+					if(input instanceof File){
+						String filepath = ((File)input).getAbsolutePath();
 						inputstream = IOutility.fastafileToInputStream(filepath);
 						this.predictor=new IUPRED_Predictor();
-					}
 				}
 			} else {
 				throw new IllegalArgumentException("Can't instantiate instance based on input");
 			}
+			break;
 		case fasta_string:
 			if (predictor.equals(PredictorEnum.IUPRED)) {
-				for(Object o:inputs){
-					if(o instanceof String){	
-						inputstream = IOutility.stringToInputStream((String)o);
+					if(input instanceof String){	
+						inputstream = IOutility.stringToInputStream((String)input);
 						this.predictor=new IUPRED_Predictor();
-					}
 				}
 			} else {
 				throw new IllegalArgumentException("Can't instantiate instance based on input");
@@ -61,26 +59,23 @@ public class PredictionManager {
 		case objects:
 			//TODO prepare (object to PDB or to FASTA) pipeline based on your need
 			if(predictor==PredictorEnum.STRIDE){
-				for(Object o:inputs){
-					if(o instanceof ArrayList<?>){
-						if(((ArrayList<?>)o).get(0)instanceof Model){
-							IOutility.ObjectstoPdbFile((ArrayList<Model>)o);
+					if(input instanceof ArrayList<?>){
+						if(((ArrayList<?>)input).get(0)instanceof Model){
+							IOutility.ObjectstoPdbFile((ArrayList<Model>)input);
 							this.predictor=new STRIDE_Predictor();
-						}
-				}
-				
+						}		
+				}else{
+					throw new IllegalArgumentException("invalid input");
 				}
 			}
 			//TODO prepare (PDB to FASTA) pipeline (if you need)
 			else if(predictor==PredictorEnum.IUPRED){
-				for(Object o:inputs){
-					if(o instanceof ArrayList<?>){
-						if(((ArrayList<?>)o).get(0)instanceof Chain){
-							String fasta = IOutility.ObjectstoFasta((ArrayList<Chain>)o);
+					if(input instanceof ArrayList<?>){
+						if(((ArrayList<?>)input).get(0)instanceof Chain){
+							String fasta = IOutility.ObjectstoFasta((ArrayList<Chain>)input);
 							inputstream = IOutility.stringToInputStream(fasta);
 							this.predictor=new IUPRED_Predictor();	
 							}
-						}
 					}
 				} else {
 				throw new IllegalArgumentException("Can't instantiate instance based on input");
@@ -89,36 +84,36 @@ public class PredictionManager {
 			break;
 		case pdb_file://do not have to read file to input stream
 			if(predictor==PredictorEnum.STRIDE){
-				for(Object o :inputs){
-					if(o instanceof File){
-						pathname = ((File)o).getAbsolutePath();
+					if(input instanceof File){
+						pathname = ((File)input).getAbsolutePath();
 						this.predictor=new STRIDE_Predictor();
 					}
-				}
 			}
 			//TODO prepare (PDB to FASTA) pipeline (if you need)
 			else if(predictor==PredictorEnum.IUPRED){
-				for(Object o: inputs){
-					if(o instanceof File){
-						String filepath = ((File)o).getAbsolutePath();
+					if(input instanceof File){
+						String filepath = ((File)input).getAbsolutePath();
 						String fasta = IOutility.pdbFileTofastaString(filepath);
+						System.out.println(fasta);
 						inputstream = IOutility.stringToInputStream(fasta);
 						this.predictor=new IUPRED_Predictor();
 					}
+			}else {
+				throw new IllegalArgumentException("Can't instantiate instance based on input");
 				}
-			}
 		case pdb_string:
 			//TODO prepare (PDB to FASTA) pipeline (if you need)
 			 if(predictor==PredictorEnum.IUPRED){
-				 for(Object o :inputs){
-					 if(o instanceof String){	
-						 String fastaString = IOutility.pdbStringTofastaString((String)o);
+					 if(input instanceof String){	
+						 String fastaString = IOutility.pdbStringTofastaString((String)input);
 						 inputstream = IOutility.stringToInputStream(fastaString);
 						 this.predictor=new IUPRED_Predictor();
 					}
-				 }
-			 }		 
+			 }	else {
+					throw new IllegalArgumentException("Can't instantiate instance based on input");
+					}	 
 			break;
+			
 		default:
 			break;
 		}		

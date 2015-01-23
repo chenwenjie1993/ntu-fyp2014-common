@@ -11,7 +11,7 @@ public class InputManager {
 	
 
 	InputMethodEnum inputMethod;
-	ArrayList <Object> inputs;
+	Object input;
 	
 	public InputMethodEnum getInputMethod() {
 		return inputMethod;
@@ -22,8 +22,8 @@ public class InputManager {
 		this.inputMethod = inputMethod;
 	}
 	
-	public void getInputArraylist(ArrayList<Object> inputs){
-		this.inputs = inputs;
+	public void getInput(Object input){
+		this.input = input;
 		
 	}
 	/**

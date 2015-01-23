@@ -43,19 +43,21 @@ public class IOutility {
 
 	public static String pdbFileTofastaString(String pathname){
 			
-	//		InputStream is = this.fastafileToInputStream(pathname);
+			StringBuilder sb = new StringBuilder();
+			sb.append(">").append("\n");
 			PDBFileReader pdbreader = new PDBFileReader();
 			Structure structure = null;
-			String fasta = null;
+			String sequence = null;
 			try{
 				structure=pdbreader.getStructure(pathname);
 				for(org.biojava.bio.structure.Chain c :structure.getChains()){
-					fasta = c.getAtomSequence();
+					sequence = c.getAtomSequence();
+					sb.append(sequence);
 					}
 				}catch (IOException e){
 				e.printStackTrace();
 			}
-			return fasta;
+			return sb.toString();
 		
 		}
 
@@ -63,17 +65,20 @@ public class IOutility {
 		
 		InputStream is = new ByteArrayInputStream(pdbString.getBytes());
 		PDBFileParser pdbreader = new PDBFileParser();
+		StringBuilder sb = new StringBuilder();
+		sb.append(">").append("\n");
 		Structure structure = null;
-		String fasta = null;
+		String sequence = null;
 		try{
 			structure=pdbreader.parsePDBFile(is);
 			for(org.biojava.bio.structure.Chain c :structure.getChains()){
-				fasta = c.getAtomSequence();
+				sequence = c.getAtomSequence();
+				sb.append(sequence);
 				}
 			}catch (IOException e){
 			e.printStackTrace();
 		}
-		return fasta;
+		return sb.toString();
 	
 	}
 
@@ -90,19 +95,7 @@ public class IOutility {
 		return inputStream;
 	}
 
-	public static String PDBtoFasta (String pathname){
-		String fasta = null;
-		
-		try{
-		Structure s = StructureIO.getStructure("pathname");
-	    for (org.biojava.bio.structure.Chain c : s.getChains()) {
-	        fasta = c.getAtomSequence();
-	    }
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return fasta;
-	}
+
 
 	public static String ObjectstoFasta(ArrayList<Chain> chains){
 		StringBuilder sb = new StringBuilder();

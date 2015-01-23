@@ -29,7 +29,7 @@ public class PredictorController {
 		inputManager.setInputMethod(input);
 	}
 	public void setPredictor(PredictorEnum predictor){
-		predictionManager.setPredictor(predictor,inputManager.inputMethod,inputManager.inputs); 
+		predictionManager.setPredictor(predictor,inputManager.inputMethod,inputManager.input); 
 	}
 	
 	public void setOutputMethod(OutputMethodEnum output, PredictorEnum predictor){

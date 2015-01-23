@@ -47,6 +47,5 @@ public class IUPred_Output {
 		String string=null;
 		string = "Pos:"+position+"	AminoAcid:"+aminoacid+" Score:"+score+"";
 		return string;
-		
 	}
 }
