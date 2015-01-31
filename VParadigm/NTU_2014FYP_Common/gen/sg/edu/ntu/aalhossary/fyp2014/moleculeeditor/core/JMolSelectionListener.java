@@ -1,6 +1,10 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
+
+import java.util.logging.Level;
 
 import org.jmol.api.JmolSelectionListener;
+
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 
 public class JMolSelectionListener implements JmolSelectionListener {
 
@@ -16,6 +20,7 @@ public class JMolSelectionListener implements JmolSelectionListener {
 	 * @param values
 	 */
 	public void selectionChanged(org.jmol.java.BS values) {
+		System.out.println(values);
 		jmolPanel.getMediator().setSelectedAtoms(values);
 	}
 

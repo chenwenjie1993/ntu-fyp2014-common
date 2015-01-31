@@ -1,13 +1,14 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
-import org.biojava.bio.structure.Element;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import org.biojava.bio.structure.Structure;
-import org.jmol.api.JmolViewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Chain;
@@ -16,25 +17,22 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Residue;
 
 public class DataManager {
 
-	static String newline = "\n";
-	static DecimalFormat d3 = (DecimalFormat)NumberFormat.getInstance(java.util.Locale.UK);
+	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MoleculeEditor.class.getName());
+	private static String newline = "\n";
+	private static DecimalFormat d3 = (DecimalFormat)NumberFormat.getInstance(java.util.Locale.UK);
 	static{
 		d3.setMaximumIntegerDigits(4);
 		d3.setMinimumFractionDigits(3);
 		d3.setMaximumFractionDigits(3);
 	}
-	static DecimalFormat d2 = (DecimalFormat)NumberFormat.getInstance(java.util.Locale.UK);
+	private static DecimalFormat d2 = (DecimalFormat)NumberFormat.getInstance(java.util.Locale.UK);
 	static {
 		d2.setMaximumIntegerDigits(3);
 		d2.setMinimumFractionDigits(2);
 		d2.setMaximumFractionDigits(2);
 	}
-	
-	public DataManager() {
-		
-	}
 
-	public Structure readFile(java.lang.String fileName) {
+	public static Structure readFile(java.lang.String fileName) {
 		Structure struc = null;
 		
 		if(fileName.endsWith(".pdb") || fileName.endsWith(".pdbqt")){
@@ -161,8 +159,6 @@ public class DataManager {
 	
 	// method from biojava FileConvert.class
 	private static String alignRight(String input, int length){
-
-
 		int n = input.length();
 		if ( n >= length)
 			return input;
@@ -175,5 +171,20 @@ public class DataManager {
 		s.append(input);
 
 		return s.toString();
+	}
+
+	public static void readFile(String filePath, UpdateRegistry updateReg) {
+		Structure struc = null;
+		
+		if(filePath.endsWith(".pdb")){
+			struc = FileReader.readPDBFile(filePath); 
+		}
+		
+		if(struc==null){
+			logger.log(Level.INFO, "Error loading file");
+			JOptionPane.showMessageDialog(new JFrame(), "Error loading file.");
+		}
+		else
+			updateReg.loadFileToJmol(struc);
 	}
 }

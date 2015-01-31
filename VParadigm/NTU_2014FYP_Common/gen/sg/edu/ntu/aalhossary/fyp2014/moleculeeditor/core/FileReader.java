@@ -1,6 +1,7 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 import org.biojava.bio.structure.Structure;
 import org.biojava.bio.structure.io.MMCIFFileReader;
@@ -17,10 +18,9 @@ public class FileReader {
 		try{
 			// Access to the data of a PDB file.
 			struc = pdbreader.getStructure(fileName);	    
-
-		    
 		 } catch (Exception e){
-		     e.printStackTrace();
+			 java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MoleculeEditor.class.getName());
+			 logger.log(Level.SEVERE, "Error converting to structure object from file path");
 		 }
 		return struc;
 	}
@@ -37,7 +37,8 @@ public class FileReader {
                 struct = pdbreader.getStructure(fileName);
 
         } catch (IOException e) {
-                e.printStackTrace();
+        	java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MoleculeEditor.class.getName());
+			 logger.log(Level.SEVERE, "Error converting to structure object from file path");
         }
 		return struct;
 	}

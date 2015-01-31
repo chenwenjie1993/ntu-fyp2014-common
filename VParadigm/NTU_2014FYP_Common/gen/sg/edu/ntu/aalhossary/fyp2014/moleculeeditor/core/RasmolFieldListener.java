@@ -1,7 +1,10 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
+
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 
 public class RasmolFieldListener extends KeyAdapter implements ActionListener, MouseListener {
 
@@ -77,7 +80,13 @@ public class RasmolFieldListener extends KeyAdapter implements ActionListener, M
 	 */
 	public void actionPerformed(java.awt.event.ActionEvent e) {
 		String cmd = textfield.getText();
-		jmolPanel.executeCmd(cmd);
+		if(cmd.contains("load ")){
+			String filePath = cmd.substring(5);
+			File file = new File(filePath);
+			DataManager.readFile(file.getAbsolutePath(), jmolPanel.getMediator());
+		}
+		else
+			jmolPanel.executeCmd(cmd);
 		textfield.setText("");
 
 		// now comes history part:

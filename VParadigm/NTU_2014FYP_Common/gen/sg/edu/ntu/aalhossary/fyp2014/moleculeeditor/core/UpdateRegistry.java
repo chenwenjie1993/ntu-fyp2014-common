@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,45 +6,51 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.biojava.bio.structure.Structure;
 import org.jmol.api.JmolViewer;
 import org.jmol.java.BS;
+import org.jmol.viewer.ActionManager;
+import org.jmol.viewer.Viewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.ToolPanel;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
 
 public class UpdateRegistry {
-	JmolViewer viewer;
+	Viewer viewer;
+	ToolPanel toolPanel;
 	List<Model> modelList;
 	DataManager dataMgr;
 	private ArrayList<Atom> selectedAtoms;
+	protected MouseState mouseState;
+	protected int dragMode;
+	protected static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MoleculeEditor.class.getName());
 	
-	public UpdateRegistry(JmolViewer viewer, List<Model> models){
+	public UpdateRegistry(Viewer viewer, ToolPanel toolPanel, List<Model> models){
 		this.viewer = viewer;
 		this.modelList = models;
-		dataMgr = new DataManager();
+		this.toolPanel = toolPanel;
+		this.dataMgr = new DataManager();
+		this.mouseState = new MouseState();
+		this.dragMode = -1;
+	}
+	
+	public UpdateRegistry(){
+		this.viewer = null;
+		this.modelList = new ArrayList<Model>();
+		this.toolPanel = null;
+		this.dataMgr = new DataManager();
+		this.mouseState = new MouseState();
+		this.dragMode = -1;
 	}
 	
 	/**********************************************************/
 	/*** Methods that notify when there's changes in viewer ***/
 	/**********************************************************/
-	
-	public void createUserModel(String fileName) {
-		Structure structure = dataMgr.readFile(fileName);
-		if(modelList==null)
-			modelList = new ArrayList<Model>();
-		Model model=null;
-		for(int i=0;i<structure.nrModels();i++){
-			// for each model, create and add to model list
-			model = new Model();
-			model.setModelName(structure.getPdbId());
-			model.setMolecule(structure.getModel(i));	// set the model
-			modelList.add(model);
-		}
-	}
 
 	public void setSelectedAtoms(BS values) {
 		//System.out.println("Selected: " + values);
@@ -52,7 +58,6 @@ public class UpdateRegistry {
 			selectedAtoms = new ArrayList<Atom>();
 		else
 			selectedAtoms.clear();
-		
 
 		String[] valueGet = values.toString().split("[{ }]");
 		if(modelList!=null){
@@ -76,8 +81,7 @@ public class UpdateRegistry {
 	}
 	
 	public void evaluateUserAction(String script) {
-		EvaluateUserAction userAction = new EvaluateUserAction(this);
-		userAction.evaluateAction(script);
+		EvaluateUserAction.evaluateAction(this, script);
 	}
 	
 	public void atomMoved(BS atomsMoved) {
@@ -86,10 +90,23 @@ public class UpdateRegistry {
 		
 		// update the atoms moved in user model.
 		for(int i=0;i<selectedAtoms.size();i++){
-			int atomIndex = selectedAtoms.get(i).getChainSeqNum()-1;
-			double[] coords = {viewer.getAtomPoint3f(atomIndex).x,viewer.getAtomPoint3f(atomIndex).y,viewer.getAtomPoint3f(atomIndex).z};
-			selectedAtoms.get(i).setCoordinates();
+			int atomIndex = selectedAtoms.get(i).getAtomSeqNum()-1;
+			double[] coords = {viewer.ms.at[atomIndex].x,viewer.ms.at[atomIndex].y,viewer.ms.at[atomIndex].z};
+			selectedAtoms.get(i).setCoordinates(coords);
 		}
+	}
+	
+	/*********************************************/
+	/*** Methods that notify viewer on changes ***/
+	/*********************************************/
+	
+	// Method to load file from BioJava structure to Jmol Display
+	public void loadFileToJmol(Structure struc) {
+		createUserModel(struc);
+		String pdb = DataManager.modelToPDB(modelList);
+		viewer.openStringInline(pdb);
+		toolPanel.setModelText(modelList);
+		logger.log(Level.INFO, "After load File: ");
 	}
 	
 	/*********************************************************/
@@ -102,6 +119,38 @@ public class UpdateRegistry {
 		String pdb = DataManager.modelToPDB(models);
 		// pdb to viewer
 		jmolViewer.openStringInline(pdb);
+	}
+	
+	public void displayParticles(ArrayList<AbstractParticle> list){
+		DecimalFormat decformat = new DecimalFormat("#.###");
+		String[] coord;
+		String pdb = "MODEL       1\n";
+		for(int i=0; i<list.size();i++){
+			if(list.get(i) instanceof Atom){
+				coord = new String[3];
+				coord[0] = decformat.format(list.get(i).getPosition().x);
+				coord[1] = decformat.format(list.get(i).getPosition().y);
+				coord[2] = decformat.format(list.get(i).getPosition().z);
+				Vector3D position = list.get(i).getPosition();
+				String coords= String.format("%8.3f%8.3f%8.3f", position.x,position.y,position.z);
+				String properties = "HETATM    1 NA   TST A   1    "+coords+"  1.00  0.00";
+				pdb += properties + '\n';
+			}
+			else{
+				throw new UnsupportedOperationException();
+			}
+		}
+		pdb += "ENDMDL";
+		viewer.openStringInline(pdb);
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("res/temp/temp.pdb"));
+			writer.write(pdb);
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//createUserModel("res/temp/temp.pdb");
 	}
 	
 	public void displayParticles(AbstractParticle p1, AbstractParticle p2){
@@ -142,7 +191,7 @@ public class UpdateRegistry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		createUserModel("res/temp/temp.pdb");
+		//createUserModel("res/temp/temp.pdb");
 	}
 
 	public void notifyUpdated(AbstractParticle[] particles){
@@ -159,10 +208,10 @@ public class UpdateRegistry {
 			// update atoms in jmol display
 			for(int i=0;i<atomsUpdated.size();i++){
 				Atom atom = atomsUpdated.get(i);
-				float xOffset = (float)atomsUpdated.get(i).getPosition().x - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).x;
-				float yOffset = (float)atomsUpdated.get(i).getPosition().y - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).y;
-				float zOffset = (float)atomsUpdated.get(i).getPosition().z - viewer.getAtomPoint3f(atomsUpdated.get(i).getChainSeqNum()-1).z;
-				viewer.evalString("select atomno="+ atomsUpdated.get(i).getChainSeqNum());
+				float xOffset = (float)atom.getPosition().x - viewer.getAtomPoint3f(atom.getChainSeqNum()-1).x;
+				float yOffset = (float)atom.getPosition().y - viewer.getAtomPoint3f(atom.getChainSeqNum()-1).y;
+				float zOffset = (float)atom.getPosition().z - viewer.getAtomPoint3f(atom.getChainSeqNum()-1).z;
+				viewer.evalString("select atomno="+ atom.getChainSeqNum());
 				viewer.evalString("translateSelected {" + xOffset + " " + yOffset + " " + zOffset + "}");
 			}
 		}
@@ -170,5 +219,44 @@ public class UpdateRegistry {
 
 	public ArrayList<Atom> getSelectedAtoms() {
 		return selectedAtoms;
+	}
+
+	public void deleteAtoms(int currentModelIndex, String key, int atomPosition) {
+		modelList.get(currentModelIndex).getAtomHash().remove(key);
+		viewer.evalString("delete atomno=" + atomPosition + " && modelindex=" + viewer.getDisplayModelIndex());
+		toolPanel.setModelText(modelList);
+	}
+
+	public void setMouseState(int x, int y, int mode) {
+		GestureManager.setMouseState(x,y,mode, mouseState);
+		if(viewer.getInMotion(false)){
+			String mouseGesture = "";
+			mouseGesture += "Mouse Mode: " + mouseState.getMouseMode() + "\n";
+			mouseGesture += "Mouse Start Position: X-Pos=" + mouseState.getStartPosX() + " Y-Pos=" + mouseState.getStartPosY() + "\n";
+			mouseGesture += "Mouse End Position: X-Pos=" + mouseState.getEndPosX() + " Y-Pos=" + mouseState.getEndPosY() + "\n";
+			//System.out.println(mouseGesture);
+			mouseState.clearState();
+		}
+	}
+
+	/******************************************/
+	/*** Private methods used in class only ***/
+	/******************************************/
+	
+	public void createUserModel(Structure struc) {
+		if(modelList==null)
+			modelList = new ArrayList<Model>();
+		Model model=null;
+		for(int i=0;i<struc.nrModels();i++){
+			// for each model, create and add to model list
+			model = new Model();
+			model.setModelName("Model"+(i+1));
+			model.setMolecule(struc.getModel(i));	// set the model
+			modelList.add(model);
+		}
+	}
+
+	public List<Model> getModelList() {
+		return modelList;
 	}
 }

@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui;
 
 import org.biojava.bio.structure.Structure;
 import org.biojava.bio.structure.align.gui.*;
@@ -14,6 +14,10 @@ import org.jmol.viewer.Viewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.EvaluateUserAction;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.JMolSelectionListener;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MyJmolStatusListener;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.UserActionType;
 
 import java.awt.Dimension;
@@ -39,18 +43,15 @@ import java.util.List;
 public class JmolDisplay extends JPrintPanel implements ActionListener {
 
 	private static final long serialVersionUID = -4721103453203185678L;
-	private org.jmol.api.JmolViewer viewer;
+	private org.jmol.viewer.Viewer viewer;
 	private org.jmol.api.JmolAdapter adapter;
 	private org.jmol.api.JmolStatusListener statusListener;
 	protected final java.awt.Dimension currentSize = new Dimension();
 	protected java.awt.Rectangle rectClip = new Rectangle();
-	//protected org.biojava.bio.structure.Structure structure;
 	private boolean verbose;
 	private JmolSelectionListener jMolSelectionListener;
-	//protected static List<Model> modelList;
 	protected static ArrayList<Atom> selectedAtoms;
 	protected UserActionType selectedTag;
-	protected EvaluateUserAction evaluateUserAction;
 	protected UpdateRegistry mediator;
 	
 	
@@ -58,9 +59,8 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 		super();
 		statusListener = new MyJmolStatusListener(this);
 		adapter = new SmarterJmolAdapter();
-		evaluateUserAction = new EvaluateUserAction(mediator);
 		Logger.setLogLevel( verbose?Logger.LEVEL_INFO:Logger.LEVEL_ERROR);
-		viewer = JmolViewer.allocateViewer(this, adapter);
+		viewer = (Viewer)JmolViewer.allocateViewer(this, adapter);
 		viewer.setJmolCallbackListener(statusListener);
 		jMolSelectionListener = new JMolSelectionListener(this);
 		viewer.addSelectionListener(jMolSelectionListener);
@@ -77,7 +77,7 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 		viewer.openStringInline(pdbFile);
 	}
 	
-	public JmolViewer getViewer() {
+	public Viewer getViewer() {
 		return this.viewer;
 	}
 	
@@ -101,7 +101,7 @@ public class JmolDisplay extends JPrintPanel implements ActionListener {
 	}
 
 	public void evaluateUserFunction(String script){
-		evaluateUserAction.evaluateAction(script);		
+		EvaluateUserAction.evaluateAction(mediator, script);		
 	}
 
 	public void setMediator(UpdateRegistry mediator) {

@@ -1,17 +1,31 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.MoleculeEditor;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.UpdateRegistry;
+import org.biojava.bio.structure.Structure;
+
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.DataManager;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
 
 public class TestDisplayParticles {
 	public static void main(String[] args){
 		
-		showTest();
-		showTest2();
+		//showTest();
+		//showTest2();
+		test3();
 	}
+	
+	public static void test3(){
+		File file = new File("res/res/4hhb.pdb");
+		Structure struc = DataManager.readFile(file.getAbsolutePath());
+		UpdateRegistry updateReg = new UpdateRegistry();
+		updateReg.createUserModel(struc);
+		ArrayList<Model> models = (ArrayList<Model>)updateReg.getModelList();
+	}
+	
 	public static void showTest2() {
 		MoleculeEditor editor = new MoleculeEditor();
 		List<Model>models = new ArrayList<Model>();
@@ -43,5 +57,11 @@ public class TestDisplayParticles {
 		editor.getMediator().notifyUpdated(particles);
 	}
 	
-	
+	// Convert particles to model format
+	/* [] of particles
+	 * Create new Model() object.
+	 * For each particles, separate to different level (molecule/chain/etc)
+	 * (1) If particle is Atom, 
+	 * 
+	 */
 }

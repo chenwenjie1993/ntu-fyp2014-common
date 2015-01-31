@@ -1,10 +1,11 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
 import org.jmol.api.*;
 import org.jmol.c.CBK;
 import org.jmol.java.BS;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 
 /**
  * @author Xiu Ting
@@ -34,7 +35,7 @@ public class MyJmolStatusListener implements JmolStatusListener {
 	    case MESSAGE: return false;
 	    case PICK: return false;
 	    case SCRIPT: return true;
-	    case CLICK: return false;
+	    case CLICK: return true;
 	    case ERROR: return false;
 	    case HOVER: return false;
 	    case MINIMIZATION: return false;
@@ -47,7 +48,11 @@ public class MyJmolStatusListener implements JmolStatusListener {
 	}
 
 	public void notifyCallback(org.jmol.c.CBK callbackType, java.lang.Object[] data) {
-		//System.out.println(callbackType + " " + data[0] + " " + data[1] + " " + data[2]);
+		System.out.print(callbackType + " ");
+		for(int i=0;i<data.length;i++){
+			System.out.print(data[i] + " ");
+		}
+		System.out.println();
 		
 		switch (callbackType) {
 		case ANIMFRAME:
@@ -57,14 +62,6 @@ public class MyJmolStatusListener implements JmolStatusListener {
 			jmolPanel.getMediator().atomMoved((BS)data[1]);
 			return;
     	case LOADSTRUCT:	
-    		if(data[1]==null || data[1].toString().contains("file[]"))// no data send
-    			return;
-    		else if(data[1].toString().contains("string")){
-    			return;
-    		}
-    		else{
-    			notifyFileLoaded((String) data[1], (String) data[2], (String) data[3], (String) data[4]);
-    		}
     		return;
     	case SCRIPT:
     		// will enter when using edited library of Jmol in "res/resources/editedJmol/Jmol-edited.jar"
@@ -73,14 +70,11 @@ public class MyJmolStatusListener implements JmolStatusListener {
     			jmolPanel.getMediator().evaluateUserAction((String)data[2]);
     		}
     		return;
+    	case CLICK:
+    		jmolPanel.getMediator().setMouseState((int)data[1], (int)data[2], (int)data[3]);
+    		return;
     	default: return;
 		}
-	}
-
-	private void notifyFileLoaded(String fullPathName, String fileName, String modelName, String errorMsg) {
-		if (errorMsg != null)
-			return;
-		jmolPanel.getMediator().createUserModel(fullPathName);	//notifyNewFileOpen(fullPathName, modelName, fileName);
 	}
 
 	public void setCallbackFunction(String callbackType, String callbackFunction) {

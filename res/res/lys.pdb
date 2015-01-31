@@ -1,5 +1,5 @@
 MODEL        1 
-HEADER    pKc =2.2  pKn =9.0  pK(NH3+) =10.5      13-JUL-93   
+HEADER    pKc=2.2   pKn=9.0   pK(NH3+) =10.5      13-JUL-93   LYS 
 COMPND    L-lysine   LYS    MW = 128
 ATOM      1  N   LYS     1       1.144   2.580  -0.844  1.00  0.00
 ATOM      2  CA  LYS     1       1.316   1.768   0.372  1.00  0.00
@@ -29,7 +29,7 @@ ATOM     25  H26 LYS     1       0.204   2.876  -0.636  1.00  0.00
 TER      26      LYS     1 
 ENDMDL
 MODEL       2
-HEADER    pKc =2.4   pKn =9.8                     13-JUL-93   
+HEADER    pKc =2.4   pKn =9.8                     13-JUL-93   GLY 
 COMPND    glycine   GLY    MW = 57
 ATOM      1  N   GLY     1      -1.476   0.232   0.252  1.00  0.00
 ATOM      2  CA  GLY     1      -0.012   0.296   0.348  1.00  0.00

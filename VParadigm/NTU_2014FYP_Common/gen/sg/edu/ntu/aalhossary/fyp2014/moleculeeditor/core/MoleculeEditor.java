@@ -1,17 +1,23 @@
-package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor;
+package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.SimpleFormatter;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
@@ -23,6 +29,9 @@ import org.jmol.api.JmolViewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Particle;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.MenuPanel;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.ToolPanel;
 
 /**
  * @author Xiu Ting
@@ -33,27 +42,31 @@ public class MoleculeEditor {
 
 	private static JFrame frame;
 	protected static Container contentPane;
+	protected static MenuPanel menu;
 	protected static ToolPanel toolPanel;
 	protected static JmolDisplay jmolPanel;
 	protected static UpdateRegistry mediator;
 	protected static List<Model> modelList;
+	protected static java.util.logging.Logger logger;
+	protected static Handler fileHandler;
 
 	public static void main(String[] args) {
 		initDisplay();
+		createLogger();
 		//addResmolScriptPanel();
-		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
+		mediator = new UpdateRegistry(jmolPanel.getViewer(), toolPanel, modelList);
 		jmolPanel.setMediator(mediator);
 		//setConnection();
 	}
 	
 	public MoleculeEditor(){
 		initJmolDisplay();
-		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
+		mediator = new UpdateRegistry(jmolPanel.getViewer(), toolPanel, modelList);
 		jmolPanel.setMediator(mediator);
 	}
 
 	private static void initJmolDisplay(){
-		frame = new JFrame();
+		//frame = new JFrame();
 		//JMenuBar menu = MenuCreator.initMenu(frame);
         //frame.setJMenuBar(menu);
         frame.addWindowListener(new WindowAdapter() {
@@ -74,6 +87,20 @@ public class MoleculeEditor {
         frame.setVisible(true);
 	}
 	
+	private static void createLogger(){
+		logger = java.util.logging.Logger.getLogger(MoleculeEditor.class.getName());
+		try {
+			fileHandler = new FileHandler("./res/res/Error.log");
+			logger.addHandler(fileHandler);
+			fileHandler.setFormatter(new SimpleFormatter());
+			PrintStream outPS = new PrintStream(new BufferedOutputStream(new FileOutputStream("./res/res/Error.log", true)));  // append is true
+			System.setErr(outPS);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public static void addResmolScriptPanel(){
 		 Box vBox = Box.createVerticalBox();
 	     vBox.add(jmolPanel);
@@ -89,8 +116,10 @@ public class MoleculeEditor {
 	private static void initDisplay() {
 		// create frame for the application
 		frame = new JFrame();
-		JMenuBar menu = MenuCreator.initMenu(frame);
-        frame.setJMenuBar(menu);
+		jmolPanel = new JmolDisplay();
+		menu = new MenuPanel(jmolPanel);
+		JMenuBar menuBar = menu.initMenu(frame);
+        frame.setJMenuBar(menuBar);
         frame.addWindowListener(new WindowAdapter() {
         	  public void windowClosing(WindowEvent we) {
         		    System.exit(0);
@@ -98,7 +127,7 @@ public class MoleculeEditor {
         		});
         Container contentPane = frame.getContentPane();
         // allocate jmolPanel for display
-        jmolPanel = new JmolDisplay();
+        
         jmolPanel.setPreferredSize(new Dimension(500,500));
         
         Box vBox = Box.createVerticalBox();
@@ -149,9 +178,5 @@ public class MoleculeEditor {
 			throw new UnsupportedOperationException();
 		}
 
-	}
-	
-	private static void setConnection(){
-		//jmolPanel.setConnection();	
 	}
 }
