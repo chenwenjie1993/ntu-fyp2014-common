@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
-import sg.edu.ntu.aalhossary.fyp2014.common.TestDisplayParticles;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.JmolDisplay;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.MoleculeEditor;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
 
 
@@ -16,13 +14,13 @@ public class World {
 	
 	public static double COEFFICENT_OF_RESTITUTION = 1;
 	public static int particleCount = 0;
+	public static boolean simulationLvlAtomic = true;
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
 	public static double mass_metric = MASS.kg.value();
 	
 	public static ArrayList<AbstractParticle> activeParticles = new ArrayList<>();
 	public static ArrayList<Vector3D> oldPositions= new ArrayList<>();
-	public static ArrayList<AbstractParticle> test = new ArrayList<>();
 	public static ArrayList<AbstractParticle[]> potentialContacts = new ArrayList<>();
 	public static ForceRegistry registry = new ForceRegistry();
 	public static OctTree octTree = new OctTree();
@@ -60,7 +58,7 @@ public class World {
 		octTree.insert(a1);
 		octTree.insert(a2);
 		
-	/*	AbstractParticle a3 = new Atom ("H");
+/*		AbstractParticle a3 = new Atom ("H");
 		AbstractParticle a4 = new Atom ("He");
 		AbstractParticle a5 = new Atom ("Li");
 		AbstractParticle a6 = new Atom ("Be");
@@ -97,8 +95,8 @@ public class World {
 		octTree.insert(a12);
 		octTree.insert(a13);
 		octTree.printTree(octTree);
-*/
-	
+
+	*/
 		
 		// checks which particles will be involved in calculations
 		checkForActiveParticles();
@@ -108,6 +106,7 @@ public class World {
 		//	 editor.getMediator().displayParticles(a1, a2);
 			 
 			 window = new MainWindow();
+			 window.getMediator().displayParticles(a1, a2);
 		}		
 		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");

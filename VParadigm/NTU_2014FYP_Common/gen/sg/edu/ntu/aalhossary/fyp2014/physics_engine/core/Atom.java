@@ -86,7 +86,9 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 		return temp;
 	}
 	
-	public String getAtomicSymbol() { return atomicSymbol;}
+	public String getAtomicSymbol() { 
+		return atomicSymbol;
+	}
 
 	private void fetchAtomicData (String atomicSymbol) throws Exception{
 	

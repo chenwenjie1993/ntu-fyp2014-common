@@ -2,8 +2,10 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
@@ -13,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
@@ -22,9 +26,9 @@ import javax.swing.event.ChangeListener;
 import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.JmolDisplay;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.MoleculeEditor;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.UpdateRegistry;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
 
 public class MainWindow extends JFrame {
 
@@ -32,6 +36,10 @@ public class MainWindow extends JFrame {
 	private JPanel coeOfResPanel;
 	private JSlider coeOfResSlider;
 	private JLabel coeOfResLbl;
+	
+	private JPanel simLvlPanel;
+	private JRadioButton atomicRadioButton;
+	private JRadioButton molecularRadioButton;
 	private JTextField commandTextField;
 	
 	private UpdateRegistry mediator;
@@ -54,10 +62,19 @@ public class MainWindow extends JFrame {
 		
 		// add mediator
 		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
-		jmolPanel.setMediator(mediator);
+        jmolPanel.setMediator(mediator);
+		
+		// add RHS Panel for user input
+		JPanel inputPanel = new JPanel();
+		inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
+		contentPane.add(inputPanel, BorderLayout.EAST);
 		
 		// add slider and label for coefficient of restitution
-		addCoeOfResPanel();
+		createCoeOfResPanel();
+		inputPanel.add(coeOfResPanel);
+		
+		createSimLvlPanel();
+		inputPanel.add(simLvlPanel);
 		
 		// add text field for user input
 		commandTextField = new JTextField();
@@ -73,15 +90,10 @@ public class MainWindow extends JFrame {
 		return mediator;
 	}
 	
-	private void addCoeOfResPanel (){
-		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.EAST);
+	private void createCoeOfResPanel (){
 		
 		coeOfResPanel = new JPanel();
-		coeOfResPanel.setLayout(new BoxLayout(coeOfResPanel, BoxLayout.Y_AXIS));
-		
-		panel.add(coeOfResPanel);
+		coeOfResPanel.setLayout(new BoxLayout(coeOfResPanel, BoxLayout.Y_AXIS));	
 		
 		JPanel panel1 = new JPanel();
 		JLabel label1 = new JLabel("Coefficient of Restitution: ");
@@ -97,6 +109,37 @@ public class MainWindow extends JFrame {
 		coeOfResPanel.add(coeOfResSlider);
 	}
 	
+	private void createSimLvlPanel (){
+		
+		simLvlPanel = new JPanel();
+		simLvlPanel.setLayout(new BoxLayout(simLvlPanel, BoxLayout.Y_AXIS));	
+	
+		JLabel label1 = new JLabel("Simulation Level: ");
+		
+		ButtonGroup bg = new ButtonGroup();
+		atomicRadioButton = new JRadioButton("atomic");
+	    molecularRadioButton = new JRadioButton("molecular");
+	    bg.add(atomicRadioButton);
+	    bg.add(molecularRadioButton);
+	    atomicRadioButton.setSelected(true);
+	    
+	    JPanel panel2 = new JPanel();
+	    panel2.setLayout(new FlowLayout());
+	    panel2.add(atomicRadioButton);
+	    panel2.add(molecularRadioButton);
+	    
+	    simLvlPanel.add(label1);
+		simLvlPanel.add(panel2);
+	}
+	
+	public void actionPerformed(ActionEvent evt) {
+	    Object source = evt.getSource();
+	    if (source == atomicRadioButton)
+	    	World.simulationLvlAtomic = true;
+	    else if (source == molecularRadioButton)
+	    	World.simulationLvlAtomic = false;
+	  }
+
 	private void addActionListeners() {
 		DecimalFormat formatter = new DecimalFormat("0.00");
 		
