@@ -11,11 +11,11 @@ import org.biojava.bio.structure.HetatomImpl;
  */
 public class Chain extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
 
-	protected String name;
-	protected int position;
-	protected ArrayList<Residue> residues;
-	protected ArrayList<Atom> atomSeq;
-	protected Molecule molecule;
+	public String name;
+	public int position;
+	public ArrayList<Residue> residues;
+	public ArrayList<Atom> atomSeq;
+	public Molecule molecule;
 	
 	public Chain() {
 		super();
