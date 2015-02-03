@@ -216,10 +216,11 @@ public class UpdateRegistry {
 		}
 //							  "         1         2         3         4         5         6         7         8
 //							  "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
+		double scale = Math.pow(10, 10);
 		Vector3D position1 = p1.getPosition();
-		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x,position1.y,position1.z);
+		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x*scale,position1.y*scale,position1.z*scale);
 		Vector3D position2 = p2.getPosition();
-		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x,position2.y,position2.z);
+		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x*scale,position2.y*scale,position2.z*scale);
 		String p1Properties = "HETATM    1 NA   TST A   1    "+coords1+"  1.00  0.00";
 		String p2Properties = "HETATM    2 CL   TST A   2    "+coords2+"  1.00  0.00";
 
