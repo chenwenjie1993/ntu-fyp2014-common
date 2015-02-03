@@ -1,4 +1,4 @@
 MODEL       1
-HETATM    1 NA   TST A   1       0.000  10.000   5.000  1.00  0.00
-HETATM    2 CL   TST A   2      -5.000   0.000  -5.000  1.00  0.00
+HETATM    1 NA   TST A   1       0.000   0.000   0.000  1.00  0.00
+HETATM    1 NA   TST A   1       0.000   0.000   0.000  1.00  0.00
 ENDMDL

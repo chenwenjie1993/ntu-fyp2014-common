@@ -65,6 +65,7 @@ public class Chain extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle
 					AbstractParticle atom = new Atom();
 					((Atom)atom).setParent(this);
 					((Atom)atom).setSymbol(atomList.get(i).getName());
+					((Atom)atom).setElementSymbol(atomList.get(i).getElement().toString());
 					((Atom)atom).setChainSeqNum(((HetatomImpl)g).getResidueNumber().getSeqNum());
 					((Atom)atom).setAtomSeqNum(atomList.get(i).getPDBserial());
 					((Atom)atom).setCoordinates(atomList.get(i).getCoords());

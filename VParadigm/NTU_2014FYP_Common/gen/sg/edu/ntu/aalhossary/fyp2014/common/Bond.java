@@ -9,17 +9,26 @@ import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.BondType;
  */
 public class Bond implements Interaction {
 
-	BondType bondType = null;
+	//BondType bondType = null;
 	//float bondAngle = 0.0f;
-	Particle a,b;
+	Atom a,b;
 
-	public Bond(Particle a, Particle b) {
+	public Bond(Atom a, Atom b) {
 		this.a = a;
 		this.b = b;
-		setBondType(a,b);
+		//setBondLength();
+		//setBondType(a,b);
 	}
 
-	@Override
+	public Atom getAtom1(){
+		return a;
+	}
+	
+	public Atom getAtom2(){
+		return b;
+	}
+
+	/*@Override
 	public void setBondType(Particle a, Particle b) {
 		// check if either particle is C.
 		if((isNitrogen(a) && isCarbon(b)) ||  (isNitrogen(b) && isCarbon(a))){
@@ -45,6 +54,6 @@ public class Bond implements Interaction {
 	}
 	public String getBondType(){
 		return bondType.toString();
-	}
+	}*/
 
 }

@@ -12,6 +12,7 @@ public class Model {
 	protected Structure structure;
 	protected ArrayList<Molecule> molecules;
 	protected HashMap<String, Atom> atomHash;
+	protected Bond[] bonds;
 	
 	public Model() {
 		molecules = new ArrayList<Molecule>();
@@ -55,5 +56,16 @@ public class Model {
 	
 	public HashMap<String, Atom> getAtomHash(){
 		return atomHash;
+	}
+	
+	public void setBonds(ArrayList<Bond> ownbonds){
+		bonds = new Bond[ownbonds.size()];
+		for(int i=0;i<ownbonds.size();i++){
+			bonds[i] = ownbonds.get(i);
+		}
+	}
+	
+	public Bond[] getBonds(){
+		return bonds;
 	}
 }

@@ -75,7 +75,11 @@ public class EvaluateUserAction {
 				updateReg.viewer.evalString("set picking DRAGATOM");
 			}
 			else if(dragMode==DRAGATOMMINIMIZE || dragMode==DRAGSELECTEDMINIMIZE){
-				Minimizer.setupMinimizing(updateReg.modelList);
+				System.out.println("Evaluating set picking dragatom");
+				int model = updateReg.viewer.getDisplayModelIndex();
+				updateReg.viewer.evalString("set picking DRAGATOM");
+				Minimizer minimizer = new Minimizer();
+				minimizer.setupMinimizing(updateReg.modelList.get(model));
 			}
 	}
 

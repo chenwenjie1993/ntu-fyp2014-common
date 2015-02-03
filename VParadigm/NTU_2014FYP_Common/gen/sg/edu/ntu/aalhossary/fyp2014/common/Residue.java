@@ -15,14 +15,11 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 	protected int moleculeSeqNum;
 	protected Chain chain;
 	protected ArrayList<Atom> atoms;
-	protected ArrayList<Bond> bonds;
 	
 	public Residue() {
 		super();
 		name = null;
 		atoms = new ArrayList<Atom>();
-		bonds = new ArrayList<Bond>();
-		
 	}
 	
 	public String getName() {
@@ -63,25 +60,11 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 			atom = new Atom();
 			((Atom)atom).setParent(this);
 			((Atom)atom).setSymbol(atoms.get(i).getName());
+			((Atom)atom).setElementSymbol(atoms.get(i).getElement().toString());
 			((Atom)atom).setChainSeqNum(chainSeqNum);
 			((Atom)atom).setAtomSeqNum(atoms.get(i).getPDBserial());
 			((Atom)atom).setCoordinates(atoms.get(i).getCoords());
 			this.atoms.add(((Atom)atom));
-		}
-		setBondsBetweenAtoms();
-	}
-	
-	private void setBondsBetweenAtoms(){
-		Bond bond;
-		// loop for each atom in residue
-		for(int i=0;i<atoms.size()-1;i++){
-			// compare the current atom with next atom.
-			bond = new Bond(atoms.get(i), atoms.get(i+1));
-			// add bond to the array of bonds between atom for this residue
-			bonds.add(bond);
-			// add the bond to atom
-			atoms.get(i).setBond(bond);
-			atoms.get(i+1).setBond(bond);
 		}
 	}
 

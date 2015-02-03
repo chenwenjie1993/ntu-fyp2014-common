@@ -14,8 +14,8 @@ public class TestDisplayParticles {
 	public static void main(String[] args){
 		
 		//showTest();
-		//showTest2();
-		test3();
+		showTest2();
+		//test3();
 	}
 	
 	public static void test3(){
@@ -32,8 +32,11 @@ public class TestDisplayParticles {
 		UpdateRegistry.displayModels(models, editor.getViewer());
 		AbstractParticle p1 = new Atom();
 		AbstractParticle p2 = new Atom();
-		AbstractParticle[] particles = {p1, p2};
-		editor.getMediator().notifyUpdated(particles);
+		ArrayList<AbstractParticle> particles = new ArrayList<AbstractParticle>();
+		particles.add(p1);
+		particles.add(p2);
+		editor.getMediator().displayParticles(particles);
+		//editor.getMediator().notifyUpdated(particles);
 	}
 
 	public static void showTest() {
@@ -54,7 +57,7 @@ public class TestDisplayParticles {
 		
 		// use this to update the moved particles
 		AbstractParticle[] particles = {p1, p2};
-		editor.getMediator().notifyUpdated(particles);
+		//editor.getMediator().notifyUpdated(particles);
 	}
 	
 	// Convert particles to model format

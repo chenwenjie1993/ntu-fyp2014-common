@@ -1,12 +1,17 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.biojava.bio.structure.Structure;
 import org.jmol.api.JmolViewer;
@@ -16,6 +21,7 @@ import org.jmol.viewer.Viewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
+import sg.edu.ntu.aalhossary.fyp2014.common.Bond;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.ToolPanel;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
@@ -34,6 +40,14 @@ public class UpdateRegistry {
 		this.viewer = viewer;
 		this.modelList = models;
 		this.toolPanel = toolPanel;
+		this.dataMgr = new DataManager();
+		this.mouseState = new MouseState();
+		this.dragMode = -1;
+	}
+	
+	public UpdateRegistry(Viewer viewer, List<Model> models){
+		this.viewer = viewer;
+		this.modelList = models;
 		this.dataMgr = new DataManager();
 		this.mouseState = new MouseState();
 		this.dragMode = -1;
@@ -95,6 +109,35 @@ public class UpdateRegistry {
 			selectedAtoms.get(i).setCoordinates(coords);
 		}
 	}
+
+	public void setModelBonds() {
+		int currModel=0, prevModel=0;
+		Atom atom1, atom2;
+		Bond bond; 
+		String index1, index2;
+		ArrayList<Bond> ownbonds = new ArrayList<Bond>();
+		org.jmol.modelset.Bond[] bonds = viewer.ms.bo;
+		for(int i=0;i<bonds.length;i++){
+			prevModel = currModel;
+			currModel = bonds[i].getAtom1().getModelNumber();
+			Model model = modelList.get(currModel-1);
+			if(currModel!=prevModel && i!=0){
+				modelList.get(prevModel-1).setBonds(ownbonds);
+				ownbonds.clear();
+			}
+			index1 = model.getModelName()+bonds[i].getAtom1().atomSite;
+			index2 = model.getModelName()+bonds[i].getAtom2().atomSite;
+			atom1 = model.getAtomHash().get(index1);
+			atom2 = model.getAtomHash().get(index2);
+			bond = new Bond(atom1, atom2);
+			ownbonds.add(bond);
+			atom1.setBond(bond);
+			atom2.setBond(bond);
+			if(i==bonds.length-1){
+				modelList.get(currModel-1).setBonds(ownbonds);
+			}
+		}
+	}
 	
 	/*********************************************/
 	/*** Methods that notify viewer on changes ***/
@@ -150,7 +193,7 @@ public class UpdateRegistry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//createUserModel("res/temp/temp.pdb");
+		createUserModel(DataManager.readFile("res/temp/temp.pdb"));
 	}
 	
 	public void displayParticles(AbstractParticle p1, AbstractParticle p2){
@@ -191,7 +234,7 @@ public class UpdateRegistry {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//createUserModel("res/temp/temp.pdb");
+		createUserModel(DataManager.readFile("res/temp/temp.pdb"));
 	}
 
 	public void notifyUpdated(AbstractParticle[] particles){
@@ -244,6 +287,8 @@ public class UpdateRegistry {
 	/******************************************/
 	
 	public void createUserModel(Structure struc) {
+		// read default MMFFtypes for atoms
+		
 		if(modelList==null)
 			modelList = new ArrayList<Model>();
 		Model model=null;
@@ -255,7 +300,7 @@ public class UpdateRegistry {
 			modelList.add(model);
 		}
 	}
-
+	
 	public List<Model> getModelList() {
 		return modelList;
 	}

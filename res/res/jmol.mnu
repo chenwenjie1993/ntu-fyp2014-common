@@ -451,7 +451,7 @@ selectedCopy | Copy Selected = own Copy
 selectedCut | Cut Selected = own Cut
 selectedPaste | Paste Selected = own Paste
 dragAtom | drag atom = own dragAtom
-dragAtomMinimize | drag atom (and minimize) = own dragAtomMinimize
+dragAtomMinimize | drag atom (and minimize) = set picking DRAGMINIMIZE
 dragSelected | drag selected = own dragSelected
 dragSelectedMin | drag selected and minimize (not able) = own dragSelectedMinimize
 

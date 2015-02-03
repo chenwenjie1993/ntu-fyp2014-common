@@ -61,7 +61,8 @@ public class MyJmolStatusListener implements JmolStatusListener {
 		case ATOMMOVED:
 			jmolPanel.getMediator().atomMoved((BS)data[1]);
 			return;
-    	case LOADSTRUCT:	
+    	case LOADSTRUCT:
+    		jmolPanel.getMediator().setModelBonds();
     		return;
     	case SCRIPT:
     		// will enter when using edited library of Jmol in "res/resources/editedJmol/Jmol-edited.jar"

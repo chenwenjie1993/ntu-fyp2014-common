@@ -7,7 +7,9 @@ import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.AtomType;
 public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
 
 	protected java.lang.String name;
-	protected java.lang.String symbol;
+	protected java.lang.String pdbsymbol; // symbol from pdb
+	protected String eleSymbol;	// element symbol.
+	protected int mmType=-1;
 	protected double atomicMass;
 	protected float atomicNum;
 	protected int ionCharge;
@@ -20,7 +22,7 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	protected double vdw_radius;	// waiyan: jmol should have vdw_radius?
 	
 	public Atom() {
-		bonds = new ArrayList<Bond>();
+		bonds = new ArrayList<Bond>(4);
 		coordinates = new float[3]; 
 	}
 	
@@ -33,12 +35,12 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	}
 	
 	public String getSymbol(){
-		return symbol;
+		return pdbsymbol;
 	}
 	
 	public void setSymbol(String symbol){
 		symbol = symbol.toUpperCase();
-		this.symbol = symbol;
+		this.pdbsymbol = symbol;
 		// when setting symbol of atom, set the name, atomic mass and atomic number
 		boolean found=false;
 		for(AtomType a: AtomType.values()){
@@ -52,6 +54,25 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 		if(!found){
 			System.out.println("[" + symbol + "] symbol is not in AtomType.java, please add or check for error");
 		}
+	}
+	
+	public String getElementSymbol() {
+		return eleSymbol;
+	}
+	
+	public void setElementSymbol(String string) {
+		if(string.compareTo("R")==0)
+			this.eleSymbol = pdbsymbol;
+		else
+			this.eleSymbol = string;
+	}
+	
+	public int getmmType(){
+		return mmType;
+	}
+	
+	public void setmmType(int mmType){
+		this.mmType = mmType;
 	}
 	
 	public Particle getParent(){

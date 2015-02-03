@@ -66,7 +66,7 @@ public class MoleculeEditor {
 	}
 
 	private static void initJmolDisplay(){
-		//frame = new JFrame();
+		frame = new JFrame();
 		//JMenuBar menu = MenuCreator.initMenu(frame);
         //frame.setJMenuBar(menu);
         frame.addWindowListener(new WindowAdapter() {
@@ -93,7 +93,7 @@ public class MoleculeEditor {
 			fileHandler = new FileHandler("./res/res/Error.log");
 			logger.addHandler(fileHandler);
 			fileHandler.setFormatter(new SimpleFormatter());
-			PrintStream outPS = new PrintStream(new BufferedOutputStream(new FileOutputStream("./res/res/Error.log", true)));  // append is true
+			PrintStream outPS = new PrintStream(new BufferedOutputStream(new FileOutputStream("./res/res/Error.log")));  // append is true
 			System.setErr(outPS);
 		} catch (SecurityException e) {
 			e.printStackTrace();
