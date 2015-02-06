@@ -1,11 +1,14 @@
 package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 
+import sg.edu.ntu.aalhossary.fyp2014.ss_predictor.PredictorController.InputMethodEnum;
 import sg.edu.ntu.aalhossary.fyp2014.ss_predictor.PredictorController.OutputMethodEnum;
 import sg.edu.ntu.aalhossary.fyp2014.ss_predictor.PredictorController.PredictorEnum;
 
 public class OutputManager {
 
 	OutputMethodEnum outputMethod;
+	public InputManager inputManager = new InputManager();
+	public STRIDE_Predictor sp = new STRIDE_Predictor();
 	
 	public OutputMethodEnum getOutputMethod() {
 		return outputMethod;
@@ -39,7 +42,11 @@ public class OutputManager {
 		
 		
 	}
-	public void OutputObjects(){
-		
+	public void OutputObjects(InputMethodEnum input){
+		if(input==InputMethodEnum.pdb_file_iupred ||input==InputMethodEnum.pdb_file_stride ){
+		//	IOutility.createObjectsFromPDB(sp.Pregion);
+		}else if(input==InputMethodEnum.objects){
+			IOutility.createObjectsFromModel(sp.Pregion, inputManager.input);
+		}
 	}
 }

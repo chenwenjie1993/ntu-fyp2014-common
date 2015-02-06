@@ -5,7 +5,9 @@ public class STRIDE_Output {
 	 String prediction;
 	 String chain;
 	 String start;
+	 String startpos;
 	 String end;
+	 String endpos;
 	
 	 public void Rpred (String Rpred){
 		 prediction = Rpred;
@@ -13,14 +15,22 @@ public class STRIDE_Output {
 	 public void Rchain (String Rchain){
 		 chain = Rchain;
 	 }
-	 public void Rstart(String one, String two){
+	 public void Rstart(String Rstart){
 		 
-		 start = one.concat(two);
+		 start = Rstart;
 	 }
-	 public void Rend(String one, String two){
-		end = one.concat(two); 
+	 
+	 public void RstartPos(String RstartPos){
+		 startpos = RstartPos;
+	 }
+	 public void Rend(String Rend){
+		end = Rend;
 		 
 	 }
+	 public void RendPos(String RendPos){
+		 endpos = RendPos;
+	 }
+	 
 	 public void printRegion(){
 		 System.out.println("Prediction:"+prediction+"	Chain:"+chain+"		Start:"+start+"		End:"+ end);	 
 	 }

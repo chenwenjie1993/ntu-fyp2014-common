@@ -61,7 +61,7 @@ public class PredictionManager {
 			if(predictor==PredictorEnum.STRIDE){
 					if(input instanceof ArrayList<?>){
 						if(((ArrayList<?>)input).get(0)instanceof Model){
-							IOutility.ObjectstoPdbFile((ArrayList<Model>)input);
+							IOutility.ObjectstoPdbString((ArrayList<Model>)input);
 							this.predictor=new STRIDE_Predictor();
 						}		
 				}else{
@@ -82,15 +82,19 @@ public class PredictionManager {
 				}
 			
 			break;
-		case pdb_file://do not have to read file to input stream
+		case pdb_file_stride://do not have to read file to input stream
 			if(predictor==PredictorEnum.STRIDE){
 					if(input instanceof File){
 						pathname = ((File)input).getAbsolutePath();
 						this.predictor=new STRIDE_Predictor();
 					}
-			}
+			}else{
+				throw new IllegalArgumentException("Can't instantiate instance based on input");
+				}
+			break;
+		case pdb_file_iupred:	
 			//TODO prepare (PDB to FASTA) pipeline (if you need)
-			else if(predictor==PredictorEnum.IUPRED){
+			if(predictor==PredictorEnum.IUPRED){
 					if(input instanceof File){
 						String filepath = ((File)input).getAbsolutePath();
 						String fasta = IOutility.pdbFileTofastaString(filepath);
@@ -101,6 +105,7 @@ public class PredictionManager {
 			}else {
 				throw new IllegalArgumentException("Can't instantiate instance based on input");
 				}
+			break;
 		case pdb_string:
 			//TODO prepare (PDB to FASTA) pipeline (if you need)
 			 if(predictor==PredictorEnum.IUPRED){

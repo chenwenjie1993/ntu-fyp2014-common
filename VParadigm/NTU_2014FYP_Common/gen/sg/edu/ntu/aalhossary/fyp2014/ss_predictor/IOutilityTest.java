@@ -3,11 +3,22 @@ package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
+import org.biojava.bio.structure.Structure;
 import org.junit.Test;
+
+import sg.edu.ntu.aalhossary.fyp2014.common.AminoAcid;
+import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.common.Residue;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.DataManager;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
 
 public class IOutilityTest {
 
@@ -27,14 +38,27 @@ public class IOutilityTest {
 
 	@Test
 	public void testPdbFileTofastaString() {
-		String pathname = "/Users/benkong/documents/fyp/stride/4HHB.pdb";
+		String pathname = "/Users/benkong/documents/fyp/stride/1PGB.pdb";
 		String pdbstring = IOutility.pdbFileTofastaString(pathname);
-		//System.out.println(pdbstring);
+		String result = ">"+"\n" + "MTYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE";
+		assertEquals(result,pdbstring);
 	}
 
 	@Test
-	public void testPdbStringTofastaString() {
-		fail("Not yet implemented");
+	public void testPdbStringTofastaString() throws IOException {
+		String pathname = "/Users/benkong/documents/fyp/stride/1PGB.pdb";
+		File file = new File(pathname);
+		StringBuilder sb = new StringBuilder((int)file.length());
+		Scanner input = new Scanner(file);
+		String lineSeparator = System.getProperty("line.separator");
+		while (input.hasNextLine()){
+			sb.append(input.nextLine() + lineSeparator);
+		}
+		String result = sb.toString();
+		//System.out.println(result);
+		String test = ">"+"\n" + "MTYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE";
+		String fastastring = IOutility.pdbStringTofastaString(result);
+		assertEquals(test,fastastring);
 	}
 
 	@Test
@@ -55,12 +79,57 @@ public class IOutilityTest {
 
 	@Test
 	public void testObjectstoFasta() {
-		fail("Not yet implemented");
+		File file = new File("/Users/benkong/documents/fyp/stride/1PGB.pdb");
+		Structure struc = DataManager.readFile(file.getAbsolutePath());
+		UpdateRegistry updateReg = new UpdateRegistry();
+		updateReg.createUserModel(struc);
+		ArrayList<Model> models = (ArrayList<Model>)updateReg.getModelList();
+		String result = IOutility.ObjectstoFasta(models.get(0).getMolecules().get(0).getChains());
+		String test = ">"+"\n" + "MTYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE";
+		assertEquals(test,result);
 	}
 
 	@Test
-	public void testObjectstoPdbFile() {
-		fail("Not yet implemented");
+	public void testObjectstoPdbString() {
+		File file = new File("/Users/benkong/documents/fyp/stride/1PGB.pdb");
+		Structure struc = DataManager.readFile(file.getAbsolutePath());
+		UpdateRegistry updateReg = new UpdateRegistry();
+		updateReg.createUserModel(struc);
+		ArrayList<Model> models = (ArrayList<Model>)updateReg.getModelList();
+		String pdbstring = IOutility.ObjectstoPdbString(models);
+		assertNotNull(pdbstring);
+		
 	}
+	@Test
+	public void testCreateAminoAcid() throws IOException{
+		String pathname = "/Users/benkong/documents/fyp/stride/1PGB.pdb";
+		STRIDE_Predictor sp = new STRIDE_Predictor();
+		ArrayList<AminoAcid>test = null;
+		sp.process(pathname);
+		test = IOutility.createAminoAcid(pathname,sp.Pregion.get(0));
+		assertNotNull(IOutility.createAminoAcid(pathname,sp.Pregion.get(0)));
+		/*System.out.println(test.get(0).getResidueSeqNum());
+		System.out.println(test.get(0).getName());
+		float[] coo = test.get(0).getAtomList().get(0).getCoordinates();
+		System.out.println(Arrays.toString(coo));*/
+		
+	}
+	@Test
+	public void testCreateObjectsFromModel() throws IOException {
+		String pathname = "/Users/benkong/documents/fyp/stride/1PGB.pdb";
+		STRIDE_Predictor sp = new STRIDE_Predictor();
+		sp.process(pathname);
+		File file = new File("/Users/benkong/documents/fyp/stride/1PGB.pdb");
+		Structure struc = DataManager.readFile(file.getAbsolutePath());
+		UpdateRegistry updateReg = new UpdateRegistry();
+		updateReg.createUserModel(struc);
+		ArrayList<Model> models = (ArrayList<Model>)updateReg.getModelList();
+		
+		ArrayList<ArrayList<Residue>> test =  IOutility.createObjectsFromModel(sp.Pregion, models.get(0));
+		//System.out.println(test.get(0).get(3).getResidueSeqNum());
+		assertEquals("ASP",test.get(0).get(0).getName());
+		
+	}
+	
 
 }

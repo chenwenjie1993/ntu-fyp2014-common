@@ -13,7 +13,12 @@ public class PredictorController {
 
 	
 	public enum InputMethodEnum {
-		pdb_string, pdb_file,fasta_string, fasta_file, objects
+		pdb_string,
+		pdb_file_stride,
+		pdb_file_iupred,
+		fasta_string,
+		fasta_file, 
+		objects
 	}
 
 	

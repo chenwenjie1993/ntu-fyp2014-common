@@ -3,18 +3,14 @@ package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SequenceOutput {
-	
+public class IUPRED_Output {
 	String position;
 	String aminoacid;
-	float score;
+	String score;
+	static final Map<String, String> map = new HashMap<>();
 	
-	public void outputposition (String Rposition){
-		this.position = Rposition;
-	}
 	
-	public void mapAminoAcid (String alphabet){
-		Map<String, String> map = new HashMap<>();
+	static {
 		map.put("G", "GLY");
 		map.put("A", "ALA");
 		map.put("V", "VAL");
@@ -37,8 +33,23 @@ public class SequenceOutput {
 		map.put("E", "GLU");
 	}
 	
-	public void outputscore (float Rscore){
+	public void outputposition (String Rposition){
+		this.position = Rposition;
+	}
+
+	public void outputscore (String Rscore){
 		this.score=Rscore;
 	}
 
+	public void aminoacid(String Raminoacid) {
+		this.aminoacid= map.get(Raminoacid);
+	}
+	public void printRegion(){
+		 System.out.println("Pos:"+position+"	AminoAcid:"+aminoacid+" Score:"+score); 
+	 }
+	public String toString(){
+		String string=null;
+		string = "Pos:"+position+"	AminoAcid:"+aminoacid+" Score:"+score+"";
+		return string;
+	}
 }
