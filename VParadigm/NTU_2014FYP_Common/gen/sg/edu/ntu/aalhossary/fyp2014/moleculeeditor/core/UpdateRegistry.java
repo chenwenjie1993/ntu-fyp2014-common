@@ -166,17 +166,20 @@ public class UpdateRegistry {
 	
 	public void displayParticles(ArrayList<AbstractParticle> list){
 		DecimalFormat decformat = new DecimalFormat("#.###");
+	
+		
 		String[] coord;
 		String pdb = "MODEL       1\n";
 		for(int i=0; i<list.size();i++){
 			if(list.get(i) instanceof Atom){
+				double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
 				coord = new String[3];
 				coord[0] = decformat.format(list.get(i).getPosition().x);
 				coord[1] = decformat.format(list.get(i).getPosition().y);
 				coord[2] = decformat.format(list.get(i).getPosition().z);
 				Vector3D position = list.get(i).getPosition();
-				String coords= String.format("%8.3f%8.3f%8.3f", position.x,position.y,position.z);
-				String properties = "HETATM    1 NA   TST A   1    "+coords+"  1.00  0.00";
+				String coords= String.format("%8.3f%8.3f%8.3f", position.x*scale,position.y*scale,position.z*scale);
+				String properties = "HETATM    1 CL   TST A   1    "+coords+"  1.00  0.00";
 				pdb += properties + '\n';
 			}
 			else{
@@ -198,6 +201,7 @@ public class UpdateRegistry {
 	
 	public void displayParticles(AbstractParticle p1, AbstractParticle p2){
 		DecimalFormat decformat = new DecimalFormat("#.###");
+		/*
 		String[] coord = new String[6];
 		coord[0] = decformat.format(p1.getPosition().x);
 		coord[1] = decformat.format(p1.getPosition().y);
@@ -214,6 +218,7 @@ public class UpdateRegistry {
 			}
 			spaces[i] = space;
 		}
+		*/
 //							  "         1         2         3         4         5         6         7         8
 //							  "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
 		double scale = Math.pow(10, 10);
