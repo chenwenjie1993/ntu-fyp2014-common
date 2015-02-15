@@ -18,9 +18,11 @@ public class NarrowCollisionDetector {
 		
 			for (AbstractParticle b: neighbouringParticles){
 	
-				double diff_x = a.getPosition().x - b.getPosition().x;
-				double diff_y = a.getPosition().y - b.getPosition().y;
-				double diff_z = a.getPosition().z - b.getPosition().z;
+				double scale1 = Math.pow(10, a.getPosition().metric);
+				double scale2 = Math.pow(10, b.getPosition().metric);
+				double diff_x = a.getPosition().x * scale1 - b.getPosition().x * scale2;
+				double diff_y = a.getPosition().y * scale1 - b.getPosition().y * scale2;
+				double diff_z = a.getPosition().z * scale1 - b.getPosition().z * scale2;
 				double min_dist = Math.min(Math.abs(diff_x), Math.min(Math.abs(diff_y), Math.abs(diff_z)));
 				
 				double r1 = ((BoundingSphere)(a.getBoundingPrimitive())).getRadius();

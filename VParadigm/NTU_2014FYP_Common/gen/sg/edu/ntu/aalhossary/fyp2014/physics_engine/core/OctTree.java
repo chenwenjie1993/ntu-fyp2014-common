@@ -32,6 +32,9 @@ public class OctTree {
        depth = level;
 	}
    
+	public ArrayList <AbstractParticle> getAllParticles(){
+		return particles;
+	}
 	public void clear() {
       particles.clear();
     

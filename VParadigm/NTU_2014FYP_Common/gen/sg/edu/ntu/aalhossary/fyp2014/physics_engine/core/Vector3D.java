@@ -133,10 +133,10 @@ public class Vector3D {
 	}
 	
 	public String print(){
-		
-		String x_str = convertMetric(x);
-		String y_str = convertMetric(y);
-		String z_str = convertMetric(z);
+		double scale = Math.pow(10, metric);
+		String x_str = convertMetric(x*scale);
+		String y_str = convertMetric(y*scale);
+		String z_str = convertMetric(z*scale);
 		return x_str + ", " + y_str + ", " + z_str;
 		//return String.valueOf(formatter.format(x)) + ", " + String.valueOf(formatter.format(y)) + ", " + String.valueOf(formatter.format(z));
 	}
