@@ -16,8 +16,8 @@ public class ContactResolver {
 		for (AbstractParticle[] potentialContact : potentialContacts){
 			AbstractParticle a1 = potentialContact[0];
 			AbstractParticle a2 = potentialContact[1];
-			Vector3D v1 = a1.calculateVelocityChange(a2.getMass(), a2.getVelocity(), World.COEFFICENT_OF_RESTITUTION);
-			Vector3D v2 = a2.calculateVelocityChange(a1.getMass(), a1.getVelocity(), World.COEFFICENT_OF_RESTITUTION);	
+			Vector3D v1 = a1.calculateVelocityChange(a2, World.COEFFICENT_OF_RESTITUTION);
+			Vector3D v2 = a2.calculateVelocityChange(a1, World.COEFFICENT_OF_RESTITUTION);	
 			a1.setVelocity(v1.x, v1.y, v1.z);
 			a2.setVelocity(v2.x, v2.y, v2.z);
 			System.out.println("Imparting velocity: " + v1.print() + "\t" + v2.print());

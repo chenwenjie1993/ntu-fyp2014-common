@@ -11,6 +11,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.DISTANCE;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.MASS;
 
@@ -30,7 +31,10 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 		this.setNetCharge(valence);
 		this.boundingPrimitive = new BoundingSphere(radius, position);
 		this.atomicSymbol = atomicSymbol;
-		
+		this.setElementSymbol(atomicSymbol.toUpperCase());
+	}
+	public Vector3D getForceAccumulated(){
+		return this.forceAccumulated;
 	}
 	
 	public void setNetCharge(int charge){
@@ -67,8 +71,11 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 	
 	}
 	
-	public Vector3D calculateVelocityChange(double other_mass, Vector3D other_velocity, double COEFFICIENT_OF_RESTITUTION){
+	public Vector3D calculateVelocityChange(AbstractParticle other, double COEFFICIENT_OF_RESTITUTION){
 		// v1 = u1*(m1-m2) + 2*m2*u2 / m1+m2
+		
+		double other_mass = other.getMass();
+		Vector3D other_velocity = other.getVelocity();
 		Vector3D temp = new Vector3D();
 		double mass = 1/this.inverseMass;
 		double metricDiff = other_velocity.metric - velocity.metric;

@@ -100,10 +100,11 @@ public class MainWindow extends JFrame {
 				if(pauseButton.getText().equals("Pause")){
 					pauseButton.setText("Resume");
 					World.simulationStatus = "paused";
-				}
+			}
 				else{
 					pauseButton.setText("Pause");
 					World.simulationStatus = "running";
+					World.countDownLatch.countDown();
 				}
 			}
 		});
@@ -112,6 +113,10 @@ public class MainWindow extends JFrame {
 		restartButton = new JButton("Restart");
 		restartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(World.simulationStatus.equals("paused")){
+					World.countDownLatch.countDown();
+					pauseButton.setText("Pause");
+				}
 				World.simulationStatus = "restart";
 			}
 		});
@@ -177,22 +182,17 @@ public class MainWindow extends JFrame {
 	    molecularRadioButton = new JRadioButton("molecular");
 	    bg.add(atomicRadioButton);
 	    bg.add(molecularRadioButton);
-	    atomicRadioButton.setSelected(true);
+	    
+	    if(World.simulationLvlAtomic == true)
+	    	atomicRadioButton.setSelected(true);
+	    else
+	    	molecularRadioButton.setSelected(true);
 	    
 	    JPanel panel2 = new JPanel();
 	    panel2.add(atomicRadioButton);
 	    panel2.add(molecularRadioButton);
-		simLvlPanel.add(panel2);
-	
+		simLvlPanel.add(panel2);	
 	}
-	
-	public void actionPerformed(ActionEvent evt) {
-	    Object source = evt.getSource();
-	    if (source == atomicRadioButton)
-	    	World.simulationLvlAtomic = true;
-	    else if (source == molecularRadioButton)
-	    	World.simulationLvlAtomic = false;
-	  }
 
 	private void addActionListeners() {
 		DecimalFormat formatter = new DecimalFormat("0.00");
@@ -219,6 +219,24 @@ public class MainWindow extends JFrame {
 					e1.printStackTrace();
 				}
             }
+		});
+		
+		atomicRadioButton.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent e) {
+		    	JRadioButton button = (JRadioButton) e.getSource();
+		        if (button.getText().equals("atomic")){
+		        	World.simulationLvlAtomic = true;
+		        }
+		    }
+		});
+		
+		molecularRadioButton.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent e) {
+		    	JRadioButton button = (JRadioButton) e.getSource();
+		        if (button.getText().equals("molecular")){
+		        	World.simulationLvlAtomic = false;
+		        }
+		    }
 		});
 	}
 }

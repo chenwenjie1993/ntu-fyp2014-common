@@ -27,7 +27,7 @@ public class NarrowCollisionDetector {
 				
 				double r1 = ((BoundingSphere)(a.getBoundingPrimitive())).getRadius();
 				double r2 = ((BoundingSphere)(b.getBoundingPrimitive())).getRadius();
-				//bond_length = r1+r2;//r1+r2;
+				
 				
 				double bond_length = 0.28E-9;
 				if(min_dist <= bond_length){

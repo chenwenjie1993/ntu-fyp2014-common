@@ -6,6 +6,8 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
@@ -18,6 +20,9 @@ public class World {
 	public static int particleCount = 0;
 	public static boolean simulationLvlAtomic = true;
 	public static String simulationStatus = "running";
+	public static CountDownLatch countDownLatch;
+	
+	
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
 	public static double mass_metric = MASS.kg.value();
@@ -58,24 +63,29 @@ public class World {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();			
 		}
+		
+		
 
 		a1.setPosition(0, 0, 0);
 		a1.setVelocity(0, 0, 0);
-		a1.setAcceleration(0, 0, 0);
 		a1.setNetCharge(1);		// find a way to get oxidation state/ net charge
 		
 		a2.setPosition(5e-10, 5e-10, 5e-10);
 		a2.setVelocity(0, 0, 0);
-		a2.setAcceleration(0, 0, 0);
 		a2.setNetCharge(-1);
+		
+		ArrayList<Atom> atomList = new ArrayList<>();
+		atomList.add((Atom)a1);
+		atomList.add((Atom)a2);
+		Molecule m1 = new Molecule(atomList);
 		
 		a3.setPosition(10e-10, 10e-10, 10e-10);
 		a3.setVelocity(0, 0, 0);
-		a3.setAcceleration(0, 0, 0);
 		a3.setNetCharge(1);
 		
-		octTree.insert(a1);
-		octTree.insert(a2);
+	//	octTree.insert(a1);
+	//	octTree.insert(a2);
+		octTree.insert(m1);
 		octTree.insert(a3);
 		
 /*		AbstractParticle a4 = new Atom ("He");
@@ -124,7 +134,7 @@ public class World {
 			 System.setOut(dummyStream);
 			 window = new MainWindow();
 			 window.getMediator().displayParticles(octTree.getAllParticles());
-			 System.setOut(originalStream);
+		//	 System.setOut(originalStream);
 		}		
 		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
@@ -141,48 +151,55 @@ public class World {
 			// Update tree only after integration
 			octTree.updateAllActiveParticles();
 			
-			
+		/*	
 			System.out.print(i + "\t");
+			printParticleStatus(m1);
 			printParticleStatus(a1);
-			//System.out.println();
 			printParticleStatus(a2);
 			printParticleStatus(a3);
 			System.out.println();
-			
+		*/	
 			// Collision Detection 
 			detector.detectCollision();    	 
 
 			// Resolve Collisions and set active particles
 			resolver.resolveContacts(potentialContacts);	
 			
-			if(simulationStatus.equals("restart")){
-				a1.setPosition(0, 0, 0);
-				a1.setVelocity(0, 0, 0);
-				a1.setAcceleration(0, 0, 0);
-				a2.setPosition(5e-10, 5e-10, 5e-10);
-				a2.setVelocity(0, 0, 0);
-				a2.setAcceleration(0, 0, 0);
-				a3.setPosition(10e-10, 10e-10, 10e-10);
-				a3.setVelocity(0, 0, 0);
-				a3.setAcceleration(0, 0, 0);
-				i=0;
-				simulationStatus = "running";
-			}
 			
-			else if(simulationStatus.equals("paused")){
-				i--;
-			}
 			
 			if(displayUI){
 				AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
 			//	editor.getMediator().notifyUpdated(temp_particles);
 				if(i%100 == 0){
-			//		editor.getMediator().displayParticles(a1, a2);
 					System.setOut(dummyStream);
 					window.getMediator().displayParticles(octTree.getAllParticles());
-					System.setOut(originalStream);
+				//	System.setOut(originalStream);
 				}
+				
+				if(simulationStatus.equals("restart")){
+					
+					a1.setPosition(0, 0, 0);
+					a2.setPosition(5e-10, 5e-10, 5e-10);
+					a3.setPosition(10e-10, 10e-10, 10e-10);
+					m1.setPosition(2.5e-10, 2.5e-10, 2.5e-10);
+					for (AbstractParticle particle: octTree.getAllParticles())
+						particle.setVelocity(0, 0, 0);
+					
+				//	checkForActiveParticles();
+					
+					i=0;
+					simulationStatus = "running";
+		
+				}
+				
+				else if(simulationStatus.equals("paused")){
+					i--;
+					countDownLatch = new CountDownLatch(1);
+					countDownLatch.await(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
+				}
+				
 			}
+			
 			i++;
 			if(i == 30001) 
 				i = 0;
@@ -215,8 +232,8 @@ public class World {
 	}
 	
 	private static void printParticleStatus(AbstractParticle p){
-	//	System.out.print(p.getPosition().print()+"\t");
-		System.out.print(p.getVelocity().print()+"\t");
+		System.out.print(p.getPosition().print()+"\t");
+	//	System.out.print(p.getVelocity().print()+"\t");
 	}
 	
 	public static void setCommand(String command) throws Exception{
