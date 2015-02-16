@@ -51,7 +51,6 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		boundingPrimitive.updateCentre(x, y, z, position.metric);	
 	}
 	
-	@Deprecated
 	public void movePositionBy (double dist_x, double dist_y, double dist_z, int metric) {
 		double metricDiff = metric - position.metric;
 		if(metricDiff == 0) {
@@ -65,7 +64,7 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 			position.y += dist_y*scale;
 			position.z += dist_z*scale;
 		}
-			
+		boundingPrimitive.updateCentre(position.x, position.y, position.z, position.metric);		
 	}
 	
 	public Vector3D getVelocity() {
@@ -80,11 +79,15 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		velocity.x = x; velocity.y = y; velocity.z = z;
 	}
 	
-	public Vector3D calculateVelocityChange(double other_mass, Vector3D other_velocity, double COEFFICIENT_OF_RESTITUTION){
+	public Vector3D calculateVelocityChange(AbstractParticle other, double COEFFICIENT_OF_RESTITUTION){
 		
 		if(this instanceof Atom) {
 			Atom atom = (Atom) this;
-			return atom.calculateVelocityChange(other_mass, other_velocity, COEFFICIENT_OF_RESTITUTION);
+			return atom.calculateVelocityChange(other, COEFFICIENT_OF_RESTITUTION);
+		}
+		else if (this instanceof Molecule){
+			Molecule molecule = (Molecule) this;
+			return molecule.calculateVelocityChange(other, COEFFICIENT_OF_RESTITUTION);
 		}
 		return null;
 	}
