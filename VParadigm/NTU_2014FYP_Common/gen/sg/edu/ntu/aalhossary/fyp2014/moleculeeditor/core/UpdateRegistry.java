@@ -215,12 +215,12 @@ public class UpdateRegistry {
 					coord[2] = decformat.format(list.get(i).getPosition().z);
 					Vector3D position = list.get(i).getPosition();
 					String coords= String.format("%8.3f%8.3f%8.3f", position.x*scale,position.y*scale,position.z*scale);
-					pdb += "HETATM    1 NA   TST A   1    "+coords+"  1.00  0.00\n";
+					pdb += "HETATM    1 AR   TST A   1    "+coords+"  1.00  0.00\n";
 				}
 			}
 		}
-		pdb += "CONECT    2      3\n";
-		pdb += "CONECT    3      2\n";
+	//	pdb += "CONECT    1      2\n";
+	//	pdb += "CONECT    2      1\n";
 		pdb += "ENDMDL";
 		viewer.openStringInline(pdb);
 		try {
