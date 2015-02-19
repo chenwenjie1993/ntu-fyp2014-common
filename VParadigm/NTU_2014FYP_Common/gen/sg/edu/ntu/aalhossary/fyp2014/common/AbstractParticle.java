@@ -15,6 +15,7 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	protected Vector3D acceleration;
 	protected Vector3D forceAccumulated;
 	protected Vector3D torqueAccumulated;
+	protected Vector3D velocityAccumulated;
 	protected double inverseMass;
 	protected Matrix3 inverseInertiaTensor;
 	protected Quaternion orientation;
@@ -29,12 +30,17 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		acceleration = new Vector3D(0,0,0);
 		forceAccumulated = new Vector3D(0,0,0);
 		torqueAccumulated = new Vector3D(0,0,0);
+		velocityAccumulated = new Vector3D(0,0,0);
 		inverseMass = 0;
 		orientation = new Quaternion(0,0,0,0);
 		rotation = new Vector3D(0,0,0);
 		netCharge = 0;
 		guid = World.particleCount;
 		World.particleCount ++;
+	}
+	
+	public int getGUID(){
+		return guid;
 	}
 
 	public Vector3D getPosition() {
@@ -77,6 +83,19 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	
 	public void setVelocity(double x, double y, double z) {
 		velocity.x = x; velocity.y = y; velocity.z = z;
+	}
+	
+	public void setVelocityAccumulated() {
+		setVelocity(velocityAccumulated.x,velocityAccumulated.y,velocityAccumulated.z);
+		velocityAccumulated.clear();
+	}
+
+	public void addVelocityAccumulated(double x, double y, double z, int metric) {
+		velocityAccumulated.add(new Vector3D(x,y,z,metric));
+	}
+	
+	public void addVelocityAccumulated(double x, double y, double z) {
+		velocityAccumulated.x += x; velocityAccumulated.y += y; velocityAccumulated.z += z;
 	}
 	
 	public Vector3D calculateVelocityChange(AbstractParticle other, double COEFFICIENT_OF_RESTITUTION){
