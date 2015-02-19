@@ -145,7 +145,7 @@ public class OctTree {
     		 nodes[index].remove(particle, old_position);
     	 
     	 for(AbstractParticle p: particles){
-    		 if(p.getPosition() == old_position){
+    		 if(p.getGUID() == particle.getGUID()){
     			 particles.remove(p);
     			 return;
     		 }
@@ -158,7 +158,7 @@ public class OctTree {
     		 nodes[index].remove(particle);
    	  	 }
     	 for (AbstractParticle p : particles){
-    		 if(p.getPosition() == particle.getPosition()) {
+    		 if(p.getGUID() == particle.getGUID()) {
     			 particles.remove(p);
     			 return;
     		 }

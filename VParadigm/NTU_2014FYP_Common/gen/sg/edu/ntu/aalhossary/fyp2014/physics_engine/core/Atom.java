@@ -49,6 +49,8 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 		this.print_flag = flag;
 	}
 	
+
+	
 	public void integrate(double duration) {
 			
 		// Calculate total acceleration without updating the original ( a = F /m )
@@ -58,6 +60,7 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom implements A
 		// Update current velocity (v = a*t)
 		Vector3D initialVelocity = new Vector3D (velocity.x, velocity.y, velocity.z, velocity.metric);
 		velocity.addScaledVector(currentAcceleration, duration);
+		velocity.round();
 		
 		// Update current position (s = u*t + 0.5*a*t*t)
 		position.addScaledVector(initialVelocity, duration);

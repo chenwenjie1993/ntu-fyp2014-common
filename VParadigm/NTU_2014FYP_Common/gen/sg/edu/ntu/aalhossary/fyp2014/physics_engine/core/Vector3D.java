@@ -51,6 +51,14 @@ public class Vector3D {
 	public void clear() {
 		x = y = z = 0;
 	}
+	
+	public void round(){
+		if(x==0 || y==0 || z==0)
+			return;
+		x = (double)Math.round(x * 1e7) / 1e7;
+		y = (double)Math.round(y * 1e7) / 1e7;
+		z = (double)Math.round(z * 1e7) / 1e7;
+	}
 
 	public double getMagnitude() {
 		return Math.sqrt(x*x + y *y + z*z);

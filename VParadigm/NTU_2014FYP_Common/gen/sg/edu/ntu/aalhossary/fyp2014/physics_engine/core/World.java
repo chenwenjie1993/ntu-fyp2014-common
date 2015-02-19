@@ -43,6 +43,9 @@ public class World {
 //	public static boolean displayUI = false;
 	public static boolean displayUI = true;
 	
+	// Only Needed for restart
+	public static ArrayList<Vector3D> initialPositions;
+	
 	public static void main (String[] args) throws Exception{
 		
 		originalStream = System.out;
@@ -70,7 +73,7 @@ public class World {
 		a1.setVelocity(0, 0, 0);
 		a1.setNetCharge(1);		// find a way to get oxidation state/ net charge
 		
-		a2.setPosition(5e-10, 5e-10, 5e-10);
+		a2.setPosition(2e-10, 2e-10, 2e-10);
 		a2.setVelocity(0, 0, 0);
 		a2.setNetCharge(-1);
 		
@@ -134,13 +137,18 @@ public class World {
 			 System.setOut(dummyStream);
 			 window = new MainWindow();
 			 window.getMediator().displayParticles(octTree.getAllParticles());
-		//	 System.setOut(originalStream);
+			 System.setOut(originalStream);
+			 initialPositions = new ArrayList<>();
+			 for (AbstractParticle particle: octTree.getAllParticles()){
+				 Vector3D temp = particle.getPosition();
+				 initialPositions.add(new Vector3D(temp.x, temp.y, temp.z));
+			 }
 		}		
 		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
 		int i = 0;
 		while(true) {
-			
+			//checkForActiveParticles();
 			// Applying Forces
 			registry.updateAllForces();
 					
@@ -151,14 +159,14 @@ public class World {
 			// Update tree only after integration
 			octTree.updateAllActiveParticles();
 			
-		/*	
+			
 			System.out.print(i + "\t");
 			printParticleStatus(m1);
 			printParticleStatus(a1);
 			printParticleStatus(a2);
 			printParticleStatus(a3);
 			System.out.println();
-		*/	
+			
 			// Collision Detection 
 			detector.detectCollision();    	 
 
@@ -166,29 +174,40 @@ public class World {
 			resolver.resolveContacts(potentialContacts);	
 			
 			
-			
 			if(displayUI){
-				AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
+			//	AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
 			//	editor.getMediator().notifyUpdated(temp_particles);
 				if(i%100 == 0){
 					System.setOut(dummyStream);
 					window.getMediator().displayParticles(octTree.getAllParticles());
-				//	System.setOut(originalStream);
+					System.setOut(originalStream);
 				}
 				
 				if(simulationStatus.equals("restart")){
 					
-					a1.setPosition(0, 0, 0);
+			/*		a1.setPosition(0, 0, 0);
 					a2.setPosition(5e-10, 5e-10, 5e-10);
 					a3.setPosition(10e-10, 10e-10, 10e-10);
 					m1.setPosition(2.5e-10, 2.5e-10, 2.5e-10);
-					for (AbstractParticle particle: octTree.getAllParticles())
-						particle.setVelocity(0, 0, 0);
 					
-				//	checkForActiveParticles();
+			*/		
+					int index = 0;
+					for (AbstractParticle particle: octTree.getAllParticles()) {
+				
+						Vector3D pos = initialPositions.get(index);
+						if (particle instanceof Atom)
+							particle.setPosition(pos.x, pos.y, pos.z);
+						else if (particle instanceof Molecule)
+							((Molecule) particle).setPositionAsCentroid();
+						particle.setVelocity(0, 0, 0);
+						index++;
+					}
+					
+					checkForActiveParticles();
 					
 					i=0;
 					simulationStatus = "running";
+					
 		
 				}
 				
@@ -201,39 +220,42 @@ public class World {
 			}
 			
 			i++;
-			if(i == 30001) 
-				i = 0;
+			if(i == 50000)
+				simulationStatus = "restart";
 		}
 	}
 	
 	public static void markAsActive(AbstractParticle particle){
-		if(oldPositions.contains(particle.getPosition()))
-			return;	
+		
+		for (int index =0; index< World.activeParticles.size(); index++){
+			if(World.activeParticles.get(index).getGUID() == particle.getGUID()) {
+				World.oldPositions.get(index).x = particle.getPosition().x;
+				World.oldPositions.get(index).y = particle.getPosition().y;
+				World.oldPositions.get(index).z = particle.getPosition().z;
+				return;
+			}
+		}
+
 		World.activeParticles.add(particle);
 		World.oldPositions.add(particle.getPosition());
+
 	}
 	
-	private static void checkForActiveParticles(){
+	public static void checkForActiveParticles(){
+		
+		World.activeParticles.clear();
+		World.oldPositions.clear();
 		
 		ArrayList <AbstractParticle> particles = new ArrayList<>();
 		octTree.getAllParticles(particles);
+		
 		for(AbstractParticle particle: particles)
 			markAsActive(particle);
-		/*
-		for(AbstractParticle particle: particles){	
-			if(registry.get().containsKey(particle))
-				markAsActive(particle);
-			else if(particle.getVelocity().getMagnitude() != 0) 
-				markAsActive(particle);
-			else if (particle.getAcceleration().getMagnitude() != 0) 
-				markAsActive(particle);
-		}
-		*/
 	}
 	
 	private static void printParticleStatus(AbstractParticle p){
 		System.out.print(p.getPosition().print()+"\t");
-	//	System.out.print(p.getVelocity().print()+"\t");
+		//System.out.print(p.getVelocity().print()+"\t");
 	}
 	
 	public static void setCommand(String command) throws Exception{
