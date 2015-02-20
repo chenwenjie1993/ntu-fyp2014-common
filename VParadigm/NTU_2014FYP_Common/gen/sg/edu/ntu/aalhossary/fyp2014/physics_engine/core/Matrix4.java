@@ -1,11 +1,15 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-
-
+/**
+ * @author waiyan
+ * Maths Module for 3x4 Matrix Calculations
+ */
 public class Matrix4 {
 	private double [] data = new double [12];
 	
-	// Identity Matrix
+	/**
+	 * Construct a 3x4 identity matrix
+	 */
 	public Matrix4(){
 		data [0] = data [5] = data [10] = 1;
 		data [1] = data [2] = data [3] = 0;
@@ -17,6 +21,7 @@ public class Matrix4 {
 		for(int i=0; i<12; i++)
 			this.data[i] = data[i];
 	}
+	
 	/**
      * Returns a matrix which is this matrix multiplied by the given other matrix.
      */
@@ -72,7 +77,11 @@ public class Matrix4 {
         data[11] = pos.z;
 	}
 	
-	//If the matrix is not a scale and shear free transform matrix, then this functioN will not give correct results.
+	/**
+	 * If the matrix is not a scale and shear free transform matrix, then this functioN will not give correct results. 
+	 * @param vector
+	 * @return
+	 */
 	public Vector3D transformInverse(Vector3D vector) {
 		Vector3D tmp = vector;
         tmp.x -= data[3];
@@ -91,8 +100,12 @@ public class Matrix4 {
 								vector.x*data[8] + vector.y*data[9] + vector.z*data[10]
 							);
 	}
-
-	//If the matrix is not a scale and shear free transform matrix, then this functioN will not give correct results.
+	
+	/**
+	 * If the matrix is not a scale and shear free transform matrix, then this functioN will not give correct results.
+	 * @param vector
+	 * @return
+	 */
 	public Vector3D transformInverseDirection(Vector3D vector) {
 		return new Vector3D ( 	vector.x*data[0] + vector.y*data[4] + vector.z*data[8],
 								vector.x*data[1] + vector.y*data[5] + vector.z*data[9],
@@ -100,10 +113,10 @@ public class Matrix4 {
 							);
 	}
 	
-	 /**
+	/**
      * Gets a vector representing one axis (i.e. one column) in the matrix.
      * @param i=3 corresponds to the position of the transform matrix.
-     * */
+     */
 	public Vector3D getAxisVector(int i){
 		return new Vector3D(data[i], data[i+4], data[i+8]);
 	}

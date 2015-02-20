@@ -6,6 +6,10 @@ import java.util.Map.Entry;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
+/**
+ * @author waiyan
+ * ForceRegistry stores Particle,Force pairs
+ */
 public class ForceRegistry {
 	private HashMap<AbstractParticle, ArrayList<Vector3D>> registrations = new HashMap<AbstractParticle,ArrayList<Vector3D>>();
 	
@@ -24,6 +28,12 @@ public class ForceRegistry {
 			registrations.get(abstractParticle).add(force);
 	}
 
+	/**
+	 * Update the old force of a particle with a new force
+	 * @param abstractParticle
+	 * @param oldForce
+	 * @param newForce
+	 */
 	public void updateForce(AbstractParticle abstractParticle, Vector3D oldForce, Vector3D newForce) {
 		ArrayList<Vector3D> forces = registrations.get(abstractParticle);
 		if(forces!=null){
@@ -34,6 +44,7 @@ public class ForceRegistry {
 			
 		}
 	}
+	
 	/***
 	 * Apply forces to particles
 	 */
@@ -60,6 +71,11 @@ public class ForceRegistry {
 		applyForces();
 	}
 	
+	/**
+	 * Remove a given particle from the registry
+	 * @param abstractParticle
+	 * @param force
+	 */
 	public void remove(AbstractParticle abstractParticle, Vector3D force) {
 		ArrayList<Vector3D> forces = registrations.get(abstractParticle);
 		if(forces!=null){
@@ -69,6 +85,10 @@ public class ForceRegistry {
 		}	
 	}
 
+	/**
+	 * Remove all force from a given particle
+	 * @param abstractParticle
+	 */
 	public void removeAllForceFrom (AbstractParticle abstractParticle) {
 		ArrayList<Vector3D> forces = registrations.get(abstractParticle);
 		if(forces!=null)
@@ -76,10 +96,17 @@ public class ForceRegistry {
 		abstractParticle.clearAccumulator();
 	}
 	
+	/**
+	 * Clear the registry
+	 */
 	public void clear(){
 		registrations.clear();
 	}
 	
+	/**
+	 * Apply all the forces (attached to the particle) to that particle
+	 * @param abstractParticle
+	 */
 	public void applyForce(AbstractParticle abstractParticle){
 		ArrayList<Vector3D> forces = registrations.get(abstractParticle);
 		if(forces != null)
@@ -87,6 +114,9 @@ public class ForceRegistry {
 				abstractParticle.addForce(force);
 	}
 	
+	/**
+	 * Apply forces to all particles in the registry
+	 */
 	public void applyForces(){
 		for (Entry<AbstractParticle, ArrayList<Vector3D>> entry: registrations.entrySet()){
 			AbstractParticle abstractParticle = entry.getKey();

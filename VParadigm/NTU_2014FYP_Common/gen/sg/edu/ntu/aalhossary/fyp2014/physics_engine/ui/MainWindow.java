@@ -1,10 +1,6 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.TextArea;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -23,22 +19,22 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
-
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
-import javax.swing.SwingConstants;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
+
 import java.awt.Component;
-import javax.swing.JSeparator;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.MatteBorder;
-import java.awt.Color;
-import javax.swing.border.LineBorder;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
+
+/**
+ * @author waiyan
+ * GUI for Physics Engine
+ */
 
 public class MainWindow extends JFrame {
 
@@ -54,14 +50,13 @@ public class MainWindow extends JFrame {
 	
 	private UpdateRegistry mediator;
 	private List<Model> modelList;
-	private JSeparator separator;
 	private JLabel lblSimulationMedium;
 	private JPanel panel;
 	private JButton pauseButton;
 	private JButton restartButton;
 	
 	/**
-	 * Create the frame.
+	 * Create the main frame.
 	 */
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -132,10 +127,17 @@ public class MainWindow extends JFrame {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Return display interface from JMol
+	 * @return mediator
+	 */
 	public UpdateRegistry getMediator(){
 		return mediator;
 	}
 	
+	/**
+	 * Create the panel for setting the coefficient of resolution
+	 */
 	private void createCoeOfResPanel (){
 		
 		coeOfResPanel = new JPanel();
@@ -166,6 +168,9 @@ public class MainWindow extends JFrame {
 		coeOfResPanel.add(panel1);
 	}
 	
+	/**
+	 * Create the panel for setting the simulation level (atomic or molecular)
+	 */
 	private void createSimLvlPanel (){
 		
 		simLvlPanel = new JPanel();
@@ -194,6 +199,9 @@ public class MainWindow extends JFrame {
 		simLvlPanel.add(panel2);	
 	}
 
+	/**
+	 * Add ActionListeners for UI inputs
+	 */
 	private void addActionListeners() {
 		DecimalFormat formatter = new DecimalFormat("0.00");
 		

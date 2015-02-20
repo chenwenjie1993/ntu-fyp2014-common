@@ -2,18 +2,19 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui.MainWindow;
 
-
+/**
+ * @author waiyan
+ * Main class of the physics engine
+ */
 public class World {
 	
 	public static double COEFFICENT_OF_RESTITUTION = 1;
@@ -21,7 +22,6 @@ public class World {
 	public static boolean simulationLvlAtomic = true;
 	public static String simulationStatus = "running";
 	public static CountDownLatch countDownLatch;
-	
 	
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();

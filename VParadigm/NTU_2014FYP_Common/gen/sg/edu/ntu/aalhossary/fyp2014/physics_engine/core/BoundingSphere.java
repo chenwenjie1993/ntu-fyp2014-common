@@ -1,7 +1,9 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-
-// Bounding Sphere is to be used for atoms and molecules
+/**
+ * @author waiyan
+ * BoundingSphere is used for setting the shape of Atoms and Molecules 
+ */
 public class BoundingSphere extends BoundingPrimitive {
 
 	private double radius;
@@ -11,6 +13,9 @@ public class BoundingSphere extends BoundingPrimitive {
 		super.centre = new Vector3D(centre);
 	}
 	
+	/**
+	 * Determines if two BoundingPrimitives are overlapping
+	 */
 	public boolean overlap(BoundingPrimitive other) {
 		
 		// The primitives overlap if the position difference (distance) is less than the sum of two half_sizes

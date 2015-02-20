@@ -2,13 +2,14 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
+/**
+ * Return the Lennard-Jones potential (need epsilon + bond length)
+ * @param particle1
+ * @param particle2
+ * @return
+ */
 public class LennardJonesForce implements Force{
-	/**
-	 * Return the Lennard-Jones potential (need epsilon + bond length)
-	 * @param particle1
-	 * @param particle2
-	 * @return
-	 */
+	
 	private Vector3D lennardJonesForce;
 	
 	public LennardJonesForce (AbstractParticle particle1, AbstractParticle particle2){
@@ -23,6 +24,9 @@ public class LennardJonesForce implements Force{
 		return lennardJonesForce.getNegativeVector();
 	}
 	
+	/**
+	 * Calculate the LennardJonesForce between the two particles
+	 */
 	public Vector3D calculateForce(AbstractParticle particle1, AbstractParticle particle2){
 		
 		/*** known as theta */

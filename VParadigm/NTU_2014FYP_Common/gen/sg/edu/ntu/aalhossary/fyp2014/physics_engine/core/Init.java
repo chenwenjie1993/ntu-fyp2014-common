@@ -1,8 +1,13 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-import java.io.OutputStream;
 import java.io.PrintStream;
 
+
+/**
+ * @author waiyan
+ * Initialization Class for the Physics Engine
+ * Periodic Table used for construction of the Atom
+ */
 public class Init {
 	public static double machineEpsilon;
 	public static PrintStream originalStream;

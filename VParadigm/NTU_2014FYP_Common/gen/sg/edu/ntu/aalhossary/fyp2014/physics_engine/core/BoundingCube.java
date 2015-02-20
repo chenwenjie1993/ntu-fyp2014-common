@@ -1,6 +1,8 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-
+/**
+ * @author waiyan
+ */
 public class BoundingCube extends BoundingPrimitive {
 
 	private double half_size;
@@ -10,6 +12,9 @@ public class BoundingCube extends BoundingPrimitive {
 		super.centre = new Vector3D(centre);
 	}
 	
+	/**
+	 * Determines if two BoundingPrimitives are overlapping
+	 */
 	public boolean overlap(BoundingPrimitive other) {
 		
 		// The primitives overlap if the position difference (distance) is less than the sum of two half_sizes

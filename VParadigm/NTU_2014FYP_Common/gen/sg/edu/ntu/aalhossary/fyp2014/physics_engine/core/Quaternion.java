@@ -1,8 +1,10 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-
-// A Quaternion represents the orientation 
-// // θ is the angle, x,y,z are axis
+/**
+ * @author waiyan
+ * A quaternion represents the orientation
+ * θ is the angle, x,y,z are axis
+ */
 public class Quaternion {
 	public double r;		// cos θ/2
 	public double i;		// x sin θ/2
@@ -12,7 +14,6 @@ public class Quaternion {
 	public Quaternion(){
 		r = i = j = k = 0;
 	}
-
 	
 	public Quaternion(double r, double i, double j, double k){
 		this.r = r; this.i = i; this.j = j; this.k = k;
@@ -21,7 +22,10 @@ public class Quaternion {
 	public void setQuaternion (Quaternion q){
 		r=q.r; i=q.i; j=q.j; k=q.k;
 	}
-
+	
+	/**
+	 * Normalize the quaternion
+	 */
 	public void normalize() {
 		double mag = r*r + i*i + j*j + k*+k;
 		if(mag < Init.machineEpsilon){
@@ -45,11 +49,20 @@ public class Quaternion {
 		setQuaternion(temp);
 	}
 
+	/**
+	 * Rotate the quaternion by a given vector
+	 * @param vector
+	 */
 	public void rotateByVector(Vector3D vector) {
 		Quaternion q = new Quaternion(0, vector.x, vector.y, vector.z);
 		this.multiply(q);
 	}
 
+	/**
+	 * Add a scaled vector to this quaternion
+	 * @param vector
+	 * @param scale
+	 */
 	public void addScaledVector(Vector3D vector, double scale) {
 		Quaternion q  = new Quaternion(0, vector.x*scale, vector.y*scale, vector.z*scale);
 		q.multiply(this);
@@ -59,6 +72,10 @@ public class Quaternion {
 		k += q.k/2;
 	}
 	
+	/**
+	 * Transform this quaternion to a 3x3 Matrix
+	 * @return
+	 */
 	public Matrix3 toMatrix3 (){
 		double data [] = new double[9];
 		data[0] = 1 - (2*j*j + 2*k*k);
@@ -73,6 +90,11 @@ public class Quaternion {
         return new Matrix3(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]);
 	}
 	
+	/**
+	 * Transform this quaternion to a 3x4 Matrix
+	 * @param pos
+	 * @return
+	 */
 	public Matrix4 toMatrix4 (Vector3D pos){
 		double data[] = new double [12];
 		data[0] = 1 - (2*j*j + 2*k*k);

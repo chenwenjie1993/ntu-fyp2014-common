@@ -3,8 +3,15 @@ import java.util.ArrayList;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
+/**
+ * @author waiyan
+ * Narrow Phase Collision Detector determines which particles are about to be collided
+ */
 public class NarrowCollisionDetector {
 	
+	/**
+	 * Detect which particles are about to be collided 
+	 */
 	public void detectCollision() {
 		ArrayList<AbstractParticle> particles = World.activeParticles;
 		World.potentialContacts.clear();
@@ -24,9 +31,8 @@ public class NarrowCollisionDetector {
 				double diff_z = a.getPosition().z * scale1 - b.getPosition().z * scale2;
 				double min_dist = Math.min(Math.abs(diff_x), Math.min(Math.abs(diff_y), Math.abs(diff_z)));
 				
-				double r1 = ((BoundingSphere)(a.getBoundingPrimitive())).getRadius();
-				double r2 = ((BoundingSphere)(b.getBoundingPrimitive())).getRadius();
-				
+			//	double r1 = ((BoundingSphere)(a.getBoundingPrimitive())).getRadius();
+			//	double r2 = ((BoundingSphere)(b.getBoundingPrimitive())).getRadius();
 				
 				double bond_length = 0.28E-9;
 				if(min_dist <= bond_length){
@@ -38,6 +44,12 @@ public class NarrowCollisionDetector {
 		}
 	}
 	
+	/**
+	 * Filter processed particles from the neighbouring particles
+	 * @param neighbouringParticles
+	 * @param processedParticles
+	 * @param index
+	 */
 	private void filterNeighbouringParticles (ArrayList<AbstractParticle> neighbouringParticles, ArrayList<AbstractParticle> processedParticles, int index){
         for (int j=0; j< index; j++){
                 for(AbstractParticle a: neighbouringParticles){

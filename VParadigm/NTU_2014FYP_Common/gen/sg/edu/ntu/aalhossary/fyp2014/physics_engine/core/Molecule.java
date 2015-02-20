@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Chain;
-import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 
+/**
+ * @author waiyan
+ * Handle creating of molecules
+ * Solve the acceleration, velocity and position of the molecule before/after impact
+ */
 public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 
 	// Molecule is made up of chains and interaction
@@ -15,6 +19,10 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 	private double radius = 0;
 	private ArrayList<Atom> atoms;
 	
+	/**
+	 * Construct a molecule given a lsit of atoms
+	 * @param atoms
+	 */
 	public Molecule(ArrayList<Atom> atoms){
 		
 		super();
@@ -51,6 +59,10 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		this.position = position;
 	}
 	
+	/**
+	 * Get the centroid position of the molecule
+	 * @return position
+	 */
 	private Vector3D getCentroid(){
 		Vector3D pos = new Vector3D();
 		for(int i=0; i<atoms.size(); i++){
@@ -60,10 +72,17 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		return pos;
 	}
 	
+	/**
+	 * Return the atoms constituting the molecule
+	 * @return atoms
+	 */
 	public ArrayList<Atom> getAtoms(){
 		return atoms;
 	}
 	
+	/**
+	 * Set the postion of the molecule as the centroid of constituting atoms
+	 */
 	public void setPositionAsCentroid(){
 		this.position = getCentroid();
 	}
@@ -72,6 +91,9 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		this.netCharge = charge;
 	}
 	
+	/**
+	 * Set the position of the molecule. Also set the velocities of the constituting atoms.
+	 */
 	public void setPosition(double x, double y, double z, int metric) {
 		Vector3D pos = new Vector3D(x, y, z, metric);
 		if(this.position.equals(pos))
@@ -84,6 +106,9 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		this.boundingPrimitive.updateCentre(pos.x, pos.y, pos.z, metric);
 	}
 	
+	/**
+	 * Set the position of the molecule. Also set the velocities of the constituting atoms.
+	 */
 	public void setPosition(double x, double y, double z){
 		Vector3D pos = new Vector3D(x, y, z);
 		if(this.position.equals(pos))
@@ -97,18 +122,27 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		boundingPrimitive.updateCentre(x, y, z, position.metric);	
 	}
 	
+	/**
+	 * Set the velocity of the molecule. Also set the velocities of the constituting atoms.
+	 */
 	public void setVelocity(double x, double y, double z){
 		for (Atom a: atoms)
 			a.setVelocity(x, y, z);
 		this.velocity = new Vector3D(x,y,z);
 	}
 	
+	/**
+	 * Set the velocity of the molecule. Also set the velocities of the constituting atoms.
+	 */
 	public void setVelocity(double x, double y, double z, int metric){
 		for (Atom a: atoms)
 			a.setVelocity(x, y, z, metric);
 		this.velocity = new Vector3D(x,y,z, metric);
 	}
 	
+	/**
+	 * Calculate acceleration, velocity and position of the molecule after the given duration
+	 */
 	public void integrate(double duration) {
 		
 		// Calculate total acceleration without updating the original ( a = F /m )
@@ -164,7 +198,9 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		 */
 	}
 	
-	
+	/**
+	 * Calculate the velocity change after impact
+	 */
 	public Vector3D calculateVelocityChange(AbstractParticle other, double COEFFICIENT_OF_RESTITUTION){
 		
 		double other_mass = other.getMass();

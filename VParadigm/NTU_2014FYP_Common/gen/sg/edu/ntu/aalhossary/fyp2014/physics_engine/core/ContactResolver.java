@@ -3,8 +3,17 @@ import java.util.ArrayList;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
+/**
+ *  @author waiyan
+ *  Resolve the Particles that have collided
+ *  Update the velocities of the Particles after impact
+ */
 public class ContactResolver {
 
+	/**
+	 * Resolve the pair of Particle that have collided
+	 * @param potentialContacts
+	 */
 	public void resolveContacts(ArrayList<AbstractParticle[]> potentialContacts){
 		
 		if(potentialContacts.isEmpty())

@@ -8,6 +8,10 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Quaternion;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
 
+/**
+ * @author waiyan
+ * AbstractParticle is the parent class of all simulatable objects in the engine
+ */
 public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.common.Particle {
 	protected int guid;
 	protected Vector3D position;
@@ -39,24 +43,52 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		World.particleCount ++;
 	}
 	
+	/**
+	 * Return the GUID assigned to this particle
+	 * @return guid
+	 */
 	public int getGUID(){
 		return guid;
 	}
 
+	/**
+	 * Return the position of this particle
+	 * @return position
+	 */
 	public Vector3D getPosition() {
 		return this.position;
 	}
 
+	/**
+	 * Set the position of this particle
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param metric
+	 */
 	public void setPosition(double x, double y, double z, int metric) {
 		position.x = x; position.y = y; position.z = z; position.metric = metric;
 		boundingPrimitive.updateCentre(x, y, z, metric);	
 	}
 	
+	/**
+	 * Set the position of this particle
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public void setPosition(double x, double y, double z){
 		position.x = x; position.y = y; position.z = z;
 		boundingPrimitive.updateCentre(x, y, z, position.metric);	
 	}
 	
+	/**
+	 * Move this particle by given distances
+	 * @param dist_x
+	 * @param dist_y
+	 * @param dist_z
+	 * @param metric
+	 */
 	public void movePositionBy (double dist_x, double dist_y, double dist_z, int metric) {
 		double metricDiff = metric - position.metric;
 		if(metricDiff == 0) {
@@ -73,31 +105,70 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		boundingPrimitive.updateCentre(position.x, position.y, position.z, position.metric);		
 	}
 	
+	/**
+	 * Return the velocity of this particle
+	 * @return velocity 
+	 */
 	public Vector3D getVelocity() {
 		return this.velocity;
 	}
 
+	/**
+	 * Set the velocity of this particle
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param metric
+	 */
 	public void setVelocity(double x, double y, double z, int metric) {
 		velocity.x = x; velocity.y = y; velocity.z = z; velocity.metric = metric;
 	}
 	
+	/**
+	 * Set the velocity of this particle
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public void setVelocity(double x, double y, double z) {
 		velocity.x = x; velocity.y = y; velocity.z = z;
 	}
 	
+	/**
+	 * Set the velocity accumulated as the velocity of this paricle
+	 */
 	public void setVelocityAccumulated() {
 		setVelocity(velocityAccumulated.x,velocityAccumulated.y,velocityAccumulated.z);
 		velocityAccumulated.clear();
 	}
 
+	/**
+	 * Add the given velocity to velocity accumulated 
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param metric
+	 */
 	public void addVelocityAccumulated(double x, double y, double z, int metric) {
 		velocityAccumulated.add(new Vector3D(x,y,z,metric));
 	}
 	
+	/**
+	 * Add the given velocity to the velocity accumulated
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public void addVelocityAccumulated(double x, double y, double z) {
 		velocityAccumulated.x += x; velocityAccumulated.y += y; velocityAccumulated.z += z;
 	}
 	
+	/**
+	 * Calculate the velocity of the particle after impact (given another particle)
+	 * @param other
+	 * @param COEFFICIENT_OF_RESTITUTION
+	 * @return
+	 */
 	public Vector3D calculateVelocityChange(AbstractParticle other, double COEFFICIENT_OF_RESTITUTION){
 		
 		if(this instanceof Atom) {
@@ -111,22 +182,47 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		return null;
 	}
 
+	/**
+	 * Return acceleration of this particle
+	 * @return acceleration
+	 */
 	public Vector3D getAcceleration() {
 		return this.acceleration;
 	}
 
+	/**
+	 * Set the acceleration of this particle
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param metric
+	 */
 	public void setAcceleration(double x, double y, double z, int metric) {
 		acceleration.x = x; acceleration.y = y; acceleration.z = z; acceleration.metric = metric;
 	}
 
+	/**
+	 * Set the acceleration of this particle
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public void setAcceleration(double x, double y, double z) {
 		acceleration.x = x; acceleration.y = y; acceleration.z = z;
 	}
 	
+	/**
+	 * Return mass of this particle
+	 * @return mass
+	 */
 	public double getMass() {
 		return 1/this.inverseMass;
 	}
 	
+	/**
+	 * Set the mass of this particle
+	 * @param mass
+	 */
 	public void setMass (double mass){
 		if(mass==0) 
 			inverseMass = 0;
@@ -134,10 +230,18 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 			inverseMass = 1/mass;
 	}
 
+	/**
+	 * Return the inverse mass (1/mass) of this particle
+	 * @return inverse mass
+	 */
 	public double getInverseMass() {
 		return this.inverseMass;
 	}
 	
+	/**
+	 * Calculate the position, velocity and acceleration of the particle given a duration
+	 * @param duration
+	 */
 	public void integrate(double duration) {
 		
 		if(this instanceof Atom) {
@@ -146,21 +250,32 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		}
 		
 	}
-	
 
 	public void setInverseInertiaTensor(Matrix3 aInertia) {
 		
 	}
 
+	/**
+	 * Clear the forces and torques accumulated
+	 */
 	public void clearAccumulator() {
 		forceAccumulated.clear();
 		torqueAccumulated.clear();
 	}
 
+	/**
+	 * Attach the given force to the particle
+	 * @param force
+	 */
 	public void addForce(Vector3D force) {
 		forceAccumulated.add(force);
 	}
 	
+	/**
+	 * Apply the given force to the particle at the given point
+	 * @param force
+	 * @param point
+	 */
 	public void addForceAtPoint(Vector3D force, Vector3D point) {
 		
 		forceAccumulated.add(force);
@@ -174,6 +289,10 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	    torqueAccumulated.add(torque);    
 	}
 	
+	/**
+	 * Add the given torque to this particle
+	 * @param torque
+	 */
 	public void addTorque(Vector3D torque) {
 		torqueAccumulated.add(torque);    
 	}
@@ -185,7 +304,6 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	public void calculateInertiaTensor(Matrix3 aWorldCor, Quaternion aQ, Matrix3 aBodyCor, Matrix4 aRotMatrix) {
 		throw new UnsupportedOperationException();
 	}
-
 
 	public Vector3D getRotation() {
 		return this.rotation;
@@ -203,18 +321,33 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		this.orientation = aOrientation;
 	}
 	
+	/**
+	 * Return the bounding primitive of this particle
+	 * @return bounding primitive
+	 */
 	public BoundingPrimitive getBoundingPrimitive(){
 		return this.boundingPrimitive;
 	}
 	
+	/**
+	 * Set the net charge of this particle
+	 * @param charge
+	 */
 	public void setNetCharge(int charge){
 		netCharge = charge;
 	}
 	
+	/**
+	 * Return the net charge of this particle
+	 * @return
+	 */
 	public int getNetCharge(){
 		return netCharge;
 	}
 	
+	/**
+	 * Overridden equals method for comparting two instances of Particle
+	 */
 	@Override
 	public boolean equals(Object particle) {
 	    if (particle == null) 

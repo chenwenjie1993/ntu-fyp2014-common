@@ -1,5 +1,9 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+/**
+ * @author waiyan
+ * Maths Module for 3x3 Matrix Calculations
+ */
 
 public class Matrix3 {
 	private double [] data = new double [9];
@@ -15,7 +19,12 @@ public class Matrix3 {
 		
 	}
 	
-	// v1, v2 and v3 are columns of the matrix
+	/**
+	 * Construct a 3x3 Matrix given 3 columns of the matrix
+	 * @param v1
+	 * @param v2
+	 * @param v3
+	 */
 	public Matrix3(Vector3D v1, Vector3D v2, Vector3D v3){
 		data[0] = v1.x;	data[1]=v2.x;	data[2]=v3.x;
 		data[3] = v1.y; data[4]=v2.y;	data[5]=v3.y;
@@ -27,6 +36,9 @@ public class Matrix3 {
 		return data;
 	}
 	
+	/**
+	 * Overridden equals method for comparing two matrix3 objects
+	 */
 	@Override
 	public boolean equals(Object matrix3) {
 		double epsilon = 1e-6;
@@ -45,50 +57,70 @@ public class Matrix3 {
 	    return true;
 	}
 	
-	public Matrix3 multiplyAndReturn(Matrix3 m){
+	/**
+	 * Multiply this matrix with the given matrix and return the result.
+	 * @param matrix
+	 * @return matrix
+	 */
+	public Matrix3 multiplyAndReturn(Matrix3 matrix){
 		Matrix3 temp = new Matrix3();
 		temp = this;
-		temp.multiply(m);
+		temp.multiply(matrix);
 		return temp;
 	}
 	
-	public void multiply (Matrix3 m){
+	/**
+	 * Multiply this matrix with the given matrix
+	 * @param matrix
+	 */
+	public void multiply (Matrix3 matrix){
 		Matrix3 temp = new Matrix3();
-		temp.data[0] = data[0]*m.data[0] + data[1]*m.data[3] + data[2]*m.data[6];
-		temp.data[1] = data[0]*m.data[1] + data[1]*m.data[4] + data[2]*m.data[7];
-		temp.data[2] = data[0]*m.data[2] + data[1]*m.data[5] + data[2]*m.data[8];
+		temp.data[0] = data[0]*matrix.data[0] + data[1]*matrix.data[3] + data[2]*matrix.data[6];
+		temp.data[1] = data[0]*matrix.data[1] + data[1]*matrix.data[4] + data[2]*matrix.data[7];
+		temp.data[2] = data[0]*matrix.data[2] + data[1]*matrix.data[5] + data[2]*matrix.data[8];
 
-		temp.data[3] = data[3]*m.data[0] + data[4]*m.data[3] + data[5]*m.data[6];
-		temp.data[4] = data[3]*m.data[1] + data[4]*m.data[4] + data[5]*m.data[7];
-		temp.data[5] = data[3]*m.data[2] + data[4]*m.data[5] + data[5]*m.data[8];
+		temp.data[3] = data[3]*matrix.data[0] + data[4]*matrix.data[3] + data[5]*matrix.data[6];
+		temp.data[4] = data[3]*matrix.data[1] + data[4]*matrix.data[4] + data[5]*matrix.data[7];
+		temp.data[5] = data[3]*matrix.data[2] + data[4]*matrix.data[5] + data[5]*matrix.data[8];
 	
-		temp.data[6] = data[6]*m.data[0] + data[7]*m.data[3] + data[8]*m.data[6];
-		temp.data[7] = data[6]*m.data[1] + data[7]*m.data[4] + data[8]*m.data[7];
-		temp.data[8] = data[6]*m.data[2] + data[7]*m.data[5] + data[8]*m.data[8];
+		temp.data[6] = data[6]*matrix.data[0] + data[7]*matrix.data[3] + data[8]*matrix.data[6];
+		temp.data[7] = data[6]*matrix.data[1] + data[7]*matrix.data[4] + data[8]*matrix.data[7];
+		temp.data[8] = data[6]*matrix.data[2] + data[7]*matrix.data[5] + data[8]*matrix.data[8];
 		
 		for(int i=0; i<9; i++)
 			data[i] =  temp.data[i];
 	}
 	
+	/**
+	 * Scale this matrix with the given coefficient and return the result
+	 * @param scale
+	 * @return matrix
+	 */
 	public Matrix3 scaleAndReturn(double scale){
-		Matrix3 m = new Matrix3();
-		m = this;
-		m.scale(scale);
-		return m;
+		Matrix3 matrix = new Matrix3();
+		matrix = this;
+		matrix.scale(scale);
+		return matrix;
 	}
 	
+	/**
+	 * Scale this matrix with the given coefficient
+	 * @param scale
+	 */
 	public void scale(double scale){
 		data[0]*=scale; data[1]*= scale; data[2]*=scale;
 		data[3]*=scale; data[4]*= scale; data[5]*=scale;
 		data[6]*=scale; data[7]*= scale; data[8]*=scale;
 	}
 	
-
-	
-	public void add (Matrix3 m){
-		data[0] += m.data[0];	data[1] += m.data[1];	data[2] += m.data[2];
-		data[3] += m.data[3];	data[4] += m.data[4];	data[5] += m.data[5];
-		data[6] += m.data[6];	data[7] += m.data[7];	data[8] += m.data[8];
+	/**
+	 * Add this matrix with the given matrix
+	 * @param matrix
+	 */
+	public void add (Matrix3 matrix){
+		data[0] += matrix.data[0];	data[1] += matrix.data[1];	data[2] += matrix.data[2];
+		data[3] += matrix.data[3];	data[4] += matrix.data[4];	data[5] += matrix.data[5];
+		data[6] += matrix.data[6];	data[7] += matrix.data[7];	data[8] += matrix.data[8];
 	}
 	
 	public void setDiagonal(double a, double b, double c){
@@ -104,15 +136,23 @@ public class Matrix3 {
         data[8] = z;
 	}
 
-	// Transform the given vector by this matrix
-	public Vector3D transform(Vector3D v) {
-		return new Vector3D ( 	v.x*data[0] + v.y*data[1] + v.z*data[2],
-								v.x*data[3] + v.y*data[4] + v.z*data[5],
-								v.x*data[6] + v.y*data[7] + v.z*data[8] );
+	/**
+	 * Transform the given vector by this matrix
+	 * @param vector
+	 * @return vector
+	 */
+	public Vector3D transform(Vector3D vector) {
+		return new Vector3D ( 	vector.x*data[0] + vector.y*data[1] + vector.z*data[2],
+								vector.x*data[3] + vector.y*data[4] + vector.z*data[5],
+								vector.x*data[6] + vector.y*data[7] + vector.z*data[8] );
 		
 	}
 	
-	// Transform the given matrix by this matrix
+	/**
+	 * Transform the given matrix by this matrix
+	 * @param matrix
+	 * @return matrix
+	 */
 	public Matrix3 transform (Matrix3 matrix) {
 		return new Matrix3 (
 				data[0]*matrix.data[0] + data[1]*matrix.data[3] + data[2]*matrix.data[6],
@@ -126,8 +166,12 @@ public class Matrix3 {
 				data[6]*matrix.data[2] + data[7]*matrix.data[5] + data[8]*matrix.data[8]
 		);
 	}
-	
-	// Transform the given vector by the transpose of this matrix.
+
+	/**
+	 * Transform the given vector by the transpose of this matrix. 
+	 * @param vector
+	 * @return vector
+	 */
     public Vector3D transformTranspose(Vector3D vector){
         return new Vector3D(
             vector.x * data[0] + vector.y * data[3] + vector.z * data[6],
@@ -185,28 +229,43 @@ public class Matrix3 {
 	    	data[i] = temp[i];
 	}
 
+	/**
+	 * Return the inverse of this matrix
+	 * @return matrix
+	 */
 	public Matrix3 inverse() {
-		Matrix3 m = new Matrix3();
-		m.setInverse(this);
-		return m;
+		Matrix3 matrix = new Matrix3();
+		matrix.setInverse(this);
+		return matrix;
 	}
 
+	/**
+	 * Invert this matrix
+	 */
 	public void invert(){
 		setInverse(this);
 	}
 	
-	public void setTranspose(Matrix3 m) {
-        data[0] = m.data[0];
-        data[1] = m.data[3];
-        data[2] = m.data[6];
-        data[3] = m.data[1];
-        data[4] = m.data[4];
-        data[5] = m.data[7];
-        data[6] = m.data[2];
-        data[7] = m.data[5];
-        data[8] = m.data[8];      
+	/**
+	 * Set this matrix as the transpose of the given matrix
+	 * @param matrix
+	 */
+	public void setTranspose(Matrix3 matrix) {
+        data[0] = matrix.data[0];
+        data[1] = matrix.data[3];
+        data[2] = matrix.data[6];
+        data[3] = matrix.data[1];
+        data[4] = matrix.data[4];
+        data[5] = matrix.data[7];
+        data[6] = matrix.data[2];
+        data[7] = matrix.data[5];
+        data[8] = matrix.data[8];      
 	}
 
+	/**
+	 * Return the transpose of this matrix
+	 * @return matrix
+	 */
 	public Matrix3 transpose() {
 		Matrix3 m = new Matrix3();
 		m.setTranspose(this);

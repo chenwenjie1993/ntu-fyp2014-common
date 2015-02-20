@@ -2,13 +2,15 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
+/**
+ * @author waiyan
+ * Return the ElectricForce experienced by Particle1 due to particle2
+ * @param particle1 (requires atomic charge)
+ * @param particle2 (requires atomic charge)
+ * @return ElectricForce
+ */
 public class ElectricForce implements Force{
-	/**
-	 * Return the ElectricForce experienced by Particle1 due to particle2
-	 * @param particle1 (requires atomic charge)
-	 * @param particle2 (requires atomic charge)
-	 * @return ElectricForce
-	 */
+	
 	private Vector3D electricForce;
 	
 	public ElectricForce (AbstractParticle particle1, AbstractParticle particle2){
@@ -23,6 +25,9 @@ public class ElectricForce implements Force{
 		return electricForce.getNegativeVector();
 	}
 	
+	/**
+	 * Calculate the electric force between the two particles
+	 */
 	public Vector3D calculateForce (AbstractParticle particle1, AbstractParticle particle2){
 	
 		double COULOMB_CONSTANT = 8.987551787e+9;

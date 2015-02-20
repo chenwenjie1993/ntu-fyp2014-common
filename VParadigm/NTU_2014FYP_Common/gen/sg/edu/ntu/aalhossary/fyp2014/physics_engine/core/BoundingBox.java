@@ -1,7 +1,9 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-
-// Bounding Box for residues
+/**
+ * @author waiyan
+ * BoundingBox is to be used for residues
+ */
 public class BoundingBox extends BoundingPrimitive {
 
 	private double x_length;
@@ -15,6 +17,9 @@ public class BoundingBox extends BoundingPrimitive {
 		super.centre = new Vector3D(centre);
 	}
 
+	/**
+	 * Determines if two BoundingPrimitives are overlapping
+	 */
 	public boolean overlap(BoundingPrimitive other) {
 		
 		// The primitives overlap if the position difference (distance) is less than the sum of two half_sizes

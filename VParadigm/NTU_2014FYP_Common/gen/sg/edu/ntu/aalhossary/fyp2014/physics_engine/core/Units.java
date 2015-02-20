@@ -1,7 +1,9 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-import java.math.BigInteger;
-
+/**
+ * @author waiyan
+ * Enum variables for Distance, Mass and Time
+ */
 public class Units {
 	public enum DISTANCE {
 		m (1e0), mm (1e-3), μm (1e-6), nm (1e-9), A(1e-10), pm (1e-12), fm(1e-15), am (1e-18);

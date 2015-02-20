@@ -2,14 +2,14 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 
+/**
+ * Return VdW force experienced by particle1 due to particle2
+ * @param particle1 (requires BoundingSphere radius)
+ * @param particle2 (requires BoundingSphere radius)
+ * @return VdWForce
+ */
 public class VdWForce implements Force{
-
-	/**
-	 * Return VdW force experienced by particle1 due to particle2
-	 * @param particle1 (requires BoundingSphere radius)
-	 * @param particle2 (requires BoundingSphere radius)
-	 * @return VdWForce
-	 */
+	
 	private Vector3D vdwForce;
 	
 	public VdWForce (AbstractParticle particle1, AbstractParticle particle2){
@@ -24,6 +24,9 @@ public class VdWForce implements Force{
 		return vdwForce.getNegativeVector();
 	}
 	
+	/**
+	 * Calculate the vdW force between the two particles
+	 */
 	public Vector3D calculateForce(AbstractParticle particle1, AbstractParticle particle2){
 		double Hamaker_coefficient = 1e-19; //can be positive or negative in sign depending on the intervening medium?
 		

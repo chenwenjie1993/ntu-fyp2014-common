@@ -3,6 +3,10 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+/**
+ * @author waiyan
+ * Vector class for Physics Engine
+ */
 public class Vector3D {
 	public double x;
 	public double y;
@@ -25,6 +29,9 @@ public class Vector3D {
 		this.x = x; this.y = y; this.z = z; this.metric = metric;
 	}
 	
+	/**
+	 * Overridden equals method for comparing two Vector3D instances
+	 */
 	@Override
 	public boolean equals(Object vector) {
 	    if (vector == null) 
@@ -40,46 +47,79 @@ public class Vector3D {
 	    return true;
 	}
 
+	/**
+	 * Invert this vector to its negative component
+	 */
 	public void invert() {
 		x=-x; y=-y; z=-z;
 	}
 	
+	/**
+	 * Return a negative vector of this vector
+	 * @return vector
+	 */
 	public Vector3D getNegativeVector(){
 		return new Vector3D(-x,-y,-z,metric);
 	}
 
+	/**
+	 * Reset the vector to zero
+	 */
 	public void clear() {
 		x = y = z = 0;
 	}
 	
+	/**
+	 * Round off the decimal points of the double
+	 */
 	public void round(){
+		double roundOffVal = 1e7;
 		if(x==0 || y==0 || z==0)
 			return;
-		x = (double)Math.round(x * 1e7) / 1e7;
-		y = (double)Math.round(y * 1e7) / 1e7;
-		z = (double)Math.round(z * 1e7) / 1e7;
+		x = (double)Math.round(x * roundOffVal) / roundOffVal;
+		y = (double)Math.round(y * roundOffVal) / roundOffVal;
+		z = (double)Math.round(z * roundOffVal) / roundOffVal;
 	}
 
+	/**
+	 * Get the magnitude of this vector
+	 * @return magnitude
+	 */
 	public double getMagnitude() {
 		return Math.sqrt(x*x + y *y + z*z);
 	}
 
+	/**
+	 * Get the squared magnitude of this vector
+	 * @return squared magnitude
+	 */
 	public double getSquaredMagnitude() {
 		return x*x + y *y + z*z;
 	}
 
+	/**
+	 * Normalize this vector
+	 */
 	public void normalize() {
 		double temp = getMagnitude();
 		if(temp > 0)
 			this.scale(1/temp);
 	}
 
+	/**
+	 * Get the unit vector of this vector
+	 * @return unti vector
+	 */
 	public Vector3D getUnitVector() {
 		Vector3D temp = this;
 		temp.normalize();
 		return temp;
 	}
 
+	/**
+	 * Add the given vector to this vector
+	 * @param vector
+	 */
 	public void add(Vector3D vector) {
 		double metricDiff = this.metric - vector.metric;
 		if(metricDiff == 0){
@@ -102,21 +142,39 @@ public class Vector3D {
 		}
 	}
 
+	/**
+	 * Subtract the given vector from this vector
+	 * @param vector
+	 */
 	public void subtract(Vector3D vector) {
 		add(vector.getNegativeVector());
 	}
 
+	/**
+	 * Add a scaled vector to this vector
+	 * @param vector
+	 * @param scale
+	 */
 	public void addScaledVector(Vector3D vector, double scale) {
 		vector.scale(scale);
 		add(vector);
 	}
 
+	/**
+	 * Scale this vector
+	 * @param scale
+	 */
 	public void scale(double scale) {
 		x *= scale;
 		y *= scale;
 		z *= scale;
 	}
 
+	/**
+	 * Return the scalar product of this vector and the given vector
+	 * @param vector
+	 * @return scalar product
+	 */
 	public double getScalarProduct(Vector3D vector) {
 		double metricDiff = vector.metric - this.metric;
 		if(metricDiff == 0)
@@ -127,6 +185,11 @@ public class Vector3D {
 		}
 	}
 
+	/**
+	 * Return the cross product (vector) of this vector and the given vector
+	 * @param vector
+	 * @return cross product
+	 */
 	public Vector3D getCrossProduct(Vector3D vector) {
 		double scale = Math.pow(10, vector.metric - this.metric);
 		double new_x = (y*vector.z - z*vector.y)*scale;
@@ -135,11 +198,20 @@ public class Vector3D {
 		return new Vector3D(new_x,new_y,new_z,metric);
 	}
 
+	/**
+	 * Return the component product (vector) of this vector and the given vector
+	 * @param vector
+	 * @return
+	 */
 	public Vector3D getComponentProduct(Vector3D vector) {
 		double scale = Math.pow(10, vector.metric - this.metric);
 		return new Vector3D(x*vector.x*scale, y*vector.y*scale, z*vector.z*scale, metric);
 	}
 	
+	/**
+	 * Return the formatted values of x, y, z values of the vector
+	 * @return String
+	 */
 	public String print(){
 		double scale = Math.pow(10, metric);
 		String x_str = convertMetric(x*scale);
@@ -149,23 +221,28 @@ public class Vector3D {
 		//return String.valueOf(formatter.format(x)) + ", " + String.valueOf(formatter.format(y)) + ", " + String.valueOf(formatter.format(z));
 	}
 	
-	public String convertMetric(double i){
-		int exponent = (int)(Math.log10(i));
+	/**
+	 * Convert the given double to a String with SI prefix
+	 * @param value
+	 * @return String
+	 */
+	public String convertMetric(double value){
+		int exponent = (int)(Math.log10(value));
 		NumberFormat formatter = new DecimalFormat("0.000");
 		
 		if (exponent <-9)
-			return formatter.format(i*Math.pow(10, 12)) + "pm";
+			return formatter.format(value*Math.pow(10, 12)) + "pm";
 				
 		else if (exponent < -6)
-			return formatter.format(i*Math.pow(10, 9)) + "nm";
+			return formatter.format(value*Math.pow(10, 9)) + "nm";
 	
 		else if (exponent < -3)
-			return formatter.format(i*Math.pow(10, 6)) + " μm";
+			return formatter.format(value*Math.pow(10, 6)) + " μm";
 	
 		else if (exponent < 0)
-			return formatter.format(i*Math.pow(10, 3)) + "mm";
+			return formatter.format(value*Math.pow(10, 3)) + "mm";
 		
-		return i + "m";
+		return value + "m";
 		
 	}
 }
