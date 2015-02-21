@@ -73,7 +73,7 @@ public class World {
 		a1.setVelocity(0, 0, 0);
 		a1.setNetCharge(1);		// find a way to get oxidation state/ net charge
 		
-		a2.setPosition(2e-10, 2e-10, 2e-10);
+		a2.setPosition(2.5e-10, 2.5e-10, 2.5e-10);
 		a2.setVelocity(0, 0, 0);
 		a2.setNetCharge(-1);
 		
@@ -150,7 +150,7 @@ public class World {
 		while(true) {
 			//checkForActiveParticles();
 			// Applying Forces
-			registry.updateAllForces();
+			registry.updateAllForces(activeParticles);
 					
 			for(AbstractParticle particle: activeParticles){
 				particle.integrate(i*time_metric);	
@@ -168,7 +168,7 @@ public class World {
 			System.out.println();
 			
 			// Collision Detection 
-			detector.detectCollision();    	 
+			detector.detectCollision(octTree, activeParticles, potentialContacts);    	 
 
 			// Resolve Collisions and set active particles
 			resolver.resolveContacts(potentialContacts);	

@@ -48,11 +48,11 @@ public class ForceRegistry {
 	/***
 	 * Apply forces to particles
 	 */
-	public void updateAllForces(){
+	public void updateAllForces(ArrayList<AbstractParticle> activeParticles){
 
 		// electric force, vdw force etc are not stored in force registry
-		for(AbstractParticle particle: World.activeParticles){
-			for(AbstractParticle particle2: World.activeParticles){
+		for(AbstractParticle particle: activeParticles){
+			for(AbstractParticle particle2: activeParticles){
 				if(!particle.equals(particle2)){
 					Force electricForce = new ElectricForce(particle,particle2);
 					Force lennardJonesForce = new LennardJonesForce (particle, particle2);

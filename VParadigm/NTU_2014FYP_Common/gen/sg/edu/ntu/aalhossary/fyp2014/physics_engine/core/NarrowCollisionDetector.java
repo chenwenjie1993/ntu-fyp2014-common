@@ -12,14 +12,14 @@ public class NarrowCollisionDetector {
 	/**
 	 * Detect which particles are about to be collided 
 	 */
-	public void detectCollision() {
-		ArrayList<AbstractParticle> particles = World.activeParticles;
-		World.potentialContacts.clear();
+	public void detectCollision(OctTree octTree, ArrayList<AbstractParticle> particles, ArrayList<AbstractParticle[]> potentialContacts) {
+		
+		potentialContacts.clear();
 		
 		for (int i=0; i< particles.size(); i++){
 			AbstractParticle a = particles.get(i);
 			ArrayList <AbstractParticle> neighbouringParticles = new ArrayList<>();
-			World.octTree.retrieve(neighbouringParticles, a);
+			octTree.retrieve(neighbouringParticles, a);
 			filterNeighbouringParticles(neighbouringParticles, particles, i);
 		
 			for (AbstractParticle b: neighbouringParticles){
@@ -38,7 +38,7 @@ public class NarrowCollisionDetector {
 				if(min_dist <= bond_length){
 					System.out.println("The two particles collided: " + a.getGUID() +" and " + b.getGUID());
 					AbstractParticle [] potentialContact = {a,b};
-					World.potentialContacts.add(potentialContact);
+					potentialContacts.add(potentialContact);
 				}
 			}
 		}
