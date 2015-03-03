@@ -46,7 +46,7 @@ public class OutputManager {
 		if(input==InputMethodEnum.pdb_file_iupred ||input==InputMethodEnum.pdb_file_stride ){
 		//	IOutility.createObjectsFromPDB(sp.Pregion);
 		}else if(input==InputMethodEnum.objects){
-			IOutility.createObjectsFromModel(sp.Pregion, inputManager.input);
+			IOutility.createObjectsFromModel(sp.Pregion.get(0), inputManager.input);
 		}
 	}
 }

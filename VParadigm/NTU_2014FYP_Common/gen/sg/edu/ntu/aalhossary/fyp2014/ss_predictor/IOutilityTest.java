@@ -101,33 +101,38 @@ public class IOutilityTest {
 		
 	}
 	@Test
-	public void testCreateAminoAcid() throws IOException{
-		String pathname = "/Users/benkong/documents/fyp/stride/1PGB.pdb";
+	public void testCreateAminoAcids() throws IOException{
+//		System.out.println(System.clearProperty("working.dir"));
+		String projectFolder=System.clearProperty("user.dir");
+//		System.out.println(System.clearProperty("current.dir"));
+		String pathname = projectFolder+"/res/4HHB.pdb";
 		STRIDE_Predictor sp = new STRIDE_Predictor();
-		ArrayList<AminoAcid>test = null;
 		sp.process(pathname);
-		test = IOutility.createAminoAcid(pathname,sp.Pregion.get(0));
-		assertNotNull(IOutility.createAminoAcid(pathname,sp.Pregion.get(0)));
-		/*System.out.println(test.get(0).getResidueSeqNum());
-		System.out.println(test.get(0).getName());
-		float[] coo = test.get(0).getAtomList().get(0).getCoordinates();
-		System.out.println(Arrays.toString(coo));*/
+		ArrayList<AminoAcid>test = IOutility.createAminoAcid(pathname,sp.Pregion.get(0));
+		assertEquals("PRO",test.get(0).getName());
+	//	System.out.println(test.get(0).getResidueSeqNum());
+	//	System.out.println(test.get(0).getName());
+	//	float[] coo = test.get(0).getAtomList().get(0).getCoordinates();
+	//	System.out.println(Arrays.toString(coo));
 		
 	}
 	@Test
-	public void testCreateObjectsFromModel() throws IOException {
-		String pathname = "/Users/benkong/documents/fyp/stride/1PGB.pdb";
+	public void testCreateResiduesFromModel() throws IOException {
+		String pathname = "/Users/benkong/documents/fyp/stride/4HHB.pdb";
 		STRIDE_Predictor sp = new STRIDE_Predictor();
 		sp.process(pathname);
-		File file = new File("/Users/benkong/documents/fyp/stride/1PGB.pdb");
+		File file = new File("/Users/benkong/documents/fyp/stride/4HHB.pdb");
 		Structure struc = DataManager.readFile(file.getAbsolutePath());
 		UpdateRegistry updateReg = new UpdateRegistry();
 		updateReg.createUserModel(struc);
 		ArrayList<Model> models = (ArrayList<Model>)updateReg.getModelList();
 		
-		ArrayList<ArrayList<Residue>> test =  IOutility.createObjectsFromModel(sp.Pregion, models.get(0));
-		//System.out.println(test.get(0).get(3).getResidueSeqNum());
-		assertEquals("ASP",test.get(0).get(0).getName());
+		ArrayList<Residue> test =  IOutility.createObjectsFromModel(sp.Pregion.get(0), models.get(0));
+		//assertEquals("THR",test.get(0).getName());
+		System.out.println(test.size());
+		for(Residue r: test){
+			System.out.println(r.getName());
+		}
 		
 	}
 	

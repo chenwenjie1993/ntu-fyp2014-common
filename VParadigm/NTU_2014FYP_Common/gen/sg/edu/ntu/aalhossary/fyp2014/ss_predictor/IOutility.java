@@ -41,26 +41,26 @@ static final Map<String, String> map = new HashMap<>();
 	
 	
 	static {
-		map.put("G", "GLY");
-		map.put("A", "ALA");
-		map.put("V", "VAL");
-		map.put("L", "LEU");
-		map.put("I", "ILE");
-		map.put("P", "PRO");
-		map.put("F", "PHE");
-		map.put("Y", "TYR");
-		map.put("W", "TRP");
-		map.put("S", "SER");
-		map.put("T", "THR");
-		map.put("C", "CYS");
-		map.put("M", "MET");
-		map.put("N", "ASN");
-		map.put("Q", "GLN");
-		map.put("K", "LYS");
-		map.put("R", "ARG");
-		map.put("H", "HIS");
-		map.put("D", "ASP");
-		map.put("E", "GLU");
+		map.put("GLY", "G");
+		map.put("ALA", "A");
+		map.put("VAL", "V");
+		map.put("LEU", "L");
+		map.put("ILE", "I");
+		map.put("PRO", "P");
+		map.put("PHE", "F");
+		map.put("TYR", "Y");
+		map.put("TRP", "W");
+		map.put("SER", "S");
+		map.put("THR", "T");
+		map.put("CYS", "C");
+		map.put("MET", "M");
+		map.put("ASN", "N");
+		map.put("GLN", "Q");
+		map.put("LYS", "K");
+		map.put("ARG", "R");
+		map.put("HIS", "H");
+		map.put("ASP", "D");
+		map.put("GLU", "E");
 	}
 	public static InputStream fastafileToInputStream (String pathname){
 	File f = new File(pathname);
@@ -190,7 +190,7 @@ static final Map<String, String> map = new HashMap<>();
 		
 		 PDBFileReader pdbreader = new PDBFileReader();
 		 Structure pdb = null;
-		 AminoAcid aa = new AminoAcid();
+		 
 		 ArrayList<AminoAcid> regions = new ArrayList<AminoAcid>();
 		 
 		 try {
@@ -198,7 +198,7 @@ static final Map<String, String> map = new HashMap<>();
 	
 				org.biojava.bio.structure.Chain c = pdb.getChainByPDB(stride.chain);
 				for(Group a:c.getGroupsByPDB(stride.startpos, stride.endpos)){
-					if(a.getChainId()==stride.chain){
+					AminoAcid aa = new AminoAcid();
 					aa.setName(a.getPDBName());
 					aa.setAminoChar(map.get(a.getPDBName()).charAt(0));
 					Chain chain = new Chain();
@@ -207,7 +207,6 @@ static final Map<String, String> map = new HashMap<>();
 					aa.setResidueSeqNum(Integer.parseInt(a.getPDBCode()));
 					aa.setAtomList(a.getAtoms());	
 					regions.add(aa);
-					}
 				}
 			
 		} catch (IOException | StructureException e) {
@@ -226,20 +225,18 @@ static final Map<String, String> map = new HashMap<>();
 		
 		
 	}
-	public static ArrayList<ArrayList<Residue>> createObjectsFromModel(ArrayList<STRIDE_Output>output, Object input){
+	public static ArrayList<Residue> createObjectsFromModel(STRIDE_Output output, Object input){
 		Model m = (Model)input;
-		ArrayList<ArrayList<Residue>> PaminoAcid=new ArrayList<ArrayList<Residue>>();
-		
-		for(STRIDE_Output o:output){
+		ArrayList<Residue> Presidues=new ArrayList<Residue>();
 			for(Molecule mol:m.getMolecules()){
 				for(Chain c:mol.getChains()){
-					
-						PaminoAcid.add(c.getResidues(o.startpos, o.endpos));
-					}
+					if(c.name.equals(output.chain)){
+						Presidues = c.getResidues(output.startpos, output.endpos);
+					}	
 				}
-			
-		}
-		return PaminoAcid;
+			}	
+					
+		return Presidues;
 		
 	}
 }

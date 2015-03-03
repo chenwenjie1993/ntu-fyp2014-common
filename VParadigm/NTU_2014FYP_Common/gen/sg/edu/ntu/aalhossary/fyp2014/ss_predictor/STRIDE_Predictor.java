@@ -37,7 +37,7 @@ public class STRIDE_Predictor extends PredictorWrapper {
 		InputStream input = p.getInputStream();
 		BufferedReader br = new BufferedReader(new InputStreamReader(input));
 		String str;
-		STRIDE_Output predicted = new STRIDE_Output();
+		
         Pregion = new ArrayList<STRIDE_Output>();
 		
 		    while ((str = br.readLine()) != null) {
@@ -47,6 +47,7 @@ public class STRIDE_Predictor extends PredictorWrapper {
             	ArrayList<String> region_list = new ArrayList<String>();
             	region_list.add(str);
             	for(String sentence:region_list){
+            		STRIDE_Output predicted = new STRIDE_Output();
             		String []splitArray = sentence.split("\\s+");
             		predicted.Rpred(splitArray[1]);
             		predicted.Rchain(splitArray[4]);
