@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
+
 /**
  * @author Xiu Ting
  *
@@ -15,6 +17,8 @@ public class Residue extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractPartic
 	protected int moleculeSeqNum;
 	protected Chain chain;
 	protected ArrayList<Atom> atoms;
+	protected ArrayList<Integer> representativeCharges;
+	protected ArrayList<Vector3D> representativePoints;
 	
 	public Residue() {
 		super();
