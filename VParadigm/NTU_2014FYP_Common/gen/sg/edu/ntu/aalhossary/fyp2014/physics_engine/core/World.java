@@ -20,8 +20,11 @@ public class World {
 	public static double COEFFICENT_OF_RESTITUTION = 1;
 	public static int particleCount = 0;
 	public static boolean simulationLvlAtomic = true;
+	public static boolean electricForceActive = true;
+	public static boolean LJForceActive = true;
 	public static String simulationStatus = "running";
 	public static CountDownLatch countDownLatch;
+	public static boolean simulationAtomic;
 	
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
@@ -72,8 +75,8 @@ public class World {
 		a1.setPosition(0, 0, 0);
 		a1.setVelocity(0, 0, 0);
 		a1.setNetCharge(1);		// find a way to get oxidation state/ net charge
-		
-		a2.setPosition(2.5e-10, 2.5e-10, 2.5e-10);
+		//2.5
+		a2.setPosition(14e-10, 14e-10, 14e-10);
 		a2.setVelocity(0, 0, 0);
 		a2.setNetCharge(-1);
 		
@@ -150,8 +153,11 @@ public class World {
 		while(true) {
 			//checkForActiveParticles();
 			// Applying Forces
+			if(!World.electricForceActive)
 			registry.updateAllForces(activeParticles);
 					
+			registry.updateAllForces(activeParticles);
+			
 			for(AbstractParticle particle: activeParticles){
 				particle.integrate(i*time_metric);	
 			}
@@ -251,6 +257,11 @@ public class World {
 		
 		for(AbstractParticle particle: particles)
 			markAsActive(particle);
+	}
+	
+	public static void resetActiveParticlesVelocities(){
+		for(AbstractParticle particle: activeParticles)
+			particle.setVelocity(0, 0, 0);
 	}
 	
 	private static void printParticleStatus(AbstractParticle p){

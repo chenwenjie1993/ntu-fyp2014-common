@@ -58,8 +58,11 @@ public class ForceRegistry {
 					Force lennardJonesForce = new LennardJonesForce (particle, particle2);
 					
 					// calculating the total force here saves computation then letting the force registry to handle
-					Vector3D totalForce = electricForce.getForce();
-					totalForce.add(lennardJonesForce.getForce());
+					Vector3D totalForce = new Vector3D();
+					if(World.electricForceActive)
+						totalForce.add(electricForce.getForce());
+					if(World.LJForceActive)
+						totalForce.add(lennardJonesForce.getForce());
 					
 					particle.addForce(totalForce);
 					particle2.addForce(totalForce.getNegativeVector());

@@ -32,10 +32,13 @@ public class ContactResolver {
 			System.out.println("Imparting velocity: " + v1.print() + "\t" + v2.print());
 			World.markAsActive(a1);
 			World.markAsActive(a2);
-		}
+		}		
 		
 		for(AbstractParticle particle: World.activeParticles){
 			particle.setVelocityAccumulated();
+			if(!World.LJForceActive) {
+				particle.setVelocity(0, 0, 0);
+			}
 		}
 	}
 }

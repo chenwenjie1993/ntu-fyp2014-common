@@ -31,11 +31,13 @@ public class NarrowCollisionDetector {
 				double diff_z = a.getPosition().z * scale1 - b.getPosition().z * scale2;
 				double min_dist = Math.min(Math.abs(diff_x), Math.min(Math.abs(diff_y), Math.abs(diff_z)));
 				
-			//	double r1 = ((BoundingSphere)(a.getBoundingPrimitive())).getRadius();
-			//	double r2 = ((BoundingSphere)(b.getBoundingPrimitive())).getRadius();
+				double r1 = ((BoundingSphere)(a.getBoundingPrimitive())).getRadius();
+				double r2 = ((BoundingSphere)(b.getBoundingPrimitive())).getRadius();
 				
 				double bond_length = 0.28E-9;
+				
 				if(min_dist <= bond_length){
+				
 					System.out.println("The two particles collided: " + a.getGUID() +" and " + b.getGUID());
 					AbstractParticle [] potentialContact = {a,b};
 					potentialContacts.add(potentialContact);
