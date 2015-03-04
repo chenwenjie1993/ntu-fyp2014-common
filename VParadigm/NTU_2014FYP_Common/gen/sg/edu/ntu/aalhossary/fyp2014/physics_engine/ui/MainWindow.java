@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -42,8 +43,11 @@ public class MainWindow extends JFrame {
 	private JPanel coeOfResPanel;
 	private JSlider coeOfResSlider;
 	private JLabel coeOfResLbl;
+	private JCheckBox lennardJonesCheckBox;
+	private JCheckBox electrostaticCheckBox;
 	
 	private JPanel simLvlPanel;
+	private JPanel forcesPanel;
 	private JRadioButton atomicRadioButton;
 	private JRadioButton molecularRadioButton;
 	private JTextField commandTextField;
@@ -54,20 +58,23 @@ public class MainWindow extends JFrame {
 	private JPanel panel;
 	private JButton pauseButton;
 	private JButton restartButton;
+
 	
 	/**
 	 * Create the main frame.
 	 */
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 400);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+			
 		// add JMol Panel
 		JmolDisplay jmolPanel = new JmolDisplay();
+		jmolPanel.setBorder(new EmptyBorder(5,0,5,0));
 		contentPane.add(jmolPanel);
 		
 		// add mediator
@@ -77,14 +84,27 @@ public class MainWindow extends JFrame {
 		// add RHS Panel for user input
 		JPanel inputPanel = new JPanel();
 		inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
+		inputPanel.setBorder(new EmptyBorder(0,5,0,5));
 		contentPane.add(inputPanel, BorderLayout.EAST);
 		
 		createSimLvlPanel();
 		inputPanel.add(simLvlPanel);
+		JPanel padding = new JPanel();
+		padding.setSize(20, 20);
+		inputPanel.add(padding);
 		
 		// add slider and label for coefficient of restitution
 		createCoeOfResPanel();
 		inputPanel.add(coeOfResPanel);
+		JPanel padding2 = new JPanel();
+		padding2.setSize(20, 20);
+		inputPanel.add(padding2);
+		
+		createForcesPanel();
+		inputPanel.add(forcesPanel);
+		JPanel padding3 = new JPanel();
+		padding3.setSize(20, 20);
+		inputPanel.add(padding3);
 		
 		panel = new JPanel();
 		inputPanel.add(panel);
@@ -166,6 +186,7 @@ public class MainWindow extends JFrame {
 		coeOfResSlider.setValue((int)(World.COEFFICENT_OF_RESTITUTION*100));
 		
 		coeOfResPanel.add(panel1);
+		
 	}
 	
 	/**
@@ -197,6 +218,34 @@ public class MainWindow extends JFrame {
 	    panel2.add(atomicRadioButton);
 	    panel2.add(molecularRadioButton);
 		simLvlPanel.add(panel2);	
+	}
+	
+	private void createForcesPanel(){
+		forcesPanel = new JPanel();
+		forcesPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+	//	forcesPanel.setLayout(new BoxLayout(forcesPanel, BoxLayout.Y_AXIS));
+		forcesPanel.setLayout(new BorderLayout());
+		
+		ButtonGroup bg = new ButtonGroup();
+		lennardJonesCheckBox = new JCheckBox("Lennard-Jones Force");
+		lennardJonesCheckBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    electrostaticCheckBox = new JCheckBox("Electrostatic Force");
+	    electrostaticCheckBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+	 
+	    if(World.electricForceActive)
+	    	electrostaticCheckBox.setSelected(true);
+	    if(World.LJForceActive)
+	    	lennardJonesCheckBox.setSelected(true);
+	    
+	    JPanel panel2 = new JPanel();
+	    panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+	    JLabel label1 = new JLabel("Forces");
+	    label1.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    panel2.add(label1);
+	    panel2.add(electrostaticCheckBox);
+	    panel2.add(lennardJonesCheckBox);
+		forcesPanel.add(panel2, BorderLayout.CENTER);	
 	}
 
 	/**
@@ -234,6 +283,8 @@ public class MainWindow extends JFrame {
 		    	JRadioButton button = (JRadioButton) e.getSource();
 		        if (button.getText().equals("atomic")){
 		        	World.simulationLvlAtomic = true;
+		        	electrostaticCheckBox.setEnabled(true);
+		        	electrostaticCheckBox.setSelected(World.electricForceActive);
 		        }
 		    }
 		});
@@ -243,8 +294,40 @@ public class MainWindow extends JFrame {
 		    	JRadioButton button = (JRadioButton) e.getSource();
 		        if (button.getText().equals("molecular")){
 		        	World.simulationLvlAtomic = false;
+		        	electrostaticCheckBox.setSelected(false);
+		        	electrostaticCheckBox.setEnabled(false);
 		        }
 		    }
 		});
+		
+		lennardJonesCheckBox.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent e) {
+		    	JCheckBox checkBox = (JCheckBox) e.getSource();
+		        if (checkBox.getText().equals("Lennard-Jones Force")){
+		        	if(checkBox.isSelected())
+		        		World.LJForceActive = true;
+		        	else
+		        		World.LJForceActive = false;
+		        }
+		        World.resetActiveParticlesVelocities();
+		    }
+		});
+		
+		electrostaticCheckBox.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent e) {
+		    	JCheckBox checkBox = (JCheckBox) e.getSource();
+		        if (checkBox.getText().equals("Electrostatic Force")){
+		        	if(checkBox.isSelected())
+		        		World.electricForceActive = true;
+		        	else
+		        		World.electricForceActive = false;
+		        }
+		        World.resetActiveParticlesVelocities();
+		     //   World.simulationStatus = "restart";
+		    }
+		});
+		
+		
+		
 	}
 }
