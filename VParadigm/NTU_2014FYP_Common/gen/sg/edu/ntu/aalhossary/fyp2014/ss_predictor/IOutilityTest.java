@@ -15,6 +15,7 @@ import org.biojava.bio.structure.Structure;
 import org.junit.Test;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AminoAcid;
+import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Residue;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.DataManager;
@@ -128,11 +129,13 @@ public class IOutilityTest {
 		ArrayList<Model> models = (ArrayList<Model>)updateReg.getModelList();
 		
 		ArrayList<Residue> test =  IOutility.createObjectsFromModel(sp.Pregion.get(0), models.get(0));
-		//assertEquals("THR",test.get(0).getName());
-		System.out.println(test.size());
+		assertEquals("PRO",test.get(0).getName());
+		/*System.out.println(test.size());
 		for(Residue r: test){
-			System.out.println(r.getName());
-		}
+			for(Atom a :r.getAtomList()){
+			System.out.println(a.getName());
+			}
+		}*/
 		
 	}
 	

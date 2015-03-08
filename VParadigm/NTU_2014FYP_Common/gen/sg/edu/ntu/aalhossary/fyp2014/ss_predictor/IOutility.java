@@ -225,8 +225,9 @@ static final Map<String, String> map = new HashMap<>();
 		
 		
 	}
-	public static ArrayList<Residue> createObjectsFromModel(STRIDE_Output output, Object input){
+	public static ArrayList<Residue> createObjectsFromModel(STRIDE_Output output, Object input) {
 		Model m = (Model)input;
+		
 		ArrayList<Residue> Presidues=new ArrayList<Residue>();
 			for(Molecule mol:m.getMolecules()){
 				for(Chain c:mol.getChains()){
@@ -234,9 +235,9 @@ static final Map<String, String> map = new HashMap<>();
 						Presidues = c.getResidues(output.startpos, output.endpos);
 					}	
 				}
-			}	
-					
-		return Presidues;
+			}
+		
+			return Presidues;
 		
 	}
 }
