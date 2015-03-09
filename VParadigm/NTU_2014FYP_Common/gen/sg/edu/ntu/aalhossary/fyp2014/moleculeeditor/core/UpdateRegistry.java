@@ -166,38 +166,46 @@ public class UpdateRegistry {
 		jmolViewer.openStringInline(pdb);
 	}
 	
+	private double capCoord (double coord){
+		if(coord < 0)
+			return Math.max(-999.000, coord);
+		return Math.min(coord, +999.000);
+	}
+	
 	public void displayParticles(ArrayList<AbstractParticle> list){
 		DecimalFormat decformat = new DecimalFormat("#.###");
-		int index = 1;
+		
+		
 		String[] coord;
 		String pdb = "MODEL       1\n";
 		for(int i=0; i<list.size();i++){
+			String index = String.format("%4d", list.get(i).getGUID());
 			if(list.get(i) instanceof Atom){
 				double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
-				coord = new String[3];
-				coord[0] = decformat.format(list.get(i).getPosition().x);
-				coord[1] = decformat.format(list.get(i).getPosition().y);
-				coord[2] = decformat.format(list.get(i).getPosition().z);
 				Vector3D position = list.get(i).getPosition();
-				String coords= String.format("%8.3f%8.3f%8.3f", position.x*scale,position.y*scale,position.z*scale);
-				String elementSymbol = ((Atom)list.get(i)).getElementSymbol().toUpperCase();
-				pdb += "HETATM    "+index+" "+elementSymbol+"   TST A   1    "+coords+"  1.00  0.00\n";
-				index++;
+				double x = capCoord(position.x*scale);
+				double y = capCoord(position.y*scale);
+				double z = capCoord(position.z*scale);
+				String coords= String.format("%8.3f%8.3f%8.3f", x,y,z);
+				String elementSymbol = String.format("%-4s",((Atom)list.get(i)).getElementSymbol().toUpperCase());
+						
+				pdb += "HETATM "+index+" "+elementSymbol+"         1    "+coords+"  1.00  0.00\n";
+				
 			}
 			else if (list.get(i) instanceof Molecule){
 				Molecule m = (Molecule)list.get(i);
 				if(World.simulationLvlAtomic == true) {
 					for(Atom a: m.getChains().get(0).atomSeq){
 						double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
-						coord = new String[3];
-						coord[0] = decformat.format(a.getPosition().x);
-						coord[1] = decformat.format(a.getPosition().y);
-						coord[2] = decformat.format(a.getPosition().z);
 						Vector3D position = a.getPosition();
-						String coords= String.format("%8.3f%8.3f%8.3f", position.x*scale,position.y*scale,position.z*scale);
-						String elementSymbol = a.getElementSymbol().toUpperCase();
-						pdb += "HETATM    "+index+" "+elementSymbol+"   TST A   1    "+coords+"  1.00  0.00\n";
-						index++;
+						double x = capCoord(position.x*scale);
+						double y = capCoord(position.y*scale);
+						double z = capCoord(position.z*scale);
+						String coords= String.format("%8.3f%8.3f%8.3f",x,y,z);
+						String elementSymbol = String.format("%-4s",a.getElementSymbol().toUpperCase());
+								
+						pdb += "HETATM "+index+" "+elementSymbol+"         1    "+coords+"  1.00  0.00\n";
+						
 					}
 				
 					/*
@@ -209,18 +217,15 @@ public class UpdateRegistry {
 				}
 				else {
 					double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
-					coord = new String[3];
-					coord[0] = decformat.format(list.get(i).getPosition().x);
-					coord[1] = decformat.format(list.get(i).getPosition().y);
-					coord[2] = decformat.format(list.get(i).getPosition().z);
 					Vector3D position = list.get(i).getPosition();
-					String coords= String.format("%8.3f%8.3f%8.3f", position.x*scale,position.y*scale,position.z*scale);
+					double x = capCoord(position.x*scale);
+					double y = capCoord(position.y*scale);
+					double z = capCoord(position.z*scale);
+					String coords= String.format("%8.3f%8.3f%8.3f",x,y,z);
 					pdb += "HETATM    1 AR   TST A   1    "+coords+"  1.00  0.00\n";
 				}
 			}
 		}
-	//	pdb += "CONECT    1      2\n";
-	//	pdb += "CONECT    2      1\n";
 		pdb += "ENDMDL";
 		viewer.openStringInline(pdb);
 		try {
