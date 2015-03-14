@@ -1,19 +1,6 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
-
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Arrays;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.DISTANCE;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.MASS;
 
 /**
  * @author waiyan

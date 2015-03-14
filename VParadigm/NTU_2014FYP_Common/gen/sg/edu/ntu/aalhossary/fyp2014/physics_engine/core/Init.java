@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.jsoup.Jsoup;
