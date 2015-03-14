@@ -30,9 +30,17 @@ public class ContactResolver {
 			a1.addVelocityAccumulated(v1.x, v1.y, v1.z);
 			a2.addVelocityAccumulated(v2.x, v2.y, v2.z);
 			System.out.println("Imparting velocity: " + v1.print() + "\t" + v2.print());
-			World.markAsActive(a1);
-			World.markAsActive(a2);
+			
+			if(!World.allParticlesActive) {
+				World.markAsActive(a1);
+				World.markAsActive(a2);
+			}
 		}		
+		
+		if(World.allParticlesActive) {
+			for(AbstractParticle particle: World.octTree.getAllParticles())
+				World.markAsActive(particle);
+		}
 		
 		for(AbstractParticle particle: World.activeParticles){
 			particle.setVelocityAccumulated();

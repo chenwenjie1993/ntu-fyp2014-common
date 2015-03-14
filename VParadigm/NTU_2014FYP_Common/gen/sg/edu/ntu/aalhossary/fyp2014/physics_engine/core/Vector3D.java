@@ -141,6 +141,20 @@ public class Vector3D {
 			z += vector.z * scale;
 		}
 	}
+	
+	public Vector3D addAndReturn(Vector3D vector) {
+		Vector3D temp = new Vector3D();
+		temp.add(this);
+		temp.add(vector);
+		return temp;
+	}
+	
+	public Vector3D subtractAndReturn(Vector3D vector) {
+		Vector3D temp = new Vector3D();
+		temp.add(this);
+		temp.subtract(vector);
+		return temp;
+	}
 
 	/**
 	 * Subtract the given vector from this vector
@@ -206,6 +220,15 @@ public class Vector3D {
 	public Vector3D getComponentProduct(Vector3D vector) {
 		double scale = Math.pow(10, vector.metric - this.metric);
 		return new Vector3D(x*vector.x*scale, y*vector.y*scale, z*vector.z*scale, metric);
+	}
+	
+	public Vector3D rotatebyMatrix (Matrix3 matrix){
+		Vector3D vector = new Vector3D();
+		double [] data = matrix.getData();
+		vector.x = data[0] * x + data[1] * y + data[2] * z;
+		vector.y = data[3] * x + data[4] * y + data[5] * z;
+		vector.z = data[6] * x + data[7] * y + data[8] * z;
+		return vector;
 	}
 	
 	/**

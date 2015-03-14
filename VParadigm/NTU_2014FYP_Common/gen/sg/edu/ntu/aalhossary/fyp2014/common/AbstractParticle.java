@@ -1,6 +1,5 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.BoundingCube;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.BoundingPrimitive;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix3;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix4;
@@ -36,7 +35,8 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		torqueAccumulated = new Vector3D(0,0,0);
 		velocityAccumulated = new Vector3D(0,0,0);
 		inverseMass = 0;
-		orientation = new Quaternion(0,0,0,0);
+		inverseInertiaTensor = new Matrix3();
+		orientation = new Quaternion(1,0,0,0);
 		rotation = new Vector3D(0,0,0);
 		netCharge = 0;
 		guid = World.particleCount;
@@ -248,11 +248,26 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 			Atom atom = (Atom) this;
 			atom.integrate(duration);
 		}
+		else if (this instanceof Molecule) {
+			Molecule molecule = (Molecule) this;
+			molecule.integrate(duration);
+		}
 		
 	}
 
-	public void setInverseInertiaTensor(Matrix3 aInertia) {
-		
+	public void setInverseInertiaTensor(Matrix3 inertiaTensor) {
+		this.inverseInertiaTensor.setInverse(inertiaTensor);
+	}
+	
+	public void rotateAroundAxis (double axis_x, double axis_y, double axis_z, double angle){
+		rotateAroundAxis(new Vector3D(axis_x, axis_y, axis_z), angle);
+	}
+	
+	public void rotateAroundAxis (Vector3D axis, double angle){
+		Quaternion quaternion = new Quaternion(axis, angle);
+		orientation.multiply(quaternion);
+		Vector3D pos = position.rotatebyMatrix(orientation.toMatrix3());
+		setPosition(pos.x, pos.y, pos.z);
 	}
 
 	/**
@@ -296,15 +311,7 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	public void addTorque(Vector3D torque) {
 		torqueAccumulated.add(torque);    
 	}
-
-	public void calculateTransformMatrix(Matrix4 aM, Vector3D aPosition, Quaternion aOrientation) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void calculateInertiaTensor(Matrix3 aWorldCor, Quaternion aQ, Matrix3 aBodyCor, Matrix4 aRotMatrix) {
-		throw new UnsupportedOperationException();
-	}
-
+	
 	public Vector3D getRotation() {
 		return this.rotation;
 	}

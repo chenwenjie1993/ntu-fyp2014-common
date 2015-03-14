@@ -11,12 +11,17 @@ public class Matrix3 {
 	public Matrix3(){
 		for(int i=0; i<9; i++) data[i]=0;
 	}
+	/*
+	 *  In the form of
+	 * 	a	b	c
+	 *  d	e	f
+	 *  g	h	i
+	 */
 	
 	public Matrix3(double a, double b, double c, double d, double e, double f, double g, double h, double i){
 		data[0] = a;	data[1] = b;	data[2] = c;
 		data[3] = d;	data[4] = e;	data[5] = f;
-		data[6] = g;	data[7] = h;	data[8] = i;
-		
+		data[6] = g;	data[7] = h;	data[8] = i;	
 	}
 	
 	/**
@@ -199,34 +204,29 @@ public class Matrix3 {
      */
 	public void setInverse(Matrix3 matrix) {
 		
-		double t4 = matrix.data[0]*matrix.data[4];
-		double t6 = matrix.data[0]*matrix.data[5];
-		double t8 = matrix.data[1]*matrix.data[3];
-		double t10 = matrix.data[2]*matrix.data[3];
-		double t12 = matrix.data[1]*matrix.data[6];
-		double t14 = matrix.data[2]*matrix.data[6];
+		double t1 = matrix.data[0]*matrix.data[4];
+		double t2 = matrix.data[0]*matrix.data[5];
+		double t3 = matrix.data[1]*matrix.data[3];
+		double t4 = matrix.data[2]*matrix.data[3];
+		double t5 = matrix.data[1]*matrix.data[6];
+		double t6 = matrix.data[2]*matrix.data[6];
 		
-		double t16 = (t4*matrix.data[8] - t6*matrix.data[7] - t8*matrix.data[8]+
-                t10*matrix.data[7] + t12*matrix.data[5] - t14*matrix.data[4]);
+		double det = (t1*matrix.data[8] - t2*matrix.data[7] - t3*matrix.data[8]+
+                t4*matrix.data[7] + t5*matrix.data[5] - t6*matrix.data[4]);
 
 	    // Make sure the determinant is non-zero.
-	    if (t16 == 0) return;
-	    double t17 = 1/t16;
-	
-	    double [] temp = new double [9];
+	    if (det == 0) return;
+	    double idet = 1/det;
 	    
-	    temp[0] = (matrix.data[4]*matrix.data[8]-matrix.data[5]*matrix.data[7])*t17;
-	    temp[1] = -(matrix.data[1]*matrix.data[8]-matrix.data[2]*matrix.data[7])*t17;
-	    temp[2] = (matrix.data[1]*matrix.data[5]-matrix.data[2]*matrix.data[4])*t17;
-	    temp[3] = -(matrix.data[3]*matrix.data[8]-matrix.data[5]*matrix.data[6])*t17;
-	    temp[4] = (matrix.data[0]*matrix.data[8]-t14)*t17;
-	    temp[5] = -(t6-t10)*t17;
-	    temp[6] = (matrix.data[3]*matrix.data[7]-matrix.data[4]*matrix.data[6])*t17;
-	    temp[7] = -(matrix.data[0]*matrix.data[7]-t12)*t17;
-	    temp[8] = (t4-t8)*t17;
-	    
-	    for(int i=0; i<9; i++) 
-	    	data[i] = temp[i];
+	    data[0] = (matrix.data[4]*matrix.data[8]-matrix.data[5]*matrix.data[7])*idet;
+	    data[1] = -(matrix.data[1]*matrix.data[8]-matrix.data[2]*matrix.data[7])*idet;
+	    data[2] = (matrix.data[1]*matrix.data[5]-matrix.data[2]*matrix.data[4])*idet;
+	    data[3] = -(matrix.data[3]*matrix.data[8]-matrix.data[5]*matrix.data[6])*idet;
+	    data[4] = (matrix.data[0]*matrix.data[8]-t6)*idet;
+	    data[5] = -(t2-t4)*idet;
+	    data[6] = (matrix.data[3]*matrix.data[7]-matrix.data[4]*matrix.data[6])*idet;
+	    data[7] = -(matrix.data[0]*matrix.data[7]-t5)*idet;
+	    data[8] = (t1-t3)*idet;
 	}
 
 	/**

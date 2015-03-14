@@ -32,7 +32,7 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		
 		// Calculating position
 		Vector3D position = getCentroid();
-					
+		double r  =0 ;	
 		for (Atom atom : atoms) {
 			
 			chain.atomSeq.add(atom);
@@ -49,6 +49,9 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 			
 			if(radius < max_dist)
 				radius = max_dist;
+			
+			BoundingSphere b = (BoundingSphere)(atom.getBoundingPrimitive());
+			r = Math.max(r, b.getRadius());
 		}
 		
 		this.chains.add(chain);
@@ -57,6 +60,8 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		this.molecularMass = (float)mass;
 		this.boundingPrimitive = new BoundingSphere(radius, position);
 		this.position = position;
+		
+		
 	}
 	
 	/**
@@ -140,6 +145,38 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		this.velocity = new Vector3D(x,y,z, metric);
 	}
 	
+	
+	
+	public void setInverseInertiaTensor(Vector3D axisOfRotation){
+		
+		double total_ixx = 0, total_ixy = 0, total_ixz = 0;
+		double total_iyx = 0, total_iyy = 0, total_iyz = 0;
+		double total_izx = 0, total_izy = 0, total_izz = 0;
+		
+		for(Atom atom: atoms) {
+			double x = atom.getPosition().x - axisOfRotation.x;
+			double y = atom.getPosition().y - axisOfRotation.y;
+			double z = atom.getPosition().z - axisOfRotation.z;
+			double mass = atom.getMass();
+			total_ixx += mass * (y*y + z*z); 
+			total_iyy += mass * (x*x + z*z); 
+			total_izz += mass * (x*x + y*y);
+			double ixy = -mass * x * y; 
+			double ixz = -mass * x * z; 
+			double iyz = -mass * y * z; 
+			total_ixy += ixy;
+			total_iyx += ixy;
+			total_ixz += ixz;
+			total_izx += ixz;
+			total_iyz += iyz;
+			total_izy += iyz;
+		}
+		
+		Matrix3 inertiaTensor = new Matrix3(total_ixx,total_ixy,total_ixz,total_iyx,total_iyy,total_iyz,total_izx,total_izy,total_izz);
+		inertiaTensor.print();
+		super.setInverseInertiaTensor(inertiaTensor);
+	}
+	
 	/**
 	 * Calculate acceleration, velocity and position of the molecule after the given duration
 	 */
@@ -163,8 +200,20 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		position.addScaledVector(currentAcceleration, duration * duration /2);
 		this.setPosition(position.x, position.y, position.z);
 		
+		Vector3D angularAcceleration = inverseInertiaTensor.transform(torqueAccumulated);
+		rotation.addScaledVector(angularAcceleration, duration);
+		orientation.addScaledVector(rotation, duration);
+		orientation.normalize();
+		
+		Matrix4 transformationMatrix = new Matrix4();
+		transformationMatrix.setOrientationAndPos(orientation, position);
+		
+//		position = transformationMatrix.transform(position);
+		
 		// Clear forces
 		clearAccumulator();
+		
+		
 			
 		/*
 		else if(World.simulationLvlAtomic == true) {

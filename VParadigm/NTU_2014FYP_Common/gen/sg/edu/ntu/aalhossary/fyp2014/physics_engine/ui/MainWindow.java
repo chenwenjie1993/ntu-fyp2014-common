@@ -79,6 +79,7 @@ public class MainWindow extends JFrame {
 		
 		// add mediator
 		mediator = new UpdateRegistry(jmolPanel.getViewer(), modelList);
+		jmolPanel.getViewer().setPercentVdwAtom(100);
         jmolPanel.setMediator(mediator);
 		
 		// add RHS Panel for user input
@@ -259,6 +260,7 @@ public class MainWindow extends JFrame {
                 double currentVal = ((JSlider)event.getSource()).getValue()/100.0;
                 coeOfResLbl.setText(formatter.format(currentVal));
                 World.COEFFICENT_OF_RESTITUTION = currentVal;
+                World.resetActiveParticlesVelocities();
             }
         });
 		

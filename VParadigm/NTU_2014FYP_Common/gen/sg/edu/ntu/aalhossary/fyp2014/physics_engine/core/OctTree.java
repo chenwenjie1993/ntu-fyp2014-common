@@ -9,7 +9,7 @@ import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
  * OctTree stores the particles in the engine according to their positions
  */
 public class OctTree {
-	private final int MAX_PARTICLES = 5;	// for each node
+	private final int MAX_PARTICLES = 10;	// for each node,  40 per level
 	private final int MAX_DEPTH = 3;		// NECESSARY, if the points are too close, 
 											// too many recursive splitting of nodes will cause stack overflow error
 	private OctTree [] nodes;
@@ -48,6 +48,14 @@ public class OctTree {
 	 * @return particles
 	 */
 	public ArrayList <AbstractParticle> getAllParticles(){
+		
+		ArrayList <AbstractParticle> particles = new ArrayList<>();
+		particles.addAll(this.particles);
+		for(int i=0; i<8; i++){
+			if(nodes[0] == null)
+				break;
+			particles.addAll(nodes[i].getAllParticles());
+		}
 		return particles;
 	}
 	
@@ -116,7 +124,7 @@ public class OctTree {
      * Insert a new particle into the oct-tree
      * @param particle
      */
-     public void insert(AbstractParticle particle){
+     public void insert(AbstractParticle particle){	 
     	 
 		// if current node is not leaf, recursively find the leaf node to place particle 
 		if (nodes[0] != null) {
@@ -124,6 +132,7 @@ public class OctTree {
 		    
 		    // if not on axis
 		    if(index != -1) {
+		    	System.out.println("inserting to node " + index);
 		    	nodes[index].insert(particle);
 		    	return;
 		    }
@@ -141,7 +150,7 @@ public class OctTree {
 				int index = getIndex(particles.get(i).getPosition());
 			    // if not on axis
 			    if(index != -1) {
-			    //	System.out.println("Tree depth:" + depth + " removed Particle " + ((Atom)(particles.get(i))).getAtomicSymbol());
+			    	//System.out.println("Tree depth:" + depth + " removed Particle " + ((Atom)(particles.get(i))).getAtomicSymbol());
 			    	nodes[index].insert(particles.remove(i));
 			    	 
 			    }
@@ -152,54 +161,36 @@ public class OctTree {
 			}
 		}
      }
-     
+
+    
      /**
       * Return all objects that could collide with the given object
       */
-     public ArrayList <AbstractParticle> retrieve( ArrayList <AbstractParticle> potentialContacts, AbstractParticle particle) {
+     public ArrayList <AbstractParticle> retrieve(AbstractParticle particle) {
+    	 ArrayList <AbstractParticle> potentialContacts = new ArrayList<>();
     	 int index = getIndex(particle.getPosition());
     	 if (index != -1 && nodes[0] != null) {
-    		 nodes[index].retrieve(particles, particle);
+    		 potentialContacts.addAll(nodes[index].retrieve(particle));
     	 }
     	 // can collide with all objects in this node
     	 potentialContacts.addAll(particles);
     	 potentialContacts.remove(particle);
          return potentialContacts;
      }
+    
+     
      
      /**
       * Remove the given particle from the oct-tree
       * @param particle
-      * @param old_position
       */
-     public void remove(AbstractParticle particle, Vector3D old_position){
-    	 int index = getIndex(old_position);
-    	 if(index != -1 && nodes[0] != null)
-    		 nodes[index].remove(particle, old_position);
+     public boolean remove(AbstractParticle particle){
     	 
-    	 for(AbstractParticle p: particles){
-    		 if(p.getGUID() == particle.getGUID()){
-    			 particles.remove(p);
-    			 return;
-    		 }
-    	 } 
-     }
-     
-     /**
-      * Remove the given particle from the oct-tree
-      * @param particle
-      */
-     public void remove(AbstractParticle particle){
     	 int index = getIndex(particle.getPosition());
     	 if (index != -1 && nodes[0] != null) {
-    		 nodes[index].remove(particle);
+    		 return nodes[index].remove(particle);
    	  	 }
-    	 for (AbstractParticle p : particles){
-    		 if(p.getGUID() == particle.getGUID()) {
-    			 particles.remove(p);
-    			 return;
-    		 }
-    	 }
+    	 return particles.remove(particle);
      }
      
      /**
@@ -207,9 +198,9 @@ public class OctTree {
       * @param particle
       * @param old_position
       */
-     public void update(AbstractParticle particle, Vector3D old_position){
-    	 remove(particle, old_position);
-    	 insert(particle);
+     public void update(AbstractParticle particle){
+    	 if(remove(particle))
+    		 insert(particle);
      }
      
      /**
@@ -217,9 +208,8 @@ public class OctTree {
       */
      public void updateAllActiveParticles(){
     	 ArrayList <AbstractParticle> particles = World.activeParticles;
-    	 ArrayList <Vector3D> positions = World.oldPositions;
     	 for(int i=0; i< particles.size(); i++)
-    		 update(particles.get(i), positions.get(i));
+    		 update(particles.get(i));
      }
      
      /**

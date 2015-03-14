@@ -12,7 +12,26 @@ public class Quaternion {
 	public double k;		// z sin θ/2
 
 	public Quaternion(){
-		r = i = j = k = 0;
+		r = 1; 
+		i = j = k = 0;
+	}
+	
+	public Quaternion (Vector3D axis, double degAngle){
+		double half_theta = degAngle * Math.PI / 360; // theta = angle * PI/180;
+		double sin_half_theta = Math.sin(half_theta);
+		r = Math.cos(half_theta);
+		i = axis.x * sin_half_theta;
+		j = axis.y * sin_half_theta;
+		k = axis.z * sin_half_theta;
+	}
+	
+	public Vector3D getVector(){
+		Vector3D temp= new Vector3D();
+		double sin_half_theta = Math.sqrt(1-r*r);
+		temp.x = i/sin_half_theta;
+		temp.y = j/sin_half_theta;
+		temp.z = k/sin_half_theta;
+		return temp;
 	}
 	
 	public Quaternion(double r, double i, double j, double k){
@@ -27,13 +46,14 @@ public class Quaternion {
 	 * Normalize the quaternion
 	 */
 	public void normalize() {
-		double mag = r*r + i*i + j*j + k*+k;
+		double mag = r*r + i*i + j*j + k*k;
 		if(mag < Init.machineEpsilon){
 			r = 1;
 			return;
 		}
 		mag = 1/Math.sqrt(mag);
-		r*=mag; i*=mag; j*=mag; k*=mag;
+		r*=mag; 
+		i*=mag; j*=mag; k*=mag;
 	}
 
 	/**
@@ -47,6 +67,7 @@ public class Quaternion {
 		temp.j = r * mul.j + j * mul.r + k * mul.i - i * mul.k;
 		temp.k = r * mul.k + k * mul.r + i * mul.j - j * mul.i;
 		setQuaternion(temp);
+	
 	}
 
 	/**
@@ -89,6 +110,7 @@ public class Quaternion {
         data[8] = 1 - (2*i*i  + 2*j*j);
         return new Matrix3(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]);
 	}
+
 	
 	/**
 	 * Transform this quaternion to a 3x4 Matrix
@@ -110,5 +132,14 @@ public class Quaternion {
         data[10] = 1 - (2*i*i  + 2*j*j);
         data[11] = pos.z;
 		return new Matrix4(data);
+	}
+	
+	public String print (){
+		String str = "";
+		str += "r = " + r + "\n" ;
+		str += "i = " + i + "\n" ;
+		str += "j = " + j + "\n" ;
+		str += "k = " + k + "\n" ;
+		return str;
 	}
 }

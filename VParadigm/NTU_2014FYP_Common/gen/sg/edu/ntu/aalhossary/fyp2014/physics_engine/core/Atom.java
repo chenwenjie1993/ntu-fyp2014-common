@@ -69,14 +69,27 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom{
 		Vector3D currentAcceleration = new Vector3D (acceleration.x, acceleration.y, acceleration.z, acceleration.metric);
 		currentAcceleration.addScaledVector(forceAccumulated, inverseMass);
 		
+		Vector3D angularAcceleration = inverseInertiaTensor.transform(torqueAccumulated);
+		
 		// Update current velocity (v = a*t)
 		Vector3D initialVelocity = new Vector3D (velocity.x, velocity.y, velocity.z, velocity.metric);
 		velocity.addScaledVector(currentAcceleration, duration);
 		velocity.round();
 		
+		
 		// Update current position (s = u*t + 0.5*a*t*t)
 		position.addScaledVector(initialVelocity, duration);
 		position.addScaledVector(currentAcceleration, duration * duration /2);
+		
+		
+		//Update angular velocity
+		rotation.addScaledVector(angularAcceleration, duration);
+		orientation.addScaledVector(rotation, duration);
+		orientation.normalize();
+		
+//		Matrix4 transformationMatrix = new Matrix4();
+//		transformationMatrix.setOrientationAndPos(orientation, position);
+//		position = transformationMatrix.transform(position);
 		
 		// Clear forces
 		clearAccumulator();
@@ -123,90 +136,29 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom{
 	 */
 	private void fetchAtomicData (String atomicSymbol) throws Exception{
 	
-		int index = Arrays.asList(Init.periodicTable).indexOf(atomicSymbol);
+		double data [] = Init.getAtomicData(atomicSymbol);
+		mass = data [0];
+		valence = (int) data [1];
+		atomicRadius = data [2];
+		covalentRadius = data [3];
+		vdwRadius = data [4];
 		
-		if(index == -1){
-			throw new Exception("Invalid atomic symbol");
-		}
+	}
+	
+	public Matrix3 getInertiaTensor(Vector3D axisOfRotation){
 		
-		NumberFormat formatter = new DecimalFormat("000");
+		double x = position.x - axisOfRotation.x;
+		double y = position.y - axisOfRotation.y;
+		double z = position.z - axisOfRotation.z;
 		
-		String html = "http://periodictable.com/Elements/" + formatter.format(index+1) + "/data.html";
-		String output = "";
-		boolean flag = true;
+		double ixx = mass * (y*y + z*z); double iyy = mass * (x*x + z*z); double izz = mass * (x*x + y*y);
+		double ixy = -mass * x * y; double iyx = ixy;
+		double ixz = -mass * x * z; double izx = ixz;
+		double iyz = -mass * y * z; double izy = iyz;
+		Matrix3 inertiaTensor = new Matrix3(ixx,ixy,ixz,iyx,iyy,iyz,izx,izy,izz);
+		inertiaTensor.print();
 		
-		try{
-			Document doc = Jsoup.connect(html).timeout(0).get();	// set timeout to zero IMPORTANT!!!
-			
-			// The website does not provide a specific header div/class id for mining. 
-			// Absolute positioning is used. 
-			
-			Element table1 = doc.select("table").get(7);
-			Elements rows1 = table1.select("tr"); 
-			
-			for (int i=0; i < rows1.size(); i++) {
-		        Element row = rows1.get(i);
-		        Elements columns = row.select("td");
-		        
-		        if(columns.first().text().equals("Atomic Weight"))
-		        	mass = Double.parseDouble(columns.last().text()) * MASS.amu.value();		//mass in amu, 1 amu = 1.66053892e-24 grams
-		        
-		        if(columns.first().text().equals("Valence"))
-		        	valence = Integer.parseInt(columns.last().text());	
-		        
-		        if(columns.first().text().equals("NFPA Label") && columns.get(1).text().equals(""))
-		        	flag = false;
-		        
-		       // if(columns.size()>1)	output += columns.get(0).text() + ": " + columns.get(1).text() + "\n";
-		    }
-			
-			Element table2;
-			if(flag)
-				table2 = doc.select("table").get(9);
-			else
-				table2 = doc.select("table").get(10);
-			Elements rows2 = table2.select("tr");
-			
-			for (int j=0; j<rows2.size(); j++){
-				Element row = rows2.get(j);
-			    Elements columns = row.select("td");
-			     
-			     // All radii are in pm.
-			     
-			     if(columns.first().text().equals("Atomic Radius"))
-			    	 atomicRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * DISTANCE.pm.value();
-			     
-			     if(columns.first().text().equals("Covalent Radius"))
-			    	 covalentRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * DISTANCE.pm.value();
-			     
-			     if(columns.first().text().equals("Van der Waals Radius")) {
-			    	 vdwRadius = Double.parseDouble(columns.last().text().split(" ")[0]) * DISTANCE.pm.value();	
-			    	break;
-			     }
-			     
-			     // disable break and enable the following code for full data from web
-			 //  if(columns.size()>1)	output += columns.get(0).text() + ": " + columns.get(1).text() + "\n";
-			     
-			}
-			if(print_flag) {
-				System.out.println(output);
-				System.out.println("Mass is " + mass + " kg.");
-				System.out.println("Valence is " + valence);
-				System.out.println("Atomic radius is " + atomicRadius + " m.");
-				System.out.println("Covalent radius is " + covalentRadius + " m.");
-				System.out.println("VdW radius is " + vdwRadius + " m.");
-			}
-		}
-		catch (IOException e){
-			System.out.println("INTERNET CONNECTION ERROR WHILE CREATING ATOM  " + atomicSymbol);
-			System.out.println("Using Hydrogen as DEFAULT");
-			this.atomicSymbol = "H";
-			this.mass = 1.00794 * MASS.amu.value();
-			this.valence = 1;
-			this.atomicRadius = 53e-12;
-			this.covalentRadius = 37e-12;
-			this.vdwRadius = 120e-12;
-		}
+		return inertiaTensor;
 	}
 
 }

@@ -45,8 +45,14 @@ public class ElectricForce implements Force{
 		
 		// unit vector
 		distanceVector.normalize();
-				
-		if(scalar_distance == 0)
+		
+		if(particle1 instanceof Atom == false || particle2 instanceof Atom == false)
+			return new Vector3D();
+		
+		Atom a1 = (Atom) particle1;
+		Atom a2 = (Atom) particle2;
+		
+		if((a1.getAtomicSymbol().equals(a2.getAtomicSymbol()) && a1.getAtomicSymbol().equals("C"))||scalar_distance == 0)
 			return new Vector3D();
 		
 		distanceVector.scale(COULOMB_CONSTANT*charge1*charge2/scalar_distance/scalar_distance);
