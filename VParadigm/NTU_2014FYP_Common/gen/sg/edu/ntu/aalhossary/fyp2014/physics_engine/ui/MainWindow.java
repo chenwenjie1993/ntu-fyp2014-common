@@ -287,6 +287,7 @@ public class MainWindow extends JFrame {
 		        	World.simulationLvlAtomic = true;
 		        	electrostaticCheckBox.setEnabled(true);
 		        	electrostaticCheckBox.setSelected(World.electricForceActive);
+		        	World.simulationStatus = "changed";
 		        }
 		    }
 		});
@@ -298,6 +299,7 @@ public class MainWindow extends JFrame {
 		        	World.simulationLvlAtomic = false;
 		        	electrostaticCheckBox.setSelected(false);
 		        	electrostaticCheckBox.setEnabled(false);
+		        	World.simulationStatus = "changed";
 		        }
 		    }
 		});

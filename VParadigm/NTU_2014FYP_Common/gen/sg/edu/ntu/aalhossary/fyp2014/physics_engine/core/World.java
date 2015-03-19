@@ -20,20 +20,22 @@ public class World {
 	
 	public static double COEFFICENT_OF_RESTITUTION = 1;
 	public static int particleCount = 0;
-	public static boolean simulationLvlAtomic = true;
+	public static boolean simulationLvlAtomic = false;
 	public static boolean electricForceActive = true;
 	public static boolean LJForceActive = true;
 	public static String simulationStatus = "running";
 	public static CountDownLatch countDownLatch;
-	public static boolean restartTimeOut = true;
 	public static boolean allParticlesActive = true;
+	public static boolean debugMolecular = true;
+	public static boolean debugRotate = false;
 	
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
 	public static double mass_metric = MASS.kg.value();
 	
 	public static ArrayList<AbstractParticle> activeParticles = new ArrayList<>();
-	public static ArrayList<Vector3D> oldPositions= new ArrayList<>();
+	public static ArrayList<AbstractParticle> allAtoms = new ArrayList<>();
+	public static ArrayList<AbstractParticle> allMolecules = new ArrayList<>();
 	public static ArrayList<AbstractParticle[]> potentialContacts = new ArrayList<>();
 	public static ForceRegistry registry = new ForceRegistry();
 	public static OctTree octTree = new OctTree();
@@ -89,75 +91,59 @@ public class World {
 		a9.setPosition(10e-10, 6e-10, 0);
 		a9.setNetCharge(1);
 		
-		octTree.insert(a1);
-		octTree.insert(a2);
-		octTree.insert(a3);
-		octTree.insert(a4);
-		octTree.insert(a5);
-		octTree.insert(a6);
-		octTree.insert(a7);
-		octTree.insert(a8);
-		octTree.insert(a9);
-	
-		
 		AbstractParticle a10 = new Atom ("Cl");
-		a10.setPosition(13.5e-10, -13.5e-10, 0);
+		a10.setPosition(2e-10, -6e-10, 0);
 		a10.setNetCharge(-1);	
-		octTree.insert(a10);
 		
 		AbstractParticle a11 = new Atom ("Na");
-		a11.setPosition(10e-10, -10e-10, 0);
+		a11.setPosition(6.5e-10, -6e-10, 0);
 		a11.setNetCharge(1);	
-		octTree.insert(a11);
+		
+		allAtoms.add(a1);
+		allAtoms.add(a2);
+		allAtoms.add(a3);
+		allAtoms.add(a4);
+		allAtoms.add(a5);
+		allAtoms.add(a6);
+		allAtoms.add(a7);
+		allAtoms.add(a8);
+		allAtoms.add(a9);
+		allAtoms.add(a10);
+		allAtoms.add(a11);
 		
 		ArrayList<AbstractParticle> rotateTestAtoms = new ArrayList<>();
-		rotateTestAtoms.add(a6);
-		rotateTestAtoms.add(a7);
-		rotateTestAtoms.add(a8);
-		rotateTestAtoms.add(a9);
+		if(debugRotate) {
+			rotateTestAtoms.add(a6);
+			rotateTestAtoms.add(a7);
+			rotateTestAtoms.add(a8);
+			rotateTestAtoms.add(a9);
+		}	
 		
-		// insert as molecule
-	/*	
-		ArrayList<Atom> atomList = new ArrayList<>();
-		atomList.add((Atom)a1);
-		atomList.add((Atom)a2);
-		atomList.add((Atom)a3);
-		atomList.add((Atom)a4);
-		atomList.add((Atom)a5);
-		atomList.add((Atom)a6);
-		atomList.add((Atom)a7);
-		atomList.add((Atom)a8);
-		atomList.add((Atom)a9);
-		Molecule molecule = new Molecule(atomList);
-		octTree.insert(molecule);
+		if(debugMolecular) {
+			ArrayList<Atom> atomList = new ArrayList<>();
+			atomList.add((Atom)a1);
+			atomList.add((Atom)a2);
+			atomList.add((Atom)a3);
+			atomList.add((Atom)a4);
+			atomList.add((Atom)a5);
+			atomList.add((Atom)a6);
+			atomList.add((Atom)a7);
+			atomList.add((Atom)a8);
+			atomList.add((Atom)a9);
+			Molecule molecule = new Molecule(atomList);
+			allMolecules.add(molecule);
+			
+			ArrayList <Atom> atomList2 = new ArrayList<>();
+			atomList2.add((Atom)a10);
+			atomList2.add((Atom)a11);
+			Molecule molecule2 = new Molecule(atomList2);
+			allMolecules.add(molecule2);
 		
-		ArrayList <Atom> atomList2 = new ArrayList<>();
-		atomList2.add((Atom)a10);
-		atomList2.add((Atom)a11);
-		Molecule molecule2 = new Molecule(atomList2);
-		octTree.insert(molecule2);
-	*/	
-		
-//		AbstractParticle a12 = new Atom ("Na");
-//		a12.setPosition(10e-10, -10e-10, 0);
-//		a12.setNetCharge(1);	
-//		octTree.insert(a12);
-	
-/*		
-		a11.setPosition(0, 0, 0);
-		a10.setPosition(4.5e-10, 4.5e-10, 0);
-		a12.setPosition(9e-10, 0, 0);
-		
-		ArrayList<Atom> atomList = new ArrayList<>();
-		atomList.add((Atom)a11);
-		atomList.add((Atom)a10);
-		atomList.add((Atom)a12);
-		Molecule m10 = new Molecule(atomList);
-		octTree.insert(m10);	
-		m10.setInverseInertiaTensor(new Vector3D(1e5,1e5,1e5));
+		}	
 
-*/	
 		
+		// check simulation level
+		checkSimulationLevel();
 		
 		// checks which particles will be involved in calculations
 		checkForActiveParticles();
@@ -168,7 +154,11 @@ public class World {
 			 window.getMediator().displayParticles(octTree.getAllParticles());
 			 System.setOut(originalStream);
 			 initialPositions = new HashMap<>();
-			 for (AbstractParticle particle: octTree.getAllParticles()){
+			 for (AbstractParticle particle: allAtoms){
+				 Vector3D temp = particle.getPosition();
+				 initialPositions.put(particle.getGUID(), new Vector3D(temp.x, temp.y, temp.z));
+			 }
+			 for (AbstractParticle particle: allMolecules){
 				 Vector3D temp = particle.getPosition();
 				 initialPositions.put(particle.getGUID(), new Vector3D(temp.x, temp.y, temp.z));
 			 }
@@ -184,8 +174,11 @@ public class World {
 		
 			System.out.println("\n" + i);
 			for(AbstractParticle particle: activeParticles){
-				particle.integrate(50*time_metric);	
-			//	printParticleStatus(particle);
+				if(simulationLvlAtomic)
+					particle.integrate(50*time_metric);	
+				else
+					particle.integrate(i*time_metric);	
+				printParticleStatus(particle);
 			}
 
 			// Update tree only after integration
@@ -203,28 +196,26 @@ public class World {
 				if(i%100 == 0){
 					System.setOut(dummyStream);
 					// Test Rotation
-					 testRotate(rotateTestAtoms);
+					if(debugRotate)
+						testRotate(rotateTestAtoms);
 					
 					window.getMediator().displayParticles(octTree.getAllParticles());
 					System.setOut(originalStream);
 				}
 				
 				if(simulationStatus.equals("restart")){
-					
-					for (AbstractParticle particle: octTree.getAllParticles()) {
-				
-						Vector3D pos = initialPositions.get(particle.getGUID());
-						if (particle instanceof Atom)
-							particle.setPosition(pos.x, pos.y, pos.z);
-						else if (particle instanceof Molecule)
-							((Molecule) particle).setPositionAsCentroid();
-						particle.setVelocity(0, 0, 0);
-					}
-					
-					checkForActiveParticles();
-					
-					i=0;
+					checkSimulationLevel();
+					restartSimulation();
 					simulationStatus = "running";
+					i=0;
+				}
+				
+				else if(simulationStatus.equals("changed")){
+					
+					checkSimulationLevel();
+					restartSimulation();
+					simulationStatus = "running";
+					//i=0;
 				}
 				
 				else if(simulationStatus.equals("paused")){
@@ -235,11 +226,7 @@ public class World {
 			}
 			
 			i++;
-			
-		//	if(i==5)
-		//		System.exit(-1);
-			
-			if(i == 10000 && restartTimeOut)
+			if(i > 10000 && simulationLvlAtomic || i>20000 && !simulationLvlAtomic)
 				simulationStatus = "restart";
 		}
 	}
@@ -248,9 +235,6 @@ public class World {
 		
 		for (int index =0; index< World.activeParticles.size(); index++){
 			if(World.activeParticles.get(index).getGUID() == particle.getGUID()) {
-				World.oldPositions.get(index).x = particle.getPosition().x;
-				World.oldPositions.get(index).y = particle.getPosition().y;
-				World.oldPositions.get(index).z = particle.getPosition().z;
 				return;
 			}
 		}
@@ -260,15 +244,11 @@ public class World {
 		temp.x = particle.getPosition().x;
 		temp.y = particle.getPosition().y;
 		temp.z = particle.getPosition().z;
-		World.oldPositions.add(temp);
-
 	}
 	
 	public static void checkForActiveParticles(){
 		
 		World.activeParticles.clear();
-		World.oldPositions.clear();
-		
 		ArrayList <AbstractParticle> particles = new ArrayList<>();
 		octTree.getAllParticles(particles);
 		
@@ -283,7 +263,32 @@ public class World {
 	
 	private static void printParticleStatus(AbstractParticle p){
 		System.out.print("Particle " + p.getGUID() + "\t" +p.getPosition().print()+"\n");
-		//System.out.print(p.getVelocity().print()+"\t");
+		//System.out.print("Particle " + p.getGUID() + "\t" + p.getVelocity().print()+"\t");
+	}
+	
+	private static void restartSimulation(){
+		for (AbstractParticle particle: octTree.getAllParticles()) {
+			Vector3D pos = initialPositions.get(particle.getGUID());
+			if (particle instanceof Atom)
+				particle.setPosition(pos.x, pos.y, pos.z);
+			else if (particle instanceof Molecule)
+				((Molecule) particle).setPositionAsCentroid();
+			particle.setVelocity(0, 0, 0);
+		}
+		
+		checkForActiveParticles();
+	}
+	
+	private static void checkSimulationLevel(){
+		octTree.clear();
+		if(simulationLvlAtomic)
+			for(AbstractParticle particle: allAtoms) {
+				octTree.insert(particle);
+			}
+		else
+			for(AbstractParticle particle: allMolecules) {
+				octTree.insert(particle);
+			}
 	}
 	
 	public static void setCommand(String command) throws Exception{

@@ -248,10 +248,12 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 			Atom atom = (Atom) this;
 			atom.integrate(duration);
 		}
+		
 		else if (this instanceof Molecule) {
 			Molecule molecule = (Molecule) this;
 			molecule.integrate(duration);
 		}
+		
 		
 	}
 

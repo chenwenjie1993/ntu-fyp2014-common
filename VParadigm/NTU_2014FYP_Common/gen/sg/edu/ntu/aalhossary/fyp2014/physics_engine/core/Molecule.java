@@ -200,16 +200,11 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 		position.addScaledVector(currentAcceleration, duration * duration /2);
 		this.setPosition(position.x, position.y, position.z);
 		
-		Vector3D angularAcceleration = inverseInertiaTensor.transform(torqueAccumulated);
+/*		Vector3D angularAcceleration = inverseInertiaTensor.transform(torqueAccumulated);
 		rotation.addScaledVector(angularAcceleration, duration);
 		orientation.addScaledVector(rotation, duration);
 		orientation.normalize();
-		
-		Matrix4 transformationMatrix = new Matrix4();
-		transformationMatrix.setOrientationAndPos(orientation, position);
-		
-//		position = transformationMatrix.transform(position);
-		
+*/
 		// Clear forces
 		clearAccumulator();
 		

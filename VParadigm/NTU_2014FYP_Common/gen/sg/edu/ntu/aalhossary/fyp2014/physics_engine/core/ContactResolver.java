@@ -20,7 +20,6 @@ public class ContactResolver {
 			return;
 		
 		World.activeParticles.clear();
-		World.oldPositions.clear();
 		
 		for (AbstractParticle[] potentialContact : potentialContacts){
 			AbstractParticle a1 = potentialContact[0];
