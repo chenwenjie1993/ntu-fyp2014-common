@@ -12,7 +12,9 @@ import org.biojava.bio.structure.StructureException;
 import org.biojava.bio.structure.io.PDBFileReader;
 import org.junit.Test;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.Chain;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
 import sg.edu.ntu.aalhossary.fyp2014.common.Residue;
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.DataManager;
@@ -51,16 +53,21 @@ public class AlphaHelixTest {
 			e.printStackTrace();
 		}*/
 		
+		System.out.println(sp.Pregion.size());
+		double  t =alpha.getLength(alpha.residues.get(alpha.residues.size()-1).getAtom("CA").getCoordinates(), alpha.residues.get(0).getAtom("CA").getCoordinates());
 		
-		ArrayList <Residue> test = alpha.getHelixResidues(alpha.residues);
-		for(Residue res:test){
-			System.out.println(Arrays.toString(res.getAtom("CA").getCoordinates()));
-		}
-		
-		float [] t = alpha.getOrientation(test);
+		System.out.println(t);
 		
 		
-		System.out.println(Arrays.toString(t));
+		
+		float[] avg = alpha.getOrientation(alpha.residues);
+		System.out.println(Helix.Cal_euc_distance(avg));
+		System.out.println(Arrays.toString(avg));
+		
+		
+
+		
+		
 		
 			
 	
