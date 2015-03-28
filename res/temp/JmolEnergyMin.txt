@@ -1,0 +1,22 @@
+Initial Energy:74.50515404924563
+	Main Step: 10	Energy:28.491	dE: -1.3935
+	Main Step: 20	Energy:18.368	dE: -0.63596
+	Main Step: 30	Energy:14.207	dE: -0.20726
+	Main Step: 40	Energy:12.536	dE: -0.12947
+	Main Step: 50	Energy:11.404	dE: -0.092439
+	Main Step: 60	Energy:10.531	dE: -0.069614
+	Main Step: 70	Energy:9.8673	dE: -0.048749
+	Main Step: 80	Energy:9.3228	dE: -0.035212
+	Main Step: 90	Energy:8.8355	dE: -0.028639
+	Main Step: 100	Energy:8.3459	dE: -0.040336
+Initial Energy:10333.656950308421
+	Main Step: 10	Energy:91.787	dE: -8.4724
+	Main Step: 20	Energy:58.755	dE: -0.66568
+	Main Step: 30	Energy:52.989	dE: -0.50905
+	Main Step: 40	Energy:49.322	dE: -0.34239
+	Main Step: 50	Energy:46.361	dE: -0.28513
+	Main Step: 60	Energy:43.751	dE: -0.25629
+	Main Step: 70	Energy:41.365	dE: -0.24662
+	Main Step: 80	Energy:39.172	dE: -0.23288
+	Main Step: 90	Energy:37.097	dE: -0.23737
+	Main Step: 100	Energy:35.159	dE: -0.23291

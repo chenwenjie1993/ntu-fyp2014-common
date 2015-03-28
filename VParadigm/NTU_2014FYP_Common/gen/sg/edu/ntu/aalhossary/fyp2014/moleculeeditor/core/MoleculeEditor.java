@@ -54,14 +54,14 @@ public class MoleculeEditor {
 		initDisplay();
 		createLogger();
 		//addResmolScriptPanel();
-		mediator = new UpdateRegistry(jmolPanel.getViewer(), toolPanel, modelList);
+		mediator = new UpdateRegistry(jmolPanel, toolPanel, modelList);
 		jmolPanel.setMediator(mediator);
 		//setConnection();
 	}
 	
 	public MoleculeEditor(){
 		initJmolDisplay();
-		mediator = new UpdateRegistry(jmolPanel.getViewer(), toolPanel, modelList);
+		mediator = new UpdateRegistry(jmolPanel, toolPanel, modelList);
 		jmolPanel.setMediator(mediator);
 	}
 

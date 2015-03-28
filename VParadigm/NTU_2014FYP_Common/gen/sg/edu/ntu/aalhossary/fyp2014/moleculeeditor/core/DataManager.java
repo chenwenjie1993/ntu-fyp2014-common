@@ -1,5 +1,6 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.biojava.bio.structure.Structure;
 import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Chain;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
 import sg.edu.ntu.aalhossary.fyp2014.common.Residue;
 
 public class DataManager {
@@ -47,10 +49,10 @@ public class DataManager {
 		return struc;
 	}
 
-	public void writeFile(java.lang.String fileName, Structure struc) {
-		String strucToPdb = struc.toPDB();
+	public static void writeFile(File file, UpdateRegistry updateReg) {
+		String modelToPDB = modelToPDB(updateReg.getModelList());
 		// implement writer to write to file
-		FileWriter.writePDBFile(fileName, strucToPdb);
+		FileWriter.writePDBFile(file, modelToPDB);
 	}
 
 	public static String modelToPDB(List<Model> models) {
@@ -61,28 +63,33 @@ public class DataManager {
 		for(int i=0;i<numModel;i++){
 			pdb.append("MODEL      " + (i+1)+ newline);	// start for each model
 			Model currModel = models.get(i);
-			int numChain = currModel.getMolecules().get(0).getChains().size();
-			// for each Chain
-			for(int j=0;j<numChain;j++){
-				Chain currChain = currModel.getMolecules().get(0).getChains().get(j);
-				int numResidue = currChain.getResidues().size();
-				//for each Residue in Chain
-				for(int k=0;k<numResidue;k++){
-					Residue currResidue = currChain.getResidues().get(k);
-					int numAtom = currResidue.getAtomList().size();
-					for(int l=0;l<numAtom;l++){
-						Atom currAtom = currResidue.getAtomList().get(l);
-						// pdb string for each ATOM
+			int numMole = currModel.getMolecules().size();
+			//for each molecule
+			for(int m=0;m<numMole;m++){
+				Molecule currMole = currModel.getMolecules().get(m);
+				int numChain = currMole.getChains().size();
+				// for each Chain
+				for(int j=0;j<numChain;j++){
+					Chain currChain = currMole.getChains().get(j);
+					int numResidue = currChain.getResidues().size();
+					//for each Residue in Chain
+					for(int k=0;k<numResidue;k++){
+						Residue currResidue = currChain.getResidues().get(k);
+						int numAtom = currResidue.getAtomList().size();
+						for(int l=0;l<numAtom;l++){
+							Atom currAtom = currResidue.getAtomList().get(l);
+							// pdb string for each ATOM
+							toPDB(currAtom, pdb);
+						}
+					}
+					
+					int numAtom = currChain.getAtoms().size();
+					// for HetAtom in Chain
+					for(int k=0;k<numAtom;k++){
+						Atom currAtom = currChain.getAtoms().get(k);
+						// pdb string for each HETATM
 						toPDB(currAtom, pdb);
 					}
-				}
-				
-				int numAtom = currChain.getAtoms().size();
-				// for HetAtom in Chain
-				for(int k=0;k<numAtom;k++){
-					Atom currAtom = currChain.getAtoms().get(k);
-					// pdb string for each HETATM
-					toPDB(currAtom, pdb);
 				}
 			}
 			pdb.append("ENDMDL").append(newline); // end of each model
@@ -113,7 +120,7 @@ public class DataManager {
 			chainID = ((Residue)a.getParent()).getParent().getName();
 		}
 		else{
-			chainID = a.getParent().getName();
+			chainID = " ";
 		}
 		String resseq     = alignRight(""+a.getChainSeqNum(),5);
 		
@@ -186,5 +193,19 @@ public class DataManager {
 		}
 		else
 			updateReg.loadFileToJmol(struc);
+	}
+
+	public static Structure appendModel(String filePath, UpdateRegistry updateRegistry) {
+			Structure struc = null;
+			if(filePath.endsWith(".pdb")){
+				struc = FileReader.readPDBFile(filePath); 
+			}
+			if(struc==null){
+				logger.log(Level.INFO, "Error loading file");
+				JOptionPane.showMessageDialog(new JFrame(), "Error loading file.");
+				return null;
+			}
+			else
+				return struc;
 	}
 }

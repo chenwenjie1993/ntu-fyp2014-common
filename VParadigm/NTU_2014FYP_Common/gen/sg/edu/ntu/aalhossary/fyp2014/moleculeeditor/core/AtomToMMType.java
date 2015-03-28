@@ -9,14 +9,18 @@ public class AtomToMMType {
 
 	public static String setMMType(Atom atom) {
 		switch(atom.getElementSymbol()){
-		case "N" : if(atom.getBond().size()==4)
-					return "NR+";
+		case "N" : return checkNitrogenAtomBond(atom);
 		case "C" : return checkCarbonAtomBond(atom);
 		case "O" : return checkOxygenAtomBond(atom);
 		case "H" : return checkHydrogenAtomBond(atom);
 		}
 		return null;
 		
+	}
+
+	private static String checkNitrogenAtomBond(Atom atom) {
+		// TODO Auto-generated method stub
+		return "NR+";
 	}
 
 	private static String checkOxygenAtomBond(Atom atom) {
@@ -42,9 +46,9 @@ public class AtomToMMType {
 				if(countH==2)
 					return "OR";
 				else if(countC==1 && (bonds.get(i).getAtom1().getmmType()==3||bonds.get(i).getAtom2().getmmType()==3))
-					return "OC=O";
+					return "O2CM";
 				else
-					return "ON=O";
+					return "O2CM";
 			}
 		}
 		if(bonds.size()==1){
@@ -62,7 +66,7 @@ public class AtomToMMType {
 				}
 			}
 		}
-		return "O=C";
+		return "O2CM";
 	}
 
 	private static String checkHydrogenAtomBond(Atom atom) {
@@ -94,6 +98,9 @@ public class AtomToMMType {
 	private static String checkCarbonAtomBond(Atom atom) {
 		ArrayList<Bond>bonds= atom.getBond();
 		int countO=0, countC=0, countN=0, countH=0;
+		if(bonds.size()==2){
+			return "=C=";
+		}
 		if(bonds.size()==3){
 			for(int i=0;i<3;i++){
 				String atm1 = bonds.get(i).getAtom1().getElementSymbol();
@@ -114,17 +121,21 @@ public class AtomToMMType {
 					countN++;
 				}
 				
-				if(countC==3)
-					return "C=C";
-				else if((countC==1 && countO==1 && countN==1))
-					return "C=ON";
-				else if((countC==2 && countO==1)||(countH==1 && countO==1 && countC==1))
-					return "C=OR";
-				else if(countO==2)
-					return "COO";
-				else if(countO==1)
-					return "C=O";
+				
 			}
+			
+			if(countO==2)
+				return "CO2M";
+			else if(countC==3)
+				return "C=C";
+			else if((countC==1 && countO==1 && countN==1))
+				return "C=ON";
+			else if((countC==2 && countO==1)||(countH==1 && countO==1 && countC==1))
+				return "C=OR";
+			else if(countC==2 && countN==1)
+				return "C=N";
+			else if(countO==1)
+				return "C=O";
 		}
 		if(bonds.size()==4){
 			for(int i=0;i<4;i++){

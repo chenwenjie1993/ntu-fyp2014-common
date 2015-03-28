@@ -1,22 +1,18 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import javax.swing.JOptionPane;
 
 import org.biojava.bio.structure.Structure;
 import org.jmol.api.JmolViewer;
 import org.jmol.java.BS;
-import org.jmol.viewer.ActionManager;
 import org.jmol.viewer.Viewer;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
@@ -24,42 +20,68 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Bond;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.ToolPanel;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
 
+/**
+ * @author Xiu Ting
+ *
+ *	This class acts as the "middle-man" between JmolDisplay 
+ *	and back end calculations and object model.
+ *	Contains sections:
+ *	- Methods called when there's changes to object model
+ *	- Methods called when there's changes in JmolDisplay
+ *	- Methods called to notify Viewer of new changes to object Model
+ *	- private methods used only within class.
+ */
+
 public class UpdateRegistry {
-	Viewer viewer;
-	ToolPanel toolPanel;
-	List<Model> modelList;
-	DataManager dataMgr;
-	private ArrayList<Atom> selectedAtoms;
+	/*** Initialize protected variables ***/
 	protected MouseState mouseState;
 	protected int dragMode;
-	protected static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MoleculeEditor.class.getName());
+	protected boolean addMode;
+	protected Atom storeAddAtom;
+	protected JmolDisplay jmolPanel;
+	protected boolean minimizeMode;
+	protected static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UpdateRegistry.class.getName());
 	
-	public UpdateRegistry(Viewer viewer, ToolPanel toolPanel, List<Model> models){
-		this.viewer = viewer;
+	/*** Initialize private variables ***/
+	private Viewer viewer;					// don't allow classes like Minimizer to access viewer directly
+	private ToolPanel toolPanel;			// the side panel, KIV
+	private List<Model> modelList; 			// don't allow classes to access model objects directly. 
+	//DataManager dataMgr;
+	private ArrayList<Atom> selectedAtoms;	// only this class will know the list of selected atoms.
+	private ArrayList<Atom> savedAtoms;		// only this class will know which atoms are copied/cut.
+	
+	/********************/
+	/*** Constructors ***/
+	/********************/
+	public UpdateRegistry(JmolDisplay jmolPanel, ToolPanel toolPanel, List<Model> models){
+		this.jmolPanel = jmolPanel;
+		this.viewer = jmolPanel.getViewer();
 		this.modelList = models;
 		this.toolPanel = toolPanel;
-		this.dataMgr = new DataManager();
 		this.mouseState = new MouseState();
 		this.dragMode = -1;
+		this.addMode = false;
+		this.minimizeMode = false;
 	}
 	
+	// wan yan needed this constructor
 	public UpdateRegistry(Viewer viewer, List<Model> models){
 		this.viewer = viewer;
 		this.modelList = models;
-		this.dataMgr = new DataManager();
 		this.mouseState = new MouseState();
 		this.dragMode = -1;
 	}
 	
+	// Ben needed this constructor
 	public UpdateRegistry(){
 		this.viewer = null;
 		this.modelList = new ArrayList<Model>();
 		this.toolPanel = null;
-		this.dataMgr = new DataManager();
 		this.mouseState = new MouseState();
 		this.dragMode = -1;
 	}
@@ -68,6 +90,7 @@ public class UpdateRegistry {
 	/*** Methods that notify when there's changes in viewer ***/
 	/**********************************************************/
 
+	// called by JMolSelectionListener.java to set the selected Atoms list
 	public void setSelectedAtoms(BS values) {
 		//System.out.println("Selected: " + values);
 		if(selectedAtoms==null)
@@ -96,22 +119,55 @@ public class UpdateRegistry {
 		}
 	}
 	
+	// called by MyJmolStatusListener.java for scripts that are self-defined (start with "own").
 	public void evaluateUserAction(String script) {
 		EvaluateUserAction.evaluateAction(this, script);
 	}
 	
+	double[] offset = new double[3];
+	protected boolean atomselected = true;
+	// method used for group of selected atoms dragging.
 	public void atomMoved(BS atomsMoved) {
 		// get the list of atoms moved.
-		setSelectedAtoms(atomsMoved);
+		if(atomselected)
+			setSelectedAtoms(atomsMoved);
 		
 		// update the atoms moved in user model.
 		for(int i=0;i<selectedAtoms.size();i++){
 			int atomIndex = selectedAtoms.get(i).getAtomSeqNum()-1;
 			double[] coords = {viewer.ms.at[atomIndex].x,viewer.ms.at[atomIndex].y,viewer.ms.at[atomIndex].z};
-			selectedAtoms.get(i).setCoordinates(coords);
+			if(coords[0]!=selectedAtoms.get(i).getCoordinates()[0]){
+				offset[0] = selectedAtoms.get(i).getCoordinates()[0]- coords[0];
+				offset[1] = selectedAtoms.get(i).getCoordinates()[1]- coords[1];
+				offset[2] = selectedAtoms.get(i).getCoordinates()[2]- coords[2];
+				selectedAtoms.get(i).setCoordinates(coords);
+			}
+			else{
+				coords[0] = selectedAtoms.get(i).getCoordinates()[0]-offset[0];
+				coords[1] = selectedAtoms.get(i).getCoordinates()[1]-offset[1];
+				coords[2] = selectedAtoms.get(i).getCoordinates()[2]-offset[2];
+				viewer.ms.at[atomIndex].x = (float)coords[0]; 
+				viewer.ms.at[atomIndex].y = (float)coords[1]; 
+				viewer.ms.at[atomIndex].z = (float)coords[2]; 
+				selectedAtoms.get(i).setCoordinates(coords);
+			}
+			
+			//System.out.println("COORD:" + selectedAtoms.get(i).getCoordinates()[0]);
 		}
 	}
 
+	public void atomMoved() {
+		for(Atom atm : modelList.get(viewer.getDisplayModelIndex()).getAtomHash().values()){
+			for(int i=0; i<viewer.ms.at.length;i++){
+				if(atm.getAtomSeqNum()==(i+1)){
+					double[] coords = {viewer.ms.at[i].x,viewer.ms.at[i].y,viewer.ms.at[i].z};
+					atm.setCoordinates(coords);
+				}
+			}
+		}
+	}
+	
+	// set the model's bonds using Jmol display.
 	public void setModelBonds() {
 		int currModel=0, prevModel=0;
 		Atom atom1, atom2;
@@ -131,6 +187,8 @@ public class UpdateRegistry {
 			index2 = model.getModelName()+bonds[i].getAtom2().atomSite;
 			atom1 = model.getAtomHash().get(index1);
 			atom2 = model.getAtomHash().get(index2);
+			if(atom1==null || atom2==null)
+				continue;
 			bond = new Bond(atom1, atom2);
 			ownbonds.add(bond);
 			atom1.setBond(bond);
@@ -138,6 +196,25 @@ public class UpdateRegistry {
 			if(i==bonds.length-1){
 				modelList.get(currModel-1).setBonds(ownbonds);
 			}
+		}
+	}
+	
+	// every mouse state and detection called here.
+	// to cater for future self-created display.
+	public void setMouseState(int x, int y, int mode) {
+		GestureManager.setMouseState(x,y,mode, mouseState);
+		if(viewer.getInMotion(false)){
+			
+			/*String mouseGesture = "";
+			mouseGesture += "Mouse Mode: " + mouseState.getMouseMode() + "\n";
+			mouseGesture += "Mouse Start Position: X-Pos=" + mouseState.getStartPosX() + " Y-Pos=" + mouseState.getStartPosY() + "\n";
+			mouseGesture += "Mouse End Position: X-Pos=" + mouseState.getEndPosX() + " Y-Pos=" + mouseState.getEndPosY() + "\n";*/
+			//System.out.println(mouseGesture);
+			mouseState.clearState();
+		}
+		if(minimizeMode && mode==16640){	// when mouse drag stopped.
+			System.out.println("Entering minimizing stage...");
+			minimizeModel();
 		}
 	}
 	
@@ -306,32 +383,82 @@ public class UpdateRegistry {
 		}
 	}
 
-	public ArrayList<Atom> getSelectedAtoms() {
-		return selectedAtoms;
-	}
-
+	// delete Atoms from both modelList and viewer.
 	public void deleteAtoms(int currentModelIndex, String key, int atomPosition) {
-		modelList.get(currentModelIndex).getAtomHash().remove(key);
+		modelList.get(currentModelIndex).removeAtom(key);
+		//modelList.get(currentModelIndex).getAtomHash().remove(key);
 		viewer.evalString("delete atomno=" + atomPosition + " && modelindex=" + viewer.getDisplayModelIndex());
 		toolPanel.setModelText(modelList);
 	}
 
-	public void setMouseState(int x, int y, int mode) {
-		GestureManager.setMouseState(x,y,mode, mouseState);
-		if(viewer.getInMotion(false)){
-			String mouseGesture = "";
-			mouseGesture += "Mouse Mode: " + mouseState.getMouseMode() + "\n";
-			mouseGesture += "Mouse Start Position: X-Pos=" + mouseState.getStartPosX() + " Y-Pos=" + mouseState.getStartPosY() + "\n";
-			mouseGesture += "Mouse End Position: X-Pos=" + mouseState.getEndPosX() + " Y-Pos=" + mouseState.getEndPosY() + "\n";
-			//System.out.println(mouseGesture);
-			mouseState.clearState();
+	// copy atoms into new Atoms object from selected atoms
+	public void copyAtoms(int currentModelIndex, String key) {
+		if(savedAtoms==null){
+			savedAtoms = new ArrayList<Atom>();
 		}
+		try {
+			Atom newAtom = (Atom)modelList.get(currentModelIndex).getAtomHash().get(key).clone();
+			savedAtoms.add(newAtom);
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		toolPanel.setModelText(modelList);
 	}
 
-	/******************************************/
-	/*** Private methods used in class only ***/
-	/******************************************/
+	// paste copied/cut atoms, not applicable when copied atoms are paste to same model.
+	public void pasteSavedAtoms(int modelIndex) {
+		if(savedAtoms==null)
+			JOptionPane.showMessageDialog(jmolPanel,"You have not copied or cut any atoms to paste!",
+				    "Warning", JOptionPane.WARNING_MESSAGE);
+		else{
+			boolean error = false;
+			for(int i=0;i<savedAtoms.size();i++){
+				for(Atom atm : modelList.get(modelIndex).getAtomHash().values()){
+					if(savedAtoms.get(i).getCoordinates()[0]==atm.getCoordinates()[0] && 
+							savedAtoms.get(i).getCoordinates()[1]==atm.getCoordinates()[1] &&
+							savedAtoms.get(i).getCoordinates()[2]==atm.getCoordinates()[2] ){
+						error = true;
+						break;
+					}
+				}
+				if(error){
+					JOptionPane.showMessageDialog(jmolPanel,"You are trying to paste atoms in location occupied!",
+						    "Warning", JOptionPane.WARNING_MESSAGE);
+					break;
+				}
+				else{
+					addAtom(modelIndex, savedAtoms.get(i));	
+				}
+			}
+			String pdb =DataManager.modelToPDB(modelList);
+			System.out.println(pdb);
+			
+			viewer.openStringInline(pdb);
+			viewer.setCurrentModelIndex(modelIndex);
+		}
+		toolPanel.setModelText(modelList);
+	}
+
+	// add new atom object to modelList. 
+	public void addAtom(int modelIndex, Atom atom) {
+		modelList.get(modelIndex).setMolecule(atom);
+	}
+
+	public void setMinimizeMode(boolean isMinimize) {
+		this.minimizeMode = isMinimize;
+	}
 	
+	/**************************************************/
+	/*** Get methods to be called by external class ***/
+	/**************************************************/
+	
+	// get the list of selected atoms already generated
+	public ArrayList<Atom> getSelectedAtoms() {
+		return selectedAtoms;
+	}
+	
+	// from biojava structure, convert to own user model
 	public void createUserModel(Structure struc) {
 		// read default MMFFtypes for atoms
 		
@@ -347,7 +474,29 @@ public class UpdateRegistry {
 		}
 	}
 	
+	// get the list of user model
 	public List<Model> getModelList() {
 		return modelList;
+	}
+
+	// define minimizer, for minimizing molecule.
+	public void minimizeModel() {
+		//viewer.ms.setAtomCoord(0, 0.0f, 0.0f, 0.0f);
+		Minimizer minimizer = new Minimizer(this);
+		minimizer.setupMinimizing(modelList.get(viewer.getDisplayModelIndex()));
+		minimizer.startMinimizing();
+		System.out.println(DataManager.modelToPDB(modelList));
+		minimizeMode = false;
+	}
+		
+	public void updateViewerCoord() {
+		for(Atom atm: modelList.get(viewer.getDisplayModelIndex()).getAtomHash().values()){
+	    	  viewer.ms.setAtomCoord((atm.getAtomSeqNum()-1), atm.getCoordinates()[0], atm.getCoordinates()[1], atm.getCoordinates()[2]);
+	      }
+		jmolPanel.getViewer().refresh(3, "minimization step ");
+	}
+
+	public JmolViewer getViewer() {
+		return viewer;
 	}
 }

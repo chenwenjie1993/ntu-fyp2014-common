@@ -96,4 +96,27 @@ public class Chain extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle
 		return molecule.getParent().modelName;
 	}
 
+	public void setChainSequence(Atom atm) {
+		atm.setParent(this);
+		atm.setChainSeqNum(atomSeq.size()+1);
+		int atmNum = 0;
+		Model parentModel = getParent().getParent();
+		for(int j=0;j<parentModel.getMolecules().size();j++){
+			Molecule parent =parentModel.getMolecules().get(j); 
+			for(int i=0;i<parent.getChains().size();i++){
+				Chain chain = parent.getChains().get(i);
+				if(chain.getResidues()!=null && chain.getResidues().size()>0){
+					for(Residue res : chain.getResidues()){
+						atmNum += res.getAtomList().size();
+					}
+				}
+				if(chain.getAtoms()!=null && chain.getAtoms().size()>0){
+					atmNum += chain.getAtoms().size();
+				}
+			}
+		}
+		atm.setAtomSeqNum((atmNum+1));
+		atomSeq.add(atm);
+	}
+
 }

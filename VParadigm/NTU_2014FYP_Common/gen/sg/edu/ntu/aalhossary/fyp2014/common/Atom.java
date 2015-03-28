@@ -1,10 +1,11 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.userenum.AtomType;
 
-public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle {
+public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle implements Cloneable{
 
 	protected java.lang.String name;
 	protected java.lang.String pdbsymbol; // symbol from pdb
@@ -12,10 +13,11 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	protected int mmType=-1;
 	protected double atomicMass;
 	protected float atomicNum;
-	protected int ionCharge;
+	protected double partialCharge;
 	protected int chainSeqNum;	// position of atom in specific chain
 	protected int atomSeqNum;	// position of atom in entire molecule (pdb serial #)
 	protected Interaction interaction;
+	protected double[] forces;
 	protected float[] coordinates;
 	protected Particle parent;	// can be Residue or Chain
 	protected ArrayList<Bond> bonds;
@@ -23,7 +25,8 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	
 	public Atom() {
 		bonds = new ArrayList<Bond>(4);
-		coordinates = new float[3]; 
+		coordinates = new float[3];
+		forces = new double[3];
 	}
 	
 	public String getName() {
@@ -115,6 +118,14 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 		return bonds;
 	}
 	
+	public boolean hasNeighbour(Atom atm){
+		for(Bond bond : bonds){
+			if(bond.a.getAtomSeqNum()==atm.getAtomSeqNum() || bond.b.getAtomSeqNum()==atm.getAtomSeqNum())
+				return true;
+		}
+		return false;
+	}
+	
 	public String getModelName(){
 		if(parent instanceof Chain){
 			return ((Chain) parent).getModelName();
@@ -125,6 +136,14 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 		else{
 			return null; // TODO: add in exceptions
 		}
+	}
+	
+	public double getPartialCharge(){
+		return partialCharge;
+	}
+	
+	public void setPartialCharge(double charge){
+		this.partialCharge = charge;
 	}
 	
 	public void setVdWRadius(double vdw_radius){
@@ -152,4 +171,30 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 		coordinates[1] = (float) coord[1];
 		coordinates[2] = (float) coord[2];
 	}
+	
+	public double[] getForces() {
+		return forces;
+	}
+	
+	public void setForces(double[] force) {
+		forces[0] = force[0];
+		forces[1] = force[1];
+		forces[2] = force[2];
+	}
+
+	public Atom[] getNeighbourAtoms() {
+		Atom[] atm = new Atom[bonds.size()];
+		for(int i=0;i<bonds.size();i++){
+			if(bonds.get(i).getAtom1()==this)
+				atm[i] = bonds.get(i).getAtom2(); 
+			else
+				atm[i] = bonds.get(i).getAtom1();
+		}
+		return atm;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

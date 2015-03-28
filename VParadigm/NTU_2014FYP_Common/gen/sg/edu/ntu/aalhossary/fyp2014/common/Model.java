@@ -16,6 +16,7 @@ public class Model {
 	
 	public Model() {
 		molecules = new ArrayList<Molecule>();
+		atomHash = new HashMap<String,Atom>();
 	}
 	
 	public ArrayList<Molecule> getMolecules() {
@@ -29,8 +30,17 @@ public class Model {
 		((Molecule)molecule).setName(list.get(0).getParent().getPdbId());
 		((Molecule)molecule).setParent(this);
 		((Molecule)molecule).setChains(list);
-		atomHash = new HashMap<String,Atom>();
 		((Molecule)molecule).setAtomHash(atomHash, modelName);
+	}
+	
+	public void setMolecule(Atom atm){
+		AbstractParticle molecule;
+		molecule = new Molecule();
+		((Molecule)molecule).setName("");
+		((Molecule)molecule).setParent(this);
+		((Molecule)molecule).setChain(atm);
+		((Molecule)molecule).setAtomHash(atomHash, modelName);
+		molecules.add(((Molecule)molecule));
 	}
 	
 	public void setModelName(String name){
@@ -67,5 +77,28 @@ public class Model {
 	
 	public Bond[] getBonds(){
 		return bonds;
+	}
+
+	public void removeAtom(String key) {
+		Atom atm = atomHash.get(key);
+		int atomno = atm.getAtomSeqNum();
+		if(atm.getParent() instanceof AminoAcid){
+			AminoAcid res = (AminoAcid)atm.getParent();
+			for(int i=0;i<res.getAtomList().size();i++){
+				if(atm.getAtomSeqNum()==res.getAtomList().get(i).getAtomSeqNum()){
+					atomHash.remove(key);
+					res.getAtomList().remove(i);
+				}
+			}
+		}
+		else if(atm.getParent() instanceof Chain){
+			Chain chain = (Chain)atm.getParent();
+			for(int i=0;i<chain.getAtoms().size();i++){
+				if(atm.getAtomSeqNum()==chain.getAtoms().get(i).getAtomSeqNum()){
+					atomHash.remove(key);
+					chain.getAtoms().remove(i);
+				}
+			}
+		}
 	}
 }

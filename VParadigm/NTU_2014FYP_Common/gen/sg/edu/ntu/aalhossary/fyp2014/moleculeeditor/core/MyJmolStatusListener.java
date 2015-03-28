@@ -70,6 +70,8 @@ public class MyJmolStatusListener implements JmolStatusListener {
     			System.out.println("Entering own function");
     			jmolPanel.getMediator().evaluateUserAction((String)data[2]);
     		}
+    		if(data[1].toString().endsWith("completed"))
+    			jmolPanel.getMediator().atomMoved();
     		return;
     	case CLICK:
     		jmolPanel.getMediator().setMouseState((int)data[1], (int)data[2], (int)data[3]);

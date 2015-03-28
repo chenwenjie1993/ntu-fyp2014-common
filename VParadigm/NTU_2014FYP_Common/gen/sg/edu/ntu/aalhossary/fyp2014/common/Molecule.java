@@ -56,6 +56,16 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParti
 			this.chains.add((Chain) chain);
 		}
 	}
+	
+	protected void setChain(Atom atm){
+		AbstractParticle chain;
+		chain = new Chain();
+		((Chain)chain).setChainName("TST");
+		((Chain)chain).setParent(this);
+		((Chain)chain).setChainPosition((chains.size()+1));
+		((Chain)chain).setChainSequence(atm);
+		this.chains.add((Chain) chain);
+	}
 
 	public Interaction getInteraction() {
 		return this.interaction;
