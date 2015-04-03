@@ -1,5 +1,9 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -18,16 +22,18 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui.MainWindow;
  */
 public class World {
 	
+	
 	public static double COEFFICENT_OF_RESTITUTION = 1;
 	public static int particleCount = 0;
 	public static boolean simulationLvlAtomic = false;
+	public static boolean simulationLvlPartial = true;
 	public static boolean electricForceActive = true;
 	public static boolean LJForceActive = true;
 	public static String simulationStatus = "running";
 	public static CountDownLatch countDownLatch;
 	public static boolean allParticlesActive = true;
-	public static boolean debugMolecular = true;
 	public static boolean debugRotate = false;
+	public static int frameTime_as = 50;
 	
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
@@ -42,13 +48,17 @@ public class World {
 	public static NarrowCollisionDetector detector = new NarrowCollisionDetector();
 	public static ContactResolver resolver = new ContactResolver();
 
+	public static ArrayList<String> inputFilePaths = new ArrayList<>();
 	public static MoleculeEditor editor;
 	public static MainWindow window;
 	public static PrintStream originalStream;
 	public static PrintStream dummyStream;
 	
-//	public static boolean displayUI = false;
 	public static boolean displayUI = true;
+	
+	public static long startTime;
+	public static long endTime;
+	public static long duration;
 	
 	// Only Needed for restart
 	public static HashMap <Integer,Vector3D> initialPositions;
@@ -62,7 +72,12 @@ public class World {
 		        //NO-OP
 		    }
 		});
-
+		
+		inputFilePaths.add("res/physics/input.pdb");
+		for (String filePath: inputFilePaths){
+			parsePDB(filePath);
+		}
+	/*	
 		AbstractParticle a1 = new Atom("H");
 		AbstractParticle a2 = new Atom("H");
 		AbstractParticle a3 = new Atom("N");
@@ -92,11 +107,11 @@ public class World {
 		a9.setNetCharge(1);
 		
 		AbstractParticle a10 = new Atom ("Cl");
-		a10.setPosition(2e-10, -6e-10, 0);
+		a10.setPosition(2e-10, -9e-10, 0);
 		a10.setNetCharge(-1);	
 		
 		AbstractParticle a11 = new Atom ("Na");
-		a11.setPosition(6.5e-10, -6e-10, 0);
+		a11.setPosition(6.5e-10, -9e-10, 0);
 		a11.setNetCharge(1);	
 		
 		allAtoms.add(a1);
@@ -111,6 +126,33 @@ public class World {
 		allAtoms.add(a10);
 		allAtoms.add(a11);
 		
+		
+		ArrayList<Atom> atomList = new ArrayList<>();
+		atomList.add((Atom)a1);
+		atomList.add((Atom)a2);
+		atomList.add((Atom)a3);
+		atomList.add((Atom)a4);
+		atomList.add((Atom)a5);
+		atomList.add((Atom)a6);
+		atomList.add((Atom)a7);
+		atomList.add((Atom)a8);
+		atomList.add((Atom)a9);
+		Molecule molecule = new Molecule(atomList);
+		allMolecules.add(molecule);
+		
+		ArrayList <Atom> atomList2 = new ArrayList<>();
+		atomList2.add((Atom)a10);
+//		atomList2.add((Atom)a11);
+		Molecule molecule2 = new Molecule(atomList2);
+		allMolecules.add(molecule2);
+		
+		atomList2 = new ArrayList<>();
+//		atomList2.add((Atom)a10);
+		atomList2.add((Atom)a11);
+		Molecule molecule3 = new Molecule(atomList2);
+		allMolecules.add(molecule3);
+		
+			
 		ArrayList<AbstractParticle> rotateTestAtoms = new ArrayList<>();
 		if(debugRotate) {
 			rotateTestAtoms.add(a6);
@@ -118,30 +160,7 @@ public class World {
 			rotateTestAtoms.add(a8);
 			rotateTestAtoms.add(a9);
 		}	
-		
-		if(debugMolecular) {
-			ArrayList<Atom> atomList = new ArrayList<>();
-			atomList.add((Atom)a1);
-			atomList.add((Atom)a2);
-			atomList.add((Atom)a3);
-			atomList.add((Atom)a4);
-			atomList.add((Atom)a5);
-			atomList.add((Atom)a6);
-			atomList.add((Atom)a7);
-			atomList.add((Atom)a8);
-			atomList.add((Atom)a9);
-			Molecule molecule = new Molecule(atomList);
-			allMolecules.add(molecule);
-			
-			ArrayList <Atom> atomList2 = new ArrayList<>();
-			atomList2.add((Atom)a10);
-			atomList2.add((Atom)a11);
-			Molecule molecule2 = new Molecule(atomList2);
-			allMolecules.add(molecule2);
-		
-		}	
-
-		
+*/
 		// check simulation level
 		checkSimulationLevel();
 		
@@ -166,29 +185,60 @@ public class World {
 		
 		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
 		int i = 0;
-
+		
 		while(true) {
 	
+			startTime = System.nanoTime();
+			
 			// Applying Forces		
 			registry.updateAllForces(activeParticles);
-		
+			
+			endTime = System.nanoTime();
+			duration = (endTime - startTime);  
+			System.out.println("Time taken to calculate forces: " + duration);
+			startTime = System.nanoTime();
+			
 			System.out.println("\n" + i);
 			for(AbstractParticle particle: activeParticles){
 				if(simulationLvlAtomic)
-					particle.integrate(50*time_metric);	
-				else
-					particle.integrate(i*time_metric);	
-				printParticleStatus(particle);
+					particle.integrate(frameTime_as*time_metric);	
+				else {
+					if(!simulationLvlPartial)
+						particle.integrate(i*frameTime_as*time_metric);
+					else
+						particle.integrate(frameTime_as*time_metric);
+				}
+			//	printParticleStatus(particle);
 			}
+			
+			endTime = System.nanoTime();
+			duration = (endTime - startTime);  
+			System.out.println("Time taken to integrate: " + duration);
+			startTime = System.nanoTime();
 
 			// Update tree only after integration
 			octTree.updateAllActiveParticles();
 			
+			endTime = System.nanoTime();
+			duration = (endTime - startTime);  
+			System.out.println("Time taken for broad phase: " + duration);
+			startTime = System.nanoTime();
+			
 			// Collision Detection 
 			detector.detectCollision(octTree, activeParticles, potentialContacts);    	 
 			
+			endTime = System.nanoTime();
+			duration = (endTime - startTime);  
+			System.out.println("Time taken for narrow phase: " + duration);
+			startTime = System.nanoTime();
+			
 			// Resolve Collisions and set active particles
 			resolver.resolveContacts(potentialContacts);	
+			
+			endTime = System.nanoTime();
+			duration = (endTime - startTime);  
+			System.out.println("Time taken to resolve: " + duration);
+			startTime = System.nanoTime();
 			
 			if(displayUI){
 			//	AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
@@ -196,8 +246,8 @@ public class World {
 				if(i%100 == 0){
 					System.setOut(dummyStream);
 					// Test Rotation
-					if(debugRotate)
-						testRotate(rotateTestAtoms);
+				//	if(debugRotate)
+				//		testRotate(rotateTestAtoms);
 					
 					window.getMediator().displayParticles(octTree.getAllParticles());
 					System.setOut(originalStream);
@@ -226,9 +276,15 @@ public class World {
 			}
 			
 			i++;
-			if(i > 10000 && simulationLvlAtomic || i>20000 && !simulationLvlAtomic)
+			if(i > 10000 && simulationLvlAtomic || i>20000 && !simulationLvlAtomic) {
 				simulationStatus = "restart";
+			//		break;
+			}
 		}
+//		endTime = System.nanoTime();
+//		duration = (endTime - startTime);  
+//		System.out.println("Time taken to end: " + duration);
+		
 	}
 	
 	public static void markAsActive(AbstractParticle particle){
@@ -281,52 +337,30 @@ public class World {
 	
 	private static void checkSimulationLevel(){
 		octTree.clear();
-		if(simulationLvlAtomic)
+		if(simulationLvlAtomic) {
 			for(AbstractParticle particle: allAtoms) {
 				octTree.insert(particle);
 			}
-		else
+		}
+		else {
 			for(AbstractParticle particle: allMolecules) {
 				octTree.insert(particle);
+		//		octTree.remove(allMolecules.get(0));
 			}
+			if(simulationLvlPartial){
+				octTree.clear();
+				for(AbstractParticle particle: ((Molecule)allMolecules.get(0)).getAtoms()) {
+					octTree.insert(particle);
+				}
+				
+				for(int i=1; i<allMolecules.size(); i++) {
+					octTree.insert(allMolecules.get(i));
+				}
+			}
+		}
 	}
 	
 	public static void setCommand(String command) throws Exception{
-		String [] args = command.split(" ");
-		
-		if(args[0].equalsIgnoreCase("create")){
-			if(args[1].equalsIgnoreCase("atom")){
-				AbstractParticle a1 = new Atom (args[2]);
-				octTree.insert(a1);
-				int i = 3;
-				while(i<args.length){
-					if(args[i].equalsIgnoreCase("-pos")){
-						String pos[] = args[i+1].split(",");
-						a1.setPosition(Double.parseDouble(pos[0]), Double.parseDouble(pos[1]), Double.parseDouble(pos[2]));
-					}
-					else if (args[i].equalsIgnoreCase("-vel")){
-						String vel[] = args[i+1].split(",");
-						a1.setVelocity(Double.parseDouble(vel[0]), Double.parseDouble(vel[1]), Double.parseDouble(vel[2]));
-					}
-					else if (args[i].equalsIgnoreCase("-acc")){
-						String acc[] = args[i+1].split(",");
-						a1.setAcceleration(Double.parseDouble(acc[0]), Double.parseDouble(acc[1]), Double.parseDouble(acc[2]));
-					}
-					else {
-						i--;	// else increment one, decrement one instead to cancel it out with i+=2
-					}
-					i += 2;
-				}
-				
-			}
-			else if(args[1].equalsIgnoreCase("molecule")){
-				int count = Integer.parseInt(args[2]);
-				for (int i=0; i<count; i++)	{
-					
-				}
-				
-			}
-		}
 		
 	}
 	
@@ -335,6 +369,36 @@ public class World {
 		for(AbstractParticle particle: particles) {
 			particle.rotateAroundAxis(axis, 1);
 		//	markAsActive(particle);
+		}
+	}
+	
+	private static void parsePDB (String filePath){
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(filePath));
+			String line = br.readLine();	// MODEL
+			while(line!=null){
+				ArrayList <Atom> atoms = new ArrayList<>();
+				line = br.readLine();		// HETATM
+				while(!line.equals("ENDMDL")){
+					System.out.println("Parsing " + line);
+					double x = Double.parseDouble(line.substring(30, 38)) * 1e-10;
+					double y = Double.parseDouble(line.substring(38, 46)) * 1e-10;
+					double z = Double.parseDouble(line.substring(46, 54)) * 1e-10;
+					int charge = Integer.parseInt(line.substring(78));
+					AbstractParticle particle = new Atom(line.substring(12, 16).replace(" ", ""));
+					particle.setPosition(x, y, z);
+					particle.setNetCharge(charge);
+					allAtoms.add(particle);
+					atoms.add((Atom)particle);
+					line = br.readLine();
+				}
+				Molecule molecule = new Molecule(atoms);
+				allMolecules.add(molecule);
+				line = br.readLine();
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
 		}
 	}
 

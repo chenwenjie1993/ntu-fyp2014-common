@@ -43,6 +43,9 @@ public class MainWindow extends JFrame {
 	private JPanel coeOfResPanel;
 	private JSlider coeOfResSlider;
 	private JLabel coeOfResLbl;
+	private JPanel simSpdPanel;
+	private JSlider simSpdSlider;
+	private JLabel simSpdLbl;
 	private JCheckBox lennardJonesCheckBox;
 	private JCheckBox electrostaticCheckBox;
 	
@@ -58,6 +61,7 @@ public class MainWindow extends JFrame {
 	private JPanel panel;
 	private JButton pauseButton;
 	private JButton restartButton;
+	private JCheckBox partialMolCheckBox;
 
 	
 	/**
@@ -65,7 +69,7 @@ public class MainWindow extends JFrame {
 	 */
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 900, 600);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -90,6 +94,8 @@ public class MainWindow extends JFrame {
 		
 		createSimLvlPanel();
 		inputPanel.add(simLvlPanel);
+		
+		
 		JPanel padding = new JPanel();
 		padding.setSize(20, 20);
 		inputPanel.add(padding);
@@ -100,6 +106,13 @@ public class MainWindow extends JFrame {
 		JPanel padding2 = new JPanel();
 		padding2.setSize(20, 20);
 		inputPanel.add(padding2);
+		
+		createSimSpdPanel();
+		inputPanel.add(simSpdPanel);
+		JPanel padding4 = new JPanel();
+		padding4.setSize(20, 20);
+		inputPanel.add(padding4);
+		
 		
 		createForcesPanel();
 		inputPanel.add(forcesPanel);
@@ -190,6 +203,34 @@ public class MainWindow extends JFrame {
 		
 	}
 	
+	private void createSimSpdPanel(){
+		simSpdPanel = new JPanel();
+		simSpdPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		simSpdPanel.setLayout(new BoxLayout(simSpdPanel, BoxLayout.Y_AXIS));	
+		
+		JPanel panel1 = new JPanel();
+	//	panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
+		
+		JLabel label1 = new JLabel("Frame Duration (attosecond): ");
+		panel1.add(label1);
+		
+		simSpdLbl = new JLabel(String.valueOf(World.frameTime_as));
+		simSpdLbl.setAlignmentY(Component.TOP_ALIGNMENT);
+		panel1.add(simSpdLbl);
+		
+		JLabel l = new JLabel("Frame Duration");
+		l.setAlignmentX(Component.CENTER_ALIGNMENT);
+		simSpdPanel.add(l);
+		
+		simSpdSlider = new JSlider(0,100);
+		simSpdSlider.setSnapToTicks(true);
+		simSpdSlider.setPaintTicks(true);
+		simSpdSlider.setPaintLabels(true);
+		simSpdPanel.add(simSpdSlider);
+		simSpdSlider.setValue((int)(World.frameTime_as));
+		simSpdPanel.add(panel1);
+	}
+	
 	/**
 	 * Create the panel for setting the simulation level (atomic or molecular)
 	 */
@@ -209,16 +250,26 @@ public class MainWindow extends JFrame {
 	    molecularRadioButton = new JRadioButton("molecular");
 	    bg.add(atomicRadioButton);
 	    bg.add(molecularRadioButton);
+	    partialMolCheckBox = new JCheckBox("Partial Molecular");
 	    
-	    if(World.simulationLvlAtomic == true)
+	    if(World.simulationLvlAtomic == true) {
 	    	atomicRadioButton.setSelected(true);
-	    else
+	    	partialMolCheckBox.setEnabled(false);
+	    	partialMolCheckBox.setSelected(false);
+	    }
+	    else {
 	    	molecularRadioButton.setSelected(true);
+	    	partialMolCheckBox.setEnabled(true);
+	    	partialMolCheckBox.setSelected(World.simulationLvlPartial);
+	    }
 	    
 	    JPanel panel2 = new JPanel();
 	    panel2.add(atomicRadioButton);
 	    panel2.add(molecularRadioButton);
 		simLvlPanel.add(panel2);	
+		JPanel panel1 = new JPanel();
+		panel1.add(partialMolCheckBox);
+		simLvlPanel.add(panel1);
 	}
 	
 	private void createForcesPanel(){
@@ -264,6 +315,15 @@ public class MainWindow extends JFrame {
             }
         });
 		
+		simSpdSlider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent event) {
+                int currentVal = ((JSlider)event.getSource()).getValue();
+                simSpdLbl.setText(String.valueOf(currentVal));
+                World.frameTime_as = currentVal;
+                World.resetActiveParticlesVelocities();
+            }
+        });
+		
 		commandTextField.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent e) {
             	if(e.getKeyCode() != 10)	// enter key
@@ -287,7 +347,13 @@ public class MainWindow extends JFrame {
 		        	World.simulationLvlAtomic = true;
 		        	electrostaticCheckBox.setEnabled(true);
 		        	electrostaticCheckBox.setSelected(World.electricForceActive);
-		        	World.simulationStatus = "changed";
+		        	
+		        	World.frameTime_as = 50;
+		        	simSpdLbl.setText("50");
+		        	simSpdSlider.setValue(50);
+		        	partialMolCheckBox.setEnabled(false);
+			    	partialMolCheckBox.setSelected(false);
+			    	World.simulationStatus = "changed";
 		        }
 		    }
 		});
@@ -297,8 +363,9 @@ public class MainWindow extends JFrame {
 		    	JRadioButton button = (JRadioButton) e.getSource();
 		        if (button.getText().equals("molecular")){
 		        	World.simulationLvlAtomic = false;
-		        	electrostaticCheckBox.setSelected(false);
-		        	electrostaticCheckBox.setEnabled(false);
+		    
+		        	partialMolCheckBox.setEnabled(true);
+			    	partialMolCheckBox.setSelected(World.simulationLvlPartial);
 		        	World.simulationStatus = "changed";
 		        }
 		    }
@@ -331,7 +398,19 @@ public class MainWindow extends JFrame {
 		    }
 		});
 		
-		
+		partialMolCheckBox.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent e) {
+		    	JCheckBox checkBox = (JCheckBox) e.getSource();
+		        if (checkBox.getText().equals("Partial Molecular")){
+		        	if(checkBox.isSelected())
+		        		World.simulationLvlPartial = true;
+		        	else
+		        		World.simulationLvlPartial = false;
+		        }
+		        World.resetActiveParticlesVelocities();
+		        World.simulationStatus = "changed";
+		    }
+		});
 		
 	}
 }

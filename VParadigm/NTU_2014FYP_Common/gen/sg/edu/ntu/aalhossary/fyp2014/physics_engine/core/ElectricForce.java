@@ -52,7 +52,12 @@ public class ElectricForce implements Force{
 		Atom a1 = (Atom) particle1;
 		Atom a2 = (Atom) particle2;
 		
-		if((a1.getAtomicSymbol().equals(a2.getAtomicSymbol()) && a1.getAtomicSymbol().equals("C"))||scalar_distance == 0)
+		if((a1.getAtomicSymbol().equals("C") && a2.getAtomicSymbol().equals("C"))
+			
+				||(a1.getAtomicSymbol().equals("C") && a2.getAtomicSymbol().equals("N"))
+				||(a1.getAtomicSymbol().equals("N") && a2.getAtomicSymbol().equals("C")))
+			return new Vector3D(0,0,0);
+		if(scalar_distance == 0)	
 			return new Vector3D();
 		
 		distanceVector.scale(COULOMB_CONSTANT*charge1*charge2/scalar_distance/scalar_distance);
