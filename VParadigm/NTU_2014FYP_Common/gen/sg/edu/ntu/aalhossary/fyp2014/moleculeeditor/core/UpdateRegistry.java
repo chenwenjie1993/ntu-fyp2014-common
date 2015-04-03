@@ -250,10 +250,7 @@ public class UpdateRegistry {
 	}
 	
 	public void displayParticles(ArrayList<AbstractParticle> list){
-		DecimalFormat decformat = new DecimalFormat("#.###");
 		
-		
-		String[] coord;
 		String pdb = "MODEL       1\n";
 		for(int i=0; i<list.size();i++){
 			String index = String.format("%4d", list.get(i).getGUID());
@@ -299,67 +296,23 @@ public class UpdateRegistry {
 					double y = capCoord(position.y*scale);
 					double z = capCoord(position.z*scale);
 					String coords= String.format("%8.3f%8.3f%8.3f",x,y,z);
-					pdb += "HETATM    1 AR   TST A   1    "+coords+"  1.00  0.00\n";
+					pdb += "HETATM    1 CS   TST A   1    "+coords+"  1.00  0.00\n";
 				}
 			}
 		}
 		pdb += "ENDMDL";
 		viewer.openStringInline(pdb);
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("temp.pdb"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("res/physics/temp.pdb"));
 			writer.write(pdb);
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		createUserModel(DataManager.readFile("temp.pdb"));
+		createUserModel(DataManager.readFile("res/physics/temp.pdb"));
 	}
-	
-	public void displayParticles(AbstractParticle p1, AbstractParticle p2){
-		DecimalFormat decformat = new DecimalFormat("#.###");
-		/*
-		String[] coord = new String[6];
-		coord[0] = decformat.format(p1.getPosition().x);
-		coord[1] = decformat.format(p1.getPosition().y);
-		coord[2] = decformat.format(p1.getPosition().z);
-		coord[3] = decformat.format(p2.getPosition().x);
-		coord[4] = decformat.format(p2.getPosition().y);
-		coord[5] = decformat.format(p2.getPosition().z);
 		
-		String[] spaces = new String[6];
-		for(int i=0;i<coord.length;i++){
-			String space = "";
-			for(int j=0;j<(8 - coord[i].length());j++){
-				space += " ";
-			}
-			spaces[i] = space;
-		}
-		*/
-//							  "         1         2         3         4         5         6         7         8
-//							  "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
-		double scale = Math.pow(10, 10);
-		Vector3D position1 = p1.getPosition();
-		String coords1= String.format("%8.3f%8.3f%8.3f", position1.x*scale,position1.y*scale,position1.z*scale);
-		Vector3D position2 = p2.getPosition();
-		String coords2= String.format("%8.3f%8.3f%8.3f", position2.x*scale,position2.y*scale,position2.z*scale);
-		String p1Properties = "HETATM    1 NA   TST A   1    "+coords1+"  1.00  0.00";
-		String p2Properties = "HETATM    2 CL   TST A   2    "+coords2+"  1.00  0.00";
-
-		String pdb = "MODEL       1\n" + p1Properties + '\n' + p2Properties + "\nENDMDL";
-		
-		viewer.openStringInline(pdb);
-		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("temp.pdb"));
-			writer.write(pdb);
-			writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		createUserModel(DataManager.readFile("res/temp/temp.pdb"));
-	}
-
 	public void notifyUpdated(AbstractParticle[] particles){
 		List<Atom> atomsUpdated = new ArrayList<Atom>();
 		

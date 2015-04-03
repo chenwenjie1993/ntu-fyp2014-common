@@ -1,7 +1,9 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -49,6 +51,7 @@ public class World {
 	public static ContactResolver resolver = new ContactResolver();
 
 	public static ArrayList<String> inputFilePaths = new ArrayList<>();
+	public static String outputFilePath = "";
 	public static MoleculeEditor editor;
 	public static MainWindow window;
 	public static PrintStream originalStream;
@@ -65,7 +68,11 @@ public class World {
 	
 	public static void main (String[] args) throws Exception{
 		
-		originalStream = System.out;
+		outputFilePath = "res/physics/output.txt";
+		inputFilePaths.add("res/physics/input.pdb");
+		
+		//originalStream = System.out;
+		originalStream = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFilePath)));
 		dummyStream    = new PrintStream (new OutputStream(){
 		    @Override
 			public void write(int b) {
@@ -73,94 +80,25 @@ public class World {
 		    }
 		});
 		
-		inputFilePaths.add("res/physics/input.pdb");
+		startTime = System.nanoTime();
 		for (String filePath: inputFilePaths){
 			parsePDB(filePath);
 		}
-	/*	
-		AbstractParticle a1 = new Atom("H");
-		AbstractParticle a2 = new Atom("H");
-		AbstractParticle a3 = new Atom("N");
-		AbstractParticle a4 = new Atom ("C");
-		AbstractParticle a5 = new Atom ("H");
-		AbstractParticle a6 = new Atom ("C");
-		AbstractParticle a7 = new Atom ("O");
-		AbstractParticle a8 = new Atom ("O");
-		AbstractParticle a9 = new Atom ("H");
-		a3.setPosition(0, 0, 0);
-		a3.setNetCharge(-3);		// find a way to get oxidation state/ net charge	
-		a2.setPosition(-2.8e-10, 2.8e-10, 0);
-		a2.setNetCharge(1);
-		a1.setPosition(-2.8e-10, -2.8e-10, 0);
-		a1.setNetCharge(1);
-		a4.setPosition(4e-10, 0, 0);
-		a4.setNetCharge(4);
-		a5.setPosition(4e-10, 3e-10, 0);
-		a5.setNetCharge(-1);
-		a6.setPosition(7.5e-10, 0, 0);
-		a6.setNetCharge(4);
-		a7.setPosition(10e-10, 3e-10, 0);
-		a7.setNetCharge(-2);
-		a8.setPosition(10e-10, -3e-10, 0);
-		a8.setNetCharge(-2);
-		a9.setPosition(10e-10, 6e-10, 0);
-		a9.setNetCharge(1);
 		
-		AbstractParticle a10 = new Atom ("Cl");
-		a10.setPosition(2e-10, -9e-10, 0);
-		a10.setNetCharge(-1);	
-		
-		AbstractParticle a11 = new Atom ("Na");
-		a11.setPosition(6.5e-10, -9e-10, 0);
-		a11.setNetCharge(1);	
-		
-		allAtoms.add(a1);
-		allAtoms.add(a2);
-		allAtoms.add(a3);
-		allAtoms.add(a4);
-		allAtoms.add(a5);
-		allAtoms.add(a6);
-		allAtoms.add(a7);
-		allAtoms.add(a8);
-		allAtoms.add(a9);
-		allAtoms.add(a10);
-		allAtoms.add(a11);
-		
-		
-		ArrayList<Atom> atomList = new ArrayList<>();
-		atomList.add((Atom)a1);
-		atomList.add((Atom)a2);
-		atomList.add((Atom)a3);
-		atomList.add((Atom)a4);
-		atomList.add((Atom)a5);
-		atomList.add((Atom)a6);
-		atomList.add((Atom)a7);
-		atomList.add((Atom)a8);
-		atomList.add((Atom)a9);
-		Molecule molecule = new Molecule(atomList);
-		allMolecules.add(molecule);
-		
-		ArrayList <Atom> atomList2 = new ArrayList<>();
-		atomList2.add((Atom)a10);
-//		atomList2.add((Atom)a11);
-		Molecule molecule2 = new Molecule(atomList2);
-		allMolecules.add(molecule2);
-		
-		atomList2 = new ArrayList<>();
-//		atomList2.add((Atom)a10);
-		atomList2.add((Atom)a11);
-		Molecule molecule3 = new Molecule(atomList2);
-		allMolecules.add(molecule3);
-		
+		endTime = System.nanoTime();
+		duration = (endTime - startTime);  
+		System.out.println("Time taken to load particles: " + duration);
+		startTime = System.nanoTime();
+	
 			
 		ArrayList<AbstractParticle> rotateTestAtoms = new ArrayList<>();
 		if(debugRotate) {
-			rotateTestAtoms.add(a6);
-			rotateTestAtoms.add(a7);
-			rotateTestAtoms.add(a8);
-			rotateTestAtoms.add(a9);
+			rotateTestAtoms.add(allAtoms.get(5));
+			rotateTestAtoms.add(allAtoms.get(6));
+			rotateTestAtoms.add(allAtoms.get(7));
+			rotateTestAtoms.add(allAtoms.get(8));
 		}	
-*/
+
 		// check simulation level
 		checkSimulationLevel();
 		
@@ -188,6 +126,7 @@ public class World {
 		
 		while(true) {
 	
+			System.out.println("\n" + i);
 			startTime = System.nanoTime();
 			
 			// Applying Forces		
@@ -198,7 +137,7 @@ public class World {
 			System.out.println("Time taken to calculate forces: " + duration);
 			startTime = System.nanoTime();
 			
-			System.out.println("\n" + i);
+	
 			for(AbstractParticle particle: activeParticles){
 				if(simulationLvlAtomic)
 					particle.integrate(frameTime_as*time_metric);	
@@ -246,8 +185,8 @@ public class World {
 				if(i%100 == 0){
 					System.setOut(dummyStream);
 					// Test Rotation
-				//	if(debugRotate)
-				//		testRotate(rotateTestAtoms);
+					if(debugRotate && (simulationLvlAtomic || !simulationLvlAtomic && simulationLvlPartial))
+						testRotate(rotateTestAtoms);
 					
 					window.getMediator().displayParticles(octTree.getAllParticles());
 					System.setOut(originalStream);
@@ -345,7 +284,6 @@ public class World {
 		else {
 			for(AbstractParticle particle: allMolecules) {
 				octTree.insert(particle);
-		//		octTree.remove(allMolecules.get(0));
 			}
 			if(simulationLvlPartial){
 				octTree.clear();
