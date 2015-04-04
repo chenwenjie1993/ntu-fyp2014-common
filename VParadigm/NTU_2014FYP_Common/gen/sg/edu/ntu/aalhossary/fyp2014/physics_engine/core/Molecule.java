@@ -17,7 +17,45 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule{
 	// Chains are made up of residues and atoms
 	// Residues are made up of atoms and bonds (interaction)
 	private double radius = 0;
-	private ArrayList<Atom> atoms;
+	private ArrayList<Atom> atoms = new ArrayList<Atom>();
+	
+	public Molecule(sg.edu.ntu.aalhossary.fyp2014.common.Molecule mol) throws Exception{
+		//TODO copy everything
+		
+		double mass=0;
+		double r  =0 ;	
+		
+		for(sg.edu.ntu.aalhossary.fyp2014.common.Chain chain: mol.getChains()){
+			for (sg.edu.ntu.aalhossary.fyp2014.common.Residue residue: chain.residues) {
+				for (sg.edu.ntu.aalhossary.fyp2014.common.Atom atom: residue.getAtomList()){
+					Atom newAtom = new Atom(atom);
+					atoms.add(newAtom);
+					mass += newAtom.getMass();	
+				}
+			}
+		}
+		Vector3D position = getCentroid();
+		
+		for(Atom atom: atoms){
+			// Calculating radius
+			Vector3D pos = atom.getPosition();
+			double maxDistX = Math.abs(Math.abs(pos.x)-Math.abs(position.x));
+			double maxDistY = Math.abs(Math.abs(pos.y)-Math.abs(position.y));
+			double maxDistZ = Math.abs(Math.abs(pos.z)-Math.abs(position.z));
+			double max_dist = Math.max(Math.max(maxDistX, maxDistY), maxDistZ);
+			
+			if(radius < max_dist)
+				radius = max_dist;
+			
+			BoundingSphere b = (BoundingSphere)(atom.getBoundingPrimitive());
+			r = Math.max(r, b.getRadius());
+		}
+		
+		this.setMass(mass);
+		this.molecularMass = (float)mass;
+		this.boundingPrimitive = new BoundingSphere(radius, position);
+		this.position = position;
+	}
 	
 	/**
 	 * Construct a molecule given a lsit of atoms

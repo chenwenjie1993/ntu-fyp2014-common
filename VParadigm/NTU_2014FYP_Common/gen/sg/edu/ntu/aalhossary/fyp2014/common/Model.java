@@ -23,6 +23,16 @@ public class Model {
 		return this.molecules;
 	}
 
+	public void setMolecules(ArrayList<Molecule> molecules) {
+		this.molecules = molecules;
+	}
+
+	/**
+	 * needs to change the name to something more descriptive
+	 * 
+	 * @param list
+	 * @deprecated will be renamed
+	 */
 	public void setMolecule(List<org.biojava.bio.structure.Chain> list) {
 		AbstractParticle molecule;
 		molecule = new Molecule();

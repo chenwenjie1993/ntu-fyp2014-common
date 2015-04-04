@@ -2,6 +2,7 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -10,11 +11,17 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import org.biojava.bio.structure.Structure;
+
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.common.Model;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.DataManager;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui.MainWindow;
 
@@ -27,8 +34,8 @@ public class World {
 	
 	public static double COEFFICENT_OF_RESTITUTION = 1;
 	public static int particleCount = 0;
-	public static boolean simulationLvlAtomic = false;
-	public static boolean simulationLvlPartial = true;
+	public static boolean simulationLvlAtomic = true;
+	public static boolean simulationLvlPartial = false;
 	public static boolean electricForceActive = true;
 	public static boolean LJForceActive = true;
 	public static String simulationStatus = "running";
@@ -106,7 +113,7 @@ public class World {
 		checkForActiveParticles();
 		
 		if(displayUI){
-			 System.setOut(dummyStream);
+			// System.setOut(dummyStream);
 			 window = new MainWindow();
 			 window.getMediator().displayParticles(octTree.getAllParticles());
 			 System.setOut(originalStream);
@@ -183,7 +190,7 @@ public class World {
 			//	AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
 			//	editor.getMediator().notifyUpdated(temp_particles);
 				if(i%100 == 0){
-					System.setOut(dummyStream);
+				//	System.setOut(dummyStream);
 					// Test Rotation
 					if(debugRotate && (simulationLvlAtomic || !simulationLvlAtomic && simulationLvlPartial))
 						testRotate(rotateTestAtoms);
@@ -267,7 +274,7 @@ public class World {
 			if (particle instanceof Atom)
 				particle.setPosition(pos.x, pos.y, pos.z);
 			else if (particle instanceof Molecule)
-				((Molecule) particle).setPositionAsCentroid();
+				((sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Molecule) particle).setPositionAsCentroid();
 			particle.setVelocity(0, 0, 0);
 		}
 		
@@ -287,7 +294,7 @@ public class World {
 			}
 			if(simulationLvlPartial){
 				octTree.clear();
-				for(AbstractParticle particle: ((Molecule)allMolecules.get(0)).getAtoms()) {
+				for(AbstractParticle particle: ((sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Molecule)allMolecules.get(0)).getAtoms()) {
 					octTree.insert(particle);
 				}
 				
@@ -312,12 +319,13 @@ public class World {
 	
 	private static void parsePDB (String filePath){
 		try {
+			/*
 			BufferedReader br = new BufferedReader(new FileReader(filePath));
 			String line = br.readLine();	// MODEL
 			while(line!=null){
 				ArrayList <Atom> atoms = new ArrayList<>();
 				line = br.readLine();		// HETATM
-				while(!line.equals("ENDMDL")){
+				while(!line.equals("ENDMDL") && !line.equals("END")){
 					System.out.println("Parsing " + line);
 					double x = Double.parseDouble(line.substring(30, 38)) * 1e-10;
 					double y = Double.parseDouble(line.substring(38, 46)) * 1e-10;
@@ -334,6 +342,32 @@ public class World {
 				allMolecules.add(molecule);
 				line = br.readLine();
 			}
+			
+			
+			*/
+			
+			File file = new File(filePath);
+			Structure struc = DataManager.readFile(file.getAbsolutePath());
+			UpdateRegistry reg = new UpdateRegistry();
+			reg.createUserModel(struc);
+			
+			List<Model> models = reg.getModelList();
+			for (Model model : models) {
+				//upgrade molecules
+				ArrayList<sg.edu.ntu.aalhossary.fyp2014.common.Molecule> molecules = model.getMolecules();
+				ArrayList<sg.edu.ntu.aalhossary.fyp2014.common.Molecule> newMolecules= new ArrayList<sg.edu.ntu.aalhossary.fyp2014.common.Molecule>(); 
+				for (sg.edu.ntu.aalhossary.fyp2014.common.Molecule molecule : molecules) {
+					Molecule newMolecule = new Molecule(molecule);
+					newMolecules.add(newMolecule);
+					for(Atom atom: newMolecule.getAtoms()) {
+						allAtoms.add(atom);
+					}
+				}
+				model.setMolecules(newMolecules);
+				allMolecules.addAll(newMolecules);
+			}
+			
+	
 		} catch (Exception e) {
 			
 			e.printStackTrace();

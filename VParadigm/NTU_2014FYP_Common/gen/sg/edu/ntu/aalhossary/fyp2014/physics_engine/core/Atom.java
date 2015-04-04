@@ -31,6 +31,20 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom{
 		this.setElementSymbol(atomicSymbol.toUpperCase());
 	}
 	
+	public Atom(sg.edu.ntu.aalhossary.fyp2014.common.Atom atom) throws Exception{
+	//	super();
+		this.fetchAtomicData(atom.getElementSymbol().toUpperCase());
+		this.setMass(this.mass);
+		this.setRadius(vdwRadius);
+		this.setNetCharge(valence);
+		this.boundingPrimitive = new BoundingSphere(radius, position);
+		this.atomicSymbol = atom.getElementSymbol().toUpperCase();
+		this.setElementSymbol(atomicSymbol.toUpperCase());
+		this.position.x = atom.getCoordinates() [0] * 1e-10;
+		this.position.y = atom.getCoordinates() [1] * 1e-10;
+		this.position.z = atom.getCoordinates() [2] * 1e-10;
+	}
+	
 	public Vector3D getForceAccumulated(){
 		return this.forceAccumulated;
 	}

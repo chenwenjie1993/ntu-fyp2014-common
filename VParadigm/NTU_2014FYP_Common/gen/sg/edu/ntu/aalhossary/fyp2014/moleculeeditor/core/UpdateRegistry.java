@@ -247,13 +247,15 @@ public class UpdateRegistry {
 		if(coord < 0)
 			return Math.max(-999.000, coord);
 		return Math.min(coord, +999.000);
+		
 	}
 	
 	public void displayParticles(ArrayList<AbstractParticle> list){
 		
 		String pdb = "MODEL       1\n";
 		for(int i=0; i<list.size();i++){
-			String index = String.format("%4d", list.get(i).getGUID());
+			//String index = String.format("%4d", list.get(i).getGUID());
+			String index = String.format("%4d", i);
 			if(list.get(i) instanceof Atom){
 				double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
 				Vector3D position = list.get(i).getPosition();
@@ -301,6 +303,7 @@ public class UpdateRegistry {
 			}
 		}
 		pdb += "ENDMDL";
+		System.out.println(pdb);
 		viewer.openStringInline(pdb);
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("res/physics/temp.pdb"));

@@ -132,7 +132,7 @@ public class OctTree {
 		    
 		    // if not on axis
 		    if(index != -1) {
-		    	System.out.println("inserting to node " + index);
+		 //   	System.out.println("inserting to node " + index);
 		    	nodes[index].insert(particle);
 		    	return;
 		    }
