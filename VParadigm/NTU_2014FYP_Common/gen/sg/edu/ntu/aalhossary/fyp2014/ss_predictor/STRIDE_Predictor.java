@@ -2,6 +2,7 @@ package sg.edu.ntu.aalhossary.fyp2014.ss_predictor;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -21,6 +22,7 @@ public class STRIDE_Predictor extends PredictorWrapper {
 		
 		ProcessBuilder pb = new ProcessBuilder();
 		pb.directory(new File("/temp/stride"));
+		
 
 		try {
 		assert pb.redirectInput() == Redirect.PIPE;
@@ -39,13 +41,17 @@ public class STRIDE_Predictor extends PredictorWrapper {
 		String str;
 		
         Pregion = new ArrayList<STRIDE_Output>();
+       
 		
 		    while ((str = br.readLine()) != null) {
+		 
+		    
 		    	Pattern pat = Pattern.compile("LOC");
             	Matcher m =pat.matcher(str);
             	if (m.find()){
             	ArrayList<String> region_list = new ArrayList<String>();
             	region_list.add(str);
+            	
             	for(String sentence:region_list){
             		STRIDE_Output predicted = new STRIDE_Output();
             		String []splitArray = sentence.split("\\s+");
@@ -62,6 +68,7 @@ public class STRIDE_Predictor extends PredictorWrapper {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
+	
 		
 	}
 }

@@ -102,6 +102,24 @@ public class IOutilityTest {
 		
 	}
 	@Test
+	public void testSTRIDEWritetoFile() throws IOException {
+		String pathname = "/Users/benkong/documents/fyp/stride/1PGB.pdb";
+		STRIDE_Predictor sp = new STRIDE_Predictor();
+		sp.process(pathname);
+		IOutility.STRIDEWriteToFile(sp.Pregion);
+		System.out.println(sp.Pregion.get(0).start);
+	}
+	@Test
+	public void testIUPREDWritetoFile() throws IOException {
+		String pathname = "/Users/benkong/documents/fyp/iupred/1PGB.fasta.txt";
+		InputStream is = IOutility.fastafileToInputStream(pathname);
+		IUPRED_Predictor sp = new IUPRED_Predictor();
+		sp.process(is);
+		IOutility.IUPREDWriteToFile(sp.Pregion);
+		System.out.println(sp.Pregion.get(0).aminoacid);
+		
+	}
+	@Test
 	public void testCreateAminoAcids() throws IOException{
 //		System.out.println(System.clearProperty("working.dir"));
 		String projectFolder=System.clearProperty("user.dir");

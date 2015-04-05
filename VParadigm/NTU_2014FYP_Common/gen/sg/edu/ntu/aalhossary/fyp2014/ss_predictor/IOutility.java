@@ -155,36 +155,31 @@ static final Map<String, String> map = new HashMap<>();
 	
 	}
 	
-	public static void WriteToFile (ArrayList<Object> output) throws IOException{
+	public static void STRIDEWriteToFile (ArrayList<STRIDE_Output> output) throws IOException{
+			FileWriter writer = new FileWriter("/temp/STRIDE_Output.txt");
+			ArrayList<String> strings = new ArrayList<String>();
+			for(STRIDE_Output o :output){
+				strings.add(o.toString());
+			}
+			for(String str: strings){
+				writer.write(str + System.getProperty("line.seprator"));
+			}
+			writer.close();
+			
+		}
+	public static void IUPREDWriteToFile (ArrayList<IUPRED_Output> output) throws IOException{
+		FileWriter writer = new FileWriter("/temp/IUPRED_Output.txt");
+		ArrayList<String> strings = new ArrayList<String>();
+		for(IUPRED_Output o :output){
+			strings.add(o.toString());
+		}
+		for(String str: strings){
+			writer.write(str + System.getProperty("line.seprator"));
+		}
+		writer.close();
 		
-		if(output.get(0) instanceof STRIDE_Output){
-			File file = new File("/Users/benkong/temp/IUPred_Output.txt");
-			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
-			ArrayList<String> temp = new ArrayList<String>();
-			for(Object o:output){
-				String string = ((STRIDE_Output)o).toString();
-				temp.add(string);
-				for(String s:temp){
-					bw.write(s);
-					bw.close();
-				}
-			}		
-		}else if(output.get(0) instanceof IUPRED_Output){
-			File file = new File("/Users/benkong/temp/IUPRred_Output.txt");
-			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
-			ArrayList<String> temp = new ArrayList<String>();
-			for(Object o:output){
-				String string = ((IUPRED_Output)o).toString();
-				temp.add(string);
-				for(String s:temp){
-					bw.write(s);
-					bw.close();
-				}
-			}	
-		}	
 	}
+	
 	@SuppressWarnings({ "deprecation" })
 	public static ArrayList<AminoAcid> createAminoAcid(String pathname,STRIDE_Output stride){
 		
