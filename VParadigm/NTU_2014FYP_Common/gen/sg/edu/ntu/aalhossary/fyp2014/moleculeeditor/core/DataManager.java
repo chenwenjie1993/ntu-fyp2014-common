@@ -16,6 +16,7 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Chain;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
 import sg.edu.ntu.aalhossary.fyp2014.common.Residue;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
 
 public class DataManager {
 
@@ -113,7 +114,11 @@ public class DataManager {
 		String fullname   = alignLeft(a.getSymbol(),3)	;
 		Character  altLoc = ' '        			    ;
 		
-		String resName = a.getParent().getName();
+		String resName;
+		if(a.getParent()==null)
+			resName = "TST";
+		else
+			resName = a.getParent().getName();
 		String leftResName = alignLeft(resName,3);
 		String chainID = "";
 		if(a.getParent() instanceof Residue){
@@ -140,20 +145,28 @@ public class DataManager {
 		s.append(" ");
 		s.append(chainID);
 		s.append(resseq);
-		s.append("   ");
+		s.append("    ");
 		s.append(x);
 		s.append(y);
 		s.append(z);
 		s.append(occupancy);
 		s.append(tempfactor);
 		
-		String eString = a.getSymbol().substring(0, 1).toUpperCase();
+		String eString;
+		if(a.getSymbol()==null)
+			eString = " ";
+		else
+			eString = a.getSymbol().substring(0, 1).toUpperCase();
 		str.append(String.format("%-76s%2s", s.toString(),eString));
 		str.append(newline);
 	}
 
 	// method from biojava FileConvert.class
 	private static String alignLeft(String input, int length){
+		if(input==null){
+			String spaces = "                           " ;
+			return spaces.substring(0, length);
+		}
 		if (input.length() >= length) {
 			return input;
 		}
@@ -166,6 +179,10 @@ public class DataManager {
 	
 	// method from biojava FileConvert.class
 	private static String alignRight(String input, int length){
+		if(input==null){
+			String spaces = "                           " ;
+			return spaces.substring(0, length);
+		}
 		int n = input.length();
 		if ( n >= length)
 			return input;
@@ -207,5 +224,73 @@ public class DataManager {
 			}
 			else
 				return struc;
+	}
+
+	public static void toPDB(Atom a, int i, Vector3D position, double scale, StringBuffer str) {
+		String record = "" ;
+		if (a.getParent() instanceof Chain) {
+			record = "HETATM";
+		} else {
+			record = "ATOM  ";
+		}
+		
+		int    seri       = i       ;
+		String serial     = alignRight(""+seri,5)   ;
+		
+		String fullname   = alignLeft(a.getSymbol(),3)	;
+		Character  altLoc = ' '        			    ;
+		
+		String resName;
+		if(a.getParent()==null)
+			resName = "TST";
+		else
+			resName = a.getParent().getName();
+		String leftResName = alignLeft(resName,3);
+		String chainID = "";
+		if(a.getParent() instanceof Residue){
+			chainID = ((Residue)a.getParent()).getParent().getName();
+		}
+		else{
+			chainID = " ";
+		}
+		String resseq     = alignRight(""+a.getChainSeqNum(),5);
+		
+		String x          = alignRight(""+d3.format(capCoord(position.x*scale)),8);
+		String y          = alignRight(""+d3.format(capCoord(position.y*scale)),8);
+		String z          = alignRight(""+d3.format(capCoord(position.z*scale)),8);
+		String occupancy  = alignRight(""+d2.format(1.00),6) ;
+		String tempfactor = alignRight(""+d2.format(0.00),6);
+		
+		StringBuffer s = new StringBuffer();
+		s.append(record);
+		s.append(serial);
+		s.append(" ");
+		s.append(fullname);
+		s.append(altLoc);
+		s.append(leftResName);
+		s.append(" ");
+		s.append(chainID);
+		s.append(resseq);
+		s.append("    ");
+		s.append(x);
+		s.append(y);
+		s.append(z);
+		s.append(occupancy);
+		s.append(tempfactor);
+		
+		String eString;
+		if(a.getSymbol()==null)
+			eString = " ";
+		else
+			eString = a.getSymbol().substring(0, 1).toUpperCase();
+		str.append(String.format("%-76s%2s", s.toString(),eString));
+		str.append(newline);
+	}
+	
+	private static double capCoord (double coord){
+		if(coord < 0)
+			return Math.max(-999.000, coord);
+		return Math.min(coord, +999.000);
+		
 	}
 }

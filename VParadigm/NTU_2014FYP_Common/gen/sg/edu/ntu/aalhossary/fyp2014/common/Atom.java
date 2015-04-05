@@ -42,6 +42,8 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle 
 	}
 	
 	public void setSymbol(String symbol){
+		if(symbol==null || symbol.length()<1)
+			return;
 		symbol = symbol.toUpperCase();
 		this.pdbsymbol = symbol;
 		// when setting symbol of atom, set the name, atomic mass and atomic number
