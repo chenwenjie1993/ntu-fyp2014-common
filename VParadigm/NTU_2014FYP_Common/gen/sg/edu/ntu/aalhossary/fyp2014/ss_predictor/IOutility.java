@@ -162,7 +162,8 @@ static final Map<String, String> map = new HashMap<>();
 				strings.add(o.toString());
 			}
 			for(String str: strings){
-				writer.write(str + System.getProperty("line.seprator"));
+				writer.write(str);
+				writer.write(System.getProperty("line.separator"));
 			}
 			writer.close();
 			
@@ -174,7 +175,8 @@ static final Map<String, String> map = new HashMap<>();
 			strings.add(o.toString());
 		}
 		for(String str: strings){
-			writer.write(str + System.getProperty("line.seprator"));
+			writer.write(str);
+			writer.write(System.getProperty("line.separator"));
 		}
 		writer.close();
 		
