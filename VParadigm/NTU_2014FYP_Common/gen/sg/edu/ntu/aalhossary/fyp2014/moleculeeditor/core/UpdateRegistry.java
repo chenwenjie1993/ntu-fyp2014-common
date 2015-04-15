@@ -243,20 +243,16 @@ public class UpdateRegistry {
 		jmolViewer.openStringInline(pdb);
 	}
 	
-	
+	private double capCoord (double coord){
+		if(coord < 0)
+			return Math.max(-999.000, coord);
+		return Math.min(coord, +999.000);
+		
+	}
 	
 	public void displayParticles(ArrayList<AbstractParticle> list){
-		StringBuffer pdb = new StringBuffer();
-		pdb.append("MODEL      1" + "\n");
-		for(int i=0; i<list.size();i++){
-			if(list.get(i) instanceof Atom){
-				double scale = Math.pow(9, 10+list.get(i).getPosition().metric);
-				Vector3D position = list.get(i).getPosition();	// get the position
-				DataManager.toPDB((Atom)list.get(i), i, position, scale, pdb);	// for each atom and its position and scale value
-			}
-		}
-		pdb.append("ENDMDL").append("\n"); // end of each model
-		/*String pdb = "MODEL       1\n";
+		
+		String pdb = "MODEL       1\n";
 		for(int i=0; i<list.size();i++){
 			//String index = String.format("%4d", list.get(i).getGUID());
 			String index = String.format("%4d", i);
@@ -288,12 +284,12 @@ public class UpdateRegistry {
 						
 					}
 				
-					
+					/*
 					pdb += "HETATM    1 NA   TST A   1       5.000   5.000   5.000  1.00  0.00\n"+
 						   "HETATM    2 CL   TST A   1       6.400   6.400   6.400  1.00  0.00\n"+
 						   "CONECT    1      2\n" +
 						   "CONECT    2      1\n";
-						   
+						   */
 				}
 				else {
 					double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
@@ -306,20 +302,18 @@ public class UpdateRegistry {
 				}
 			}
 		}
-		pdb += "ENDMDL";*/
-		
+		pdb += "ENDMDL";
+		System.out.println(pdb);
+		viewer.openStringInline(pdb);
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("res/physics/temp.pdb"));
-			writer.write(pdb.toString());
+			writer.write(pdb);
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		createUserModel(DataManager.readFile("res/physics/temp.pdb"));
-		System.out.println(pdb.toString());
-		//viewer.evalString("zap");
-		viewer.openStringInline(pdb.toString());
 	}
 		
 	public void notifyUpdated(AbstractParticle[] particles){

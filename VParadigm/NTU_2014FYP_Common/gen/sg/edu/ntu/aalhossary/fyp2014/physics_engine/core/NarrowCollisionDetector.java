@@ -44,7 +44,7 @@ public class NarrowCollisionDetector {
 				
 				if(min_dist <= bond_length){
 				
-					System.out.println("The two particles collided: " + a.getGUID() +" and " + b.getGUID());
+		//			System.out.println("The two particles collided: " + a.getGUID() +" and " + b.getGUID());
 					AbstractParticle [] potentialContact = {a,b};
 					potentialContacts.add(potentialContact);
 				}

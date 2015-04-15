@@ -15,6 +15,12 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import org.kohsuke.args4j.Argument;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
+import org.kohsuke.args4j.ParserProperties;
+import org.kohsuke.args4j.spi.BooleanOptionHandler;
 import org.biojava.bio.structure.Structure;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
@@ -31,18 +37,34 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui.MainWindow;
  */
 public class World {
 	
-	
+	enum SimulationLevel {Atomic, Molecular, PartialMolecular};
 	public static double COEFFICENT_OF_RESTITUTION = 1;
-	public static int particleCount = 0;
+	
+	@Option(name = "-l", aliases = "-level", usage = "Simulation Level")
+	public static SimulationLevel simlvl = SimulationLevel.Atomic;
+	
 	public static boolean simulationLvlAtomic = true;
 	public static boolean simulationLvlPartial = false;
+	
 	public static boolean electricForceActive = true;
 	public static boolean LJForceActive = true;
+	
+	public static int frameTime_as = 50;
+	public static boolean debugRotate = false;
+	
+	@Argument(usage = "inputs of the Engine", metaVar="INPUTS")
+	public static ArrayList<String> inputFilePaths = new ArrayList<>();
+	
+	@Option(name="-o", aliases = "-output", usage="output of the engine", metaVar="OUTPUT")
+	public static String outputFilePath = "output.txt";
+	
+	@Option(name="-gui",usage="enable GUI")
+	public static boolean displayUI = false;
+	
+	public static int particleCount = 0;
 	public static String simulationStatus = "running";
 	public static CountDownLatch countDownLatch;
 	public static boolean allParticlesActive = true;
-	public static boolean debugRotate = false;
-	public static int frameTime_as = 50;
 	
 	public static double distance_metric = DISTANCE.m.value();
 	public static double time_metric = TIME.as.value();
@@ -56,27 +78,18 @@ public class World {
 	public static OctTree octTree = new OctTree();
 	public static NarrowCollisionDetector detector = new NarrowCollisionDetector();
 	public static ContactResolver resolver = new ContactResolver();
-
-	public static ArrayList<String> inputFilePaths = new ArrayList<>();
-	public static String outputFilePath = "";
+	public static HashMap <Integer,Vector3D> initialPositions;
 	public static MoleculeEditor editor;
 	public static MainWindow window;
 	public static PrintStream originalStream;
 	public static PrintStream dummyStream;
-	
-	public static boolean displayUI = true;
-	
 	public static long startTime;
 	public static long endTime;
 	public static long duration;
 	
-	// Only Needed for restart
-	public static HashMap <Integer,Vector3D> initialPositions;
-	
 	public static void main (String[] args) throws Exception{
 		
-		outputFilePath = "res/physics/output.txt";
-		inputFilePaths.add("res/physics/input.pdb");
+		new World().parseArguments(args);
 		
 		//originalStream = System.out;
 		originalStream = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFilePath)));
@@ -94,7 +107,7 @@ public class World {
 		
 		endTime = System.nanoTime();
 		duration = (endTime - startTime);  
-		System.out.println("Time taken to load particles: " + duration);
+		System.out.println("Time taken to load particles: " + duration/1000);
 		startTime = System.nanoTime();
 	
 			
@@ -113,7 +126,7 @@ public class World {
 		checkForActiveParticles();
 		
 		if(displayUI){
-			// System.setOut(dummyStream);
+			 System.setOut(dummyStream);
 			 window = new MainWindow();
 			 window.getMediator().displayParticles(octTree.getAllParticles());
 			 System.setOut(originalStream);
@@ -134,17 +147,11 @@ public class World {
 		while(true) {
 	
 			System.out.println("\n" + i);
-			startTime = System.nanoTime();
+//			startTime = System.nanoTime();
 			
 			// Applying Forces		
 			registry.updateAllForces(activeParticles);
 			
-			endTime = System.nanoTime();
-			duration = (endTime - startTime);  
-			System.out.println("Time taken to calculate forces: " + duration);
-			startTime = System.nanoTime();
-			
-	
 			for(AbstractParticle particle: activeParticles){
 				if(simulationLvlAtomic)
 					particle.integrate(frameTime_as*time_metric);	
@@ -157,40 +164,40 @@ public class World {
 			//	printParticleStatus(particle);
 			}
 			
-			endTime = System.nanoTime();
-			duration = (endTime - startTime);  
-			System.out.println("Time taken to integrate: " + duration);
-			startTime = System.nanoTime();
+//			endTime = System.nanoTime();
+//			duration = (endTime - startTime);  
+//			System.out.println("Time taken to update forces: " + duration/1000);
+//			startTime = System.nanoTime();
 
 			// Update tree only after integration
 			octTree.updateAllActiveParticles();
 			
-			endTime = System.nanoTime();
-			duration = (endTime - startTime);  
-			System.out.println("Time taken for broad phase: " + duration);
-			startTime = System.nanoTime();
+//			endTime = System.nanoTime();
+//			duration = (endTime - startTime);  
+//			System.out.println("Time taken for broad phase: " + duration/1000);
+//			startTime = System.nanoTime();
 			
 			// Collision Detection 
 			detector.detectCollision(octTree, activeParticles, potentialContacts);    	 
 			
-			endTime = System.nanoTime();
-			duration = (endTime - startTime);  
-			System.out.println("Time taken for narrow phase: " + duration);
-			startTime = System.nanoTime();
+//			endTime = System.nanoTime();
+//			duration = (endTime - startTime);  
+//			System.out.println("Time taken for narrow phase: " + duration/1000);
+//			startTime = System.nanoTime();
 			
 			// Resolve Collisions and set active particles
 			resolver.resolveContacts(potentialContacts);	
 			
-			endTime = System.nanoTime();
-			duration = (endTime - startTime);  
-			System.out.println("Time taken to resolve: " + duration);
-			startTime = System.nanoTime();
+//			endTime = System.nanoTime();
+//			duration = (endTime - startTime);  
+//			System.out.println("Time taken to resolve: " + duration/1000);
+//			startTime = System.nanoTime();
 			
 			if(displayUI){
 			//	AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
 			//	editor.getMediator().notifyUpdated(temp_particles);
 				if(i%100 == 0){
-				//	System.setOut(dummyStream);
+					System.setOut(dummyStream);
 					// Test Rotation
 					if(debugRotate && (simulationLvlAtomic || !simulationLvlAtomic && simulationLvlPartial))
 						testRotate(rotateTestAtoms);
@@ -224,12 +231,12 @@ public class World {
 			i++;
 			if(i > 10000 && simulationLvlAtomic || i>20000 && !simulationLvlAtomic) {
 				simulationStatus = "restart";
-			//		break;
+					break;
 			}
 		}
-//		endTime = System.nanoTime();
-//		duration = (endTime - startTime);  
-//		System.out.println("Time taken to end: " + duration);
+		endTime = System.nanoTime();
+		duration = (endTime - startTime);  
+		System.out.println("Time taken to end: " + duration/1000);
 		
 	}
 	
@@ -309,6 +316,36 @@ public class World {
 		
 	}
 	
+	public void parseArguments(String[] args){
+		 CmdLineParser parser = new CmdLineParser(this);
+		 parser.setUsageWidth(100);
+		 try {
+			 parser.parseArgument(args);
+			 System.out.println("o:" + outputFilePath);
+			 System.out.println("ui" + displayUI);
+			 for (String s: inputFilePaths)
+				System.out.println(s);
+			 
+			 switch (simlvl) {
+				case Atomic: 	simulationLvlAtomic = true;
+								break;
+				case Molecular: simulationLvlAtomic = false;
+								simulationLvlPartial = false;
+								break;
+				case PartialMolecular:	simulationLvlAtomic = false;
+										simulationLvlPartial = true;
+										break;
+			}	
+		 }
+		 catch(CmdLineException e) {
+			 System.err.println(e.getMessage());
+			 System.err.println("java World [options...] arguments...");
+			 parser.printUsage(System.err);
+			 System.err.println();
+			 return;
+		 }
+	}
+	
 	private static void testRotate (ArrayList<AbstractParticle> particles){
 		Vector3D axis = new Vector3D(1,0,0);
 		for(AbstractParticle particle: particles) {
@@ -319,7 +356,7 @@ public class World {
 	
 	private static void parsePDB (String filePath){
 		try {
-			/*
+			
 			BufferedReader br = new BufferedReader(new FileReader(filePath));
 			String line = br.readLine();	// MODEL
 			while(line!=null){
@@ -344,7 +381,8 @@ public class World {
 			}
 			
 			
-			*/
+			
+			/*
 			
 			File file = new File(filePath);
 			Structure struc = DataManager.readFile(file.getAbsolutePath());
@@ -366,8 +404,8 @@ public class World {
 				model.setMolecules(newMolecules);
 				allMolecules.addAll(newMolecules);
 			}
-			
-	
+			*/
+			 
 		} catch (Exception e) {
 			
 			e.printStackTrace();
