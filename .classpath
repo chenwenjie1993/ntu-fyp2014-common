@@ -8,13 +8,14 @@
 	</classpathentry>
 	<classpathentry including="**/*.java" kind="src" path="res"/>
 	<classpathentry including="**/*.java" kind="src" path="VParadigm/NTU_2014FYP_Common/gen"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/BioJava"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jmol-Compiled"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/BioJava"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jmol-Compiled"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="lib/Jmol-edited.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jsoup-1.8.1.jar"/>
-	<classpathentry kind="lib" path="lib/biojava3-core-3.0.8.jar"/>
-	<classpathentry kind="lib" path="lib/biojava3-structure-3.0.8.jar"/>
-	<classpathentry kind="lib" path="lib/biojava3-structure-gui-3.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/biojava3-core-3.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/biojava3-structure-3.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/biojava3-structure-gui-3.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/args4j-2.32.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
