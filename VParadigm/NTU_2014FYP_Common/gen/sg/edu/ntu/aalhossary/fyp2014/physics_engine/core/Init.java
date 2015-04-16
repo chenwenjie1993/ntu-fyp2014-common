@@ -41,11 +41,9 @@ public class Init {
 	public static AtomData [] atomicData = new AtomData [periodicTable.length];
 	
 	private static class AtomData {
-		String symbol;
 		double [] data;
 		
-		public AtomData(String symbol, double[] data){
-			this.symbol = symbol;
+		public AtomData(double[] data){
 			this.data = data.clone();
 		}
 	}
@@ -53,11 +51,6 @@ public class Init {
 	
 	public static void init(){
 		machineEpsilon = calculateMachineEpsilon();
-	/*
-		for (int i=0; i< periodicTable.length; i++){
-			atomicData.add(getAtomicData(i));
-		}
-	*/
 		saveAtomicData(0);	// get H
 		saveAtomicData(5);	// get C
 		saveAtomicData(6);	// get N
@@ -188,6 +181,6 @@ public class Init {
 			System.exit(-1);
 		}
 		
-		atomicData [index] = new AtomData (symbol, data) ;
+		atomicData [index] = new AtomData (data) ;
 	}
 }

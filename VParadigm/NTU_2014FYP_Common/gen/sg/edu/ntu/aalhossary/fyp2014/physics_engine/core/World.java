@@ -2,16 +2,13 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -19,13 +16,8 @@ import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
-import org.kohsuke.args4j.ParserProperties;
-import org.kohsuke.args4j.spi.BooleanOptionHandler;
-import org.biojava.bio.structure.Structure;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
-import sg.edu.ntu.aalhossary.fyp2014.common.Model;
-import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.DataManager;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
@@ -37,7 +29,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui.MainWindow;
  */
 public class World {
 	
-	enum SimulationLevel {Atomic, Molecular, PartialMolecular};
+	enum SimulationLevel {Atomic, Molecular, Partial};
 	public static double COEFFICENT_OF_RESTITUTION = 1;
 	
 	@Option(name = "-l", aliases = "-level", usage = "Simulation Level")
@@ -81,7 +73,8 @@ public class World {
 	public static HashMap <Integer,Vector3D> initialPositions;
 	public static MoleculeEditor editor;
 	public static MainWindow window;
-	public static PrintStream originalStream;
+	public static PrintStream outputStream;
+	public static PrintStream defaultStream;
 	public static PrintStream dummyStream;
 	public static long startTime;
 	public static long endTime;
@@ -90,9 +83,9 @@ public class World {
 	public static void main (String[] args) throws Exception{
 		
 		new World().parseArguments(args);
-		
-		//originalStream = System.out;
-		originalStream = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFilePath)));
+			
+		defaultStream = System.out;
+		outputStream = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFilePath)));
 		dummyStream    = new PrintStream (new OutputStream(){
 		    @Override
 			public void write(int b) {
@@ -129,7 +122,7 @@ public class World {
 			 System.setOut(dummyStream);
 			 window = new MainWindow();
 			 window.getMediator().displayParticles(octTree.getAllParticles());
-			 System.setOut(originalStream);
+			 System.setOut(outputStream);
 			 initialPositions = new HashMap<>();
 			 for (AbstractParticle particle: allAtoms){
 				 Vector3D temp = particle.getPosition();
@@ -139,14 +132,16 @@ public class World {
 				 Vector3D temp = particle.getPosition();
 				 initialPositions.put(particle.getGUID(), new Vector3D(temp.x, temp.y, temp.z));
 			 }
-		}		
+		}
+		else {
+			System.setOut(outputStream);
+		}
 		
-		System.out.println("Time \t a1\t\t\t \t  a2\t\t\t");
 		int i = 0;
 		
 		while(true) {
 	
-			System.out.println("\n" + i);
+			System.out.println("\nFrame: " + i);
 //			startTime = System.nanoTime();
 			
 			// Applying Forces		
@@ -161,7 +156,7 @@ public class World {
 					else
 						particle.integrate(frameTime_as*time_metric);
 				}
-			//	printParticleStatus(particle);
+				printParticleStatus(particle);
 			}
 			
 //			endTime = System.nanoTime();
@@ -203,7 +198,7 @@ public class World {
 						testRotate(rotateTestAtoms);
 					
 					window.getMediator().displayParticles(octTree.getAllParticles());
-					System.setOut(originalStream);
+					System.setOut(outputStream);
 				}
 				
 				if(simulationStatus.equals("restart")){
@@ -231,13 +226,18 @@ public class World {
 			i++;
 			if(i > 10000 && simulationLvlAtomic || i>20000 && !simulationLvlAtomic) {
 				simulationStatus = "restart";
-					break;
+				break;
 			}
 		}
-		endTime = System.nanoTime();
-		duration = (endTime - startTime);  
-		System.out.println("Time taken to end: " + duration/1000);
+		outputStream.flush();
 		
+		if(!displayUI)
+			new UpdateRegistry().displayParticles(octTree.getAllParticles());
+		
+		System.setOut(defaultStream);
+		endTime = System.nanoTime();
+		duration = (endTime - startTime); 
+		System.out.println("Time taken to end: " + duration/1000);
 	}
 	
 	public static void markAsActive(AbstractParticle particle){
@@ -316,15 +316,16 @@ public class World {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void parseArguments(String[] args){
 		 CmdLineParser parser = new CmdLineParser(this);
 		 parser.setUsageWidth(100);
 		 try {
 			 parser.parseArgument(args);
-			 System.out.println("o:" + outputFilePath);
-			 System.out.println("ui" + displayUI);
-			 for (String s: inputFilePaths)
-				System.out.println(s);
+			 System.out.println("Output will be logged at " + outputFilePath);
+			 
+			if(inputFilePaths.isEmpty())
+				 inputFilePaths.add("lysine.pdb");
 			 
 			 switch (simlvl) {
 				case Atomic: 	simulationLvlAtomic = true;
@@ -332,9 +333,9 @@ public class World {
 				case Molecular: simulationLvlAtomic = false;
 								simulationLvlPartial = false;
 								break;
-				case PartialMolecular:	simulationLvlAtomic = false;
-										simulationLvlPartial = true;
-										break;
+				case Partial:	simulationLvlAtomic = false;
+								simulationLvlPartial = true;
+								break;
 			}	
 		 }
 		 catch(CmdLineException e) {
@@ -342,7 +343,7 @@ public class World {
 			 System.err.println("java World [options...] arguments...");
 			 parser.printUsage(System.err);
 			 System.err.println();
-			 return;
+			 System.exit(0);
 		 }
 	}
 	
@@ -356,8 +357,8 @@ public class World {
 	
 	private static void parsePDB (String filePath){
 		try {
-			
-			BufferedReader br = new BufferedReader(new FileReader(filePath));
+			InputStream ir = World.class.getResourceAsStream(filePath);
+			BufferedReader br = new BufferedReader(new InputStreamReader(ir));
 			String line = br.readLine();	// MODEL
 			while(line!=null){
 				ArrayList <Atom> atoms = new ArrayList<>();

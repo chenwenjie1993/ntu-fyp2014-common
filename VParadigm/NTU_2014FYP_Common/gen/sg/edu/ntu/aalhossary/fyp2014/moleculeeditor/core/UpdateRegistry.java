@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -303,17 +304,23 @@ public class UpdateRegistry {
 			}
 		}
 		pdb += "ENDMDL";
-		System.out.println(pdb);
-		viewer.openStringInline(pdb);
+		
+		if(World.displayUI)
+			viewer.openStringInline(pdb);
+		
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("res/physics/temp.pdb"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("output.pdb"));
 			writer.write(pdb);
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			World.simulationStatus = "restart";
 		}
-		createUserModel(DataManager.readFile("res/physics/temp.pdb"));
+		
+		if(World.displayUI) {
+			createUserModel(DataManager.readFile("output.pdb"));
+		}
 	}
 		
 	public void notifyUpdated(AbstractParticle[] particles){

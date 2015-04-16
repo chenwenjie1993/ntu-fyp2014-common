@@ -10,7 +10,6 @@ import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom{
 
 	private double radius;
-	private boolean print_flag = false;
 	private double mass = 0, atomicRadius=0, covalentRadius=0, vdwRadius=0;
 	private int valence = 0;
 	private String atomicSymbol;
@@ -58,7 +57,6 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.common.Atom{
 	}
 	
 	public void setPrintFlag(boolean flag){
-		this.print_flag = flag;
 	}
 	
 	/**
