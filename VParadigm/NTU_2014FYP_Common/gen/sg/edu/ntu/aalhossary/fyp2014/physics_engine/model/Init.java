@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.model;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -11,8 +11,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.DISTANCE;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.MASS;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Units.DISTANCE;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Units.MASS;
 
 
 /**

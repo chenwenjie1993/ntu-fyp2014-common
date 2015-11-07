@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.view;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -22,8 +22,8 @@ import javax.swing.event.ChangeListener;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.World;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
 
 import java.awt.Component;
 
@@ -37,7 +37,7 @@ import java.awt.event.ActionListener;
  * GUI for Physics Engine
  */
 
-public class MainWindow extends JFrame {
+public class View extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel coeOfResPanel;
@@ -62,12 +62,11 @@ public class MainWindow extends JFrame {
 	private JButton pauseButton;
 	private JButton restartButton;
 	private JCheckBox partialMolCheckBox;
-
 	
 	/**
 	 * Create the main frame.
 	 */
-	public MainWindow() {
+	public View() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		setLocationRelativeTo(null);
@@ -348,9 +347,9 @@ public class MainWindow extends JFrame {
 		        	electrostaticCheckBox.setEnabled(true);
 		        	electrostaticCheckBox.setSelected(World.electricForceActive);
 		        	
-		        	World.frameTime_as = 50;
-		        	simSpdLbl.setText("50");
-		        	simSpdSlider.setValue(50);
+		        	World.frameTime_as = 1000;
+		        	simSpdLbl.setText("1000");
+		        	simSpdSlider.setValue(1000);
 		        	partialMolCheckBox.setEnabled(false);
 			    	partialMolCheckBox.setSelected(false);
 			    	World.simulationStatus = "changed";
