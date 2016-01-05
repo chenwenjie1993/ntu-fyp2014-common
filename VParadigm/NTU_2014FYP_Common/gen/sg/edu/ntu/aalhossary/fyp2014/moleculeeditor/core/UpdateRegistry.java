@@ -23,8 +23,8 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.ToolPanel;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Vector3D;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.World;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
 
 /**
  * @author Xiu Ting
@@ -251,7 +251,7 @@ public class UpdateRegistry {
 		
 	}
 	
-	public void displayParticles(ArrayList<AbstractParticle> list, boolean enableGUI){
+	public void displayParticles(ArrayList<AbstractParticle> list){
 		
 		String pdb = "MODEL       1\n";
 		for(int i=0; i<list.size();i++){
@@ -305,7 +305,7 @@ public class UpdateRegistry {
 		}
 		pdb += "ENDMDL";
 		
-		if(enableGUI)
+		if(World.displayUI)
 			viewer.openStringInline(pdb);
 		
 		try {
@@ -318,7 +318,7 @@ public class UpdateRegistry {
 			World.simulationStatus = "restart";
 		}
 		
-		if(enableGUI) {
+		if(World.displayUI) {
 			createUserModel(DataManager.readFile("output.pdb"));
 		}
 	}
