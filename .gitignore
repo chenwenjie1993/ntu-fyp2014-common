@@ -1,2 +1,14 @@
 
 *.class
+
+output.pdb
+
+output.txt
+
+bin/sg/edu/ntu/aalhossary/fyp2014/physics_engine/model/lysine.pdb
+
+bin/sg/edu/ntu/aalhossary/fyp2014/physics_engine/core/lysine.pdb
+
+bin/sg/edu/ntu/aalhossary/fyp2014/physics_engine/model/lysine.pdb
+
+bin/sg/edu/ntu/aalhossary/fyp2014/physics_engine/model/lysine.pdb

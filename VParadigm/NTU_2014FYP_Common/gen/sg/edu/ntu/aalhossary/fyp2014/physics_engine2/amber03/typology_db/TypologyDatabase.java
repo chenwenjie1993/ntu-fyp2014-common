@@ -68,6 +68,7 @@ public class TypologyDatabase {
 		String fileName = "res/amber03/ffnonbonded.itp";
 		List<String> fileAsList = FileReader.readFile(fileName);
 		int atomtypes = fileAsList.indexOf("[ atomtypes ]");
+		loadVdParams(fileAsList.subList(atomtypes+1,  fileAsList.size()));
 	}
 	
 	private void loadBondedParams() {
@@ -91,15 +92,27 @@ public class TypologyDatabase {
 		loadProperDihedralParams(fileAsList.subList(properDihedral+1, fileAsList.size()));
 	}
 	
-	private void loadVdParams() {
-		
+	private void loadVdParams(List<String> atoms) {
+		vdParams = new HashMap<String, List<Double>>();
+		for (String s : atoms) {
+			String[] t = s.split(" +");
+			if (t.length > 6 && !t[0].contains(";")) {
+				String key = t[0];
+				System.out.println(key);
+				List<Double> value = new ArrayList<Double>();
+				value.add(Double.parseDouble(t[5]));
+				value.add(Double.parseDouble(t[6]));
+				System.out.println(value);
+				vdParams.put(key, value);
+			}
+		}
 	}
 	
 	private void loadBondParams(List<String> bonds) {
 		bondParams = new HashMap<List<String>, List<Double>>();
 		for (String s : bonds) {
 			String[] t = s.split(" +");
-			if (t.length > 4 && !t[0].contains(";")) {
+			if (t.length > 5 && !t[0].contains(";")) {
 				List<String> key = new ArrayList<String>();
 				key.add(t[1]);
 				key.add(t[2]);
@@ -136,7 +149,7 @@ public class TypologyDatabase {
 		improperDihedralParams = new HashMap<List<String>, List<Double>>();
 		for (String s : dihedrals) {
 			String[] t = s.split(" +");
-			if (t.length > 7 && !t[0].contains(";")) {
+			if (t.length > 6 && !t[0].contains(";")) {
 				List<String> key = new ArrayList<String>();
 				key.add(t[0]);
 				key.add(t[1]);
@@ -156,7 +169,7 @@ public class TypologyDatabase {
 		properDihedralParams = new HashMap<List<String>, List<Double>>();
 		for (String s : dihedrals) {
 			String[] t = s.split(" +");
-			if (t.length > 9 && !t[0].contains(";")) {
+			if (t.length > 8 && !t[0].contains(";")) {
 				List<String> key = new ArrayList<String>();
 				key.add(t[1]);
 				key.add(t[2]);

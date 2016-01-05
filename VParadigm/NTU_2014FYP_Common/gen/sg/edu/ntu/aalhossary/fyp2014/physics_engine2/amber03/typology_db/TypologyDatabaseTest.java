@@ -12,30 +12,30 @@ public class TypologyDatabaseTest {
 		db = TypologyDatabase.getInstance();
 	}
 	
-//	@Test
-//	public void testVdParams() {
-//		List<Double> H0 = new ArrayList<Double>();
-//		List<Double> Cs = new ArrayList<Double>();
-//		List<Double> OW_spc = new ArrayList<Double>();
-//		List<Double> Zn = new ArrayList<Double>();
-//		
-//		H0.add(2.47135e-01);
-//		H0.add(6.56888e-02);
-//		
-//		Cs.add(6.04920e-01);
-//		Cs.add(3.37230e-04);
-//		
-//		OW_spc.add(3.16557e-01);
-//		OW_spc.add(6.50629e-01);
-//
-//		Zn.add(1.95998e-01);
-//		Zn.add(5.23000e-02);
-//		
-//		assertEquals(H0, db.getVdParams("H0"));
-//		assertEquals(Cs, db.getVdParams("Cs"));
-//		assertEquals(OW_spc, db.getVdParams("OW_spc"));
-//		assertEquals(Zn, db.getVdParams("Zn"));
-//	}
+	@Test
+	public void testVdParams() {
+		List<Double> H0 = new ArrayList<Double>();
+		List<Double> Cs = new ArrayList<Double>();
+		List<Double> OW_spc = new ArrayList<Double>();
+		List<Double> Zn = new ArrayList<Double>();
+		
+		H0.add(2.47135e-01);
+		H0.add(6.56888e-02);
+		
+		Cs.add(6.04920e-01);
+		Cs.add(3.37230e-04);
+		
+		OW_spc.add(3.16557e-01);
+		OW_spc.add(6.50629e-01);
+
+		Zn.add(1.95998e-01);
+		Zn.add(5.23000e-02);
+		
+		assertEquals(H0, db.getVdParams("H0"));
+		assertEquals(Cs, db.getVdParams("Cs"));
+		assertEquals(OW_spc, db.getVdParams("OW_spc"));
+		assertEquals(Zn, db.getVdParams("Zn"));
+	}
 	
 	@Test
 	public void testBondParams() {		
