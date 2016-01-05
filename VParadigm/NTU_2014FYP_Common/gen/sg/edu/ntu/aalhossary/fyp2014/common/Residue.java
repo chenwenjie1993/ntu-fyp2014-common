@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Vector3D;
 
 /**
  * @author Xiu Ting

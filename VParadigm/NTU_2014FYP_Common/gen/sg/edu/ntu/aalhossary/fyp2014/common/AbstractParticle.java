@@ -1,11 +1,11 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.BoundingPrimitive;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix3;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix4;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Quaternion;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.BoundingPrimitive;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Matrix3;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Matrix4;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Quaternion;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Vector3D;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.World;
 
 /**
  * @author waiyan

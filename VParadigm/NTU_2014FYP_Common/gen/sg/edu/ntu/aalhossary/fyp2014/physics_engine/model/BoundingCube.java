@@ -1,15 +1,14 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.model;
 
 /**
  * @author waiyan
- * BoundingSphere is used for setting the shape of Atoms and Molecules 
  */
-public class BoundingSphere extends BoundingPrimitive {
+public class BoundingCube extends BoundingPrimitive {
 
-	private double radius;
+	private double half_size;
 	
-	public BoundingSphere(double radius, Vector3D centre){
-		this.radius = radius;
+	public BoundingCube(double half_size, Vector3D centre){
+		this.half_size = half_size;
 		super.centre = new Vector3D(centre);
 	}
 	
@@ -19,13 +18,13 @@ public class BoundingSphere extends BoundingPrimitive {
 	public boolean overlap(BoundingPrimitive other) {
 		
 		// The primitives overlap if the position difference (distance) is less than the sum of two half_sizes
-	
+		
 		if(other instanceof BoundingCube) {
 			BoundingCube bCube = (BoundingCube)other; 
 			Vector3D temp = new Vector3D(centre);
-			temp.subtract(bCube.getCentre());
+			temp.subtract(bCube.centre);
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared <= (this.radius + bCube.getHalfSize()) * (this.radius + bCube.getHalfSize());
+			return distanceSquared <= (this.half_size + bCube.half_size) * (this.half_size + bCube.half_size);
 		}
 		
 		else if(other instanceof BoundingSphere) {
@@ -33,7 +32,7 @@ public class BoundingSphere extends BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bSphere.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			return distanceSquared <= (this.radius + bSphere.getRadius()) * (this.radius + bSphere.getRadius());
+			return distanceSquared <= (this.half_size + bSphere.getRadius()) * (this.half_size + bSphere.getRadius());
 		}
 		
 		else if(other instanceof BoundingBox){
@@ -41,9 +40,9 @@ public class BoundingSphere extends BoundingPrimitive {
 			Vector3D temp = new Vector3D(centre);
 			temp.subtract(bBox.getCentre());
 			double distanceSquared = temp.getSquaredMagnitude();
-			boolean x_con = distanceSquared <= Math.pow(this.radius + bBox.getXLength(), 2);
-			boolean y_con = distanceSquared <= Math.pow(this.radius + bBox.getYLength(), 2);
-			boolean z_con = distanceSquared <= Math.pow(this.radius + bBox.getZLength(), 2);
+			boolean x_con = distanceSquared <= Math.pow(this.half_size + bBox.getXLength(), 2);
+			boolean y_con = distanceSquared <= Math.pow(this.half_size + bBox.getYLength(), 2);
+			boolean z_con = distanceSquared <= Math.pow(this.half_size + bBox.getZLength(), 2);
 			return x_con || y_con || z_con;
 		}
 		
@@ -54,7 +53,7 @@ public class BoundingSphere extends BoundingPrimitive {
 		return centre;
 	}
 	
-	public double getRadius(){
-		return radius;
+	public double getHalfSize(){
+		return half_size;
 	}
 }

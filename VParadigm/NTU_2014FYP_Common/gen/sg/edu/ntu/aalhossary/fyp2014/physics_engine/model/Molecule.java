@@ -1,10 +1,10 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.model;
 
 import java.util.ArrayList;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Chain;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Atom;
 
 /**
  * @author waiyan

@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.model;
 
 import java.util.ArrayList;
 

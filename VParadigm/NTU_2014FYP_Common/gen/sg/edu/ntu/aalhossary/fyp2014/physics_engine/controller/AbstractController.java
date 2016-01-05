@@ -1,11 +1,8 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.controller;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,22 +10,15 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import org.kohsuke.args4j.Argument;
-import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.ui.MainWindow;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.*;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.view.View;
 
-/**
- * @author waiyan
- * Main class of the physics engine
- */
-public class World {
-	
+public abstract class AbstractController implements Controller{
 	enum SimulationLevel {Atomic, Molecular, Partial};
 	public static double COEFFICENT_OF_RESTITUTION = 1;
 	
@@ -41,57 +31,40 @@ public class World {
 	public static boolean electricForceActive = true;
 	public static boolean LJForceActive = true;
 	
-	public static int frameTime_as = 50;
+	public static int frameTime_as = 1000;
 	public static boolean debugRotate = false;
 	
 	@Argument(usage = "inputs of the Engine", metaVar="INPUTS")
 	public static ArrayList<String> inputFilePaths = new ArrayList<>();
 	
-	@Option(name="-o", aliases = "-output", usage="output of the engine", metaVar="OUTPUT")
-	public static String outputFilePath = "output.txt";
+//	@Option(name="-o", aliases = "-output", usage="output of the engine", metaVar="OUTPUT")
 	
-	@Option(name="-gui",usage="enable GUI")
-	public static boolean displayUI = false;
 	
-	public static int particleCount = 0;
+//	@Option(name="-gui",usage="enable GUI")
+//	public static boolean displayUI = true;
+//	
+//	public static int particleCount = 0;
 	public static String simulationStatus = "running";
 	public static CountDownLatch countDownLatch;
 	public static boolean allParticlesActive = true;
 	
-	public static double distance_metric = DISTANCE.m.value();
-	public static double time_metric = TIME.as.value();
-	public static double mass_metric = MASS.kg.value();
 	
-	public static ArrayList<AbstractParticle> activeParticles = new ArrayList<>();
-	public static ArrayList<AbstractParticle> allAtoms = new ArrayList<>();
-	public static ArrayList<AbstractParticle> allMolecules = new ArrayList<>();
-	public static ArrayList<AbstractParticle[]> potentialContacts = new ArrayList<>();
-	public static ForceRegistry registry = new ForceRegistry();
-	public static OctTree octTree = new OctTree();
-	public static NarrowCollisionDetector detector = new NarrowCollisionDetector();
-	public static ContactResolver resolver = new ContactResolver();
-	public static HashMap <Integer,Vector3D> initialPositions;
 	public static MoleculeEditor editor;
-	public static MainWindow window;
-	public static PrintStream outputStream;
-	public static PrintStream defaultStream;
-	public static PrintStream dummyStream;
+	public static View window;
+//	public static PrintStream outputStream;
+//	public static PrintStream defaultStream;
+//	public static PrintStream dummyStream;
 	public static long startTime;
 	public static long endTime;
 	public static long duration;
 	
-	public static void main (String[] args) throws Exception{
+	
+	public void start() {
 		
-		new World().parseArguments(args);
-			
-		defaultStream = System.out;
-		outputStream = new PrintStream(new BufferedOutputStream(new FileOutputStream(outputFilePath)));
-		dummyStream    = new PrintStream (new OutputStream(){
-		    @Override
-			public void write(int b) {
-		        //NO-OP
-		    }
-		});
+		boolean displayUI = true;
+		
+		if(inputFilePaths.isEmpty())
+			 inputFilePaths.add("lysine.pdb");
 		
 		startTime = System.nanoTime();
 		for (String filePath: inputFilePaths){
@@ -105,56 +78,57 @@ public class World {
 	
 			
 		ArrayList<AbstractParticle> rotateTestAtoms = new ArrayList<>();
-		if(debugRotate) {
-			rotateTestAtoms.add(allAtoms.get(5));
-			rotateTestAtoms.add(allAtoms.get(6));
-			rotateTestAtoms.add(allAtoms.get(7));
-			rotateTestAtoms.add(allAtoms.get(8));
-		}	
+//		if(debugRotate) {
+//			rotateTestAtoms.add(allAtoms.get(5));
+//			rotateTestAtoms.add(allAtoms.get(6));
+//			rotateTestAtoms.add(allAtoms.get(7));
+//			rotateTestAtoms.add(allAtoms.get(8));
+//		}	
 
 		// check simulation level
 		checkSimulationLevel();
 		
 		// checks which particles will be involved in calculations
 		checkForActiveParticles();
-		
+				
 		if(displayUI){
-			 System.setOut(dummyStream);
-			 window = new MainWindow();
-			 window.getMediator().displayParticles(octTree.getAllParticles());
-			 System.setOut(outputStream);
-			 initialPositions = new HashMap<>();
-			 for (AbstractParticle particle: allAtoms){
+//			 System.setOut(dummyStream);
+			 window = new View();
+			 window.getMediator().displayParticles(World.octTree.getAllParticles(), true);
+//			 System.setOut(outputStream);
+			 World.initialPositions = new HashMap<>();
+			 for (AbstractParticle particle: World.allAtoms){
 				 Vector3D temp = particle.getPosition();
-				 initialPositions.put(particle.getGUID(), new Vector3D(temp.x, temp.y, temp.z));
+				 World.initialPositions.put(particle.getGUID(), new Vector3D(temp.x, temp.y, temp.z));
 			 }
-			 for (AbstractParticle particle: allMolecules){
+			 for (AbstractParticle particle: World.allMolecules){
 				 Vector3D temp = particle.getPosition();
-				 initialPositions.put(particle.getGUID(), new Vector3D(temp.x, temp.y, temp.z));
+				 World.initialPositions.put(particle.getGUID(), new Vector3D(temp.x, temp.y, temp.z));
 			 }
 		}
 		else {
-			System.setOut(outputStream);
+//			System.setOut(outputStream);
 		}
 		
 		int i = 0;
 		
-		while(true) {
+		while (true) {
 	
-			System.out.println("\nFrame: " + i);
+			System.out.println("Frame: " + i);
 //			startTime = System.nanoTime();
 			
 			// Applying Forces		
-			registry.updateAllForces(activeParticles);
+			World.registry.updateAllForces(World.activeParticles);
 			
-			for(AbstractParticle particle: activeParticles){
+			for(AbstractParticle particle: World.activeParticles){
+//				System.out.println(i);
 				if(simulationLvlAtomic)
-					particle.integrate(frameTime_as*time_metric);	
+					particle.integrate(frameTime_as*World.time_metric);	
 				else {
 					if(!simulationLvlPartial)
-						particle.integrate(i*frameTime_as*time_metric);
+						particle.integrate(i*frameTime_as*World.time_metric);
 					else
-						particle.integrate(frameTime_as*time_metric);
+						particle.integrate(frameTime_as*World.time_metric);
 				}
 				printParticleStatus(particle);
 			}
@@ -165,7 +139,7 @@ public class World {
 //			startTime = System.nanoTime();
 
 			// Update tree only after integration
-			octTree.updateAllActiveParticles();
+			World.octTree.updateAllActiveParticles();
 			
 //			endTime = System.nanoTime();
 //			duration = (endTime - startTime);  
@@ -173,7 +147,7 @@ public class World {
 //			startTime = System.nanoTime();
 			
 			// Collision Detection 
-			detector.detectCollision(octTree, activeParticles, potentialContacts);    	 
+//			detector.detectCollision(octTree, activeParticles, potentialContacts);    	 
 			
 //			endTime = System.nanoTime();
 //			duration = (endTime - startTime);  
@@ -181,24 +155,24 @@ public class World {
 //			startTime = System.nanoTime();
 			
 			// Resolve Collisions and set active particles
-			resolver.resolveContacts(potentialContacts);	
+//			resolver.resolveContacts(potentialContacts);	
 			
 //			endTime = System.nanoTime();
 //			duration = (endTime - startTime);  
 //			System.out.println("Time taken to resolve: " + duration/1000);
 //			startTime = System.nanoTime();
 			
-			if(displayUI){
+			if (displayUI) {
 			//	AbstractParticle [] temp_particles = activeParticles.toArray(new AbstractParticle[activeParticles.size()]);
 			//	editor.getMediator().notifyUpdated(temp_particles);
 				if(i%100 == 0){
-					System.setOut(dummyStream);
+//					System.setOut(dummyStream);
 					// Test Rotation
 					if(debugRotate && (simulationLvlAtomic || !simulationLvlAtomic && simulationLvlPartial))
 						testRotate(rotateTestAtoms);
 					
-					window.getMediator().displayParticles(octTree.getAllParticles());
-					System.setOut(outputStream);
+					window.getMediator().displayParticles(World.octTree.getAllParticles(), true);
+//					System.setOut(outputStream);
 				}
 				
 				if(simulationStatus.equals("restart")){
@@ -219,31 +193,37 @@ public class World {
 				else if(simulationStatus.equals("paused")){
 					i--;
 					countDownLatch = new CountDownLatch(1);
-					countDownLatch.await(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
+					try {
+						countDownLatch.await(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 			
 			i++;
-			if(i > 10000 && simulationLvlAtomic || i>20000 && !simulationLvlAtomic) {
+			if(i > 100 && simulationLvlAtomic || i>200 && !simulationLvlAtomic) {
 				simulationStatus = "restart";
 				break;
 			}
 		}
-		outputStream.flush();
+//		outputStream.flush();
 		
 		if(!displayUI)
-			new UpdateRegistry().displayParticles(octTree.getAllParticles());
+			new UpdateRegistry().displayParticles(World.octTree.getAllParticles(), false);
 		
-		System.setOut(defaultStream);
+//		System.setOut(defaultStream);
 		endTime = System.nanoTime();
 		duration = (endTime - startTime); 
 		System.out.println("Time taken to end: " + duration/1000);
 	}
 	
+
 	public static void markAsActive(AbstractParticle particle){
 		
 		for (int index =0; index< World.activeParticles.size(); index++){
-			if(World.activeParticles.get(index).getGUID() == particle.getGUID()) {
+			if (World.activeParticles.get(index).getGUID() == particle.getGUID()) {
 				return;
 			}
 		}
@@ -259,14 +239,14 @@ public class World {
 		
 		World.activeParticles.clear();
 		ArrayList <AbstractParticle> particles = new ArrayList<>();
-		octTree.getAllParticles(particles);
+		World.octTree.getAllParticles(particles);
 		
 		for(AbstractParticle particle: particles)
 			markAsActive(particle);
 	}
 	
 	public static void resetActiveParticlesVelocities(){
-		for(AbstractParticle particle: activeParticles)
+		for(AbstractParticle particle: World.activeParticles)
 			particle.setVelocity(0, 0, 0);
 	}
 	
@@ -276,12 +256,12 @@ public class World {
 	}
 	
 	private static void restartSimulation(){
-		for (AbstractParticle particle: octTree.getAllParticles()) {
-			Vector3D pos = initialPositions.get(particle.getGUID());
+		for (AbstractParticle particle: World.octTree.getAllParticles()) {
+			Vector3D pos = World.initialPositions.get(particle.getGUID());
 			if (particle instanceof Atom)
 				particle.setPosition(pos.x, pos.y, pos.z);
 			else if (particle instanceof Molecule)
-				((sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Molecule) particle).setPositionAsCentroid();
+				((sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Molecule) particle).setPositionAsCentroid();
 			particle.setVelocity(0, 0, 0);
 		}
 		
@@ -289,62 +269,27 @@ public class World {
 	}
 	
 	private static void checkSimulationLevel(){
-		octTree.clear();
+		World.octTree.clear();
 		if(simulationLvlAtomic) {
-			for(AbstractParticle particle: allAtoms) {
-				octTree.insert(particle);
+			for(AbstractParticle particle: World.allAtoms) {
+				World.octTree.insert(particle);
 			}
 		}
 		else {
-			for(AbstractParticle particle: allMolecules) {
-				octTree.insert(particle);
+			for(AbstractParticle particle: World.allMolecules) {
+				World.octTree.insert(particle);
 			}
 			if(simulationLvlPartial){
-				octTree.clear();
-				for(AbstractParticle particle: ((sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Molecule)allMolecules.get(0)).getAtoms()) {
-					octTree.insert(particle);
+				World.octTree.clear();
+				for(AbstractParticle particle: ((sg.edu.ntu.aalhossary.fyp2014.physics_engine.model.Molecule)World.allMolecules.get(0)).getAtoms()) {
+					World.octTree.insert(particle);
 				}
 				
-				for(int i=1; i<allMolecules.size(); i++) {
-					octTree.insert(allMolecules.get(i));
+				for(int i=1; i<World.allMolecules.size(); i++) {
+					World.octTree.insert(World.allMolecules.get(i));
 				}
 			}
 		}
-	}
-	
-	public static void setCommand(String command) throws Exception{
-		
-	}
-	
-	@SuppressWarnings("deprecation")
-	public void parseArguments(String[] args){
-		 CmdLineParser parser = new CmdLineParser(this);
-		 parser.setUsageWidth(100);
-		 try {
-			 parser.parseArgument(args);
-			 System.out.println("Output will be logged at " + outputFilePath);
-			 
-			if(inputFilePaths.isEmpty())
-				 inputFilePaths.add("lysine.pdb");
-			 
-			 switch (simlvl) {
-				case Atomic: 	simulationLvlAtomic = true;
-								break;
-				case Molecular: simulationLvlAtomic = false;
-								simulationLvlPartial = false;
-								break;
-				case Partial:	simulationLvlAtomic = false;
-								simulationLvlPartial = true;
-								break;
-			}	
-		 }
-		 catch(CmdLineException e) {
-			 System.err.println(e.getMessage());
-			 System.err.println("java World [options...] arguments...");
-			 parser.printUsage(System.err);
-			 System.err.println();
-			 System.exit(0);
-		 }
 	}
 	
 	private static void testRotate (ArrayList<AbstractParticle> particles){
@@ -372,12 +317,12 @@ public class World {
 					AbstractParticle particle = new Atom(line.substring(12, 16).replace(" ", ""));
 					particle.setPosition(x, y, z);
 					particle.setNetCharge(charge);
-					allAtoms.add(particle);
+					World.allAtoms.add(particle);
 					atoms.add((Atom)particle);
 					line = br.readLine();
 				}
 				Molecule molecule = new Molecule(atoms);
-				allMolecules.add(molecule);
+				World.allMolecules.add(molecule);
 				line = br.readLine();
 			}
 			
@@ -412,5 +357,6 @@ public class World {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
 }

@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine.model;
 
 /**
  * @author waiyan
@@ -13,7 +13,7 @@ public class Units {
 			this.value = value;
 		}
 		
-		double value(){
+		public double value(){
 			return value;
 		}
 		
@@ -30,7 +30,7 @@ public class Units {
 			this.value = value;
 		}
 		
-		double value(){
+		public double value(){
 			return value;
 		}
 	}
@@ -43,7 +43,7 @@ public class Units {
 			this.value = value;
 		}
 		
-		double value(){
+		public double value(){
 			return value;
 		}
 	}
