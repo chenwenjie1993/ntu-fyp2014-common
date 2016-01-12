@@ -1,17 +1,20 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.typology;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.*;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.FileReader;
 
 public class TypologyBuilder {
-	public static Molecule build(String fileName) {
-		
+	Molecule m = new Molecule();
+	public Molecule build(String fileName) {
+		readTopology(fileName);
 		return null;
 	}
 	
-	public static void readTopology(String fileName) {
+	private void readTopology(String fileName) {
 		List<String> fileAsList = FileReader.readFile(fileName);
 		int atoms = fileAsList.indexOf("[ atoms ]");
 		int bonds = fileAsList.indexOf("[ bonds ]");
@@ -28,23 +31,36 @@ public class TypologyBuilder {
 		loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
 	}
 	
-	public static void loadAtoms(List<String> atoms) {
+	private void loadAtoms(List<String> atoms) {
 //		System.out.println(atoms.toString());
+		
+//		for (String s : atoms) {
+//			String[] t = s.split(" +");
+//			if (t.length > 6 && !t[0].contains(";")) {
+//				String key = t[0];
+//				System.out.println(key);
+//				List<Double> value = new ArrayList<Double>();
+//				value.add(Double.parseDouble(t[5]));
+//				value.add(Double.parseDouble(t[6]));
+//				System.out.println(value);
+//			}
+//		}
+		
 	}
 	
-	public static void loadBonds(List<String> bonds) {
+	private void loadBonds(List<String> bonds) {
 //		System.out.println(bonds.toString());
 	}
 	
-	public static void loadAngles(List<String> angles) {
+	private void loadAngles(List<String> angles) {
 //		System.out.println(angles.toString());
 	}
 	
-	public static void loadProperDihedrals(List<String> dihedrals) {
+	private void loadProperDihedrals(List<String> dihedrals) {
 //		System.out.println(dihedrals.toString());
 	}
 	
-	public static void loadImproperDihedrals(List<String> dihedrals) {
+	public void loadImproperDihedrals(List<String> dihedrals) {
 //		System.out.println(dihedrals.toString());
 	}
 }

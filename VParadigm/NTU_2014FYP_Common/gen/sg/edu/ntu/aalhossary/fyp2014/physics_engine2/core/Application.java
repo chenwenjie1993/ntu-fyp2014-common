@@ -6,7 +6,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		String fileName = "res/test/amber03/topol.top";
-		TypologyBuilder.build(fileName);
+		TypologyBuilder tb = new TypologyBuilder();
+		tb.build(fileName);
 	}
 
 	
