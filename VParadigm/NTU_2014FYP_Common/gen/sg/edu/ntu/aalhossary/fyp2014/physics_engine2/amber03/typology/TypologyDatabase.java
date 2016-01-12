@@ -1,4 +1,4 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.typology_db;
+package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.typology;
 
 import java.util.*;
 import java.util.logging.Logger;
