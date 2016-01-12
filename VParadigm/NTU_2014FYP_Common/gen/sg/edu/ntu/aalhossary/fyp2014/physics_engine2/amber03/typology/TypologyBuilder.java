@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.typology;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,18 +34,19 @@ public class TypologyBuilder {
 	
 	private void loadAtoms(List<String> atoms) {
 //		System.out.println(atoms.toString());
+		m.particles = new ArrayList<Particle>();
 		
-//		for (String s : atoms) {
-//			String[] t = s.split(" +");
-//			if (t.length > 6 && !t[0].contains(";")) {
-//				String key = t[0];
-//				System.out.println(key);
-//				List<Double> value = new ArrayList<Double>();
-//				value.add(Double.parseDouble(t[5]));
-//				value.add(Double.parseDouble(t[6]));
-//				System.out.println(value);
-//			}
-//		}
+		for (String s : atoms) {
+			String[] t = s.split(" +");
+			if (t.length > 8 && !t[0].contains(";")) {
+//				System.out.println(Arrays.toString(t));
+				int id = Integer.parseInt(t[1]);
+				String type = t[2];
+				double charge = Double.parseDouble(t[7]);
+				double mass = Double.parseDouble(t[8]);
+				m.particles.add(new Atom(id, type, charge, mass));
+			}
+		}
 		
 	}
 	
