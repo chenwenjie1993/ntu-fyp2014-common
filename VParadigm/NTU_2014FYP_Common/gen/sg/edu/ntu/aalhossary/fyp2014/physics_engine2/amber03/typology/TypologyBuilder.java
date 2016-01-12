@@ -2,7 +2,6 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.typology;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.*;
@@ -16,6 +15,9 @@ public class TypologyBuilder {
 	}
 	
 	private void readTopology(String fileName) {
+		m.particles = new ArrayList<Particle>();
+		m.interactions = new ArrayList<Interaction>();
+		
 		List<String> fileAsList = FileReader.readFile(fileName);
 		int atoms = fileAsList.indexOf("[ atoms ]");
 		int bonds = fileAsList.indexOf("[ bonds ]");
@@ -34,7 +36,6 @@ public class TypologyBuilder {
 	
 	private void loadAtoms(List<String> atoms) {
 //		System.out.println(atoms.toString());
-		m.particles = new ArrayList<Particle>();
 		
 		for (String s : atoms) {
 			String[] t = s.split(" +");
@@ -47,7 +48,6 @@ public class TypologyBuilder {
 				m.particles.add(new Atom(id, type, charge, mass));
 			}
 		}
-		
 	}
 	
 	private void loadBonds(List<String> bonds) {
