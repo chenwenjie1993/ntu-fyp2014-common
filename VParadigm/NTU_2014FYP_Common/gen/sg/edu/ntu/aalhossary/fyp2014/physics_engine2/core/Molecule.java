@@ -7,6 +7,8 @@ public class Molecule extends sg.edu.ntu.aalhossary.fyp2014.common.Molecule {
 	public ArrayList<Interaction> interactions;
 	
 	public void calculateParticleEnergyPotential() {
-		
+		for (Interaction interaction: interactions) {
+			interaction.calculatePotentialEnergy();
+		}
 	}
 }
