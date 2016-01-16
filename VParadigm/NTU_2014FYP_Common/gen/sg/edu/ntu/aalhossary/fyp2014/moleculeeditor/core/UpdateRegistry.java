@@ -21,9 +21,9 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.common.Bond;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.ToolPanel;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
 
 /**

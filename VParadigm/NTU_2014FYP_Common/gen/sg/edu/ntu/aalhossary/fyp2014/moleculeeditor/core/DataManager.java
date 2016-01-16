@@ -16,7 +16,7 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Chain;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
 import sg.edu.ntu.aalhossary.fyp2014.common.Residue;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
 public class DataManager {
 

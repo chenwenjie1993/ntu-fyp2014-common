@@ -12,7 +12,7 @@ public class Angle implements BondedInteraction {
 	}
 	
 	@Override
-	public void calculatePotentialEnergy() {
+	public void updatePotentialEnergy() {
 		
 	}
 	

@@ -4,28 +4,28 @@ import java.util.*;
 import java.util.logging.Logger;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.*;
 
-public class TypologyDatabase {
-	private static final Logger log = Logger.getLogger( TypologyDatabase.class.getName() );
+public class TopologyDatabase {
+	private static final Logger log = Logger.getLogger( TopologyDatabase.class.getName() );
 	
-	private static TypologyDatabase instance = null;
+	private static TopologyDatabase instance = null;
 	private HashMap<String, List<Double>> vdParams;
 	private HashMap<List<String>, List<Double>> bondParams;
 	private HashMap<List<String>, List<Double>> angleParams;
 	private HashMap<List<String>, List<Double>> properDihedralParams;
 	private HashMap<List<String>, List<Double>> improperDihedralParams;
 	
-	private TypologyDatabase() {
+	private TopologyDatabase() {
 		log.info("Loading Typology Database");
 		loadBondedParams();
 		loadNonBondedParams();
 	}
 	
-	public static TypologyDatabase getInstance() {
+	public static TopologyDatabase getInstance() {
 		if (instance == null) {
-			instance = new TypologyDatabase();
-		}
-		return instance;
-	}
+   			instance = new TopologyDatabase();
+   		}
+   		return instance;
+   	}
 	
 	public List<Double> getVdParams(String atom) {
 		return vdParams.get(atom);

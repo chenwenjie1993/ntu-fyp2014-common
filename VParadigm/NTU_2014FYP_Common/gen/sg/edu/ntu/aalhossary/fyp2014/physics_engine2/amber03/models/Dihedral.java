@@ -13,7 +13,7 @@ public class Dihedral implements BondedInteraction {
 	}
 
 	@Override
-	public void calculatePotentialEnergy() {
+	public void updatePotentialEnergy() {
 		
 	}
 

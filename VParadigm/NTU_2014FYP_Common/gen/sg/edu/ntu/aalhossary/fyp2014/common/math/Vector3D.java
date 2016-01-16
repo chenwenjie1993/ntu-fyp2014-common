@@ -1,12 +1,8 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.common.math;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-/**
- * @author waiyan
- * Vector class for Physics Engine
- */
 public class Vector3D {
 	public double x;
 	public double y;

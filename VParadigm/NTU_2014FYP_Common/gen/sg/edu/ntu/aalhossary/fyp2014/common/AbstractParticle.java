@@ -1,11 +1,10 @@
 package sg.edu.ntu.aalhossary.fyp2014.common;
 
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.BoundingPrimitive;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix3;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Matrix4;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Quaternion;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Vector3D;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.World;
+import sg.edu.ntu.aalhossary.fyp2014.common.BoundingPrimitive;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Matrix3;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Matrix4;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Quaternion;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
 /**
  * @author waiyan
@@ -39,8 +38,8 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		orientation = new Quaternion(1,0,0,0);
 		rotation = new Vector3D(0,0,0);
 		netCharge = 0;
-		guid = World.particleCount;
-		World.particleCount ++;
+//		guid = World.particleCount;
+//		World.particleCount ++;
 	}
 	
 	/**

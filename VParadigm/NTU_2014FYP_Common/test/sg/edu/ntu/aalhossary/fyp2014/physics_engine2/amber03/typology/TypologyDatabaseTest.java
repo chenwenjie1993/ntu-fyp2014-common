@@ -5,12 +5,12 @@ import java.util.*;
 import org.junit.*;
 
 public class TypologyDatabaseTest {
-	private static TypologyDatabase db;
+	private static TopologyDatabase db;
 	
 	@BeforeClass
 	public static void oneTimeSetUp() {
-		db = TypologyDatabase.getInstance();
-	}
+		db = TopologyDatabase.getInstance();
+   	}
 	
 	@Test
 	public void testVdParams() {

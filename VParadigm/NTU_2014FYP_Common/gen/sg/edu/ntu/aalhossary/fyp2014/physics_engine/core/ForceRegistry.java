@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
 /**
  * @author waiyan

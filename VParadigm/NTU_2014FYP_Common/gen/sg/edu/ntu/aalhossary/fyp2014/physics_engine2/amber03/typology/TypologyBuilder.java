@@ -9,12 +9,14 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Bond;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.ImproperDihedral;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.ProperDihedral;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.*;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.MolecularSystem;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Particle;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Interaction;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.FileReader;
 
 public class TypologyBuilder {
-	Molecule m = new Molecule();
-	public Molecule build(String fileName) {
+	MolecularSystem m = new MolecularSystem();
+	public MolecularSystem build(String fileName) {
 		readTopology(fileName);
 		return m;
 	}

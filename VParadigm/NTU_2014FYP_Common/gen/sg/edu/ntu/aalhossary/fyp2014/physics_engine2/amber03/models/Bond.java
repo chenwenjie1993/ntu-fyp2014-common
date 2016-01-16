@@ -11,7 +11,7 @@ public class Bond implements BondedInteraction {
 	}
 
 	@Override
-	public void calculatePotentialEnergy() {
+	public void updatePotentialEnergy() {
 	}
 
 }

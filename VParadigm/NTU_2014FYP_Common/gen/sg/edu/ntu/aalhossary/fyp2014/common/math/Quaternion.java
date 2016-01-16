@@ -1,4 +1,6 @@
-package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
+package sg.edu.ntu.aalhossary.fyp2014.common.math;
+
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Init;
 
 /**
  * @author waiyan

@@ -1,6 +1,8 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Matrix3;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
 /**
  * @author waiyan

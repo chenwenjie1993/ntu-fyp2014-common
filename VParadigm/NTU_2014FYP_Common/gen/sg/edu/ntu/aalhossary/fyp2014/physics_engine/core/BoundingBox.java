@@ -1,5 +1,8 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.BoundingPrimitive;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
+
 /**
  * @author waiyan
  * BoundingBox is to be used for residues

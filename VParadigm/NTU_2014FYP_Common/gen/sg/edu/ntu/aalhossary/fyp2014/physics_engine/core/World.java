@@ -18,6 +18,7 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MoleculeEditor;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine.core.Units.*;

@@ -3,6 +3,7 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
 import java.util.ArrayList;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
 /** 
  * @author waiyan
