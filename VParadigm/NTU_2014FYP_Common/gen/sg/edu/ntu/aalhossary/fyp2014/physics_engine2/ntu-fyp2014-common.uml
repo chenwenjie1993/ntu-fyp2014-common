@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_tCVj4LxrEeWBft9W2UWilQ" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_tCWK8LxrEeWBft9W2UWilQ" source="codegen">
         <details xmi:id="_tCWK8bxrEeWBft9W2UWilQ" key="codegenDirectory" value="/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen"/>
-        <details xmi:id="_tWvGkLxrEeWBft9W2UWilQ" key="AssociatedSourceCode" value="/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Angle.java;3161562509/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Atom.java;4006020504/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Bond.java;1840082702/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/BondedInteraction.java;1364070736/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Dihedral.java;4149098576/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ElectrostaticPotential.java;2683742035/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ImproperDihedral.java;578301756/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/LennardJonesPotential.java;3619304401/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/NonBondedInteraction.java;224826495/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ProperDihedral.java;2772637167/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/util/FileReader.java;3330989103/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/topology/TypologyBuilder.java;2356306623/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Application.java;3542641966/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Interaction.java;3594391419/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/MolecularSystem.java;86882877/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Particle.java;74147711/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/topology/TopologyDatabase.java;165106160/1;"/>
+        <details xmi:id="_tWvGkLxrEeWBft9W2UWilQ" key="AssociatedSourceCode" value="/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Angle.java;3161562509/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Atom.java;4006020504/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Bond.java;1840082702/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/BondedInteraction.java;2056791932/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Dihedral.java;4149098576/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ElectrostaticPotential.java;1379080412/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ImproperDihedral.java;578301756/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/LennardJonesPotential.java;2599979047/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/NonBondedInteraction.java;2995370367/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ProperDihedral.java;2772637167/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/util/FileReader.java;3330989103/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/topology/TypologyBuilder.java;678889244/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Application.java;3094009468/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Interaction.java;3594391419/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/MolecularSystem.java;86882877/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Particle.java;74147711/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/topology/TopologyDatabase.java;744308762/1;"/>
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_tNIeoLxrEeWBft9W2UWilQ">
@@ -185,7 +185,33 @@
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_tNZkYLxrEeWBft9W2UWilQ" name="ElectrostaticPotential">
                       <generalization xmi:id="_tPLtELxrEeWBft9W2UWilQ" general="_tNec4rxrEeWBft9W2UWilQ"/>
+                      <ownedAttribute xmi:id="_7xbKULxyEeWBft9W2UWilQ" name="f" isStatic="true">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+                        <defaultValue xmi:type="uml:LiteralString" xmi:id="_7xbxYLxyEeWBft9W2UWilQ" value="138.935_485"/>
+                      </ownedAttribute>
+                      <ownedAttribute xmi:id="_7xcYcLxyEeWBft9W2UWilQ" name="er" isStatic="true">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+                        <defaultValue xmi:type="uml:LiteralString" xmi:id="_7xcYcbxyEeWBft9W2UWilQ" value="1"/>
+                      </ownedAttribute>
+                      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_XKt-ELxwEeWBft9W2UWilQ" name="ElectrostaticPotential" specification="_XKsv8LxwEeWBft9W2UWilQ">
+                        <ownedParameter xmi:id="_XKt-EbxwEeWBft9W2UWilQ" name="i" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_XKt-ErxwEeWBft9W2UWilQ" name="j" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_XKt-E7xwEeWBft9W2UWilQ" type="_tNZkYLxrEeWBft9W2UWilQ" direction="return">
+                          <name xsi:nil="true"/>
+                        </ownedParameter>
+                        <language>java</language>
+                        <body>super(i, j);
+	</body>
+                      </ownedBehavior>
                       <ownedOperation xmi:id="_tNaLcLxrEeWBft9W2UWilQ" name="updatePotentialEnergy"/>
+                      <ownedOperation xmi:id="_XKsv8LxwEeWBft9W2UWilQ" name="ElectrostaticPotential" method="_XKt-ELxwEeWBft9W2UWilQ">
+                        <eAnnotations xmi:id="_XKtXALxwEeWBft9W2UWilQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                          <details xmi:id="_XKtXAbxwEeWBft9W2UWilQ" key="create"/>
+                        </eAnnotations>
+                        <ownedParameter xmi:id="_XKsv8bxwEeWBft9W2UWilQ" name="i" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_XKsv8rxwEeWBft9W2UWilQ" name="j" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_XKsv87xwEeWBft9W2UWilQ" type="_tNZkYLxrEeWBft9W2UWilQ" direction="return"/>
+                      </ownedOperation>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_tNbZkLxrEeWBft9W2UWilQ" name="ImproperDihedral">
                       <generalization xmi:id="_tPM7MLxrEeWBft9W2UWilQ" general="_tNV6ALxrEeWBft9W2UWilQ"/>
@@ -212,10 +238,46 @@
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_tNdOwLxrEeWBft9W2UWilQ" name="LennardJonesPotential">
                       <generalization xmi:id="_tPM7MbxrEeWBft9W2UWilQ" general="_tNec4rxrEeWBft9W2UWilQ"/>
+                      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YAUJULxwEeWBft9W2UWilQ" name="LennardJonesPotential" specification="_YAS7MLxwEeWBft9W2UWilQ">
+                        <ownedParameter xmi:id="_YAUJUbxwEeWBft9W2UWilQ" name="i" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_YAUJUrxwEeWBft9W2UWilQ" name="j" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_YAUJU7xwEeWBft9W2UWilQ" type="_tNdOwLxrEeWBft9W2UWilQ" direction="return">
+                          <name xsi:nil="true"/>
+                        </ownedParameter>
+                        <language>java</language>
+                        <body>super(i, j);
+	</body>
+                      </ownedBehavior>
                       <ownedOperation xmi:id="_tNd10LxrEeWBft9W2UWilQ" name="updatePotentialEnergy"/>
+                      <ownedOperation xmi:id="_YAS7MLxwEeWBft9W2UWilQ" name="LennardJonesPotential" method="_YAUJULxwEeWBft9W2UWilQ">
+                        <eAnnotations xmi:id="_YATiQ7xwEeWBft9W2UWilQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                          <details xmi:id="_YATiRLxwEeWBft9W2UWilQ" key="create"/>
+                        </eAnnotations>
+                        <ownedParameter xmi:id="_YATiQLxwEeWBft9W2UWilQ" name="i" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_YATiQbxwEeWBft9W2UWilQ" name="j" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_YATiQrxwEeWBft9W2UWilQ" type="_tNdOwLxrEeWBft9W2UWilQ" direction="return"/>
+                      </ownedOperation>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_tNec4rxrEeWBft9W2UWilQ" name="NonBondedInteraction" isAbstract="true">
+                      <ownedAttribute xmi:id="_U4vUYLxwEeWBft9W2UWilQ" name="i" visibility="package" type="_tNN-MLxrEeWBft9W2UWilQ" association="_U4xwoLxwEeWBft9W2UWilQ"/>
+                      <ownedAttribute xmi:id="_U4xJkLxwEeWBft9W2UWilQ" name="j" visibility="package" type="_tNN-MLxrEeWBft9W2UWilQ" association="_U4yXsbxwEeWBft9W2UWilQ"/>
                       <interfaceRealization xmi:id="_tPM7MrxrEeWBft9W2UWilQ" client="_tNec4rxrEeWBft9W2UWilQ" supplier="_tNpcAbxrEeWBft9W2UWilQ" contract="_tNpcAbxrEeWBft9W2UWilQ"/>
+                      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_U4wigLxwEeWBft9W2UWilQ" name="NonBondedInteraction" specification="_U4tfMLxwEeWBft9W2UWilQ">
+                        <ownedParameter xmi:id="_U4wigbxwEeWBft9W2UWilQ" name="i" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_U4wigrxwEeWBft9W2UWilQ" name="j" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_U4wig7xwEeWBft9W2UWilQ" type="_tNec4rxrEeWBft9W2UWilQ" direction="return"/>
+                        <language>java</language>
+                        <body>this.i = i; this.j = j;
+	</body>
+                      </ownedBehavior>
+                      <ownedOperation xmi:id="_U4tfMLxwEeWBft9W2UWilQ" name="NonBondedInteraction" method="_U4wigLxwEeWBft9W2UWilQ">
+                        <eAnnotations xmi:id="_U4uGQrxwEeWBft9W2UWilQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                          <details xmi:id="_U4uGQ7xwEeWBft9W2UWilQ" key="create"/>
+                        </eAnnotations>
+                        <ownedParameter xmi:id="_U4tfMbxwEeWBft9W2UWilQ" name="i" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_U4uGQLxwEeWBft9W2UWilQ" name="j" type="_tNN-MLxrEeWBft9W2UWilQ"/>
+                        <ownedParameter xmi:id="_U4uGQbxwEeWBft9W2UWilQ" type="_tNec4rxrEeWBft9W2UWilQ" direction="return"/>
+                      </ownedOperation>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_tNfrALxrEeWBft9W2UWilQ" name="ProperDihedral">
                       <generalization xmi:id="_tPOJU7xrEeWBft9W2UWilQ" general="_tNV6ALxrEeWBft9W2UWilQ"/>
@@ -270,6 +332,12 @@
                     <packagedElement xmi:type="uml:Association" xmi:id="_tQvzUbxrEeWBft9W2UWilQ" name="" memberEnd="_tQvzUrxrEeWBft9W2UWilQ _tQdfcLxrEeWBft9W2UWilQ">
                       <ownedEnd xmi:id="_tQvzUrxrEeWBft9W2UWilQ" name="" type="_tNV6ALxrEeWBft9W2UWilQ" association="_tQvzUbxrEeWBft9W2UWilQ"/>
                     </packagedElement>
+                    <packagedElement xmi:type="uml:Association" xmi:id="_U4xwoLxwEeWBft9W2UWilQ" name="" memberEnd="_U4xwobxwEeWBft9W2UWilQ _U4vUYLxwEeWBft9W2UWilQ">
+                      <ownedEnd xmi:id="_U4xwobxwEeWBft9W2UWilQ" name="" type="_tNec4rxrEeWBft9W2UWilQ" association="_U4xwoLxwEeWBft9W2UWilQ"/>
+                    </packagedElement>
+                    <packagedElement xmi:type="uml:Association" xmi:id="_U4yXsbxwEeWBft9W2UWilQ" name="" memberEnd="_U4yXsrxwEeWBft9W2UWilQ _U4xJkLxwEeWBft9W2UWilQ">
+                      <ownedEnd xmi:id="_U4yXsrxwEeWBft9W2UWilQ" name="" type="_tNec4rxrEeWBft9W2UWilQ" association="_U4yXsbxwEeWBft9W2UWilQ"/>
+                    </packagedElement>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Package" xmi:id="_tMygYLxrEeWBft9W2UWilQ" name="topology">
                     <packagedElement xmi:type="uml:Class" xmi:id="_tNj8cLxrEeWBft9W2UWilQ" name="TypologyBuilder">
@@ -277,12 +345,15 @@
                         <defaultValue xmi:type="uml:LiteralString" xmi:id="_tP77AbxrEeWBft9W2UWilQ" value="new MolecularSystem()"/>
                       </ownedAttribute>
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_tQLypLxrEeWBft9W2UWilQ" name="build" specification="_tNlKkLxrEeWBft9W2UWilQ">
-                        <ownedParameter xmi:id="_tQLypbxrEeWBft9W2UWilQ" name="fileName">
+                        <ownedParameter xmi:id="_tQLypbxrEeWBft9W2UWilQ" name="dir">
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                         </ownedParameter>
-                        <ownedParameter xmi:id="_tQLyprxrEeWBft9W2UWilQ" type="_tNrRMLxrEeWBft9W2UWilQ" direction="return"/>
+                        <ownedParameter xmi:id="_tQLyprxrEeWBft9W2UWilQ" type="_tNrRMLxrEeWBft9W2UWilQ" direction="return">
+                          <name xsi:nil="true"/>
+                        </ownedParameter>
                         <language>java</language>
-                        <body>readTopology(fileName);
+                        <body>readTopology(dir + &quot;topol.top&quot;);
+		readPosition(dir + &quot;conf.gro&quot;);
 		return m;
 	</body>
                       </ownedBehavior>
@@ -395,8 +466,31 @@
 		}
 	</body>
                       </ownedBehavior>
+                      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_lNuGILxtEeWBft9W2UWilQ" name="readPosition" specification="_lNs4ALxtEeWBft9W2UWilQ">
+                        <ownedParameter xmi:id="_lNuGIbxtEeWBft9W2UWilQ" name="fileName">
+                          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                        </ownedParameter>
+                        <language>java</language>
+                        <body>List&lt;String> fileAsList = FileReader.readFile(fileName);
+		int count = Integer.valueOf(fileAsList.get(1).trim());
+		loadPosition(fileAsList.subList(2, count+2));
+	</body>
+                      </ownedBehavior>
+                      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Cp1l4LxuEeWBft9W2UWilQ" name="loadPosition" specification="_lNpNoLxtEeWBft9W2UWilQ">
+                        <ownedParameter xmi:id="_Cp1l4bxuEeWBft9W2UWilQ" name="position" type="_tPRzsLxrEeWBft9W2UWilQ"/>
+                        <language>java</language>
+                        <body>for (int i=0; i&lt;position.size(); i++) {
+			String[] t = position.get(i).split(&quot; +&quot;);
+//			System.out.println(Arrays.toString(t));
+			double x = Double.parseDouble(t[4]);
+			double y = Double.parseDouble(t[5]);
+			double z = Double.parseDouble(t[6]);
+			((AbstractParticle) m.particles.get(i)).setPosition(x, y, z, -9);
+		}
+	</body>
+                      </ownedBehavior>
                       <ownedOperation xmi:id="_tNlKkLxrEeWBft9W2UWilQ" name="build" method="_tQLypLxrEeWBft9W2UWilQ">
-                        <ownedParameter xmi:id="_tNlKkbxrEeWBft9W2UWilQ" name="fileName">
+                        <ownedParameter xmi:id="_tNlKkbxrEeWBft9W2UWilQ" name="dir">
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                         </ownedParameter>
                         <ownedParameter xmi:id="_tPSawLxrEeWBft9W2UWilQ" type="_tNrRMLxrEeWBft9W2UWilQ" direction="return"/>
@@ -421,6 +515,14 @@
                       <ownedOperation xmi:id="_tPi5cbxrEeWBft9W2UWilQ" name="loadImproperDihedrals" method="_tQNAwrxrEeWBft9W2UWilQ">
                         <ownedParameter xmi:id="_tPi5crxrEeWBft9W2UWilQ" name="dihedrals" type="_tPRzsLxrEeWBft9W2UWilQ"/>
                       </ownedOperation>
+                      <ownedOperation xmi:id="_lNpNoLxtEeWBft9W2UWilQ" name="loadPosition" method="_Cp1l4LxuEeWBft9W2UWilQ">
+                        <ownedParameter xmi:id="_lNpNobxtEeWBft9W2UWilQ" name="position" type="_tPRzsLxrEeWBft9W2UWilQ"/>
+                      </ownedOperation>
+                      <ownedOperation xmi:id="_lNs4ALxtEeWBft9W2UWilQ" name="readPosition" visibility="private" method="_lNuGILxtEeWBft9W2UWilQ">
+                        <ownedParameter xmi:id="_lNs4AbxtEeWBft9W2UWilQ" name="fileName">
+                          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                        </ownedParameter>
+                      </ownedOperation>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_tNwwwLxrEeWBft9W2UWilQ" name="TopologyDatabase">
                       <ownedAttribute xmi:id="_tP--UbxrEeWBft9W2UWilQ" name="log" visibility="private" isLeaf="true" isStatic="true" type="_tPVeELxrEeWBft9W2UWilQ" isReadOnly="true" association="_tQpFobxrEeWBft9W2UWilQ">
@@ -435,7 +537,9 @@
                       <ownedAttribute xmi:id="_tQEd4bxrEeWBft9W2UWilQ" name="properDihedralParams" visibility="private" type="_tPl8wLxrEeWBft9W2UWilQ" association="_tQsI8bxrEeWBft9W2UWilQ"/>
                       <ownedAttribute xmi:id="_tQFsAbxrEeWBft9W2UWilQ" name="improperDihedralParams" visibility="private" type="_tPl8wLxrEeWBft9W2UWilQ" association="_tQswALxrEeWBft9W2UWilQ"/>
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_tQNn07xrEeWBft9W2UWilQ" name="TopologyDatabase" specification="_tNyl8LxrEeWBft9W2UWilQ">
-                        <ownedParameter xmi:id="_tQNn1LxrEeWBft9W2UWilQ" type="_tNwwwLxrEeWBft9W2UWilQ" direction="return"/>
+                        <ownedParameter xmi:id="_tQNn1LxrEeWBft9W2UWilQ" type="_tNwwwLxrEeWBft9W2UWilQ" direction="return">
+                          <name xsi:nil="true"/>
+                        </ownedParameter>
                         <language>java</language>
                         <body>log.info(&quot;Loading Typology Database&quot;);
 		loadBondedParams();
@@ -447,6 +551,7 @@
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                         </ownedParameter>
                         <ownedParameter xmi:id="_tQOO4rxrEeWBft9W2UWilQ" isOrdered="true" direction="return">
+                          <name xsi:nil="true"/>
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tQOO47xrEeWBft9W2UWilQ" value="*"/>
                         </ownedParameter>
@@ -457,6 +562,7 @@
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_tQOO5LxrEeWBft9W2UWilQ" name="getBondParams" specification="_tPoZALxrEeWBft9W2UWilQ">
                         <ownedParameter xmi:id="_tQOO5bxrEeWBft9W2UWilQ" name="atoms" type="_tPRzsLxrEeWBft9W2UWilQ"/>
                         <ownedParameter xmi:id="_tQOO5rxrEeWBft9W2UWilQ" isOrdered="true" direction="return">
+                          <name xsi:nil="true"/>
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tQOO57xrEeWBft9W2UWilQ" value="*"/>
                         </ownedParameter>
@@ -467,6 +573,7 @@
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_tQO18LxrEeWBft9W2UWilQ" name="getAngleParams" specification="_tPpnILxrEeWBft9W2UWilQ">
                         <ownedParameter xmi:id="_tQO18bxrEeWBft9W2UWilQ" name="atoms" type="_tPRzsLxrEeWBft9W2UWilQ"/>
                         <ownedParameter xmi:id="_tQO18rxrEeWBft9W2UWilQ" isOrdered="true" direction="return">
+                          <name xsi:nil="true"/>
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tQO187xrEeWBft9W2UWilQ" value="*"/>
                         </ownedParameter>
@@ -477,6 +584,7 @@
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_tQO19LxrEeWBft9W2UWilQ" name="getImproperDihedralParams" specification="_tPq1QbxrEeWBft9W2UWilQ">
                         <ownedParameter xmi:id="_tQO19bxrEeWBft9W2UWilQ" name="atoms" type="_tPRzsLxrEeWBft9W2UWilQ"/>
                         <ownedParameter xmi:id="_tQO19rxrEeWBft9W2UWilQ" isOrdered="true" direction="return">
+                          <name xsi:nil="true"/>
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tQO197xrEeWBft9W2UWilQ" value="*"/>
                         </ownedParameter>
@@ -497,6 +605,7 @@
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_tQTHYLxrEeWBft9W2UWilQ" name="getProperDihedralParams" specification="_tPsqcLxrEeWBft9W2UWilQ">
                         <ownedParameter xmi:id="_tQTHYbxrEeWBft9W2UWilQ" name="atoms" type="_tPRzsLxrEeWBft9W2UWilQ"/>
                         <ownedParameter xmi:id="_tQTHYrxrEeWBft9W2UWilQ" isOrdered="true" direction="return">
+                          <name xsi:nil="true"/>
                           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tQTHY7xrEeWBft9W2UWilQ" value="*"/>
                         </ownedParameter>
@@ -549,11 +658,11 @@
 			String[] t = s.split(&quot; +&quot;);
 			if (t.length > 6 &amp;&amp; !t[0].contains(&quot;;&quot;)) {
 				String key = t[0];
-				System.out.println(key);
+//				System.out.println(key);
 				List&lt;Double> value = new ArrayList&lt;Double>();
 				value.add(Double.parseDouble(t[5]));
 				value.add(Double.parseDouble(t[6]));
-				System.out.println(value);
+//				System.out.println(value);
 				vdParams.put(key, value);
 			}
 		}
@@ -740,9 +849,9 @@
                         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tQNAxrxrEeWBft9W2UWilQ" value="*"/>
                       </ownedParameter>
                       <language>java</language>
-                      <body>String fileName = &quot;res/test/amber03/topol.top&quot;;
+                      <body>String dir = &quot;res/test/amber03/&quot;;
 		TypologyBuilder tb = new TypologyBuilder();
-		MolecularSystem m = tb.build(fileName);
+		MolecularSystem m = tb.build(dir);
 		m.calculateParticleEnergyPotential();
 		for (Particle p: m.particles) {
 			System.out.println(p.getPotentialEnergy().toString());
@@ -957,7 +1066,9 @@
   <UMLLabProfile:Generics xmi:id="_tQGTELxrEeWBft9W2UWilQ" genericsValue="List&lt;String>, List&lt;Double>" base_Element="_tQFsAbxrEeWBft9W2UWilQ"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_tQGTEbxrEeWBft9W2UWilQ" base_Element="_tQFsAbxrEeWBft9W2UWilQ"/>
   <uml:OpaqueBehavior xmi:id="_tQNn0bxrEeWBft9W2UWilQ" name="getInstance" specification="_tQAMcbxrEeWBft9W2UWilQ">
-    <ownedParameter xmi:id="_tQNn0rxrEeWBft9W2UWilQ" type="_tNwwwLxrEeWBft9W2UWilQ" direction="return"/>
+    <ownedParameter xmi:id="_tQNn0rxrEeWBft9W2UWilQ" type="_tNwwwLxrEeWBft9W2UWilQ" direction="return">
+      <name xsi:nil="true"/>
+    </ownedParameter>
     <language>java</language>
     <body>if (instance == null) {
 			instance = new TopologyDatabase();
@@ -999,4 +1110,13 @@
   <UMLLabProfile:Reference xmi:id="_tQvMQLxrEeWBft9W2UWilQ" base_Element="_tQulMbxrEeWBft9W2UWilQ"/>
   <UMLLabProfile:Reference xmi:id="_tQvzULxrEeWBft9W2UWilQ" base_Element="_tQvMQbxrEeWBft9W2UWilQ"/>
   <UMLLabProfile:Reference xmi:id="_tQvzU7xrEeWBft9W2UWilQ" base_Element="_tQvzUbxrEeWBft9W2UWilQ"/>
+  <UMLLabProfile:Generics xmi:id="_lNp0sLxtEeWBft9W2UWilQ" genericsValue="String" base_Element="_lNpNobxtEeWBft9W2UWilQ"/>
+  <UMLLabProfile:MultiDeclaration xmi:id="_U4v7cLxwEeWBft9W2UWilQ" base_Property="_U4vUYLxwEeWBft9W2UWilQ" siblings="_U4xJkLxwEeWBft9W2UWilQ" root="true"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_U4v7cbxwEeWBft9W2UWilQ" base_Element="_U4vUYLxwEeWBft9W2UWilQ"/>
+  <UMLLabProfile:MultiDeclaration xmi:id="_U4xJkbxwEeWBft9W2UWilQ" base_Property="_U4xJkLxwEeWBft9W2UWilQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_U4xJkrxwEeWBft9W2UWilQ" base_Element="_U4xJkLxwEeWBft9W2UWilQ"/>
+  <UMLLabProfile:Reference xmi:id="_U4yXsLxwEeWBft9W2UWilQ" base_Element="_U4xwoLxwEeWBft9W2UWilQ"/>
+  <UMLLabProfile:Reference xmi:id="_U4y-wLxwEeWBft9W2UWilQ" base_Element="_U4yXsbxwEeWBft9W2UWilQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_7xbxYbxyEeWBft9W2UWilQ" base_Element="_7xbKULxyEeWBft9W2UWilQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_7xcYcrxyEeWBft9W2UWilQ" base_Element="_7xcYcLxyEeWBft9W2UWilQ"/>
 </xmi:XMI>
