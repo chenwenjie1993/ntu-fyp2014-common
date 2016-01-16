@@ -98,11 +98,11 @@ public class TopologyDatabase {
 			String[] t = s.split(" +");
 			if (t.length > 6 && !t[0].contains(";")) {
 				String key = t[0];
-				System.out.println(key);
+//				System.out.println(key);
 				List<Double> value = new ArrayList<Double>();
 				value.add(Double.parseDouble(t[5]));
 				value.add(Double.parseDouble(t[6]));
-				System.out.println(value);
+//				System.out.println(value);
 				vdParams.put(key, value);
 			}
 		}

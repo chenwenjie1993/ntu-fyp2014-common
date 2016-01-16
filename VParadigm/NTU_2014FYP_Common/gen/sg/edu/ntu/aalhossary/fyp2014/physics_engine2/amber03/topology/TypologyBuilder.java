@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Angle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Bond;
@@ -16,8 +17,9 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.FileReader;
 
 public class TypologyBuilder {
 	MolecularSystem m = new MolecularSystem();
-	public MolecularSystem build(String fileName) {
-		readTopology(fileName);
+	public MolecularSystem build(String dir) {
+		readTopology(dir + "topol.top");
+		readPosition(dir + "conf.gro");
 		return m;
 	}
 	
@@ -39,6 +41,12 @@ public class TypologyBuilder {
 		loadAngles(fileAsList.subList(angles+1, properDihedrals));
 		loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
 		loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
+	}
+	
+	private void readPosition(String fileName) {
+		List<String> fileAsList = FileReader.readFile(fileName);
+		int count = Integer.valueOf(fileAsList.get(1).trim());
+		loadPosition(fileAsList.subList(2, count+2));
 	}
 	
 	private void loadAtoms(List<String> atoms) {
@@ -113,6 +121,17 @@ public class TypologyBuilder {
 				Atom atom4 = (Atom) m.particles.get(Integer.parseInt(t[4])-1);
 				m.interactions.add(new ImproperDihedral(atom1, atom2, atom3, atom4));
 			}
+		}
+	}
+	
+	public void loadPosition(List<String> position) {
+		for (int i=0; i<position.size(); i++) {
+			String[] t = position.get(i).split(" +");
+//			System.out.println(Arrays.toString(t));
+			double x = Double.parseDouble(t[4]);
+			double y = Double.parseDouble(t[5]);
+			double z = Double.parseDouble(t[6]);
+			((AbstractParticle) m.particles.get(i)).setPosition(x, y, z, -9);
 		}
 	}
 }

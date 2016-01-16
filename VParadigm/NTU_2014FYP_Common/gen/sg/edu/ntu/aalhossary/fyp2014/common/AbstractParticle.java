@@ -64,7 +64,7 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	 */
 	public void setPosition(double x, double y, double z, int metric) {
 		position.x = x; position.y = y; position.z = z; position.metric = metric;
-		boundingPrimitive.updateCentre(x, y, z, metric);	
+//		boundingPrimitive.updateCentre(x, y, z, metric);	
 	}
 	
 	/**
