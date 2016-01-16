@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import java.util.*;
 import org.junit.*;
 
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TopologyDatabase;
+
 public class TypologyDatabaseTest {
 	private static TopologyDatabase db;
 	

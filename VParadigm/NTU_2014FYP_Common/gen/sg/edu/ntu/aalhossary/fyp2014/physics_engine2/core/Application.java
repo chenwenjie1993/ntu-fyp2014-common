@@ -1,6 +1,6 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core;
 
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.typology.TypologyBuilder;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TypologyBuilder;
 
 public class Application {
 

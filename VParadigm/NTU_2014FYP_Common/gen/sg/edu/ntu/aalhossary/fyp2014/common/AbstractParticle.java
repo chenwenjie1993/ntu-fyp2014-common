@@ -6,11 +6,8 @@ import sg.edu.ntu.aalhossary.fyp2014.common.math.Matrix4;
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Quaternion;
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
-/**
- * @author waiyan
- * AbstractParticle is the parent class of all simulatable objects in the engine
- */
 public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.common.Particle {
+	protected static int particleCount = 0;
 	protected int guid;
 	protected Vector3D position;
 	protected Vector3D velocity;
@@ -38,8 +35,8 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 		orientation = new Quaternion(1,0,0,0);
 		rotation = new Vector3D(0,0,0);
 		netCharge = 0;
-//		guid = World.particleCount;
-//		World.particleCount ++;
+		particleCount++;
+		guid = particleCount;
 	}
 	
 	/**

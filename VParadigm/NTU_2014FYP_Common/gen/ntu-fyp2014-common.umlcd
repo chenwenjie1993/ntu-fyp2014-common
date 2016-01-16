@@ -303,7 +303,6 @@
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_izsrsLtlEeW237zCnCA2ow" sourceItem="_izsEortlEeW237zCnCA2ow"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_izsrsrtlEeW237zCnCA2ow" sourceItem="_izsrsbtlEeW237zCnCA2ow"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_iztSwLtlEeW237zCnCA2ow" sourceItem="_izsrs7tlEeW237zCnCA2ow"/>
-  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_i4_bYLtlEeW237zCnCA2ow" sourceItem="_i2aBcLtlEeW237zCnCA2ow"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_i6LuMLtlEeW237zCnCA2ow" sourceItem="_i6KgELtlEeW237zCnCA2ow"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_i6MVQbtlEeW237zCnCA2ow" sourceItem="_i6MVQLtlEeW237zCnCA2ow"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_i6NjYLtlEeW237zCnCA2ow" sourceItem="_i6M8ULtlEeW237zCnCA2ow"/>
@@ -1375,9 +1374,6 @@
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_n0P0cLtlEeW237zCnCA2ow" sourceAnchor="15.0,0.0" targetAnchor="37.0,40.0" dashed="true" superClass="_n6N5kLtlEeW237zCnCA2ow" subClass="_k7h64LtlEeW237zCnCA2ow">
     <modelElement href="ntu-fyp2014-common.uml#_Yn4_ALtlEeW237zCnCA2ow"/>
   </edges>
-  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_oAkZMLtlEeW237zCnCA2ow" sourceAnchor="0.0,44.0" targetAnchor="431.0,295.0">
-    <modelElement href="ntu-fyp2014-common.uml#_YjuQsLtlEeW237zCnCA2ow"/>
-  </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_Dq3WALtmEeW237zCnCA2ow">
     <modelElement href="ntu-fyp2014-common.uml#_Yh-kQLtlEeW237zCnCA2ow"/>
   </edges>
@@ -1595,9 +1591,6 @@
   </nodes>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_izsrs7tlEeW237zCnCA2ow" sourceConnectionVisual="_iztSwLtlEeW237zCnCA2ow" text="Sets this matrix to be the rotation matrix corresponding to the given quaternion.&#xA;&#x9; * Transform the quaternion into a 3x3 Matrix">
     <modelElement href="ntu-fyp2014-common.uml#_Yq4BlrtlEeW237zCnCA2ow"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_i2aBcLtlEeW237zCnCA2ow" sourceConnectionVisual="_i4_bYLtlEeW237zCnCA2ow" text="@author waiyan&#xA;Maths Module for 3x4 Matrix Calculations">
-    <modelElement href="ntu-fyp2014-common.uml#_Yq5PsLtlEeW237zCnCA2ow"/>
   </nodes>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_i6KgELtlEeW237zCnCA2ow" sourceConnectionVisual="_i6LuMLtlEeW237zCnCA2ow" text="Construct a 3x4 identity matrix">
     <modelElement href="ntu-fyp2014-common.uml#_Yq5PsbtlEeW237zCnCA2ow"/>

@@ -1,9 +1,5 @@
 package sg.edu.ntu.aalhossary.fyp2014.common.math;
 
-/**
- * @author waiyan
- * Maths Module for 3x4 Matrix Calculations
- */
 public class Matrix4 {
 	private double [] data = new double [12];
 	

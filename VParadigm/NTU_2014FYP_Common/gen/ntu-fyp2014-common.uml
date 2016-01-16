@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_X27cILtlEeW237zCnCA2ow" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_X27cIbtlEeW237zCnCA2ow" source="codegen">
         <details xmi:id="_X27cIrtlEeW237zCnCA2ow" key="codegenDirectory" value="/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen"/>
-        <details xmi:id="_Y0kJELtlEeW237zCnCA2ow" key="AssociatedSourceCode" value="/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/AbstractParticle.java;1208479396/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/AminoAcid.java;2127865308/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Atom.java;1992265417/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Bond.java;3373043677/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/BoundingPrimitive.java;3656345719/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Chain.java;1851714343/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Interaction.java;1104814563/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Model.java;694890868/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Molecule.java;1619744335/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Particle.java;492705328/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Residue.java;4243495755/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Matrix3.java;3727283361/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Matrix4.java;106715355/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Quaternion.java;4159345452/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Vector3D.java;1432825658/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Angle.java;3394555289/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Atom.java;2116224748/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Bond.java;4065976495/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/BondedInteraction.java;1768561773/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Dihedral.java;2586378346/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ImproperDihedral.java;578301756/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/NonBondedInteraction.java;4045144720/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ProperDihedral.java;2772637167/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/typology/TypologyBuilder.java;2982252263/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Application.java;1622691620/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Interaction.java;3594391419/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Particle.java;74147711/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Vector3D.java;1929273715/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/util/FileReader.java;3330989103/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/MolecularSystem.java;86882877/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/LennardJonesPotential.java;2239726603/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ElectrostaticPotential.java;1045039813/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/typology/TopologyDatabase.java;2510663683/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/test/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/typology/TypologyDatabaseTest.java;517300587/1;"/>
+        <details xmi:id="_Y0kJELtlEeW237zCnCA2ow" key="AssociatedSourceCode" value="/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/AbstractParticle.java;1208479396/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/AminoAcid.java;2127865308/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Atom.java;1992265417/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Bond.java;3373043677/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/BoundingPrimitive.java;3656345719/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Chain.java;1851714343/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Interaction.java;1104814563/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Model.java;694890868/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Molecule.java;1619744335/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Particle.java;492705328/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/Residue.java;4243495755/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Matrix3.java;3727283361/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Matrix4.java;3989833990/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Quaternion.java;4159345452/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/common/math/Vector3D.java;1838395640/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Angle.java;694030768/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Atom.java;2116224748/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Bond.java;1256586340/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/BondedInteraction.java;1768561773/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/Dihedral.java;2178123447/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ImproperDihedral.java;578301756/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/NonBondedInteraction.java;4045144720/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ProperDihedral.java;2772637167/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/typology/TypologyBuilder.java;2982252263/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Application.java;1622691620/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Interaction.java;3594391419/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/Particle.java;74147711/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/util/FileReader.java;3330989103/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/core/MolecularSystem.java;86882877/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/LennardJonesPotential.java;2239726603/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/models/ElectrostaticPotential.java;1045039813/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/typology/TopologyDatabase.java;2510663683/1;/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/test/sg/edu/ntu/aalhossary/fyp2014/physics_engine2/amber03/typology/TypologyDatabaseTest.java;517300587/1;"/>
       </contents>
       <contents xmi:type="ecore:EAnnotation" xmi:id="_ibiXALvsEeWBft9W2UWilQ" source="preferences">
         <contents xmi:type="ecore:EAnnotation" xmi:id="_ibiXAbvsEeWBft9W2UWilQ" source="com.yattasolutions.codegen.reverse">
@@ -1388,17 +1388,15 @@ Maths Module for 3x3 Matrix Calculations</body>
                     </ownedOperation>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_YiqgwLtlEeW237zCnCA2ow" name="Matrix4">
-                    <ownedComment xmi:id="_Yq5PsLtlEeW237zCnCA2ow">
-                      <body>@author waiyan
-Maths Module for 3x4 Matrix Calculations</body>
-                    </ownedComment>
                     <ownedAttribute xmi:id="_Yp-psLtlEeW237zCnCA2ow" name="data" visibility="private">
                       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Yp_QwLtlEeW237zCnCA2ow" value="*"/>
                       <defaultValue xmi:type="uml:LiteralString" xmi:id="_Yp_QwrtlEeW237zCnCA2ow" value="new double [12]"/>
                     </ownedAttribute>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqltsLtlEeW237zCnCA2ow" name="Matrix4" specification="_YirH0LtlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_YqltsbtlEeW237zCnCA2ow" type="_YiqgwLtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqltsbtlEeW237zCnCA2ow" type="_YiqgwLtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>data [0] = data [5] = data [10] = 1;
 		data [1] = data [2] = data [3] = 0;
@@ -1411,7 +1409,9 @@ Maths Module for 3x4 Matrix Calculations</body>
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YqlttLtlEeW237zCnCA2ow" value="*"/>
                       </ownedParameter>
-                      <ownedParameter xmi:id="_YqlttbtlEeW237zCnCA2ow" type="_YiqgwLtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqlttbtlEeW237zCnCA2ow" type="_YiqgwLtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>for(int i=0; i&lt;12; i++)
 			this.data[i] = data[i];
@@ -1419,7 +1419,9 @@ Maths Module for 3x4 Matrix Calculations</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqmUwLtlEeW237zCnCA2ow" name="multiply" specification="_YnogULtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqmUwbtlEeW237zCnCA2ow" name="m" type="_YiqgwLtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_YqmUwrtlEeW237zCnCA2ow" type="_YiqgwLtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqmUwrtlEeW237zCnCA2ow" type="_YiqgwLtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>Matrix4 temp = new Matrix4();
 		temp.data[0] = (m.data[0]*data[0]) + (m.data[4]*data[1]) + (m.data[8]*data[2]);
@@ -1442,7 +1444,9 @@ Maths Module for 3x4 Matrix Calculations</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqmUw7tlEeW237zCnCA2ow" name="transform" specification="_YnpHYLtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqmUxLtlEeW237zCnCA2ow" name="v" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_YqmUxbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqmUxbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>return new Vector3D ( 	v.x*data[0] + v.y*data[1] + v.z*data[2] + data[3],
 								v.x*data[4] + v.y*data[5] + v.z*data[6] + data[7],
@@ -1487,7 +1491,9 @@ Maths Module for 3x4 Matrix Calculations</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqm70LtlEeW237zCnCA2ow" name="transformInverse" specification="_YnqVgLtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_Yqm70btlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_Yqm70rtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_Yqm70rtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>Vector3D tmp = vector;
      tmp.x -= data[3];
@@ -1502,7 +1508,9 @@ Maths Module for 3x4 Matrix Calculations</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqm707tlEeW237zCnCA2ow" name="transformDirection" specification="_YnqVg7tlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_Yqm71LtlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_Yqm71btlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_Yqm71btlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>return new Vector3D ( 	vector.x*data[0] + vector.y*data[1] + vector.z*data[2],
 								vector.x*data[4] + vector.y*data[5] + vector.z*data[6],
@@ -1512,7 +1520,9 @@ Maths Module for 3x4 Matrix Calculations</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqm71rtlEeW237zCnCA2ow" name="transformInverseDirection" specification="_Ynq8kbtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_Yqm717tlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_Yqm72LtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_Yqm72LtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>return new Vector3D ( 	vector.x*data[0] + vector.y*data[4] + vector.z*data[8],
 								vector.x*data[1] + vector.y*data[5] + vector.z*data[9],
@@ -1524,7 +1534,9 @@ Maths Module for 3x4 Matrix Calculations</body>
                       <ownedParameter xmi:id="_Yqm72rtlEeW237zCnCA2ow" name="i">
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
                       </ownedParameter>
-                      <ownedParameter xmi:id="_Yqm727tlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_Yqm727tlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>return new Vector3D(data[i], data[i+4], data[i+8]);
 	</body>
@@ -1893,14 +1905,18 @@ A quaternion represents the orientation
                       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
                     </ownedAttribute>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqoxALtlEeW237zCnCA2ow" name="Vector3D" specification="_Yi5KQLtlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_YqoxAbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqoxAbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>x = y = z = metric = 0;
 	</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqoxArtlEeW237zCnCA2ow" name="Vector3D" specification="_YnwcIbtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqoxA7tlEeW237zCnCA2ow" name="v" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_YqoxBLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqoxBLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>this.x = v.x; this.y = v.y; this.z = v.z; this.metric = v.metric;
 	</body>
@@ -1915,7 +1931,9 @@ A quaternion represents the orientation
                       <ownedParameter xmi:id="_YqoxCLtlEeW237zCnCA2ow" name="z">
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                       </ownedParameter>
-                      <ownedParameter xmi:id="_YqoxCbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqoxCbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>this.x = x; this.y = y; this.z = z; this.metric = 0;
 	</body>
@@ -1933,7 +1951,9 @@ A quaternion represents the orientation
                       <ownedParameter xmi:id="_YqoxDrtlEeW237zCnCA2ow" name="metric">
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
                       </ownedParameter>
-                      <ownedParameter xmi:id="_YqoxD7tlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqoxD7tlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>this.x = x; this.y = y; this.z = z; this.metric = metric;
 	</body>
@@ -1941,6 +1961,7 @@ A quaternion represents the orientation
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqoxELtlEeW237zCnCA2ow" name="equals" specification="_Yoy98LtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqoxEbtlEeW237zCnCA2ow" name="vector" type="_YoW5ELtlEeW237zCnCA2ow"/>
                       <ownedParameter xmi:id="_YqoxErtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
                       </ownedParameter>
                       <language>java</language>
@@ -1963,7 +1984,9 @@ A quaternion represents the orientation
 	</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqpYEbtlEeW237zCnCA2ow" name="getNegativeVector" specification="_Yi7mgbtlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_YqpYErtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqpYErtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>return new Vector3D(-x,-y,-z,metric);
 	</body>
@@ -1985,6 +2008,7 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqpYFbtlEeW237zCnCA2ow" name="getMagnitude" specification="_Yi8NkbtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqpYFrtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                       </ownedParameter>
                       <language>java</language>
@@ -1993,6 +2017,7 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqp_ILtlEeW237zCnCA2ow" name="getSquaredMagnitude" specification="_Yi8Nk7tlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_Yqp_IbtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                       </ownedParameter>
                       <language>java</language>
@@ -2007,7 +2032,9 @@ A quaternion represents the orientation
 	</body>
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqp_I7tlEeW237zCnCA2ow" name="getUnitVector" specification="_Yi80obtlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_Yqp_JLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_Yqp_JLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>Vector3D temp = this;
 		temp.normalize();
@@ -2040,7 +2067,9 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqp_J7tlEeW237zCnCA2ow" name="addAndReturn" specification="_Yny4YLtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_Yqp_KLtlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_Yqp_KbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_Yqp_KbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>Vector3D temp = new Vector3D();
 		temp.add(this);
@@ -2050,7 +2079,9 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqp_KrtlEeW237zCnCA2ow" name="subtractAndReturn" specification="_Yn0GgLtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_Yqp_K7tlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_Yqp_LLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_Yqp_LLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>Vector3D temp = new Vector3D();
 		temp.add(this);
@@ -2087,6 +2118,7 @@ A quaternion represents the orientation
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqqmN7tlEeW237zCnCA2ow" name="getScalarProduct" specification="_Yn1UoLtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqqmOLtlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
                       <ownedParameter xmi:id="_YqqmObtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                       </ownedParameter>
                       <language>java</language>
@@ -2101,7 +2133,9 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqqmOrtlEeW237zCnCA2ow" name="getCrossProduct" specification="_Yn1Uo7tlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqqmO7tlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_YqqmPLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqqmPLtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>double scale = Math.pow(10, vector.metric - this.metric);
 		double new_x = (y*vector.z - z*vector.y)*scale;
@@ -2112,7 +2146,9 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqrNQLtlEeW237zCnCA2ow" name="getComponentProduct" specification="_Yn17sLtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqrNQbtlEeW237zCnCA2ow" name="vector" type="_Yi38ILtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_YqrNQrtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqrNQrtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>double scale = Math.pow(10, vector.metric - this.metric);
 		return new Vector3D(x*vector.x*scale, y*vector.y*scale, z*vector.z*scale, metric);
@@ -2120,7 +2156,9 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqrNQ7tlEeW237zCnCA2ow" name="rotatebyMatrix" specification="_Yn17s7tlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqrNRLtlEeW237zCnCA2ow" name="matrix" type="_YidFYLtlEeW237zCnCA2ow"/>
-                      <ownedParameter xmi:id="_YqrNRbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return"/>
+                      <ownedParameter xmi:id="_YqrNRbtlEeW237zCnCA2ow" type="_Yi38ILtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
+                      </ownedParameter>
                       <language>java</language>
                       <body>Vector3D vector = new Vector3D();
 		double [] data = matrix.getData();
@@ -2132,6 +2170,7 @@ A quaternion represents the orientation
                     </ownedBehavior>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqrNRrtlEeW237zCnCA2ow" name="print" specification="_Yi-CwLtlEeW237zCnCA2ow">
                       <ownedParameter xmi:id="_YqrNR7tlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                       </ownedParameter>
                       <language>java</language>
@@ -2148,6 +2187,7 @@ A quaternion represents the orientation
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
                       </ownedParameter>
                       <ownedParameter xmi:id="_YqrNSrtlEeW237zCnCA2ow" direction="return">
+                        <name xsi:nil="true"/>
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                       </ownedParameter>
                       <language>java</language>
@@ -2168,6 +2208,14 @@ A quaternion represents the orientation
 		
 		return value + &quot;m&quot;;
 		
+	</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_dBAnkLxmEeWBft9W2UWilQ" name="toString" specification="_dA4rwLxmEeWBft9W2UWilQ">
+                      <ownedParameter xmi:id="_dBAnkbxmEeWBft9W2UWilQ" direction="return">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                      </ownedParameter>
+                      <language>java</language>
+                      <body>return &quot;(&quot; + String.valueOf(x) + &quot;,&quot; + String.valueOf(y) + &quot;,&quot; + String.valueOf(z) + &quot;)&quot;;
 	</body>
                     </ownedBehavior>
                     <ownedOperation xmi:id="_Yi5KQLtlEeW237zCnCA2ow" name="Vector3D" method="_YqoxALtlEeW237zCnCA2ow">
@@ -2369,6 +2417,11 @@ A quaternion represents the orientation
                       <ownedParameter xmi:id="_Yoy98btlEeW237zCnCA2ow" name="vector" type="_YoW5ELtlEeW237zCnCA2ow"/>
                       <ownedParameter xmi:id="_Yoy98rtlEeW237zCnCA2ow" direction="return">
                         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:id="_dA4rwLxmEeWBft9W2UWilQ" name="toString" method="_dBAnkLxmEeWBft9W2UWilQ">
+                      <ownedParameter xmi:id="_dA-LULxmEeWBft9W2UWilQ" direction="return">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
                       </ownedParameter>
                     </ownedOperation>
                   </packagedElement>
@@ -3861,7 +3914,9 @@ Extended by BoundingBox, BoundingCube and BoundingSphere</body>
                         <ownedParameter xmi:id="_Yqr0UbtlEeW237zCnCA2ow" name="i" type="_YjF-kLtlEeW237zCnCA2ow"/>
                         <ownedParameter xmi:id="_Yqr0UrtlEeW237zCnCA2ow" name="j" type="_YjF-kLtlEeW237zCnCA2ow"/>
                         <ownedParameter xmi:id="_Yqr0U7tlEeW237zCnCA2ow" name="k" type="_YjF-kLtlEeW237zCnCA2ow"/>
-                        <ownedParameter xmi:id="_Yqr0VLtlEeW237zCnCA2ow" type="_YjDiULtlEeW237zCnCA2ow" direction="return"/>
+                        <ownedParameter xmi:id="_Yqr0VLtlEeW237zCnCA2ow" type="_YjDiULtlEeW237zCnCA2ow" direction="return">
+                          <name xsi:nil="true"/>
+                        </ownedParameter>
                         <language>java</language>
                         <body>this.i = i;
 		this.j = j;
@@ -3947,7 +4002,9 @@ Extended by BoundingBox, BoundingCube and BoundingSphere</body>
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqsbZ7tlEeW237zCnCA2ow" name="Bond" specification="_Yn60MLtlEeW237zCnCA2ow">
                         <ownedParameter xmi:id="_YqsbaLtlEeW237zCnCA2ow" name="i" type="_YjF-kLtlEeW237zCnCA2ow"/>
                         <ownedParameter xmi:id="_YqsbabtlEeW237zCnCA2ow" name="j" type="_YjF-kLtlEeW237zCnCA2ow"/>
-                        <ownedParameter xmi:id="_YqsbartlEeW237zCnCA2ow" type="_YjJo8LtlEeW237zCnCA2ow" direction="return"/>
+                        <ownedParameter xmi:id="_YqsbartlEeW237zCnCA2ow" type="_YjJo8LtlEeW237zCnCA2ow" direction="return">
+                          <name xsi:nil="true"/>
+                        </ownedParameter>
                         <language>java</language>
                         <body>this.i = i;
 		this.j = j;
@@ -3977,7 +4034,9 @@ Extended by BoundingBox, BoundingCube and BoundingSphere</body>
                         <ownedParameter xmi:id="_YqtCcrtlEeW237zCnCA2ow" name="j" type="_YjF-kLtlEeW237zCnCA2ow"/>
                         <ownedParameter xmi:id="_YqtCc7tlEeW237zCnCA2ow" name="k" type="_YjF-kLtlEeW237zCnCA2ow"/>
                         <ownedParameter xmi:id="_YqtCdLtlEeW237zCnCA2ow" name="l" type="_YjF-kLtlEeW237zCnCA2ow"/>
-                        <ownedParameter xmi:id="_YqtCdbtlEeW237zCnCA2ow" type="_YjMsQLtlEeW237zCnCA2ow" direction="return"/>
+                        <ownedParameter xmi:id="_YqtCdbtlEeW237zCnCA2ow" type="_YjMsQLtlEeW237zCnCA2ow" direction="return">
+                          <name xsi:nil="true"/>
+                        </ownedParameter>
                         <language>java</language>
                         <body>this.i = i;
 		this.j = j;
@@ -4741,64 +4800,6 @@ Extended by BoundingBox, BoundingCube and BoundingSphere</body>
                     <generalization xmi:id="_YjqmULtlEeW237zCnCA2ow" general="_Yg8CcLtlEeW237zCnCA2ow"/>
                     <ownedAttribute xmi:id="_YjqmUbtlEeW237zCnCA2ow" name="position" type="_Yi38ILtlEeW237zCnCA2ow" isReadOnly="true" association="_YrJuYLtlEeW237zCnCA2ow"/>
                     <ownedAttribute xmi:id="_YjrNYLtlEeW237zCnCA2ow" name="potentialEnergy" type="_Yi38ILtlEeW237zCnCA2ow" isReadOnly="true" association="_YrK8gLtlEeW237zCnCA2ow"/>
-                  </packagedElement>
-                  <packagedElement xmi:type="uml:Class" xmi:id="_Yjr0cLtlEeW237zCnCA2ow" name="Vector3D">
-                    <generalization xmi:id="_YjuQsLtlEeW237zCnCA2ow" general="_Yi38ILtlEeW237zCnCA2ow"/>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Yqws1btlEeW237zCnCA2ow" name="Vector3D" specification="_YjsbgLtlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_Yqws1rtlEeW237zCnCA2ow" type="_Yjr0cLtlEeW237zCnCA2ow" direction="return"/>
-                      <language>java</language>
-                      <body>super();
-	</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqxT4LtlEeW237zCnCA2ow" name="Vector3D" specification="_YjtCkbtlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_YqxT4btlEeW237zCnCA2ow" name="x">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:id="_YqxT4rtlEeW237zCnCA2ow" name="y">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:id="_YqxT47tlEeW237zCnCA2ow" name="z">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:id="_YqxT5LtlEeW237zCnCA2ow" type="_Yjr0cLtlEeW237zCnCA2ow" direction="return"/>
-                      <language>java</language>
-                      <body>super(x, y, z);
-	</body>
-                    </ownedBehavior>
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_YqxT5btlEeW237zCnCA2ow" name="toString" specification="_Yjtpo7tlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_YqxT5rtlEeW237zCnCA2ow" direction="return">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                      </ownedParameter>
-                      <language>java</language>
-                      <body>return &quot;(&quot; + String.valueOf(x) + &quot;,&quot; + String.valueOf(y) + &quot;,&quot; + String.valueOf(z) + &quot;)&quot;;
-	</body>
-                    </ownedBehavior>
-                    <ownedOperation xmi:id="_YjsbgLtlEeW237zCnCA2ow" name="Vector3D" method="_Yqws1btlEeW237zCnCA2ow">
-                      <eAnnotations xmi:id="_YjsbgbtlEeW237zCnCA2ow" source="http://www.eclipse.org/uml2/2.0.0/UML">
-                        <details xmi:id="_YjsbgrtlEeW237zCnCA2ow" key="create"/>
-                      </eAnnotations>
-                      <ownedParameter xmi:id="_YjtCkLtlEeW237zCnCA2ow" type="_Yjr0cLtlEeW237zCnCA2ow" direction="return"/>
-                    </ownedOperation>
-                    <ownedOperation xmi:id="_YjtCkbtlEeW237zCnCA2ow" name="Vector3D" method="_YqxT4LtlEeW237zCnCA2ow">
-                      <eAnnotations xmi:id="_YjtpoLtlEeW237zCnCA2ow" source="http://www.eclipse.org/uml2/2.0.0/UML">
-                        <details xmi:id="_YjtpobtlEeW237zCnCA2ow" key="create"/>
-                      </eAnnotations>
-                      <ownedParameter xmi:id="_YjtCkrtlEeW237zCnCA2ow" name="x">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:id="_YjtCk7tlEeW237zCnCA2ow" name="y">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:id="_YjtClLtlEeW237zCnCA2ow" name="z">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-                      </ownedParameter>
-                      <ownedParameter xmi:id="_YjtportlEeW237zCnCA2ow" type="_Yjr0cLtlEeW237zCnCA2ow" direction="return"/>
-                    </ownedOperation>
-                    <ownedOperation xmi:id="_Yjtpo7tlEeW237zCnCA2ow" name="toString" method="_YqxT5btlEeW237zCnCA2ow">
-                      <ownedParameter xmi:id="_YjtppLtlEeW237zCnCA2ow" direction="return">
-                        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-                      </ownedParameter>
-                    </ownedOperation>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Association" xmi:id="_YrJuYLtlEeW237zCnCA2ow" name="" memberEnd="_YrJuYbtlEeW237zCnCA2ow _YjqmUbtlEeW237zCnCA2ow">
                     <ownedEnd xmi:id="_YrJuYbtlEeW237zCnCA2ow" name="" type="_Yjp_QLtlEeW237zCnCA2ow" association="_YrJuYLtlEeW237zCnCA2ow"/>

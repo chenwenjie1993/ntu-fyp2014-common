@@ -264,4 +264,8 @@ public class Vector3D {
 		return value + "m";
 		
 	}
+	
+	public String toString() {
+		return "(" + String.valueOf(x) + "," + String.valueOf(y) + "," + String.valueOf(z) + ")";
+	}
 }
