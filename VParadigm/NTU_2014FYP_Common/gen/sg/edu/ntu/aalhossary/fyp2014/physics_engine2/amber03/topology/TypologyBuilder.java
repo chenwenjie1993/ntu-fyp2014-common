@@ -77,7 +77,10 @@ public class TypologyBuilder {
 //				System.out.println(Arrays.toString(t));
 				Atom atom1 = (Atom) m.particles.get(Integer.parseInt(t[1])-1);
 				Atom atom2 = (Atom) m.particles.get(Integer.parseInt(t[2])-1);
-				m.interactions.add(new Bond(atom1, atom2));
+				List<Atom> atoms = new ArrayList<Atom>();
+				atoms.add(atom1);
+				atoms.add(atom2);
+				m.interactions.add(new Bond(atoms));
 			}
 		}
 	}
@@ -92,7 +95,11 @@ public class TypologyBuilder {
 				Atom atom1 = (Atom) m.particles.get(Integer.parseInt(t[1])-1);
 				Atom atom2 = (Atom) m.particles.get(Integer.parseInt(t[2])-1);
 				Atom atom3 = (Atom) m.particles.get(Integer.parseInt(t[3])-1);
-				m.interactions.add(new Angle(atom1, atom2, atom3));
+				List<Atom> atoms = new ArrayList<Atom>();
+				atoms.add(atom1);
+				atoms.add(atom2);
+				atoms.add(atom3);
+				m.interactions.add(new Angle(atoms));
 			}
 		}
 	}
@@ -108,7 +115,12 @@ public class TypologyBuilder {
 				Atom atom2 = (Atom) m.particles.get(Integer.parseInt(t[2])-1);
 				Atom atom3 = (Atom) m.particles.get(Integer.parseInt(t[3])-1);
 				Atom atom4 = (Atom) m.particles.get(Integer.parseInt(t[4])-1);
-				m.interactions.add(new ProperDihedral(atom1, atom2, atom3, atom4));
+				List<Atom> atoms = new ArrayList<Atom>();
+				atoms.add(atom1);
+				atoms.add(atom2);
+				atoms.add(atom3);
+				atoms.add(atom4);
+				m.interactions.add(new ProperDihedral(atoms));
 			}
 		}
 	}
@@ -123,7 +135,12 @@ public class TypologyBuilder {
 				Atom atom2 = (Atom) m.particles.get(Integer.parseInt(t[2])-1);
 				Atom atom3 = (Atom) m.particles.get(Integer.parseInt(t[3])-1);
 				Atom atom4 = (Atom) m.particles.get(Integer.parseInt(t[4])-1);
-				m.interactions.add(new ImproperDihedral(atom1, atom2, atom3, atom4));
+				List<Atom> atoms = new ArrayList<Atom>();
+				atoms.add(atom1);
+				atoms.add(atom2);
+				atoms.add(atom3);
+				atoms.add(atom4);
+				m.interactions.add(new ImproperDihedral(atoms));
 			}
 		}
 	}

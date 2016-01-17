@@ -1,11 +1,16 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models;
 
+import java.util.List;
+
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TopologyDatabase;
+
 public class Bond extends BondedInteraction {
-	public Atom i, j;
+	public double k, b;
 	
-	public Bond(Atom i, Atom j) {
-		this.i = i;
-		this.j = j;
+	public Bond(List<Atom> atoms) {
+		super(atoms);
+		TopologyDatabase db = TopologyDatabase.getInstance();
+//		db.getBondParams(atoms)
 	}
 
 	@Override
@@ -13,7 +18,4 @@ public class Bond extends BondedInteraction {
 		
 	}
 
-//	private Vector3D distance() {
-//		
-//	}
 }
