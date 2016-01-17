@@ -8,7 +8,9 @@ import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Angle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Bond;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.ElectrostaticPotential;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.ImproperDihedral;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.LennardJonesPotential;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.ProperDihedral;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.MolecularSystem;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Particle;
@@ -41,6 +43,8 @@ public class TypologyBuilder {
 		loadAngles(fileAsList.subList(angles+1, properDihedrals));
 		loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
 		loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
+		
+		generateNonBondedInteraction();
 	}
 	
 	private void readPosition(String fileName) {
@@ -132,6 +136,18 @@ public class TypologyBuilder {
 			double y = Double.parseDouble(t[5]);
 			double z = Double.parseDouble(t[6]);
 			((AbstractParticle) m.particles.get(i)).setPosition(x, y, z, -9);
+		}
+	}
+	
+	public void generateNonBondedInteraction() {
+		int count = m.particles.size();
+		for (int i=0; i<count-1; i++) {
+			for (int j=i+1; j<count; j++) {
+				ElectrostaticPotential e = new ElectrostaticPotential((Atom)m.particles.get(i), (Atom)m.particles.get(j));
+				LennardJonesPotential l = new LennardJonesPotential((Atom)m.particles.get(i), (Atom)m.particles.get(j));
+				m.interactions.add(e);
+				m.interactions.add(l);
+			}
 		}
 	}
 }
