@@ -44,7 +44,7 @@ public class ImproperDihedral extends Dihedral {
 	    
 	    phi = Geometry.phi(m, n);
 		double dp = phi - phi0;
-		System.out.println(dp);
+//		System.out.println(dp);
 		double dVdphi = - kd * dp;
 	    
 //	    iprm  = m.getSquaredMagnitude();       /*  5    */

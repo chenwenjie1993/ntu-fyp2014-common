@@ -18,7 +18,7 @@ public class Bond extends BondedInteraction {
 			query.add(atom.type);
 		}
 		List<Double> params = db.getBondParams(query);
-		System.out.println(query.toString());
+//		System.out.println(query.toString());
 		b0 = params.get(0);
 		kb = params.get(1);
 	}
@@ -26,27 +26,29 @@ public class Bond extends BondedInteraction {
 	@Override
 	public void updatePotentialEnergy() {
 		Vector3D dist3D = Geometry.distance3D(atoms.get(0).getPosition(), atoms.get(1).getPosition());
+		
 		Vector3D bond = dist3D.getUnitVector();
 		bond.scale(b0);
 		
-		Vector3D energy = new Vector3D();
+//		Vector3D energy = new Vector3D();
 		Vector3D force = new Vector3D();
 		double d_x = dist3D.x - bond.x;
 		force.x = - kb * d_x;
-		energy.x = kb * d_x * d_x;
+//		energy.x = kb * d_x * d_x;
 		
 		double d_y = dist3D.y - bond.y;
 		force.y = - kb * d_y;
-		energy.y = kb * d_y * d_y;
+//		energy.y = kb * d_y * d_y;
 		
 		double d_z = dist3D.z - bond.z;
 		force.z = - kb * d_z;
-		energy.z = kb * d_z;
+//		energy.z = kb * d_z;
 		
-		atoms.get(0).potentialEnergy.add(energy);
+//		atoms.get(0).potentialEnergy.add(energy);
 		atoms.get(0).addForce(force);
-		atoms.get(1).potentialEnergy.add(energy.getNegativeVector());
+//		atoms.get(1).potentialEnergy.add(energy.getNegativeVector());
 		atoms.get(1).addForce(force.getNegativeVector());
+//		System.out.println("Force: " + force.toString());
 	}
 
 }

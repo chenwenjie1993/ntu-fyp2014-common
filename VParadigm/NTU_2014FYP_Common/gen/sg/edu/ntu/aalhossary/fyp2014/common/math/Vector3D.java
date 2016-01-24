@@ -107,7 +107,8 @@ public class Vector3D {
 	 * @return unti vector
 	 */
 	public Vector3D getUnitVector() {
-		Vector3D temp = this;
+		Vector3D temp = new Vector3D();
+		temp.add(this);
 		temp.normalize();
 		return temp;
 	}

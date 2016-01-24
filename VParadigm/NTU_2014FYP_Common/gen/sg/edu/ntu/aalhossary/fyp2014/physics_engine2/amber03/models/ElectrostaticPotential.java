@@ -19,7 +19,7 @@ public class ElectrostaticPotential extends NonBondedInteraction {
 		energy.x = f * i.charge * j.charge / epsilon_r / dist3D.x;
 		energy.y = f * i.charge * j.charge / epsilon_r / dist3D.y;
 		energy.z = f * i.charge * j.charge / epsilon_r / dist3D.z;
-		i.potentialEnergy.add(energy);
-		j.potentialEnergy.add(energy.getNegativeVector());
+//		i.potentialEnergy.add(energy);
+//		j.potentialEnergy.add(energy.getNegativeVector());
 	}
 }

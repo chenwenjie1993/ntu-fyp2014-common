@@ -38,8 +38,8 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		double temp_z = average_sigma / dist.z;
 		energy.z = 4 * average_epsilon * (Math.pow(temp_z, 12) - Math.pow(temp_z, 6));
 		// TODO: check correctness
-		i.potentialEnergy.add(energy.getNegativeVector());
-		j.potentialEnergy.add(energy);
+//		i.potentialEnergy.add(energy.getNegativeVector());
+//		j.potentialEnergy.add(energy);
 	}
 
 	public double getAverageSigma() {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import sg.edu.ntu.aalhossary.fyp2014.common.AbstractParticle;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Angle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Bond;
@@ -13,7 +13,6 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.ImproperDihe
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.LennardJonesPotential;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.ProperDihedral;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.MolecularSystem;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Particle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Interaction;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.FileReader;
 
@@ -26,7 +25,7 @@ public class TypologyBuilder {
 	}
 	
 	private void readTopology(String fileName) {
-		m.particles = new ArrayList<Particle>();
+		m.particles = new ArrayList<AbstractParticle>();
 		m.interactions = new ArrayList<Interaction>();
 		
 		List<String> fileAsList = FileReader.readFile(fileName);
@@ -152,7 +151,7 @@ public class TypologyBuilder {
 			double x = Double.parseDouble(t[4]);
 			double y = Double.parseDouble(t[5]);
 			double z = Double.parseDouble(t[6]);
-			((AbstractParticle) m.particles.get(i)).setPosition(x, y, z, -9);
+			((AbstractParticle) m.particles.get(i)).setPosition(x, y, z, 0);
 		}
 	}
 	
