@@ -28,7 +28,7 @@ public class MolecularSystem {
 			Vector3D a = particle.getAcceleration();
 			Vector3D a2 = particle.getAccumulatedAcceleration();
 			
-			Vector3D dr = particle.getPosition();
+			Vector3D dr = new Vector3D();
 			dr.x = v.x * duration + 0.5 * a.x * duration * duration;
 			dr.y = v.y * duration + 0.5 * a.y * duration * duration;
 			dr.z = v.z * duration + 0.5 * a.z * duration * duration;
