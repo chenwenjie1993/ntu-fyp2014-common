@@ -268,4 +268,5 @@ public class Vector3D {
 	public String toString() {
 		return "(" + String.valueOf(x) + "," + String.valueOf(y) + "," + String.valueOf(z) + ")";
 	}
+
 }

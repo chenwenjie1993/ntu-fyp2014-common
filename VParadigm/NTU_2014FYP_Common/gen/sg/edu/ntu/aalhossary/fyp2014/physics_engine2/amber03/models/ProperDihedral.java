@@ -8,4 +8,9 @@ public class ProperDihedral extends Dihedral {
 		super(atoms);
 	}
 
+	@Override
+	public void updatePotentialEnergy() {
+		
+	}
+
 }

@@ -12,7 +12,7 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		Arithmetic
 	};
 	public double sigma_i, sigma_j, epsilon_i, epsilon_j;
-	public static AverageType sigmaAverageType = AverageType.Geometric;
+	public static AverageType sigmaAverageType = AverageType.Arithmetic;
 
 	public LennardJonesPotential(Atom i, Atom j) {
 		super(i, j);
@@ -29,7 +29,7 @@ public class LennardJonesPotential extends NonBondedInteraction {
 	public void updatePotentialEnergy() {
 		double average_sigma = getAverageSigma();
 		double average_epsilon = getAverageEpsilon();
-		Vector3D dist = Distance.distance3D(i.getPosition(), j.getPosition());
+		Vector3D dist = Geometry.distance3D(i.getPosition(), j.getPosition());
 		Vector3D energy = new Vector3D();
 		double temp_x = average_sigma / dist.x;
 		energy.x = 4 * average_epsilon * (Math.pow(temp_x, 12) - Math.pow(temp_x, 6));
@@ -37,8 +37,8 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		energy.y = 4 * average_epsilon * (Math.pow(temp_y, 12) - Math.pow(temp_y, 6));
 		double temp_z = average_sigma / dist.z;
 		energy.z = 4 * average_epsilon * (Math.pow(temp_z, 12) - Math.pow(temp_z, 6));
-		
-		i.potentialEnergy.add(energy);
+		// TODO: check correctness
+		i.potentialEnergy.add(energy.getNegativeVector());
 		j.potentialEnergy.add(energy);
 	}
 

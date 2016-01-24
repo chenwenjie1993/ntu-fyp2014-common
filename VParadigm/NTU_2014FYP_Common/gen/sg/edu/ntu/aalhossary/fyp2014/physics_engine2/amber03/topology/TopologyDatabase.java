@@ -32,34 +32,67 @@ public class TopologyDatabase {
 	}
 	
 	public List<Double> getBondParams(List<String> atoms) {
-		return bondParams.get(atoms);
+		List<Double> t = bondParams.get(atoms);
+		if (t == null) {
+			Collections.reverse(atoms);
+			t = bondParams.get(atoms);
+		}
+		return t;
 	}
 	
 	public List<Double> getAngleParams(List<String> atoms) {
-		return angleParams.get(atoms);
+		List<Double> t = angleParams.get(atoms);
+		if (t == null) {
+			Collections.reverse(atoms);
+			t = angleParams.get(atoms);
+		}
+		return t;
 	}
 	
 	public List<Double> getImproperDihedralParams(List<String> atoms) {
-		List<String> key = new ArrayList<String>(atoms);
+		List<String> key = new ArrayList<String>(atoms);		
+		List<String> key2 = new ArrayList<String>(atoms);
+		Collections.reverse(key2);
 		List<Double> value = improperDihedralParams.get(key);
+		if (value == null) {
+			value = improperDihedralParams.get(key2);
+		}
 		if (value == null) {
 			key.set(0, "X");
 			value = improperDihedralParams.get(key);
 		}
 		if (value == null) {
+			key2.set(0, "X");
+			value = improperDihedralParams.get(key2);
+		}
+		if (value == null) {
 			key.set(1, "X");
 			value = improperDihedralParams.get(key);
+		}
+		if (value == null) {
+			key2.set(1, "X");
+			value = improperDihedralParams.get(key2);
 		}
 		return value;
 	}
 	
 	public List<Double> getProperDihedralParams(List<String> atoms) {
 		List<String> key = new ArrayList<String>(atoms);
+		List<String> key2 = new ArrayList<String>(atoms);
+		Collections.reverse(key2);
 		List<Double> value = properDihedralParams.get(key);
+		if (value == null) {
+			value = properDihedralParams.get(key2);
+		}
 		if (value == null) {
 			key.set(0, "X");
 			key.set(3, "X");
 			value = properDihedralParams.get(key);
+		}
+		if (value == null) {
+			key2.set(0, "X");
+			key2.set(3, "X");
+			value = properDihedralParams.get(key2);
 		}
 		return value;
 	}
