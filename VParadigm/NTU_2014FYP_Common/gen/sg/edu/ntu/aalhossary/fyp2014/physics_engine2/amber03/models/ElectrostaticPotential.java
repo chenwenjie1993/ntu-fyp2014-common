@@ -14,20 +14,27 @@ public class ElectrostaticPotential extends NonBondedInteraction {
 	@Override
 	public void updatePotentialEnergy() {
 		// distance from i to j
-		Vector3D dist3D = Geometry.distance3D(i.getPosition(), j.getPosition());
-		Vector3D energy = new Vector3D();
-		energy.x = f * i.charge * j.charge / epsilon_r / dist3D.x;
-		energy.y = f * i.charge * j.charge / epsilon_r / dist3D.y;
-		energy.z = f * i.charge * j.charge / epsilon_r / dist3D.z;
+		Vector3D v_ij = Geometry.vector(i.getPosition(), j.getPosition());
+		double dist = v_ij.getMagnitude();
+		
+		double energy = f * i.charge * j.charge / epsilon_r / dist;
+		Vector3D u = v_ij.getUnitVector();
+		u.scale(energy);
 		
 		Vector3D force = new Vector3D();
-		force.x = - energy.x / dist3D.x;
-		force.y = - energy.y / dist3D.y;
-		force.z = - energy.z / dist3D.z;
+		if (Math.abs(u.x) - 1e-10 > 0) {
+			force.x = - u.x / v_ij.x;
+		}
+		if (Math.abs(u.y) - 1e-10 > 0) {
+			force.y = - u.y / v_ij.y;
+		}
+		if (Math.abs(u.z) - 1e-10 > 0) {
+			force.z = - u.z / v_ij.z;
+		}
 		
 		i.addForce(force);
 		j.addForce(force.getNegativeVector());
-//		System.out.println(force);
+//		System.out.println(i.getAccumulatedForce());
 //		i.potentialEnergy.add(energy);
 //		j.potentialEnergy.add(energy.getNegativeVector());
 	}

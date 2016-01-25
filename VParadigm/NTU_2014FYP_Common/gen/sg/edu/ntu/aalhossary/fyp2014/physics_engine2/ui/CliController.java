@@ -11,6 +11,7 @@ public class CliController extends Controller {
 //			System.out.println(particle.getPosition().toString());
 //		}
 		System.out.println(m.particles.get(0).getPosition());
+		System.out.println(m.particles.get(0).getAccumulatedForce());
 	}
 
 }

@@ -9,10 +9,10 @@ import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 public class GeometryTest {
 
 	@Test
-	public void testDistance3D() {
+	public void testVector() {
 		Vector3D a = new Vector3D(0, 0, 0);
 		Vector3D b = new Vector3D(1, 2, 3);
-		assertEquals(new Vector3D(1, 2, 3), Geometry.distance3D(a, b));
+		assertEquals(new Vector3D(1, 2, 3), Geometry.vector(a, b));
 	}
 	
 	@Test

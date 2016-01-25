@@ -177,7 +177,7 @@ public class TypologyBuilder {
 		double p, m1, m2, v1, v2;
 		AbstractParticle a1, a2;
 		for (int i=0; i<m.particles.size()/2; i++) {
-			p = rand.nextDouble() + 1;
+			p = 0.01 * rand.nextDouble() + 1;
 			a1 = m.particles.get(i);
 			m1 = a1.getMass();
 			a2 = m.particles.get(m.particles.size()-i-1);

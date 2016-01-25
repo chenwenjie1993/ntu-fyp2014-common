@@ -23,8 +23,9 @@ public class LennardJonesPotential extends NonBondedInteraction {
 
 	@Override
 	public void updatePotentialEnergy() {
-		Vector3D dist = Geometry.distance3D(i.getPosition(), j.getPosition());
-		Vector3D force = new Vector3D();
+		Vector3D v_ij = Geometry.vector(i.getPosition(), j.getPosition());
+		double dist = v_ij.getMagnitude();
+		
 		double ci6 = 4 * epsilon_i * Math.pow(sigma_i, 6);
 		double ci12 = 4 * epsilon_i * Math.pow(sigma_i, 12);
 		double cj6 = 4 * epsilon_j * Math.pow(sigma_j, 6);
@@ -32,13 +33,14 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		double cij6 = Math.sqrt(ci6 * cj6);
 		double cij12 = Math.sqrt(ci12 * cj12);
 		
-		force.x = 12 * cij12 / Math.pow(dist.x, 13) - 6 * cij6 / Math.pow(dist.x, 7);
-		force.y = 12 * cij12 / Math.pow(dist.y, 13) - 6 * cij6 / Math.pow(dist.y, 7);
-		force.z = 12 * cij12 / Math.pow(dist.z, 13) - 6 * cij6 / Math.pow(dist.z, 7);
+		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 6 * cij6 / Math.pow(dist, 7);
+		
+		Vector3D force = v_ij.getUnitVector();
+		force.scale(forceMagnitude);
 		
 		i.addForce(force);
 		j.addForce(force.getNegativeVector());
-
+//		System.out.println(i.getAccumulatedForce());
 //		i.potentialEnergy.add(energy.getNegativeVector());
 //		j.potentialEnergy.add(energy);
 	}

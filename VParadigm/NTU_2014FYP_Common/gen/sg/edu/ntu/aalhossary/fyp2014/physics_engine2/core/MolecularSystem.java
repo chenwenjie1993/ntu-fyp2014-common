@@ -7,7 +7,7 @@ import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
 	public ArrayList<Interaction> interactions;
-	public double duration = 1e-3;
+	public double duration = 1e-1;
 	
 	public void updateEnergyPotential() {
 		for (Interaction interaction: interactions) {
@@ -24,7 +24,7 @@ public class MolecularSystem {
 			Vector3D v = particle.getVelocity();
 			Vector3D a = particle.getAcceleration();
 			Vector3D a2 = particle.getAccumulatedAcceleration();
-			
+						
 			Vector3D dr = new Vector3D();
 			dr.x = v.x * duration + 0.5 * a.x * duration * duration;
 			dr.y = v.y * duration + 0.5 * a.y * duration * duration;

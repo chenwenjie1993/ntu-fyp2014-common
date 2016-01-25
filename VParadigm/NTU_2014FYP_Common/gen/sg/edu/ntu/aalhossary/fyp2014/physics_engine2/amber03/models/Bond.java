@@ -25,7 +25,7 @@ public class Bond extends BondedInteraction {
 
 	@Override
 	public void updatePotentialEnergy() {
-		Vector3D dist3D = Geometry.distance3D(atoms.get(0).getPosition(), atoms.get(1).getPosition());
+		Vector3D dist3D = Geometry.vector(atoms.get(0).getPosition(), atoms.get(1).getPosition());
 		
 		Vector3D bond = dist3D.getUnitVector();
 		bond.scale(b0);

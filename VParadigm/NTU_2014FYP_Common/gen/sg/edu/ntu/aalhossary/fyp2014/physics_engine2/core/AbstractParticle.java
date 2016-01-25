@@ -10,7 +10,9 @@ public class AbstractParticle extends sg.edu.ntu.aalhossary.fyp2014.common.Abstr
 	
 	public Vector3D getAccumulatedAcceleration() {
 		Vector3D a = new Vector3D();
-		a.addScaledVector(a, inverseMass);
+		System.out.println(forceAccumulated);
+		a.addScaledVector(forceAccumulated, inverseMass);
+		System.out.println(a);
 		return a;
 	}
 }
