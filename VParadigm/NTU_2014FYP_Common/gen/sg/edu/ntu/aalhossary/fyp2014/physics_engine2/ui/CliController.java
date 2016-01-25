@@ -7,9 +7,10 @@ public class CliController extends Controller {
 
 	@Override
 	public void progress(MolecularSystem m) {
-		for (AbstractParticle particle: m.particles) {
-			System.out.println(particle.getPosition().toString());
-		}
+//		for (AbstractParticle particle: m.particles) {
+//			System.out.println(particle.getPosition().toString());
+//		}
+		System.out.println(m.particles.get(0).getPosition());
 	}
 
 }

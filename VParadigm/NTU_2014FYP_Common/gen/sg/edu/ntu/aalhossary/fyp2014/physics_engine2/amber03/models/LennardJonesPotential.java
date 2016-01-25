@@ -7,12 +7,8 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TopologyDa
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.math.*;
 
 public class LennardJonesPotential extends NonBondedInteraction {
-	public enum AverageType {
-		Geometric,
-		Arithmetic
-	};
+
 	public double sigma_i, sigma_j, epsilon_i, epsilon_j;
-	public static AverageType sigmaAverageType = AverageType.Arithmetic;
 
 	public LennardJonesPotential(Atom i, Atom j) {
 		super(i, j);
@@ -27,29 +23,25 @@ public class LennardJonesPotential extends NonBondedInteraction {
 
 	@Override
 	public void updatePotentialEnergy() {
-		double average_sigma = getAverageSigma();
-		double average_epsilon = getAverageEpsilon();
 		Vector3D dist = Geometry.distance3D(i.getPosition(), j.getPosition());
-		Vector3D energy = new Vector3D();
-		double temp_x = average_sigma / dist.x;
-		energy.x = 4 * average_epsilon * (Math.pow(temp_x, 12) - Math.pow(temp_x, 6));
-		double temp_y = average_sigma / dist.y;
-		energy.y = 4 * average_epsilon * (Math.pow(temp_y, 12) - Math.pow(temp_y, 6));
-		double temp_z = average_sigma / dist.z;
-		energy.z = 4 * average_epsilon * (Math.pow(temp_z, 12) - Math.pow(temp_z, 6));
-		// TODO: check correctness
+		Vector3D force = new Vector3D();
+		double ci6 = 4 * epsilon_i * Math.pow(sigma_i, 6);
+		double ci12 = 4 * epsilon_i * Math.pow(sigma_i, 12);
+		double cj6 = 4 * epsilon_j * Math.pow(sigma_j, 6);
+		double cj12 = 4 * epsilon_j * Math.pow(sigma_j, 12);
+		double cij6 = Math.sqrt(ci6 * cj6);
+		double cij12 = Math.sqrt(ci12 * cj12);
+		
+		force.x = 12 * cij12 / Math.pow(dist.x, 13) - 6 * cij6 / Math.pow(dist.x, 7);
+		force.y = 12 * cij12 / Math.pow(dist.y, 13) - 6 * cij6 / Math.pow(dist.y, 7);
+		force.z = 12 * cij12 / Math.pow(dist.z, 13) - 6 * cij6 / Math.pow(dist.z, 7);
+		
+		i.addForce(force);
+		j.addForce(force.getNegativeVector());
+
 //		i.potentialEnergy.add(energy.getNegativeVector());
 //		j.potentialEnergy.add(energy);
 	}
 
-	public double getAverageSigma() {
-		if (sigmaAverageType == AverageType.Geometric) {
-			return Math.sqrt(sigma_i * sigma_j);
-		}
-		return 0.5 * (sigma_i + sigma_j);
-	}
-	
-	public double getAverageEpsilon() {
-		return Math.sqrt(epsilon_i * epsilon_j);
-	}
+
 }

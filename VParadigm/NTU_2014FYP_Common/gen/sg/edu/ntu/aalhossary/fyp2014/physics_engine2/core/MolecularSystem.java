@@ -7,21 +7,18 @@ import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
 	public ArrayList<Interaction> interactions;
-	public double duration = 1e-2;
+	public double duration = 1e-3;
 	
 	public void updateEnergyPotential() {
 		for (Interaction interaction: interactions) {
    			interaction.updatePotentialEnergy();
    		}
-//		for (AbstractParticle particle: particles) {
-//			Vector3D f = particle.getAccumulatedForce();
-//			f.scale(particle.getInverseMass());
-//			System.out.println(f.toString());
-//			particle.setAcceleration(f.x, f.y, f.z);
-//		}
    	}
 	
 	public void updatePosition() {
+		/**
+		 * Velocity Verlet Algorithm
+		 */
 		for (AbstractParticle particle: particles) {
 			Vector3D r = particle.getPosition();
 			Vector3D v = particle.getVelocity();
@@ -43,8 +40,8 @@ public class MolecularSystem {
 			particle.setAcceleration(a2.x, a2.y, a2.z);
 			particle.clearAccumulator();
 			
-			System.out.println("Positon: " + particle.getPosition());
-			System.out.println("Velocity: " + particle.getVelocity());
+//			System.out.println("Positon: " + particle.getPosition());
+//			System.out.println("Velocity: " + particle.getVelocity());
 		}
 	}
 }

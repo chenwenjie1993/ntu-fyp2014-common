@@ -3,6 +3,7 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.AbstractParticle;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Angle;
@@ -18,9 +19,13 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.FileReader;
 
 public class TypologyBuilder {
 	MolecularSystem m = new MolecularSystem();
+	final double T = 288;
+	final double K = 8.314510e-3;
+	
 	public MolecularSystem build(String dir) {
 		readTopology(dir + "topol.top");
 		readPosition(dir + "conf.gro");
+		initVelocity();
 		return m;
 	}
 	
@@ -164,6 +169,23 @@ public class TypologyBuilder {
 				m.interactions.add(e);
 				m.interactions.add(l);
 			}
+		}
+	}
+	
+	public void initVelocity() {
+		Random rand = new Random();
+		double p, m1, m2, v1, v2;
+		AbstractParticle a1, a2;
+		for (int i=0; i<m.particles.size()/2; i++) {
+			p = rand.nextDouble() + 1;
+			a1 = m.particles.get(i);
+			m1 = a1.getMass();
+			a2 = m.particles.get(m.particles.size()-i-1);
+			m2 = a2.getMass();
+			v1 = Math.sqrt(2 * K * T * Math.log(p) / m1 / Math.sqrt(m1 / (2 * Math.PI * K * T)));
+			v2 = Math.sqrt(2 * K * T * Math.log(p) / m2 / Math.sqrt(m2 / (2 * Math.PI * K * T)));
+			a1.setVelocity(v1, v1, v1);
+			a2.setVelocity(-v2, -v2, -v2);
 		}
 	}
 }
