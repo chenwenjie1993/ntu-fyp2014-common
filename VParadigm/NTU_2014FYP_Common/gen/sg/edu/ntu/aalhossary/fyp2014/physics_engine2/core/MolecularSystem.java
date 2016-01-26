@@ -1,13 +1,15 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
 	public ArrayList<Interaction> interactions;
-	public double duration = 1e-1;
+	public double duration = 1e-6;
+	private static final Logger log = Logger.getLogger("main");
 	
 	public void updateEnergyPotential() {
 		for (Interaction interaction: interactions) {
@@ -15,7 +17,7 @@ public class MolecularSystem {
    		}
    	}
 	
-	public void updatePosition() {
+	public void integrate() {
 		/**
 		 * Velocity Verlet Algorithm
 		 */
@@ -24,6 +26,7 @@ public class MolecularSystem {
 			Vector3D v = particle.getVelocity();
 			Vector3D a = particle.getAcceleration();
 			Vector3D a2 = particle.getAccumulatedAcceleration();
+			log.info("[ACC]" + a2);
 						
 			Vector3D dr = new Vector3D();
 			dr.x = v.x * duration + 0.5 * a.x * duration * duration;

@@ -1,7 +1,6 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 

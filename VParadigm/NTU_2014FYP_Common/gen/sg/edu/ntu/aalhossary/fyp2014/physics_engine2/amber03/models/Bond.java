@@ -2,6 +2,7 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TopologyDatabase;
@@ -9,6 +10,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.math.Geometry;
 
 public class Bond extends BondedInteraction {
 	public double b0, kb;
+	private static final Logger log = Logger.getLogger("main");
 	
 	public Bond(List<Atom> atoms) {
 		super(atoms);
@@ -49,6 +51,7 @@ public class Bond extends BondedInteraction {
 //		atoms.get(1).potentialEnergy.add(energy.getNegativeVector());
 		atoms.get(1).addForce(force.getNegativeVector());
 //		System.out.println("Force: " + force.toString());
+//		log.info("[B] " + "(" + atoms.get(0).getGUID() + "," + atoms.get(1).getGUID() + ")" + force.toString());
 	}
 
 }

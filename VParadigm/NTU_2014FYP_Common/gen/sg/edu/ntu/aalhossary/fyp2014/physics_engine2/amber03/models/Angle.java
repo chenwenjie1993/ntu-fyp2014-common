@@ -40,17 +40,17 @@ public class Angle extends BondedInteraction {
 		
 		double dVdt = - cth * (theta - th0);
 		
-		Vector3D energy = new Vector3D();
+//		Vector3D energy = new Vector3D();
 		Vector3D force_i = new Vector3D();
 		Vector3D force_j = new Vector3D();
 		Vector3D force_k = new Vector3D();
 		
-		int  m;
+//		int  m;
         double st, sth;
         double cik, cii, ckk;
         double nrkj2, nrij2;
         double nrkj_1, nrij_1;
-        double f_i, f_j, f_k;
+//        double f_i, f_j, f_k;
 		
         st  = dVdt / Math.sqrt(1 - cosThetaSqr);
         sth = st * cosThetaSqr;
@@ -75,9 +75,9 @@ public class Angle extends BondedInteraction {
         
         force_j = force_i.getNegativeVector().addAndReturn(force_k.getNegativeVector());
         
-        atoms.get(0).addForce(force_i);
-        atoms.get(1).addForce(force_j);
-        atoms.get(2).addForce(force_k);
+//        atoms.get(0).addForce(force_i);
+//        atoms.get(1).addForce(force_j);
+//        atoms.get(2).addForce(force_k);
         
 //        for (m = 0; m < DIM; m++)
 //        {           

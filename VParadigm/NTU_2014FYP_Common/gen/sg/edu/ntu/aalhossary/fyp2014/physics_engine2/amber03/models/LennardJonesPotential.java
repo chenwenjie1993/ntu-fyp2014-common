@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TopologyDatabase;
@@ -9,6 +10,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.math.*;
 public class LennardJonesPotential extends NonBondedInteraction {
 
 	public double sigma_i, sigma_j, epsilon_i, epsilon_j;
+	private static final Logger log = Logger.getLogger("main");
 
 	public LennardJonesPotential(Atom i, Atom j) {
 		super(i, j);
@@ -33,6 +35,9 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		double cij6 = Math.sqrt(ci6 * cj6);
 		double cij12 = Math.sqrt(ci12 * cj12);
 		
+		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
+		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + Math.sqrt(sigma_i * sigma_j));
+		
 		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 6 * cij6 / Math.pow(dist, 7);
 		
 		Vector3D force = v_ij.getUnitVector();
@@ -40,6 +45,8 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		
 		i.addForce(force);
 		j.addForce(force.getNegativeVector());
+		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
+		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + force.toString());
 //		System.out.println(i.getAccumulatedForce());
 //		i.potentialEnergy.add(energy.getNegativeVector());
 //		j.potentialEnergy.add(energy);

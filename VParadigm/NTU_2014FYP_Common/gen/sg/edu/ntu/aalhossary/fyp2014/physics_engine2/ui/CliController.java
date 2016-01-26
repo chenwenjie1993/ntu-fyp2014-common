@@ -10,8 +10,7 @@ public class CliController extends Controller {
 //		for (AbstractParticle particle: m.particles) {
 //			System.out.println(particle.getPosition().toString());
 //		}
-		System.out.println(m.particles.get(0).getPosition());
-		System.out.println(m.particles.get(0).getAccumulatedForce());
+//		System.out.println(m.particles.get(0).getPosition());
+		System.out.println(m.particles.get(0).getAcceleration());
 	}
-
 }
