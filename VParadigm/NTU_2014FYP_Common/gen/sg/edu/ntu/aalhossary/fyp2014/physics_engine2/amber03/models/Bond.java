@@ -51,7 +51,7 @@ public class Bond extends BondedInteraction {
 //		atoms.get(1).potentialEnergy.add(energy.getNegativeVector());
 		atoms.get(1).addForce(force.getNegativeVector());
 //		System.out.println("Force: " + force.toString());
-//		log.info("[B] " + "(" + atoms.get(0).getGUID() + "," + atoms.get(1).getGUID() + ")" + force.toString());
+		log.info("[B] " + "(" + atoms.get(0).getGUID() + "," + atoms.get(1).getGUID() + ")" + force.toString());
 	}
 
 }

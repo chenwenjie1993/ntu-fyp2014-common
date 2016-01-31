@@ -10,7 +10,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.ui.*;
 
 public class Application {
 	private static boolean enableUI = false;
-	private static int totalFrame = 20;
+	private static int totalFrame = 40;
 	private static final Logger log = Logger.getLogger("main");
 
 	public static void main(String[] args) {
