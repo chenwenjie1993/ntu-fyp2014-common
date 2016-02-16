@@ -37,8 +37,8 @@ public class ElectrostaticPotential extends NonBondedInteraction {
 //			force.z = - u.z / v_ij.z;
 //		}
 		
-		i.addForce(force);
-		j.addForce(force.getNegativeVector());
+//		i.addForce(force);
+//		j.addForce(force.getNegativeVector());
 		log.info("[E]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
 		log.info("[E]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + force.toString());
 //		System.out.println(i.getAccumulatedForce());

@@ -1,0 +1,175 @@
+;
+;	File 'topol.top' was generated
+;	By user: chenwenjie (501)
+;	On host: Wenjies-MacBook-Air.local
+;	At date: Mon Dec 28 09:56:06 2015
+
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	                 :-) GROMACS - gmx pdb2gmx, VERSION 5.1.1 (-:
+;
+;	Executable:   /usr/local/gromacs/bin/gmx
+;	Data prefix:  /usr/local/gromacs
+;	Command line:
+;	  gmx pdb2gmx -f two.pdb
+;	Force field was read from the standard GROMACS share directory.
+;
+
+; Include forcefield parameters
+#include "amber03.ff/forcefield.itp"
+
+[ moleculetype ]
+; Name            nrexcl
+Protein_chain_A     3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+; residue   1 VAL rtp NVAL q +1.0
+     1         N3      1    VAL      N      1   -0.73745      14.01   ; qtot -0.7375
+     5         CT      1    VAL     CA      5  -0.082837      12.01   ; qtot 0.6672
+     7         CT      1    VAL     CB      7   0.240887      12.01   ; qtot 0.9251
+
+[ bonds ]
+;  ai    aj funct            c0            c1            c2            c3
+    1     2     1
+    2     3     1
+
+
+[ pairs ]
+;  ai    aj funct            c0            c1            c2            c3
+    1     8     1
+    1     9     1
+    1    13     1
+    1    18     1
+    1    19     1
+    2     6     1
+    2     7     1
+    2    17     1
+    3     6     1
+    3     7     1
+    3    17     1
+    4     6     1
+    4     7     1
+    4    17     1
+    5    10     1
+    5    11     1
+    5    12     1
+    5    14     1
+    5    15     1
+    5    16     1
+    5    20     1
+    5    21     1
+    6     8     1
+    6     9     1
+    6    13     1
+    6    18     1
+    6    19     1
+    7    18     1
+    7    19     1
+    8    10     1
+    8    11     1
+    8    12     1
+    8    14     1
+    8    15     1
+    8    16     1
+    8    17     1
+    9    14     1
+    9    15     1
+    9    16     1
+    9    17     1
+   10    13     1
+   11    13     1
+   12    13     1
+   13    17     1
+   17    22     1
+   17    23     1
+   17    36     1
+   18    20     1
+   18    21     1
+   19    24     1
+   19    25     1
+   19    26     1
+   19    37     1
+   19    38     1
+   20    22     1
+   20    23     1
+   20    36     1
+   21    27     1
+   21    28     1
+   21    32     1
+   22    24     1
+   22    25     1
+   22    26     1
+   22    37     1
+   22    38     1
+   23    29     1
+   23    30     1
+   23    31     1
+   23    33     1
+   23    34     1
+   23    35     1
+   23    37     1
+   23    38     1
+   24    27     1
+   24    28     1
+   24    32     1
+   24    36     1
+   25    27     1
+   25    28     1
+   25    32     1
+   25    36     1
+   26    36     1
+   27    29     1
+   27    30     1
+   27    31     1
+   27    33     1
+   27    34     1
+   27    35     1
+   28    33     1
+   28    34     1
+   28    35     1
+   29    32     1
+   30    32     1
+   31    32     1
+
+[ angles ]
+;  ai    aj    ak funct            c0            c1            c2            c3
+    1     2     3     1
+
+
+[ dihedrals ]
+;  ai    aj    ak    al funct            c0            c1            c2            c3            c4            c5
+
+
+
+[ dihedrals ]
+;  ai    aj    ak    al funct            c0            c1            c2            c3
+
+
+; Include Position restraint file
+#ifdef POSRES
+#include "posre.itp"
+#endif
+
+; Include water topology
+#include "amber03.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber03.ff/ions.itp"
+
+[ system ]
+; Name
+HEMOGLOBIN (DEOXY) (ALPHA CHAIN);; HEMOGLOBIN (DEOXY) (BETA CHAIN);
+
+[ molecules ]
+; Compound        #mols
+Protein_chain_A     1

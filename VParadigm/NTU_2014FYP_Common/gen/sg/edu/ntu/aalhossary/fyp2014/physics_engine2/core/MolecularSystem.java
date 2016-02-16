@@ -8,7 +8,7 @@ import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
 	public ArrayList<Interaction> interactions;
-	public double duration = 1e-5;
+	public double duration = 0.25e-3;
 	private static final Logger log = Logger.getLogger("main");
 	
 	public void updateEnergyPotential() {

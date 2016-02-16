@@ -68,10 +68,10 @@ public abstract class Dihedral extends BondedInteraction {
 	        f_k.add(f_l);
 	        f_k.add(svec);
 	        
-	        atoms.get(0).addForce(f_i);
-	        atoms.get(1).addForce(f_j.getNegativeVector());
-	        atoms.get(2).addForce(f_k.getNegativeVector());
-	        atoms.get(3).addForce(f_l);
+//	        atoms.get(0).addForce(f_i);
+//	        atoms.get(1).addForce(f_j.getNegativeVector());
+//	        atoms.get(2).addForce(f_k.getNegativeVector());
+//	        atoms.get(3).addForce(f_l);
 	    }
 	}
 }

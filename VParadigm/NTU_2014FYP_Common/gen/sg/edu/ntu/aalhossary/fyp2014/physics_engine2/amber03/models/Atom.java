@@ -11,4 +11,17 @@ public class Atom extends sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Abs
    		this.setMass(mass);
    	}
 	
+	public String getType() {
+		return type;
+	}
+	
+	public double getCharge() {
+		return charge;
+	}
+	
+	@Override
+	public String toString() {
+		return type + this.getPosition();
+	}
+	
 }

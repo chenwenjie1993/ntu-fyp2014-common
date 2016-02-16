@@ -13,6 +13,13 @@ public class GuiController extends Controller implements EventListener {
 	@Override
 	public void progress(MolecularSystem m) {
 		// TODO: update UI
+		System.out.println(m.particles.toString());
+		try {
+			v.getMediator().display(m.particles);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

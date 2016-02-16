@@ -24,7 +24,7 @@ public class TypologyBuilder {
 	public MolecularSystem build(String dir) {
 		readTopology(dir + "topol.top");
 		readPosition(dir + "conf.gro");
-		initVelocity();
+//		initVelocity();
 		return m;
 	}
 	

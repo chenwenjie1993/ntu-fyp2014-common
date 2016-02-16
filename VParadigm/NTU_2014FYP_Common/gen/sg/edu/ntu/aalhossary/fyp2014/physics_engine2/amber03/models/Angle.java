@@ -75,9 +75,9 @@ public class Angle extends BondedInteraction {
         
         force_j = force_i.getNegativeVector().addAndReturn(force_k.getNegativeVector());
         
-//        atoms.get(0).addForce(force_i);
-//        atoms.get(1).addForce(force_j);
-//        atoms.get(2).addForce(force_k);
+//        atoms.get(0).addForce(force_i.getNegativeVector());
+//        atoms.get(1).addForce(force_j.getNegativeVector());
+//        atoms.get(2).addForce(force_k.getNegativeVector());
         
 //        for (m = 0; m < DIM; m++)
 //        {           

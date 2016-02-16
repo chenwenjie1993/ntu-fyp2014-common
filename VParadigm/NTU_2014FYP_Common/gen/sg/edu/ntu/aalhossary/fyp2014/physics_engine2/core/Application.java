@@ -10,13 +10,13 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.ui.*;
 
 public class Application {
 	private static boolean enableUI = false;
-	private static int totalFrame = 40;
+	private static int totalFrame = 400;
 	private static final Logger log = Logger.getLogger("main");
 
 	public static void main(String[] args) {
 	    FileHandler fh;  
 
-	    try {  
+	    try {
 	        fh = new FileHandler("Log.txt");  
 	        log.addHandler(fh);
 	        SimpleFormatter formatter = new SimpleFormatter();  
@@ -30,7 +30,7 @@ public class Application {
 		
 		
 		log.info("Application starts");
-		String dir = "res/test/amber03/";
+		String dir = "res/test/amber03_two_residue/";
    		TypologyBuilder tb = new TypologyBuilder();
    		MolecularSystem m = tb.build(dir);
    		
@@ -39,12 +39,7 @@ public class Application {
    		int frame = 0;
    		while (frame < totalFrame) {
    			log.info("Frame " + frame);
-   			if (controller.status == "Restart") {
-   				frame = 0;
-   				log.info("Restarting...");
-   				controller.status = "Running";
-   				break;
-   			}
+   			
    			m.updateEnergyPotential();
    			m.integrate();
    			controller.progress(m);

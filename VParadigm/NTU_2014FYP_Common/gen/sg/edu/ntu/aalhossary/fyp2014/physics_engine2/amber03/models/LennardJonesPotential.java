@@ -36,16 +36,16 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		double cij12 = Math.sqrt(ci12 * cj12);
 		
 		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
-		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + Math.sqrt(sigma_i * sigma_j));
+		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
 		
 		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 6 * cij6 / Math.pow(dist, 7);
 		
 		Vector3D force = v_ij.getUnitVector();
 		force.scale(forceMagnitude);
 		
-		i.addForce(force);
-		j.addForce(force.getNegativeVector());
-		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
+//		i.addForce(force);
+//		j.addForce(force.getNegativeVector());
+//		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
 		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + force.toString());
 //		System.out.println(i.getAccumulatedForce());
 //		i.potentialEnergy.add(energy.getNegativeVector());
