@@ -167,91 +167,12 @@ public class UpdateRegistry extends sg.edu.ntu.aalhossary.fyp2014.moleculeeditor
 	}
 
 	public void atomMoved() {
-		for(Atom atm : modelList.get(viewer.getDisplayModelIndex()).getAtomHash().values()){
-			for(int i=0; i<viewer.ms.at.length;i++){
-				if(atm.getAtomSeqNum()==(i+1)){
-					double[] coords = {viewer.ms.at[i].x,viewer.ms.at[i].y,viewer.ms.at[i].z};
-					atm.setCoordinates(coords);
-				}
-			}
-		}
 	}
 	
 	// set the model's bonds using Jmol display.
 	public void setModelBonds() {
-//		int currModel=0, prevModel=0;
-//		Atom atom1, atom2;
-//		Bond bond; 
-//		String index1, index2;
-//		ArrayList<Bond> ownbonds = new ArrayList<Bond>();
-//		org.jmol.modelset.Bond[] bonds = viewer.ms.bo;
-//		for(int i=0;i<bonds.length;i++){
-//			prevModel = currModel;
-//			currModel = bonds[i].getAtom1().getModelNumber();
-//			Model model = modelList.get(currModel-1);
-//			if(currModel!=prevModel && i!=0){
-//				modelList.get(prevModel-1).setBonds(ownbonds);
-//				ownbonds.clear();
-//			}
-//			index1 = model.getModelName()+bonds[i].getAtom1().atomSite;
-//			index2 = model.getModelName()+bonds[i].getAtom2().atomSite;
-//			atom1 = model.getAtomHash().get(index1);
-//			atom2 = model.getAtomHash().get(index2);
-//			if(atom1==null || atom2==null)
-//				continue;
-//			bond = new Bond(atom1, atom2);
-//			ownbonds.add(bond);
-//			atom1.setBond(bond);
-//			atom2.setBond(bond);
-//			if(i==bonds.length-1){
-//				modelList.get(currModel-1).setBonds(ownbonds);
-//			}
-//		}
 	}
-	
-	// every mouse state and detection called here.
-	// to cater for future self-created display.
-//	public void setMouseState(int x, int y, int mode) {
-//		GestureManager.setMouseState(x,y,mode, mouseState);
-//		if(viewer.getInMotion(false)){
-//			
-//			/*String mouseGesture = "";
-//			mouseGesture += "Mouse Mode: " + mouseState.getMouseMode() + "\n";
-//			mouseGesture += "Mouse Start Position: X-Pos=" + mouseState.getStartPosX() + " Y-Pos=" + mouseState.getStartPosY() + "\n";
-//			mouseGesture += "Mouse End Position: X-Pos=" + mouseState.getEndPosX() + " Y-Pos=" + mouseState.getEndPosY() + "\n";*/
-//			//System.out.println(mouseGesture);
-//			mouseState.clearState();
-//		}
-//		if(minimizeMode && mode==16640){	// when mouse drag stopped.
-//			System.out.println("Entering minimizing stage...");
-//			minimizeModel();
-//		}
-//	}
-	
-	/*********************************************/
-	/*** Methods that notify viewer on changes ***/
-	/*********************************************/
-	
-	// Method to load file from BioJava structure to Jmol Display
-//	public void loadFileToJmol(Structure struc) {
-//		createUserModel(struc);
-//		String pdb = DataManager.modelToPDB(modelList);
-//		viewer.openStringInline(pdb);
-//		toolPanel.setModelText(modelList);
-//		logger.log(Level.INFO, "After load File: ");
-//	}
-	
-	/*********************************************************/
-	/*** Methods that notify when there's changes in model ***/
-	/*********************************************************/
-	
-	// static method to display model from other platform
-//	public static void displayModels(List<Model> models, JmolViewer jmolViewer){
-//		// convert model to pdb string
-//		String pdb = DataManager.modelToPDB(models);
-//		// pdb to viewer
-//		jmolViewer.openStringInline(pdb);
-//	}
+
 	
 	private double capCoord (double coord){
 		if(coord < 0)
@@ -261,96 +182,50 @@ public class UpdateRegistry extends sg.edu.ntu.aalhossary.fyp2014.moleculeeditor
 	}
 	
 	public void display(ArrayList<AbstractParticle> list){
-		String pdb = 	"ATOM      1  N   VAL A   1       6.204  16.869   4.854  1.00 49.05           N\n" +
-						"ATOM      2  CA  VAL A   1       6.913  17.759   4.607  1.00 43.14           C\n" +
-						"ATOM      3  C   VAL A   1       8.504  17.378   4.797  1.00 24.80           C\n" +
-						"ATOM      4  O   VAL A   1       8.805  17.011   5.943  1.00 37.68           O\n" +
-						"ATOM      5  CB  VAL A   1       6.369  19.044   5.810  1.00 72.12           C\n" +
-						"ATOM      6  CG1 VAL A   1       7.009  20.127   5.418  1.00 61.79           C\n" +
-						"ATOM      7  CG2 VAL A   1       5.246  18.533   5.681  1.00 80.12           C\n" +
-						"ATOM      8  N   LEU A   2       9.096  18.040   3.857  1.00 26.44           N\n" +
-						"ATOM      9  CA  LEU A   2      10.600  17.889   4.283  1.00 26.32           C\n" +
-						"ATOM     10  C   LEU A   2      11.265  19.184   5.297  1.00 32.96           C\n" +
-						"ATOM     11  O   LEU A   2      10.813  20.177   4.647  1.00 31.90           O\n" +
-						"ATOM     12  CB  LEU A   2      11.099  18.007   2.815  1.00 29.23           C\n" +
-						"ATOM     13  CG  LEU A   2      11.322  16.956   1.934  1.00 37.71           C\n" +
-						"ATOM     14  CD1 LEU A   2      11.468  15.596   2.337  1.00 39.10           C\n" +
-						"ATOM     15  CD2 LEU A   2      11.423  17.268   0.300  1.00 37.47           C\n" +
-						"END";
-		for ( AbstractParticle a: list) {
-			sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom atom = (sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom) a;
-			System.out.println(atom.getType());
-		}
-//		String pdb = "MODEL       1\n";
-//		for(int i=0; i<list.size();i++){
-//			//String index = String.format("%4d", list.get(i).getGUID());
-//			String index = String.format("%4d", i);
-//			if(list.get(i) instanceof sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom){
-//				double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
-//				Vector3D position = list.get(i).getPosition();
-//				double x = capCoord(position.x*scale);
-//				double y = capCoord(position.y*scale);
-//				double z = capCoord(position.z*scale);
-//				String coords= String.format("%8.3f%8.3f%8.3f", x,y,z);
-//				String elementSymbol = String.format("%-4s",((sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.Atom)list.get(i)).getType().toUpperCase());
-//						
-//				pdb += "HETATM "+index+" "+elementSymbol+"         1    "+coords+"  1.00  0.00\n";
-//				
-//			}
-//			else if (list.get(i) instanceof Molecule){
-//				Molecule m = (Molecule)list.get(i);
-//				if(World.simulationLvlAtomic == true) {
-//					for(Atom a: m.getChains().get(0).atomSeq){
-//						double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
-//						Vector3D position = a.getPosition();
-//						double x = capCoord(position.x*scale);
-//						double y = capCoord(position.y*scale);
-//						double z = capCoord(position.z*scale);
-//						String coords= String.format("%8.3f%8.3f%8.3f",x,y,z);
-//						String elementSymbol = String.format("%-4s",a.getElementSymbol().toUpperCase());
-//								
-//						pdb += "HETATM "+index+" "+elementSymbol+"         1    "+coords+"  1.00  0.00\n";
-//						
-//					}
-//				
-//					/*
-//					pdb += "HETATM    1 NA   TST A   1       5.000   5.000   5.000  1.00  0.00\n"+
-//						   "HETATM    2 CL   TST A   1       6.400   6.400   6.400  1.00  0.00\n"+
-//						   "CONECT    1      2\n" +
-//						   "CONECT    2      1\n";
-//						   */
-//				}
-//				else {
-//					double scale = Math.pow(10, 10 + list.get(i).getPosition().metric);
-//					Vector3D position = list.get(i).getPosition();
-//					double x = capCoord(position.x*scale);
-//					double y = capCoord(position.y*scale);
-//					double z = capCoord(position.z*scale);
-//					String coords= String.format("%8.3f%8.3f%8.3f",x,y,z);
-//					pdb += "HETATM    1 CS   TST A   1    "+coords+"  1.00  0.00\n";
-//				}
-//			}
-//		}
-//		pdb += "ENDMDL";
-//		
-//		System.out.println(pdb);
+
+//		String gro = 	"HEMOGLOBIN (DEOXY) (ALPHA CHAIN);; HEMOGLOBIN (DEOXY) (BETA CHAIN);" +
+//						"   38" +
+//						"    1VAL      N    1   0.620   1.687   0.485" +
+//						"    1VAL     H1    2   0.641   1.610   0.425" +
+//						"    1VAL     H2    3   0.634   1.659   0.581" +
+//						"    1VAL     H3    4   0.525   1.715   0.472" +
+//						"    1VAL     CA    5   0.691   1.776   0.461" +
+//						"    1VAL     HA    6   0.671   1.775   0.363" +
+//						"    1VAL     CB    7   0.637   1.904   0.581" +
+//						"    1VAL     HB    8   0.634   1.943   0.673" +
+//						"    1VAL    CG1    9   0.701   2.013   0.542" +
+//						"    1VAL   HG11   10   0.677   2.089   0.602" +
+//						"    1VAL   HG12   11   0.799   1.996   0.546" +
+//						"    1VAL   HG13   12   0.674   2.035   0.448" +
+//						"    1VAL    CG2   13   0.525   1.853   0.568" +
+//						"    1VAL   HG21   14   0.459   1.902   0.626" +
+//						"    1VAL   HG22   15   0.496   1.859   0.472" +
+//						"    1VAL   HG23   16   0.528   1.757   0.596" +
+//						"    1VAL      C   17   0.850   1.738   0.480" +
+//						"    1VAL      O   18   0.881   1.701   0.594" +
+//						"    2LEU      N   19   0.910   1.804   0.386" +
+//						"    2LEU      H   20   0.870   1.852   0.307" +
+//						"    2LEU     CA   21   1.060   1.789   0.428" +
+//						"    2LEU     HA   22   1.079   1.703   0.476" +
+//						"    2LEU     CB   23   1.110   1.801   0.282" +
+//						"    2LEU    HB1   24   1.199   1.846   0.282" +
+//						"    2LEU    HB2   25   1.045   1.856   0.230" +
+//						"    2LEU     CG   26   1.132   1.696   0.193" +
+//						"    2LEU     HG   27   1.125   1.695   0.293" +
+//						"    2LEU    CD1   28   1.147   1.560   0.234" +
+//						"    2LEU   HD11   29   1.162   1.502   0.153" +
+//						"    2LEU   HD12   30   1.225   1.551   0.296" +
+//						"    2LEU   HD13   31   1.064   1.530   0.281" +
+//						"    2LEU    CD2   32   1.142   1.727   0.030" +
+//						"    2LEU   HD21   33   1.158   1.641  -0.019" +
+//						"    2LEU   HD22   34   1.057   1.768  -0.001" +
+//						"    2LEU   HD23   35   1.218   1.790   0.013" +
+//						"    2LEU      C   36   1.127   1.918   0.530" +
+//						"    2LEU    OC1   37   1.182   1.914   0.613" +
+//						"    2LEU    OC2   38   1.081   2.018   0.465" +
+//						"   6.31500   8.35900   5.30868   0.00000   0.00000   0.00000   0.00000  -0.87313   0.00000";
 		
-//		if(World.displayUI)
-			viewer.openStringInline(pdb);
-		
-//		try {
-//			BufferedWriter writer = new BufferedWriter(new FileWriter("output.pdb"));
-//			writer.write(pdb);
-//			writer.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			World.simulationStatus = "restart";
-//		}
-		
-//		if(World.displayUI) {
-//			createUserModel(DataManager.readFile("output.pdb"));
-//		}
+
 	}
 		
 	public void notifyUpdated(AbstractParticle[] particles){
@@ -376,120 +251,13 @@ public class UpdateRegistry extends sg.edu.ntu.aalhossary.fyp2014.moleculeeditor
 //		}
 	}
 
-	// delete Atoms from both modelList and viewer.
-	public void deleteAtoms(int currentModelIndex, String key, int atomPosition) {
-		modelList.get(currentModelIndex).removeAtom(key);
-		//modelList.get(currentModelIndex).getAtomHash().remove(key);
-		viewer.evalString("delete atomno=" + atomPosition + " && modelindex=" + viewer.getDisplayModelIndex());
-		toolPanel.setModelText(modelList);
-	}
-
-	// copy atoms into new Atoms object from selected atoms
-	public void copyAtoms(int currentModelIndex, String key) {
-		if(savedAtoms==null){
-			savedAtoms = new ArrayList<Atom>();
-		}
-		try {
-			Atom newAtom = (Atom)modelList.get(currentModelIndex).getAtomHash().get(key).clone();
-			savedAtoms.add(newAtom);
-		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		toolPanel.setModelText(modelList);
-	}
-
-	// paste copied/cut atoms, not applicable when copied atoms are paste to same model.
-//	public void pasteSavedAtoms(int modelIndex) {
-//		if(savedAtoms==null)
-//			JOptionPane.showMessageDialog(jmolPanel,"You have not copied or cut any atoms to paste!",
-//				    "Warning", JOptionPane.WARNING_MESSAGE);
-//		else{
-//			boolean error = false;
-//			for(int i=0;i<savedAtoms.size();i++){
-//				for(Atom atm : modelList.get(modelIndex).getAtomHash().values()){
-//					if(savedAtoms.get(i).getCoordinates()[0]==atm.getCoordinates()[0] && 
-//							savedAtoms.get(i).getCoordinates()[1]==atm.getCoordinates()[1] &&
-//							savedAtoms.get(i).getCoordinates()[2]==atm.getCoordinates()[2] ){
-//						error = true;
-//						break;
-//					}
-//				}
-//				if(error){
-//					JOptionPane.showMessageDialog(jmolPanel,"You are trying to paste atoms in location occupied!",
-//						    "Warning", JOptionPane.WARNING_MESSAGE);
-//					break;
-//				}
-//				else{
-//					addAtom(modelIndex, savedAtoms.get(i));	
-//				}
-//			}
-//			String pdb =DataManager.modelToPDB(modelList);
-//			System.out.println(pdb);
-//			
-//			viewer.openStringInline(pdb);
-//			viewer.setCurrentModelIndex(modelIndex);
-//		}
-//		toolPanel.setModelText(modelList);
-//	}
-
-	// add new atom object to modelList. 
-	public void addAtom(int modelIndex, Atom atom) {
-		modelList.get(modelIndex).setMolecule(atom);
-	}
-
-	public void setMinimizeMode(boolean isMinimize) {
-		this.minimizeMode = isMinimize;
-	}
-	
-	/**************************************************/
-	/*** Get methods to be called by external class ***/
-	/**************************************************/
-	
-	// get the list of selected atoms already generated
-	public ArrayList<Atom> getSelectedAtoms() {
-		return selectedAtoms;
-	}
-	
-	// from biojava structure, convert to own user model
-	public void createUserModel(Structure struc) {
-		// read default MMFFtypes for atoms
+	public void updateViewerCoord(List<AbstractParticle> particles) {
 		
-		if(modelList==null)
-			modelList = new ArrayList<Model>();
-		Model model=null;
-		for(int i=0;i<struc.nrModels();i++){
-			// for each model, create and add to model list
-			model = new Model();
-			model.setModelName("Model"+(i+1));
-			model.setMolecule(struc.getModel(i));	// set the model
-			modelList.add(model);
-		}
-	}
-	
-	// get the list of user model
-	public List<Model> getModelList() {
-		return modelList;
+		for(AbstractParticle p: particles){
+			Vector3D position = p.getPosition();
+	    	viewer.ms.setAtomCoord((p.getGUID()-1), (float)position.x*10, (float)position.y*10, (float)position.z*10);
+	    }
+		viewer.refresh(3, "Simulation");
 	}
 
-	// define minimizer, for minimizing molecule.
-//	public void minimizeModel() {
-//		//viewer.ms.setAtomCoord(0, 0.0f, 0.0f, 0.0f);
-//		Minimizer minimizer = new Minimizer(this);
-//		minimizer.setupMinimizing(modelList.get(viewer.getDisplayModelIndex()));
-//		minimizer.startMinimizing();
-//		System.out.println(DataManager.modelToPDB(modelList));
-//		minimizeMode = false;
-//	}
-		
-	public void updateViewerCoord() {
-		for(Atom atm: modelList.get(viewer.getDisplayModelIndex()).getAtomHash().values()){
-	    	  viewer.ms.setAtomCoord((atm.getAtomSeqNum()-1), atm.getCoordinates()[0], atm.getCoordinates()[1], atm.getCoordinates()[2]);
-	      }
-		jmolPanel.getViewer().refresh(3, "minimization step ");
-	}
-
-	public JmolViewer getViewer() {
-		return viewer;
-	}
 }

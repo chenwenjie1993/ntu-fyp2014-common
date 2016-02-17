@@ -20,6 +20,8 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.jmol.viewer.Viewer;
+
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 //import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.UpdateRegistry;
@@ -82,9 +84,12 @@ public class View extends JFrame{
 		contentPane.add(jmolPanel);
 		
 		// add mediator
-		mediator = new UpdateRegistry(jmolPanel.getViewer());
-		System.out.println(mediator==null);
-		jmolPanel.getViewer().setPercentVdwAtom(100);
+		
+		Viewer viewer = jmolPanel.getViewer();
+		mediator = new UpdateRegistry(viewer);
+		viewer.setPercentVdwAtom(20);
+		viewer.evalString("load res/test/amber03_two_residue/conf.gro");
+		viewer.evalString("wireframe only;wireframe reset;spacefill reset");
         jmolPanel.setMediator(mediator);
 		
 		// add RHS Panel for user input
