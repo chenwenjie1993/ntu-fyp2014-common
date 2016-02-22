@@ -40,15 +40,19 @@ import java.awt.event.ActionListener;
 public class View extends JFrame{
 	EventListener e;
 	
-	private JPanel contentPane;
-	private JPanel coeOfResPanel;
-	private JSlider coeOfResSlider;
+	private JPanel contentPanel;
+	private JPanel forceFieldPanel;
+//	private JSlider coeOfResSlider;
 	private JLabel coeOfResLbl;
 	private JPanel simSpdPanel;
 	private JSlider simSpdSlider;
 	private JLabel simSpdLbl;
 	private JCheckBox lennardJonesCheckBox;
 	private JCheckBox electrostaticCheckBox;
+	private JCheckBox bondCheckBox;
+	private JCheckBox angleCheckBox;
+	private JCheckBox properDihedralCheckBox;
+	private JCheckBox improperDihedralCheckBox;
 	
 	private JPanel simLvlPanel;
 	private JPanel forcesPanel;
@@ -75,15 +79,15 @@ public class View extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		setLocationRelativeTo(null);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		contentPanel = new JPanel();
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPanel);
 		
 		// add JMol Panel
 		JmolDisplay jmolPanel = new JmolDisplay();
 		jmolPanel.setBorder(new EmptyBorder(5,0,5,0));
-		contentPane.add(jmolPanel);
+		contentPanel.add(jmolPanel);
 		
 		// add mediator
 		
@@ -99,9 +103,9 @@ public class View extends JFrame{
 		JPanel inputPanel = new JPanel();
 		inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
 		inputPanel.setBorder(new EmptyBorder(0,5,0,5));
-		contentPane.add(inputPanel, BorderLayout.EAST);
+		contentPanel.add(inputPanel, BorderLayout.EAST);
 		
-		createSimLvlPanel();
+		createForceFieldPanel();
 		inputPanel.add(simLvlPanel);
 		
 		
@@ -111,7 +115,7 @@ public class View extends JFrame{
 		
 		// add slider and label for coefficient of restitution
 		createCoeOfResPanel();
-		inputPanel.add(coeOfResPanel);
+		inputPanel.add(forceFieldPanel);
 		JPanel padding2 = new JPanel();
 		padding2.setSize(20, 20);
 		inputPanel.add(padding2);
@@ -162,7 +166,7 @@ public class View extends JFrame{
 		
 		// add text field for user input
 		commandTextField = new JTextField();
-		contentPane.add(commandTextField, BorderLayout.SOUTH);
+		contentPanel.add(commandTextField, BorderLayout.SOUTH);
 		commandTextField.requestFocusInWindow();
 		
 		// add action listeners
@@ -183,9 +187,9 @@ public class View extends JFrame{
 	 */
 	private void createCoeOfResPanel (){
 		
-		coeOfResPanel = new JPanel();
-		coeOfResPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		coeOfResPanel.setLayout(new BoxLayout(coeOfResPanel, BoxLayout.Y_AXIS));	
+		forceFieldPanel = new JPanel();
+		forceFieldPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		forceFieldPanel.setLayout(new BoxLayout(forceFieldPanel, BoxLayout.Y_AXIS));	
 		
 		JPanel panel1 = new JPanel();
 	//	panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
@@ -200,17 +204,17 @@ public class View extends JFrame{
 		
 		lblSimulationMedium = new JLabel("Simulation Medium");
 		lblSimulationMedium.setAlignmentX(Component.CENTER_ALIGNMENT);
-		coeOfResPanel.add(lblSimulationMedium);
+		forceFieldPanel.add(lblSimulationMedium);
 		
-		coeOfResSlider = new JSlider(0,100);
-		coeOfResSlider.setSnapToTicks(true);
-		coeOfResSlider.setPaintTicks(true);
-		coeOfResSlider.setPaintLabels(true);
-		coeOfResPanel.add(coeOfResSlider);
+//		coeOfResSlider = new JSlider(0,100);
+//		coeOfResSlider.setSnapToTicks(true);
+//		coeOfResSlider.setPaintTicks(true);
+//		coeOfResSlider.setPaintLabels(true);
+//		forceFieldPanel.add(coeOfResSlider);
 //		coeOfResSlider.setValue((int)(World.COEFFICENT_OF_RESTITUTION*100));
-		coeOfResSlider.setValue(100);
+//		coeOfResSlider.setValue(100);
 		
-		coeOfResPanel.add(panel1);
+		forceFieldPanel.add(panel1);
 		
 	}
 	
@@ -243,10 +247,8 @@ public class View extends JFrame{
 		simSpdPanel.add(panel1);
 	}
 	
-	/**
-	 * Create the panel for setting the simulation level (atomic or molecular)
-	 */
-	private void createSimLvlPanel (){
+
+	private void createForceFieldPanel (){
 		
 		simLvlPanel = new JPanel();
 		simLvlPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -292,9 +294,19 @@ public class View extends JFrame{
 		
 		ButtonGroup bg = new ButtonGroup();
 		lennardJonesCheckBox = new JCheckBox("Lennard-Jones Force");
-		lennardJonesCheckBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lennardJonesCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 	    electrostaticCheckBox = new JCheckBox("Electrostatic Force");
-	    electrostaticCheckBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    electrostaticCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+	    
+	    bondCheckBox = new JCheckBox("Bond Stretching Force");
+	    bondCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+	    angleCheckBox = new JCheckBox("Bond Angle Rotation Force");
+	    angleCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+	    properDihedralCheckBox = new JCheckBox("Bond Proper Dihedral Force");
+	    properDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+	    improperDihedralCheckBox = new JCheckBox("Bond Improper Dihedral Force");
+	    improperDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+	    
 	 
 //	    if(World.electricForceActive)
 //	    	electrostaticCheckBox.setSelected(true);
@@ -309,6 +321,10 @@ public class View extends JFrame{
 	    panel2.add(label1);
 	    panel2.add(electrostaticCheckBox);
 	    panel2.add(lennardJonesCheckBox);
+	    panel2.add(bondCheckBox);
+	    panel2.add(angleCheckBox);
+	    panel2.add(properDihedralCheckBox);
+	    panel2.add(improperDihedralCheckBox);
 		forcesPanel.add(panel2, BorderLayout.CENTER);	
 	}
 
@@ -318,14 +334,14 @@ public class View extends JFrame{
 	private void addActionListeners() {
 		DecimalFormat formatter = new DecimalFormat("0.00");
 		
-		coeOfResSlider.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent event) {
-                double currentVal = ((JSlider)event.getSource()).getValue()/100.0;
-                coeOfResLbl.setText(formatter.format(currentVal));
-//                World.COEFFICENT_OF_RESTITUTION = currentVal;
-//                World.resetActiveParticlesVelocities();
-            }
-        });
+//		coeOfResSlider.addChangeListener(new ChangeListener() {
+//			public void stateChanged(ChangeEvent event) {
+//                double currentVal = ((JSlider)event.getSource()).getValue()/100.0;
+//                coeOfResLbl.setText(formatter.format(currentVal));
+////                World.COEFFICENT_OF_RESTITUTION = currentVal;
+////                World.resetActiveParticlesVelocities();
+//            }
+//        });
 		
 		simSpdSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent event) {
