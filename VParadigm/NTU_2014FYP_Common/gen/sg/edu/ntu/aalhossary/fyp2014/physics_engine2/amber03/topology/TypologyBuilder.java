@@ -22,15 +22,15 @@ public class TypologyBuilder {
 	final double K = 8.314510e-3;
 	
 	public MolecularSystem build(String dir) {
+		m.particles = new ArrayList<AbstractParticle>();
+		m.interactions = new ArrayList<Interaction>();
+		readNameAndPosition(dir + "conf.gro");
 		readTopology(dir + "topol.top");
-		readPosition(dir + "conf.gro");
-//		initVelocity();
+		initVelocity();
 		return m;
 	}
 	
 	private void readTopology(String fileName) {
-		m.particles = new ArrayList<AbstractParticle>();
-		m.interactions = new ArrayList<Interaction>();
 		
 		List<String> fileAsList = FileReader.readFile(fileName);
 		int atoms = fileAsList.indexOf("[ atoms ]");
@@ -47,18 +47,18 @@ public class TypologyBuilder {
 		loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
 		loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
 		
-		generateNonBondedInteraction();
+//		generateNonBondedInteraction();
 	}
 	
-	private void readPosition(String fileName) {
+	private void readNameAndPosition(String fileName) {
 		List<String> fileAsList = FileReader.readFile(fileName);
 		int count = Integer.valueOf(fileAsList.get(1).trim());
-		loadPosition(fileAsList.subList(2, count+2));
+		loadNameAndPosition(fileAsList.subList(2, count+2));
 	}
 	
 	private void loadAtoms(List<String> atoms) {
 //		System.out.println(atoms.toString());
-		
+		int i = 0;
 		for (String s : atoms) {
 			String[] t = s.split(" +");
 			if (t.length > 8 && !t[0].contains(";")) {
@@ -66,7 +66,12 @@ public class TypologyBuilder {
 				String type = t[2];
 				double charge = Double.parseDouble(t[7]);
 				double mass = Double.parseDouble(t[8]);
-				m.particles.add(new Atom(type, charge, mass));
+				Atom atom = (Atom) m.particles.get(i);
+				atom.setType(type);
+				atom.setCharge(charge);
+				atom.setMass(mass);
+				System.out.println(i + " " + atom);
+				i++;
 			}
 		}
 	}
@@ -148,14 +153,17 @@ public class TypologyBuilder {
 		}
 	}
 	
-	public void loadPosition(List<String> position) {
-		for (int i=0; i<position.size(); i++) {
-			String[] t = position.get(i).split(" +");
+	public void loadNameAndPosition(List<String> s) {
+		for (int i=0; i<s.size(); i++) {
+			String[] t = s.get(i).split(" +");
 //			System.out.println(Arrays.toString(t));
 			double x = Double.parseDouble(t[4]);
 			double y = Double.parseDouble(t[5]);
 			double z = Double.parseDouble(t[6]);
-			((AbstractParticle) m.particles.get(i)).setPosition(x, y, z, 0);
+			Atom atom = new Atom();
+			atom.setPosition(x, y, z, 0);
+			atom.setName(t[2]);
+			m.particles.add(atom);
 		}
 	}
 	

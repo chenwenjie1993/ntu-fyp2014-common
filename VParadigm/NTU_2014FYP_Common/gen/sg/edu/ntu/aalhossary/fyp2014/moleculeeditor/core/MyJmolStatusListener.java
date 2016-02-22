@@ -48,11 +48,11 @@ public class MyJmolStatusListener implements JmolStatusListener {
 	}
 
 	public void notifyCallback(org.jmol.c.CBK callbackType, java.lang.Object[] data) {
-		System.out.print(callbackType + " ");
-		for(int i=0;i<data.length;i++){
-			System.out.print(data[i] + " ");
-		}
-		System.out.println();
+//		System.out.print(callbackType + " ");
+//		for(int i=0;i<data.length;i++){
+//			System.out.print(data[i] + " ");
+//		}
+//		System.out.println();
 		
 		switch (callbackType) {
 		case ANIMFRAME:

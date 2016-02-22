@@ -22,6 +22,7 @@ import sg.edu.ntu.aalhossary.fyp2014.common.Bond;
 import sg.edu.ntu.aalhossary.fyp2014.common.Model;
 import sg.edu.ntu.aalhossary.fyp2014.common.Molecule;
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.GestureManager;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.MouseState;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.JmolDisplay;
 import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.ui.ToolPanel;
@@ -258,6 +259,9 @@ public class UpdateRegistry extends sg.edu.ntu.aalhossary.fyp2014.moleculeeditor
 	    	viewer.ms.setAtomCoord((p.getGUID()-1), (float)position.x*10, (float)position.y*10, (float)position.z*10);
 	    }
 		viewer.refresh(3, "Simulation");
+	}
+	
+	public void setMouseState(int x, int y, int mode) {
 	}
 
 }

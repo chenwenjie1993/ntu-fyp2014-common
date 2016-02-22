@@ -1,51 +1,49 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TypologyBuilder;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.ui.*;
 
 public class Application {
 	private static boolean enableUI = true;
 	private static int totalFrame = 400;
+	private static String dir = "res/test/amber03_1AKI/";
+	private static Map<String, Object> config = new HashMap<>();
 	private static final Logger log = Logger.getLogger("main");
+	
+	private static void init() {
+	    FileHandler fh;
 
-	public static void main(String[] args) {
-	    FileHandler fh;  
-
-	    try {
-	        fh = new FileHandler("Log.txt");  
+		try {
+	        fh = new FileHandler("Log.txt");
 	        log.addHandler(fh);
 	        SimpleFormatter formatter = new SimpleFormatter();  
 	        fh.setFormatter(formatter);
 	        log.setUseParentHandlers(false);
-	    } catch (SecurityException e) {  
+	    } catch (SecurityException e) {
 	        e.printStackTrace();  
 	    } catch (IOException e) {  
 	        e.printStackTrace();
-	    }  
+	    }
 		
+		config.put("frame", totalFrame);
+		config.put("dir", dir);
+		config.put("name", "Molecule Name Here");
 		
 		log.info("Application starts");
-		String dir = "res/test/amber03_two_residue/";
-   		TypologyBuilder tb = new TypologyBuilder();
-   		MolecularSystem m = tb.build(dir);
-   		
-   		Controller controller = ControllerFactory.createController(enableUI);
-   		
-   		int frame = 0;
-   		while (frame < totalFrame) {
-   			log.info("Frame " + frame);
-   			
-   			m.updateEnergyPotential();
-   			m.integrate();
-   			controller.progress(m);
-   			frame++;
-   		}
+	}
 
+	public static void main(String[] args) {
+		init();
+	    
+   		
+   		Controller controller = ControllerFactory.createController(enableUI, config);
+		controller.start();
    	}
 
 }

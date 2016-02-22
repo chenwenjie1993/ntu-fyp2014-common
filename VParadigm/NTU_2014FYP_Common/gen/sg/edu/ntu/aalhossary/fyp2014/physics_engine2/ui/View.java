@@ -6,6 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -56,7 +57,6 @@ public class View extends JFrame{
 	private JTextField commandTextField;
 	
 	private UpdateRegistry mediator;
-	private List<Model> modelList;
 	private JLabel lblSimulationMedium;
 	private JPanel panel;
 	private JButton pauseButton;
@@ -67,7 +67,9 @@ public class View extends JFrame{
 	/**
 	 * Create the main frame.
 	 */
-	public View(EventListener e) {
+	public View(EventListener e, Map<String, Object> config) {
+		super((String) config.get("name"));
+		
 		this.e = e;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,8 +90,9 @@ public class View extends JFrame{
 		Viewer viewer = jmolPanel.getViewer();
 		mediator = new UpdateRegistry(viewer);
 		viewer.setPercentVdwAtom(20);
-		viewer.evalString("load res/test/amber03_two_residue/conf.gro");
+		viewer.evalString("load " + (String) config.get("dir") + "conf.gro");
 		viewer.evalString("wireframe only;wireframe reset;spacefill reset");
+		viewer.evalString("set mouseDragFactor 1.0");
         jmolPanel.setMediator(mediator);
 		
 		// add RHS Panel for user input
