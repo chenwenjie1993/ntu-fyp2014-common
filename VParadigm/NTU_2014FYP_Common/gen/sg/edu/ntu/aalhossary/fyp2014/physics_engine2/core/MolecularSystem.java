@@ -7,8 +7,16 @@ import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
-	public ArrayList<Interaction> interactions; 
-	public double duration = 0.0002;
+	public ArrayList<Interaction> interactions;
+	private double timeDelta = 0.0002;
+	public double getTimeDelta() {
+		return timeDelta;
+	}
+
+	public void setTimeDelta(double duration) {
+		this.timeDelta = duration;
+	}
+
 	private static final Logger log = Logger.getLogger("main");
 	
 	public void updateEnergyPotential() {
@@ -29,15 +37,15 @@ public class MolecularSystem {
 			log.info("[ACC]" + a2);
 						
 			Vector3D dr = new Vector3D();
-			dr.x = v.x * duration + 0.5 * a.x * duration * duration;
-			dr.y = v.y * duration + 0.5 * a.y * duration * duration;
-			dr.z = v.z * duration + 0.5 * a.z * duration * duration;
+			dr.x = v.x * timeDelta + 0.5 * a.x * timeDelta * timeDelta;
+			dr.y = v.y * timeDelta + 0.5 * a.y * timeDelta * timeDelta;
+			dr.z = v.z * timeDelta + 0.5 * a.z * timeDelta * timeDelta;
 			r.add(dr);
 			
 			Vector3D dv = new Vector3D();
-			dv.x = 0.5 * (a.x + a2.x) * duration;
-			dv.y = 0.5 * (a.y + a2.y) * duration;
-			dv.z = 0.5 * (a.z + a2.z) * duration;
+			dv.x = 0.5 * (a.x + a2.x) * timeDelta;
+			dv.y = 0.5 * (a.y + a2.y) * timeDelta;
+			dv.z = 0.5 * (a.z + a2.z) * timeDelta;
 			v.add(dv);
 			
 			particle.setAcceleration(a2.x, a2.y, a2.z);

@@ -34,6 +34,7 @@ public class Application {
 		config.put("frame", totalFrame);
 		config.put("dir", dir);
 		config.put("name", "Molecule Name Here");
+		config.put("timeDelta", 0.0002);
 		
 		log.info("Application starts");
 	}

@@ -23,5 +23,6 @@ public abstract class Controller {
 	public void start() {
 		TypologyBuilder tb = new TypologyBuilder();
    		m = tb.build((String) config.get("dir"));
+   		m.setTimeDelta((Double) config.get("timeDelta"));
 	};
 }

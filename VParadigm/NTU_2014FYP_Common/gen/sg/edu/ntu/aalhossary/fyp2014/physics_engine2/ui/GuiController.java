@@ -39,5 +39,10 @@ public class GuiController extends Controller implements EventListener {
 		status = "Running";
 		currentFrame = 0;
 	}
+	
+	@Override
+	public String getStatus() {
+		return status;
+	}
 
 }
