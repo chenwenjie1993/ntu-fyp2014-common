@@ -13,8 +13,11 @@ public class GuiController extends Controller implements EventListener {
 	@Override
 	public void start() {
 		super.start();
-		
-		while (currentFrame < totalFrame ) {
+		next();
+	}
+	
+	public void next() {
+		if (currentFrame < totalFrame) {
 			sim.nextFrame(m);
 			try {
 				v.getMediator().updateViewerCoord(m.particles);
@@ -22,22 +25,26 @@ public class GuiController extends Controller implements EventListener {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 			currentFrame++;
-			// Delay simulation
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			next();
 		}
-		
+		else {
+			System.out.println("Simulation ends.");
+			return;
+		}
 	}
 
 	@Override
 	public void onRestart() {
+		System.out.println("Simulation restarting...");
 		status = "Running";
 		currentFrame = 0;
+		start();
 	}
 	
 	@Override

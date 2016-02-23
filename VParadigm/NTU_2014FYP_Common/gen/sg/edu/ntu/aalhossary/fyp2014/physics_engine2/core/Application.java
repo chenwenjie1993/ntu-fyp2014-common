@@ -35,6 +35,17 @@ public class Application {
 		config.put("dir", dir);
 		config.put("name", "Molecule Name Here");
 		config.put("timeDelta", 0.0002);
+		config.put("forceField", "Amber03");
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("Bond", true);
+		params.put("Angle", true);
+		params.put("ProperDihedral", true);
+		params.put("ImproperDihedral", true);
+		params.put("Electrostatic", true);
+		params.put("LennardJones", true);
+		
+		config.put("ffParams", params);
 		
 		log.info("Application starts");
 	}
@@ -42,7 +53,6 @@ public class Application {
 	public static void main(String[] args) {
 		init();
 	    
-   		
    		Controller controller = ControllerFactory.createController(enableUI, config);
 		controller.start();
    	}

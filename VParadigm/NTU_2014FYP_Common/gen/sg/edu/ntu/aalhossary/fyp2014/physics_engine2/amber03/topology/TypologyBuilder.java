@@ -2,6 +2,7 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.AbstractParticle;
@@ -17,11 +18,17 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Interaction;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.FileReader;
 
 public class TypologyBuilder {
+//	private Map<String, Object> config; 
+	private Map<String, Object> params;
 	MolecularSystem m = new MolecularSystem();
 	final double T = 288;
 	final double K = 8.314510e-3;
 	
-	public MolecularSystem build(String dir) {
+	public MolecularSystem build(Map<String, Object> config) {
+//		this.config = config;
+		String dir = (String) config.get("dir");
+		params = (Map<String, Object>) config.get("ffParams");
+		
 		m.particles = new ArrayList<AbstractParticle>();
 		m.interactions = new ArrayList<Interaction>();
 		readNameAndPosition(dir + "conf.gro");
@@ -42,10 +49,19 @@ public class TypologyBuilder {
 		int position_restraints = fileAsList.lastIndexOf("[ position_restraints ]");
 		
 		loadAtoms(fileAsList.subList(atoms+1, bonds));
-		loadBonds(fileAsList.subList(bonds+1, pairs));
-		loadAngles(fileAsList.subList(angles+1, properDihedrals));
-		loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
-		loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
+		
+		if ((Boolean) params.get("Bond")) {
+			loadBonds(fileAsList.subList(bonds+1, pairs));
+		}
+		if ((Boolean) params.get("Angle")) {
+			loadAngles(fileAsList.subList(angles+1, properDihedrals));
+		}
+		if ((Boolean) params.get("ImproperDihedral")) {
+			loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
+		}
+		if ((Boolean) params.get("ProperDihedral")) {
+			loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
+		}
 		
 //		generateNonBondedInteraction();
 	}
@@ -70,7 +86,7 @@ public class TypologyBuilder {
 				atom.setType(type);
 				atom.setCharge(charge);
 				atom.setMass(mass);
-				System.out.println(i + " " + atom);
+//				System.out.println(i + " " + atom);
 				i++;
 			}
 		}
@@ -169,14 +185,24 @@ public class TypologyBuilder {
 	
 	public void generateNonBondedInteraction() {
 		int count = m.particles.size();
-		for (int i=0; i<count-1; i++) {
-			for (int j=i+1; j<count; j++) {
-				ElectrostaticPotential e = new ElectrostaticPotential((Atom)m.particles.get(i), (Atom)m.particles.get(j));
-				LennardJonesPotential l = new LennardJonesPotential((Atom)m.particles.get(i), (Atom)m.particles.get(j));
-				m.interactions.add(e);
-				m.interactions.add(l);
+		if ((Boolean) params.get("Electrostatic")) {
+			for (int i=0; i<count-1; i++) {
+				for (int j=i+1; j<count; j++) {
+					ElectrostaticPotential e = new ElectrostaticPotential((Atom)m.particles.get(i), (Atom)m.particles.get(j));
+					m.interactions.add(e);
+				}
 			}
 		}
+		
+		if ((Boolean) params.get("LennardJones")) {
+			for (int i=0; i<count-1; i++) {
+				for (int j=i+1; j<count; j++) {
+					LennardJonesPotential l = new LennardJonesPotential((Atom)m.particles.get(i), (Atom)m.particles.get(j));
+					m.interactions.add(l);
+				}
+			}
+		}
+		
 	}
 	
 	public void initVelocity() {

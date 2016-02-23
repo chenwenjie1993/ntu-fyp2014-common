@@ -20,7 +20,7 @@ public class Bond extends BondedInteraction {
 			query.add(atom.type);
 		}
 		List<Double> params = db.getBondParams(query);
-		System.out.println(query.toString());
+//		System.out.println(query.toString());
 		b0 = params.get(0);
 		kb = params.get(1);
 	}

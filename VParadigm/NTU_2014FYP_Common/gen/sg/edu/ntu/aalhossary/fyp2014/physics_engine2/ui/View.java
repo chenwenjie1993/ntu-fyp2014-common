@@ -44,7 +44,7 @@ import java.awt.event.ActionListener;
 public class View extends JFrame{
 	EventListener e;
 	
-	private JPanel contentPanel;
+	private JPanel contentPane;
 	private JPanel forceFieldPanel;
 //	private JSlider coeOfResSlider;
 	private JLabel coeOfResLbl;
@@ -66,8 +66,9 @@ public class View extends JFrame{
 	
 	private UpdateRegistry mediator;
 	private JLabel lblSimulationMedium;
-	private JPanel panel;
+	private JPanel controlPanel;
 	private JButton pauseButton;
+	private JButton stopButton;
 	private JButton restartButton;
 	private JCheckBox partialMolCheckBox;
 	
@@ -86,15 +87,15 @@ public class View extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		setLocationRelativeTo(null);
-		contentPanel = new JPanel();
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPanel.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPanel);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 		
 		// add JMol Panel
 		JmolDisplay jmolPanel = new JmolDisplay();
 		jmolPanel.setBorder(new EmptyBorder(5,0,5,0));
-		contentPanel.add(jmolPanel);
+		contentPane.add(jmolPanel);
 		
 		// add mediator
 		
@@ -108,40 +109,44 @@ public class View extends JFrame{
 		
 		// add RHS Panel for user input
 		JPanel inputPanel = new JPanel();
-		inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
+		inputPanel.setLayout(new GridLayout(3, 1, 10, 10));
 		inputPanel.setBorder(new EmptyBorder(0,5,0,5));
-		contentPanel.add(inputPanel, BorderLayout.EAST);
+		contentPane.add(inputPanel, BorderLayout.EAST);
 		
 //		createForceFieldPanel();
 //		inputPanel.add(simLvlPanel);
 		
 		
-		JPanel padding = new JPanel();
-		padding.setSize(20, 20);
-		inputPanel.add(padding);
+//		JPanel padding = new JPanel();
+//		padding.setSize(20, 20);
+//		inputPanel.add(padding);
 		
 		// add slider and label for coefficient of restitution
 //		createCoeOfResPanel();
 //		inputPanel.add(forceFieldPanel);
-		JPanel padding2 = new JPanel();
-		padding2.setSize(20, 20);
-		inputPanel.add(padding2);
+//		JPanel padding2 = new JPanel();
+//		padding2.setSize(20, 20);
+//		inputPanel.add(padding2);
 		
 		createSimulationPanel();
+		simulationPanel.setAlignmentX(LEFT_ALIGNMENT);
 		inputPanel.add(simulationPanel);
-		JPanel padding4 = new JPanel();
-		padding4.setSize(20, 20);
-		inputPanel.add(padding4);
+//		JPanel padding4 = new JPanel();
+//		padding4.setSize(20, 20);
+//		inputPanel.add(padding4);
 		
 		
 		createForcesPanel();
+		forcesPanel.setAlignmentX(LEFT_ALIGNMENT);
+//		forcesPanel.
 		inputPanel.add(forcesPanel);
-		JPanel padding3 = new JPanel();
-		padding3.setSize(20, 20);
-		inputPanel.add(padding3);
+//		JPanel padding3 = new JPanel();
+//		padding3.setSize(20, 20);
+//		inputPanel.add(padding3);
 		
-		panel = new JPanel();
-		inputPanel.add(panel);
+		controlPanel = new JPanel();
+		controlPanel.setAlignmentX(LEFT_ALIGNMENT);
+		inputPanel.add(controlPanel);
 		
 		pauseButton = new JButton("Pause");
 		pauseButton.addActionListener(new ActionListener() {
@@ -157,7 +162,21 @@ public class View extends JFrame{
 				}
 			}
 		});
-		panel.add(pauseButton);
+		controlPanel.add(pauseButton);
+		
+		stopButton = new JButton("Stop");
+		stopButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(stopButton.getText().equals("Stop")){
+					pauseButton.setText("Start");
+			}
+				else{
+					stopButton.setText("Stop");
+
+				}
+			}
+		});
+		controlPanel.add(stopButton);
 		
 		restartButton = new JButton("Restart");
 		restartButton.addActionListener(new ActionListener() {
@@ -169,11 +188,11 @@ public class View extends JFrame{
 //				World.simulationStatus = "restart";
 			}
 		});
-		panel.add(restartButton);
+		controlPanel.add(restartButton);
 		
 		// add text field for user input
 		commandTextField = new JTextField();
-		contentPanel.add(commandTextField, BorderLayout.SOUTH);
+		contentPane.add(commandTextField, BorderLayout.SOUTH);
 		commandTextField.requestFocusInWindow();
 		
 		// add action listeners
@@ -257,10 +276,6 @@ public class View extends JFrame{
         simulationPanel.add(lbForceField);
         simulationPanel.add(cbForceField);
 
-
-
-        
-		
 		
 //		simulationPanel = new JPanel();
 		
@@ -370,43 +385,57 @@ public class View extends JFrame{
 	private void createForcesPanel(){
 		forcesPanel = new JPanel();
 		forcesPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-	//	forcesPanel.setLayout(new BoxLayout(forcesPanel, BoxLayout.Y_AXIS));
-		forcesPanel.setLayout(new BorderLayout());
+		forcesPanel.setLayout(new BoxLayout(forcesPanel, BoxLayout.Y_AXIS));
 		
-		ButtonGroup bg = new ButtonGroup();
-		lennardJonesCheckBox = new JCheckBox("Lennard-Jones Force");
-		lennardJonesCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-	    electrostaticCheckBox = new JCheckBox("Electrostatic Force");
-	    electrostaticCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-	    
-	    bondCheckBox = new JCheckBox("Bond Stretching Force");
-	    bondCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-	    angleCheckBox = new JCheckBox("Bond Angle Rotation Force");
-	    angleCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-	    properDihedralCheckBox = new JCheckBox("Bond Proper Dihedral Force");
-	    properDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-	    improperDihedralCheckBox = new JCheckBox("Bond Improper Dihedral Force");
-	    improperDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-	    
+		Map<String, Object> params = (Map<String, Object>) config.get("ffParams");
+		
+		for (Map.Entry<String, Object> e: params.entrySet()) {
+			if (e.getValue() instanceof Boolean) {
+				JCheckBox cb = new JCheckBox(e.getKey());
+				cb.setAlignmentX(LEFT_ALIGNMENT);
+				cb.addActionListener(new ActionListener(){
+				    public void actionPerformed(ActionEvent e) {
+				    	JCheckBox cb = (JCheckBox) e.getSource();
+				    	config.put(cb.getText(), cb.isSelected());
+				    }
+				});
+				forcesPanel.add(cb);
+			}
+			System.out.println("add");
+		}
+		
+//		lennardJonesCheckBox = new JCheckBox("Lennard-Jones Force");
+//		lennardJonesCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+//	    electrostaticCheckBox = new JCheckBox("Electrostatic Force");
+//	    electrostaticCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+//	    
+//	    bondCheckBox = new JCheckBox("Bond Stretching Force");
+//	    bondCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+//	    angleCheckBox = new JCheckBox("Bond Angle Rotation Force");
+//	    angleCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+//	    properDihedralCheckBox = new JCheckBox("Bond Proper Dihedral Force");
+//	    properDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+//	    improperDihedralCheckBox = new JCheckBox("Bond Improper Dihedral Force");
+//	    improperDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
 	 
 //	    if(World.electricForceActive)
 //	    	electrostaticCheckBox.setSelected(true);
 //	    if(World.LJForceActive)
 //	    	lennardJonesCheckBox.setSelected(true);
 	    
-	    JPanel panel2 = new JPanel();
-	    panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+//	    JPanel panel2 = new JPanel();
+//	    panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
 	    JLabel label1 = new JLabel("Forces");
 	    label1.setAlignmentX(Component.LEFT_ALIGNMENT);
 	    
-	    panel2.add(label1);
-	    panel2.add(electrostaticCheckBox);
-	    panel2.add(lennardJonesCheckBox);
-	    panel2.add(bondCheckBox);
-	    panel2.add(angleCheckBox);
-	    panel2.add(properDihedralCheckBox);
-	    panel2.add(improperDihedralCheckBox);
-		forcesPanel.add(panel2, BorderLayout.CENTER);	
+//	    panel2.add(label1);
+//	    panel2.add(electrostaticCheckBox);
+//	    panel2.add(lennardJonesCheckBox);
+//	    panel2.add(bondCheckBox);
+//	    panel2.add(angleCheckBox);
+//	    panel2.add(properDihedralCheckBox);
+//	    panel2.add(improperDihedralCheckBox);
+//		forcesPanel.add(panel2, BorderLayout.CENTER);	
 	}
 
 	/**
@@ -480,32 +509,32 @@ public class View extends JFrame{
 //		    }
 //		});
 		
-		lennardJonesCheckBox.addActionListener(new ActionListener(){
-		    public void actionPerformed(ActionEvent e) {
-		    	JCheckBox checkBox = (JCheckBox) e.getSource();
-		        if (checkBox.getText().equals("Lennard-Jones Force")){
-//		        	if(checkBox.isSelected())
-//		        		World.LJForceActive = true;
-//		        	else
-//		        		World.LJForceActive = false;
-		        }
-//		        World.resetActiveParticlesVelocities();
-		    }
-		});
+//		lennardJonesCheckBox.addActionListener(new ActionListener(){
+//		    public void actionPerformed(ActionEvent e) {
+//		    	JCheckBox checkBox = (JCheckBox) e.getSource();
+//		        if (checkBox.getText().equals("Lennard-Jones Force")){
+////		        	if(checkBox.isSelected())
+////		        		World.LJForceActive = true;
+////		        	else
+////		        		World.LJForceActive = false;
+//		        }
+////		        World.resetActiveParticlesVelocities();
+//		    }
+//		});
 		
-		electrostaticCheckBox.addActionListener(new ActionListener(){
-		    public void actionPerformed(ActionEvent e) {
-		    	JCheckBox checkBox = (JCheckBox) e.getSource();
-		        if (checkBox.getText().equals("Electrostatic Force")){
-//		        	if(checkBox.isSelected())
-//		        		World.electricForceActive = true;
-//		        	else
-//		        		World.electricForceActive = false;
-		        }
-//		        World.resetActiveParticlesVelocities();
-		     //   World.simulationStatus = "restart";
-		    }
-		});
+//		electrostaticCheckBox.addActionListener(new ActionListener(){
+//		    public void actionPerformed(ActionEvent e) {
+//		    	JCheckBox checkBox = (JCheckBox) e.getSource();
+//		        if (checkBox.getText().equals("Electrostatic Force")){
+////		        	if(checkBox.isSelected())
+////		        		World.electricForceActive = true;
+////		        	else
+////		        		World.electricForceActive = false;
+//		        }
+////		        World.resetActiveParticlesVelocities();
+//		     //   World.simulationStatus = "restart";
+//		    }
+//		});
 		
 //		partialMolCheckBox.addActionListener(new ActionListener(){
 //		    public void actionPerformed(ActionEvent e) {
