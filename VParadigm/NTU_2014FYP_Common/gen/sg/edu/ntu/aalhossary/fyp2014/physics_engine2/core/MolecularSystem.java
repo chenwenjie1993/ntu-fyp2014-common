@@ -9,6 +9,9 @@ public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
 	public ArrayList<Interaction> interactions;
 	private double timeDelta = 0.0002;
+	
+	private static final Logger log = Logger.getLogger("main");
+	
 	public double getTimeDelta() {
 		return timeDelta;
 	}
@@ -16,8 +19,11 @@ public class MolecularSystem {
 	public void setTimeDelta(double duration) {
 		this.timeDelta = duration;
 	}
-
-	private static final Logger log = Logger.getLogger("main");
+	
+	public void nextFrame() {
+		updateEnergyPotential();
+		integrate();
+	}
 	
 	public void updateEnergyPotential() {
 		for (Interaction interaction: interactions) {

@@ -11,8 +11,10 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
@@ -38,11 +40,14 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 
 
 public class View extends JFrame{
-	EventListener e;
+	EventListener listener;
 	
 	private JPanel contentPane;
 	private JPanel forceFieldPanel;
@@ -73,15 +78,15 @@ public class View extends JFrame{
 	private JCheckBox partialMolCheckBox;
 	
 	private Map<String, Object> config;
-	
+	private Viewer viewer;
 	
 	/**
 	 * Create the main frame.
 	 */
-	public View(EventListener e, Map<String, Object> config) {
+	public View(EventListener listener, Map<String, Object> config) {
 		super((String) config.get("name"));
 		
-		this.e = e;
+		this.listener = listener;
 		this.config = config;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,64 +104,82 @@ public class View extends JFrame{
 		
 		// add mediator
 		
-		Viewer viewer = jmolPanel.getViewer();
+		viewer = jmolPanel.getViewer();
+		viewer.evalString("set debug OFF;");
 		mediator = new UpdateRegistry(viewer);
 		viewer.setPercentVdwAtom(20);
+		viewer.evalString("");
 		viewer.evalString("load " + (String) config.get("dir") + "conf.gro");
-		viewer.evalString("wireframe only;wireframe reset;spacefill reset");
-		viewer.evalString("set mouseDragFactor 1.0");
+		viewer.evalString("wireframe only;wireframe reset;spacefill reset;");
+//		viewer.evalString("set mouseDragFactor 1.0");
         jmolPanel.setMediator(mediator);
 		
 		// add RHS Panel for user input
 		JPanel inputPanel = new JPanel();
-		inputPanel.setLayout(new GridLayout(3, 1, 10, 10));
 		inputPanel.setBorder(new EmptyBorder(0,5,0,5));
 		contentPane.add(inputPanel, BorderLayout.EAST);
 		
-//		createForceFieldPanel();
-//		inputPanel.add(simLvlPanel);
-		
-		
-//		JPanel padding = new JPanel();
-//		padding.setSize(20, 20);
-//		inputPanel.add(padding);
-		
-		// add slider and label for coefficient of restitution
-//		createCoeOfResPanel();
-//		inputPanel.add(forceFieldPanel);
-//		JPanel padding2 = new JPanel();
-//		padding2.setSize(20, 20);
-//		inputPanel.add(padding2);
-		
 		createSimulationPanel();
-		simulationPanel.setAlignmentX(LEFT_ALIGNMENT);
-		inputPanel.add(simulationPanel);
+		inputPanel.setLayout(new BorderLayout(0, 1));
+		inputPanel.add(simulationPanel, BorderLayout.NORTH);
+		JTextField tfMolecule = new JTextField();
+		GridBagConstraints gbc_tfMolecule = new GridBagConstraints();
+		gbc_tfMolecule.insets = new Insets(0, 0, 5, 0);
+		gbc_tfMolecule.fill = GridBagConstraints.BOTH;
+		gbc_tfMolecule.gridx = 1;
+		gbc_tfMolecule.gridy = 1;
+		simulationPanel.add(tfMolecule, gbc_tfMolecule);
+		JLabel lbForceField = new JLabel("Force Field: ", SwingConstants.RIGHT);
+		
+		GridBagConstraints gbc_lbForceField = new GridBagConstraints();
+		gbc_lbForceField.fill = GridBagConstraints.BOTH;
+		gbc_lbForceField.insets = new Insets(0, 0, 5, 5);
+		gbc_lbForceField.gridx = 0;
+		gbc_lbForceField.gridy = 2;
+		simulationPanel.add(lbForceField, gbc_lbForceField);
+		        
+		                JComboBox cbForceField = new JComboBox();
+		                cbForceField.setModel(new DefaultComboBoxModel(new String[] {"Amber03"}));
+		                cbForceField.addActionListener(new ActionListener() {
+
+		                    @Override
+		                    public void actionPerformed(ActionEvent e) {
+
+		                    }
+		                });
+		                GridBagConstraints gbc_cbForceField = new GridBagConstraints();
+		                gbc_cbForceField.insets = new Insets(0, 0, 5, 0);
+		                gbc_cbForceField.fill = GridBagConstraints.HORIZONTAL;
+		                gbc_cbForceField.gridx = 1;
+		                gbc_cbForceField.gridy = 2;
+		                simulationPanel.add(cbForceField, gbc_cbForceField);
 //		JPanel padding4 = new JPanel();
 //		padding4.setSize(20, 20);
 //		inputPanel.add(padding4);
 		
 		
 		createForcesPanel();
-		forcesPanel.setAlignmentX(LEFT_ALIGNMENT);
 //		forcesPanel.
-		inputPanel.add(forcesPanel);
+		inputPanel.add(forcesPanel, BorderLayout.CENTER);
 //		JPanel padding3 = new JPanel();
 //		padding3.setSize(20, 20);
 //		inputPanel.add(padding3);
 		
 		controlPanel = new JPanel();
 		controlPanel.setAlignmentX(LEFT_ALIGNMENT);
-		inputPanel.add(controlPanel);
+		inputPanel.add(controlPanel, BorderLayout.SOUTH);
 		
 		pauseButton = new JButton("Pause");
 		pauseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(pauseButton.getText().equals("Pause")){
+				if (listener.getStatus().equals("Running")){
 					pauseButton.setText("Resume");
+					listener.onPause();
 //					World.simulationStatus = "paused";
 			}
 				else{
 					pauseButton.setText("Pause");
+					listener.onResume();
 //					World.simulationStatus = "running";
 //					World.countDownLatch.countDown();
 				}
@@ -168,11 +191,13 @@ public class View extends JFrame{
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(stopButton.getText().equals("Stop")){
-					pauseButton.setText("Start");
-			}
+					stopButton.setText("Start");
+					listener.onStop();
+				}
 				else{
 					stopButton.setText("Stop");
-
+					listener.onRestart();
+					System.out.println("restart done");
 				}
 			}
 		});
@@ -181,11 +206,7 @@ public class View extends JFrame{
 		restartButton = new JButton("Restart");
 		restartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				if(World.simulationStatus.equals("paused")){
-//					World.countDownLatch.countDown();
-//					pauseButton.setText("Pause");
-//				}
-//				World.simulationStatus = "restart";
+				listener.onRestart();
 			}
 		});
 		controlPanel.add(restartButton);
@@ -196,7 +217,7 @@ public class View extends JFrame{
 		commandTextField.requestFocusInWindow();
 		
 		// add action listeners
-		addActionListeners();
+//		addActionListeners();
 		this.setVisible(true);
 	}
 	
@@ -208,73 +229,57 @@ public class View extends JFrame{
 		return mediator;
 	}
 	
-	/**
-	 * Create the panel for setting the coefficient of resolution
-	 */
-//	private void createCoeOfResPanel (){
-//		
-//		forceFieldPanel = new JPanel();
-//		forceFieldPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-//		forceFieldPanel.setLayout(new BoxLayout(forceFieldPanel, BoxLayout.Y_AXIS));	
-//		
-//		JPanel panel1 = new JPanel();
-//	//	panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
-//		
-//		JLabel label1 = new JLabel("Coefficient of Restitution: ");
-//		panel1.add(label1);
-//		
-////		coeOfResLbl = new JLabel(String.valueOf(World.COEFFICENT_OF_RESTITUTION));
-//		coeOfResLbl = new JLabel("coe");
-//		coeOfResLbl.setAlignmentY(Component.TOP_ALIGNMENT);
-//		panel1.add(coeOfResLbl);
-//		
-//		lblSimulationMedium = new JLabel("Simulation Medium");
-//		lblSimulationMedium.setAlignmentX(Component.CENTER_ALIGNMENT);
-//		forceFieldPanel.add(lblSimulationMedium);
-//		
-////		coeOfResSlider = new JSlider(0,100);
-////		coeOfResSlider.setSnapToTicks(true);
-////		coeOfResSlider.setPaintTicks(true);
-////		coeOfResSlider.setPaintLabels(true);
-////		forceFieldPanel.add(coeOfResSlider);
-////		coeOfResSlider.setValue((int)(World.COEFFICENT_OF_RESTITUTION*100));
-////		coeOfResSlider.setValue(100);
-//		
-//		forceFieldPanel.add(panel1);
-//		
-//	}
+	public void reload() {
+		System.out.println("Reloading view...");
+		reloadViewer();
+		reloadParams();
+	}
+	
+	private void reloadViewer() {
+		viewer.evalString("load " + (String) config.get("dir") + "conf.gro");
+	}
+	
+	private void reloadParams() {
+//		forcesPanel = null;
+	}
+	
 	
 	private void createSimulationPanel(){
 
-        simulationPanel = new JPanel(new GridLayout(3, 2));
-        simulationPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-
+        simulationPanel = new JPanel();
+        simulationPanel.setBorder(BorderFactory.createTitledBorder("Simulation Parameters"));
+//        simulationPanel.setToolTipText("sample text");
+//        simulationPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+        GridBagLayout gbl_simulationPanel = new GridBagLayout();
+        gbl_simulationPanel.columnWeights = new double[]{0.0, 0.0};
+        gbl_simulationPanel.rowWeights = new double[]{0.0, 0.0, 0.0};
+        simulationPanel.setLayout(gbl_simulationPanel);
+                
         JLabel lbTimeDelta = new JLabel("Time Delta(ns): ", SwingConstants.RIGHT);
-        JLabel lbMolecule = new JLabel("Molecule: ", SwingConstants.RIGHT);
-        JLabel lbForceField = new JLabel("Force Field: ", SwingConstants.RIGHT);
         
-        
-        JTextField tfTimeDelta = new JTextField(config.get("timeDelta").toString());
-        JTextField tfMolecule = new JTextField();
-
-        String[] options = { "Amber03" };
-        JComboBox<String> cbForceField = new JComboBox<String>(options);
-        cbForceField.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        
-        simulationPanel.add(lbTimeDelta);
-        simulationPanel.add(tfTimeDelta);
-        
-        simulationPanel.add(lbMolecule);
-        simulationPanel.add(tfMolecule);
-        
-        simulationPanel.add(lbForceField);
-        simulationPanel.add(cbForceField);
+        GridBagConstraints gbc_lbTimeDelta = new GridBagConstraints();
+        gbc_lbTimeDelta.fill = GridBagConstraints.HORIZONTAL;
+        gbc_lbTimeDelta.insets = new Insets(0, 0, 5, 5);
+        gbc_lbTimeDelta.gridx = 0;
+        gbc_lbTimeDelta.gridy = 0;
+        simulationPanel.add(lbTimeDelta, gbc_lbTimeDelta);
+                
+                
+                JTextField tfTimeDelta = new JTextField(config.get("timeDelta").toString());
+                GridBagConstraints gbc_tfTimeDelta = new GridBagConstraints();
+                gbc_tfTimeDelta.fill = GridBagConstraints.BOTH;
+                gbc_tfTimeDelta.insets = new Insets(0, 0, 5, 0);
+                gbc_tfTimeDelta.gridx = 1;
+                gbc_tfTimeDelta.gridy = 0;
+                simulationPanel.add(tfTimeDelta, gbc_tfTimeDelta);
+                JLabel lbMolecule = new JLabel("Molecule: ", SwingConstants.RIGHT);
+                
+                GridBagConstraints gbc_lbMolecule = new GridBagConstraints();
+                gbc_lbMolecule.insets = new Insets(0, 0, 5, 5);
+                gbc_lbMolecule.fill = GridBagConstraints.BOTH;
+                gbc_lbMolecule.gridx = 0;
+                gbc_lbMolecule.gridy = 1;
+                simulationPanel.add(lbMolecule, gbc_lbMolecule);
 
 		
 //		simulationPanel = new JPanel();
@@ -384,7 +389,8 @@ public class View extends JFrame{
 	
 	private void createForcesPanel(){
 		forcesPanel = new JPanel();
-		forcesPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		forcesPanel.setBorder(BorderFactory.createTitledBorder("Force Field Parameters"));
+//		forcesPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		forcesPanel.setLayout(new BoxLayout(forcesPanel, BoxLayout.Y_AXIS));
 		
 		Map<String, Object> params = (Map<String, Object>) config.get("ffParams");
@@ -401,7 +407,6 @@ public class View extends JFrame{
 				});
 				forcesPanel.add(cb);
 			}
-			System.out.println("add");
 		}
 		
 //		lennardJonesCheckBox = new JCheckBox("Lennard-Jones Force");
@@ -441,8 +446,8 @@ public class View extends JFrame{
 	/**
 	 * Add ActionListeners for UI inputs
 	 */
-	private void addActionListeners() {
-		DecimalFormat formatter = new DecimalFormat("0.00");
+//	private void addActionListeners() {
+//		DecimalFormat formatter = new DecimalFormat("0.00");
 		
 //		coeOfResSlider.addChangeListener(new ChangeListener() {
 //			public void stateChanged(ChangeEvent event) {
@@ -462,21 +467,21 @@ public class View extends JFrame{
 //            }
 //        });
 		
-		commandTextField.addKeyListener(new KeyAdapter() {
-            public void keyReleased(KeyEvent e) {
-            	if(e.getKeyCode() != 10)	// enter key
-            		return;
-            	
-            	JTextField textField = (JTextField) e.getSource();
-                String text = textField.getText();
-                commandTextField.setText(text.toUpperCase()); 
-                try {
-//					World.setCommand(textField.getText());
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-            }
-		});
+//		commandTextField.addKeyListener(new KeyAdapter() {
+//            public void keyReleased(KeyEvent e) {
+//            	if(e.getKeyCode() != 10)	// enter key
+//            		return;
+//            	
+//            	JTextField textField = (JTextField) e.getSource();
+//                String command = textField.getText();
+////                commandTextField.setText(text.toUpperCase()); 
+//                try {
+//                	getMediator().getViewer().evalString(command);
+//				} catch (Exception e1) {
+//					e1.printStackTrace();
+//				}
+//            }
+//		});
 		
 //		atomicRadioButton.addActionListener(new ActionListener(){
 //		    public void actionPerformed(ActionEvent e) {
@@ -550,7 +555,7 @@ public class View extends JFrame{
 //		    }
 //		});
 		
-	}
+//	}
 		
 }
 

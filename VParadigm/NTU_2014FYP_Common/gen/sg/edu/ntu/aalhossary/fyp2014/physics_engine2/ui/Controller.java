@@ -4,7 +4,6 @@ import java.util.Map;
 
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TypologyBuilder;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.MolecularSystem;
-import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Simulator;
 
 public abstract class Controller {
 	public Map<String, Object> config;
@@ -12,7 +11,7 @@ public abstract class Controller {
 	protected MolecularSystem m;
 	public int currentFrame = 0;
 	public int totalFrame = 0;
-	protected Simulator sim = new Simulator();
+	TypologyBuilder tb;
 
 	
 	public Controller(Map<String, Object> config) {
@@ -20,9 +19,14 @@ public abstract class Controller {
 		totalFrame = (Integer) config.get("frame");
 	}
 	
-	public void start() {
-		TypologyBuilder tb = new TypologyBuilder();
-   		m = tb.build(config);
+	public void buildTopology() {
+		System.out.println("Building topology...");
+		tb = new TypologyBuilder();
+		m = tb.build(config);
    		m.setTimeDelta((Double) config.get("timeDelta"));
+	}
+	
+	public void start() {
+   		buildTopology();
 	};
 }

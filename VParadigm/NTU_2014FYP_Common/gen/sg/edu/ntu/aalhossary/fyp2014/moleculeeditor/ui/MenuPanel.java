@@ -121,7 +121,7 @@ public class MenuPanel implements ActionListener{
 			 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
-                System.out.println(file);
+//                System.out.println(file);
                 //This is where a real application would open the file.
                 DataManager.writeFile(file, jmolPanel.getMediator());
             } else {
