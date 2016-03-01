@@ -26,7 +26,7 @@ public class TypologyBuilder {
 	
 	public MolecularSystem build(Map<String, Object> config) {
 //		this.config = config;
-		String dir = (String) config.get("dir");
+		String dir = (String) config.get("dir") + "/" + (String) config.get("name") + "/";
 		params = (Map<String, Object>) config.get("ffParams");
 		
 		m.particles = new ArrayList<AbstractParticle>();

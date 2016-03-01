@@ -47,7 +47,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 
-
 public class View extends JFrame{
 	/**
 	 * 
@@ -104,7 +103,7 @@ public class View extends JFrame{
 		mediator = new UpdateRegistry(viewer);
 		viewer.setPercentVdwAtom(20);
 		viewer.evalString("");
-		viewer.evalString("load " + (String) config.get("dir") + "conf.gro");
+		viewer.evalString("load " + (String) config.get("dir") + "/" + (String) config.get("name") + "/conf.gro");
 		viewer.evalString("wireframe only;wireframe reset;spacefill reset;");
 //		viewer.evalString("set mouseDragFactor 1.0");
         jmolPanel.setMediator(mediator);
@@ -239,6 +238,19 @@ public class View extends JFrame{
 		String[] molecules = getMoleculeList(); 
 		
 		cbMolecule.setModel(new DefaultComboBoxModel(molecules));
+		
+		String name = (String) config.get("name");
+		System.out.println(name);
+		for (int i=0; i<molecules.length; i++) {
+			System.out.println(molecules[i]);
+			if (name.equals(molecules[i])) {
+				
+				cbMolecule.setSelectedIndex(i);
+				break;
+			}
+		}
+
+		
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.gridx = 1;
@@ -414,7 +426,7 @@ public class View extends JFrame{
 	    List<String> molecules = new ArrayList<String>();
 	            
 	    try{      
-	    	f = new File("res/test/");
+	    	f = new File("res/amber03_test/");
             paths = f.list();
 	    	for(String path:paths) {
 	    		if (!path.equals(".DS_Store")) {

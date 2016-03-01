@@ -14,7 +14,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.ui.*;
 public class Application {
 	private static boolean enableUI = true;
 	private static int totalFrame = 400;
-	private static String dir = "res/test/amber03_two_residue/";
+	private static String dir = "res/amber03_test/";
 	private static Map<String, Object> config = new HashMap<>();
 	private static final Logger log = Logger.getLogger("main");
 	
@@ -35,7 +35,7 @@ public class Application {
 		
 		config.put("frame", totalFrame);
 		config.put("dir", dir);
-		config.put("name", "two_residue");
+		config.put("name", "twenty_residue");
 		config.put("timeDelta", 0.0002);
 		config.put("forceField", "Amber03");
 		
