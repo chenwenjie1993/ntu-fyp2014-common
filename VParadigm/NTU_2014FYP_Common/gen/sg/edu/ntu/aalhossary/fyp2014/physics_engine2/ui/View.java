@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -47,38 +49,31 @@ import java.awt.Insets;
 
 
 public class View extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	EventListener listener;
 	
 	private JPanel contentPane;
-	private JPanel forceFieldPanel;
 //	private JSlider coeOfResSlider;
-	private JLabel coeOfResLbl;
 	private JPanel simulationPanel;
-	private JSlider simSpdSlider;
-	private JLabel simSpdLbl;
-	private JCheckBox lennardJonesCheckBox;
-	private JCheckBox electrostaticCheckBox;
-	private JCheckBox bondCheckBox;
-	private JCheckBox angleCheckBox;
-	private JCheckBox properDihedralCheckBox;
-	private JCheckBox improperDihedralCheckBox;
+
 	
-	private JPanel simLvlPanel;
 	private JPanel forcesPanel;
-	private JRadioButton atomicRadioButton;
-	private JRadioButton molecularRadioButton;
+
 	private JTextField commandTextField;
 	
 	private UpdateRegistry mediator;
-	private JLabel lblSimulationMedium;
 	private JPanel controlPanel;
 	private JButton pauseButton;
 	private JButton stopButton;
 	private JButton restartButton;
-	private JCheckBox partialMolCheckBox;
 	
 	private Map<String, Object> config;
 	private Viewer viewer;
+	private JComboBox cbMolecule;
 	
 	/**
 	 * Create the main frame.
@@ -120,50 +115,13 @@ public class View extends JFrame{
 		contentPane.add(inputPanel, BorderLayout.EAST);
 		
 		createSimulationPanel();
+
 		inputPanel.setLayout(new BorderLayout(0, 1));
 		inputPanel.add(simulationPanel, BorderLayout.NORTH);
-		JTextField tfMolecule = new JTextField();
-		GridBagConstraints gbc_tfMolecule = new GridBagConstraints();
-		gbc_tfMolecule.insets = new Insets(0, 0, 5, 0);
-		gbc_tfMolecule.fill = GridBagConstraints.BOTH;
-		gbc_tfMolecule.gridx = 1;
-		gbc_tfMolecule.gridy = 1;
-		simulationPanel.add(tfMolecule, gbc_tfMolecule);
-		JLabel lbForceField = new JLabel("Force Field: ", SwingConstants.RIGHT);
-		
-		GridBagConstraints gbc_lbForceField = new GridBagConstraints();
-		gbc_lbForceField.fill = GridBagConstraints.BOTH;
-		gbc_lbForceField.insets = new Insets(0, 0, 5, 5);
-		gbc_lbForceField.gridx = 0;
-		gbc_lbForceField.gridy = 2;
-		simulationPanel.add(lbForceField, gbc_lbForceField);
-		        
-		                JComboBox cbForceField = new JComboBox();
-		                cbForceField.setModel(new DefaultComboBoxModel(new String[] {"Amber03"}));
-		                cbForceField.addActionListener(new ActionListener() {
-
-		                    @Override
-		                    public void actionPerformed(ActionEvent e) {
-
-		                    }
-		                });
-		                GridBagConstraints gbc_cbForceField = new GridBagConstraints();
-		                gbc_cbForceField.insets = new Insets(0, 0, 5, 0);
-		                gbc_cbForceField.fill = GridBagConstraints.HORIZONTAL;
-		                gbc_cbForceField.gridx = 1;
-		                gbc_cbForceField.gridy = 2;
-		                simulationPanel.add(cbForceField, gbc_cbForceField);
-//		JPanel padding4 = new JPanel();
-//		padding4.setSize(20, 20);
-//		inputPanel.add(padding4);
-		
 		
 		createForcesPanel();
-//		forcesPanel.
 		inputPanel.add(forcesPanel, BorderLayout.CENTER);
-//		JPanel padding3 = new JPanel();
-//		padding3.setSize(20, 20);
-//		inputPanel.add(padding3);
+
 		
 		controlPanel = new JPanel();
 		controlPanel.setAlignmentX(LEFT_ALIGNMENT);
@@ -175,13 +133,10 @@ public class View extends JFrame{
 				if (listener.getStatus().equals("Running")){
 					pauseButton.setText("Resume");
 					listener.onPause();
-//					World.simulationStatus = "paused";
 			}
 				else{
 					pauseButton.setText("Pause");
 					listener.onResume();
-//					World.simulationStatus = "running";
-//					World.countDownLatch.countDown();
 				}
 			}
 		});
@@ -216,8 +171,6 @@ public class View extends JFrame{
 		contentPane.add(commandTextField, BorderLayout.SOUTH);
 		commandTextField.requestFocusInWindow();
 		
-		// add action listeners
-//		addActionListeners();
 		this.setVisible(true);
 	}
 	
@@ -243,7 +196,6 @@ public class View extends JFrame{
 //		forcesPanel = null;
 	}
 	
-	
 	private void createSimulationPanel(){
 
         simulationPanel = new JPanel();
@@ -251,7 +203,7 @@ public class View extends JFrame{
 //        simulationPanel.setToolTipText("sample text");
 //        simulationPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
         GridBagLayout gbl_simulationPanel = new GridBagLayout();
-        gbl_simulationPanel.columnWeights = new double[]{0.0, 0.0};
+        gbl_simulationPanel.columnWeights = new double[]{0.0, 1.0};
         gbl_simulationPanel.rowWeights = new double[]{0.0, 0.0, 0.0};
         simulationPanel.setLayout(gbl_simulationPanel);
                 
@@ -264,128 +216,57 @@ public class View extends JFrame{
         gbc_lbTimeDelta.gridy = 0;
         simulationPanel.add(lbTimeDelta, gbc_lbTimeDelta);
                 
-                
-                JTextField tfTimeDelta = new JTextField(config.get("timeDelta").toString());
-                GridBagConstraints gbc_tfTimeDelta = new GridBagConstraints();
-                gbc_tfTimeDelta.fill = GridBagConstraints.BOTH;
-                gbc_tfTimeDelta.insets = new Insets(0, 0, 5, 0);
-                gbc_tfTimeDelta.gridx = 1;
-                gbc_tfTimeDelta.gridy = 0;
-                simulationPanel.add(tfTimeDelta, gbc_tfTimeDelta);
-                JLabel lbMolecule = new JLabel("Molecule: ", SwingConstants.RIGHT);
-                
-                GridBagConstraints gbc_lbMolecule = new GridBagConstraints();
-                gbc_lbMolecule.insets = new Insets(0, 0, 5, 5);
-                gbc_lbMolecule.fill = GridBagConstraints.BOTH;
-                gbc_lbMolecule.gridx = 0;
-                gbc_lbMolecule.gridy = 1;
-                simulationPanel.add(lbMolecule, gbc_lbMolecule);
-
+        JTextField tfTimeDelta = new JTextField(config.get("timeDelta").toString());
+        GridBagConstraints gbc_tfTimeDelta = new GridBagConstraints();
+        gbc_tfTimeDelta.fill = GridBagConstraints.BOTH;
+        gbc_tfTimeDelta.insets = new Insets(0, 0, 5, 0);
+        gbc_tfTimeDelta.gridx = 1;
+        gbc_tfTimeDelta.gridy = 0;
+        simulationPanel.add(tfTimeDelta, gbc_tfTimeDelta);
+        JLabel lbMolecule = new JLabel("Molecule: ", SwingConstants.RIGHT);
+        
+        GridBagConstraints gbc_lbMolecule = new GridBagConstraints();
+        gbc_lbMolecule.anchor = GridBagConstraints.EAST;
+        gbc_lbMolecule.insets = new Insets(0, 0, 5, 5);
+        gbc_lbMolecule.fill = GridBagConstraints.VERTICAL;
+        gbc_lbMolecule.gridx = 0;
+        gbc_lbMolecule.gridy = 1;
+        simulationPanel.add(lbMolecule, gbc_lbMolecule);
 		
-//		simulationPanel = new JPanel();
+		cbMolecule = new JComboBox();
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		
-//		String[] labels = {"Time Delta: ", "Molecule Path: ", "Email: ", "Address: "};
-//		int numPairs = labels.length;
-//
-//		//Create and populate the panel.
-//		JPanel p = new JPanel(new SpringLayout());
-//		for (int i = 0; i < numPairs; i++) {
-//		    JLabel l = new JLabel(labels[i], JLabel.TRAILING);
-//		    p.add(l);
-//		    JTextField textField = new JTextField(10);
-//		    l.setLabelFor(textField);
-//		    p.add(textField);
-//		}
-//		
-//		String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
-//
-//		//Create the combo box, select item at index 4.
-//		//Indices start at 0, so 4 specifies the pig.
-//		JComboBox petList = new JComboBox(petStrings);
-//		petList.setSelectedIndex(0);
-////		petList.addActionListener(this);
-//		JLabel lbForceField = new JLabel("Force Field: ", JLabel.TRAILING);
-//		p.add(lbForceField);
-////		lbForceField.setLabelFor(petList);
-//		p.add(petList);
+		String[] molecules = getMoleculeList(); 
 		
-//		simulationPanel = p;
-
-		//Lay out the panel.
-//		SpringUtilities.makeCompactGrid(p,
-//		                                numPairs, 2, //rows, cols
-//		                                6, 6,        //initX, initY
-//		                                6, 6);       //xPad, yPad
+		cbMolecule.setModel(new DefaultComboBoxModel(molecules));
+		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 1;
+		gbc_comboBox.gridy = 1;
+		simulationPanel.add(cbMolecule, gbc_comboBox);
+		JLabel lbForceField = new JLabel("Force Field: ", SwingConstants.RIGHT);
 		
-		
-//		simulationPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-//		simulationPanel.setLayout(new BoxLayout(simulationPanel, BoxLayout.Y_AXIS));	
-//		
-//		JPanel panel1 = new JPanel();
-//	//	panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
-//		
-//		JLabel label1 = new JLabel("Simulation Settings ");
-//		panel1.add(label1);
-//		
-////		simSpdLbl = new JLabel(String.valueOf(World.frameTime_as));
-////		simSpdLbl = new JLabel("0.002");
-////		simSpdLbl.setAlignmentY(Component.TOP_ALIGNMENT);
-////		panel1.add(simSpdLbl);
-//		
-//		JLabel l = new JLabel("Time Delta");
-//		l.setAlignmentX(Component.LEFT_ALIGNMENT);
-//		simulationPanel.add(l);
-//		
-//		JTextField tfTimeDelta = new JTextField("0.0002");
-//		
-//		
-////		simSpdSlider = new JSlider(0,100);
-////		simSpdSlider.setSnapToTicks(true);
-////		simSpdSlider.setPaintTicks(true);
-////		simSpdSlider.setPaintLabels(true);
-//		simulationPanel.add(tfTimeDelta);
-////		simSpdSlider.setValue((int)(World.frameTime_as));
-//		simulationPanel.add(panel1);
+		GridBagConstraints gbc_lbForceField = new GridBagConstraints();
+		gbc_lbForceField.fill = GridBagConstraints.BOTH;
+		gbc_lbForceField.insets = new Insets(0, 0, 0, 5);
+		gbc_lbForceField.gridx = 0;
+		gbc_lbForceField.gridy = 2;
+		simulationPanel.add(lbForceField, gbc_lbForceField);
+		        
+        JComboBox cbForceField = new JComboBox();
+        cbForceField.setModel(new DefaultComboBoxModel(new String[] {"Amber03"}));
+        cbForceField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	
+            }
+        });
+        GridBagConstraints gbc_cbForceField = new GridBagConstraints();
+        gbc_cbForceField.fill = GridBagConstraints.HORIZONTAL;
+        gbc_cbForceField.gridx = 1;
+        gbc_cbForceField.gridy = 2;
+        simulationPanel.add(cbForceField, gbc_cbForceField);
 	}
-	
-
-//	private void createForceFieldPanel (){
-//		
-//		simLvlPanel = new JPanel();
-//		simLvlPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-//		simLvlPanel.setLayout(new BoxLayout(simLvlPanel, BoxLayout.Y_AXIS));
-//		
-//		JLabel label1 = new JLabel("Simulation Level");
-//		label1.setAlignmentX(Component.CENTER_ALIGNMENT);
-//		simLvlPanel.add(label1);
-//		
-//		ButtonGroup bg = new ButtonGroup();
-//		
-//		atomicRadioButton = new JRadioButton("atomic");
-//	    molecularRadioButton = new JRadioButton("molecular");
-//	    bg.add(atomicRadioButton);
-//	    bg.add(molecularRadioButton);
-//	    partialMolCheckBox = new JCheckBox("Partial Molecular");
-//	    
-////	    if(World.simulationLvlAtomic == true) {
-////	    	atomicRadioButton.setSelected(true);
-////	    	partialMolCheckBox.setEnabled(false);
-////	    	partialMolCheckBox.setSelected(false);
-////	    }
-////	    else {
-////	    	molecularRadioButton.setSelected(true);
-////	    	partialMolCheckBox.setEnabled(true);
-////	    	partialMolCheckBox.setSelected(World.simulationLvlPartial);
-////	    }
-//	    
-//	    JPanel panel2 = new JPanel();
-//	    panel2.add(atomicRadioButton);
-//	    panel2.add(molecularRadioButton);
-//		simLvlPanel.add(panel2);	
-//		JPanel panel1 = new JPanel();
-//		panel1.add(partialMolCheckBox);
-//		simLvlPanel.add(panel1);
-//	}
 	
 	private void createForcesPanel(){
 		forcesPanel = new JPanel();
@@ -408,39 +289,10 @@ public class View extends JFrame{
 				forcesPanel.add(cb);
 			}
 		}
-		
-//		lennardJonesCheckBox = new JCheckBox("Lennard-Jones Force");
-//		lennardJonesCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-//	    electrostaticCheckBox = new JCheckBox("Electrostatic Force");
-//	    electrostaticCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-//	    
-//	    bondCheckBox = new JCheckBox("Bond Stretching Force");
-//	    bondCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-//	    angleCheckBox = new JCheckBox("Bond Angle Rotation Force");
-//	    angleCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-//	    properDihedralCheckBox = new JCheckBox("Bond Proper Dihedral Force");
-//	    properDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-//	    improperDihedralCheckBox = new JCheckBox("Bond Improper Dihedral Force");
-//	    improperDihedralCheckBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-	 
-//	    if(World.electricForceActive)
-//	    	electrostaticCheckBox.setSelected(true);
-//	    if(World.LJForceActive)
-//	    	lennardJonesCheckBox.setSelected(true);
-	    
-//	    JPanel panel2 = new JPanel();
-//	    panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+
 	    JLabel label1 = new JLabel("Forces");
 	    label1.setAlignmentX(Component.LEFT_ALIGNMENT);
 	    
-//	    panel2.add(label1);
-//	    panel2.add(electrostaticCheckBox);
-//	    panel2.add(lennardJonesCheckBox);
-//	    panel2.add(bondCheckBox);
-//	    panel2.add(angleCheckBox);
-//	    panel2.add(properDihedralCheckBox);
-//	    panel2.add(improperDihedralCheckBox);
-//		forcesPanel.add(panel2, BorderLayout.CENTER);	
 	}
 
 	/**
@@ -556,6 +408,24 @@ public class View extends JFrame{
 //		});
 		
 //	}
+	protected String[] getMoleculeList() {
+		File f = null;
+	    String[] paths = {};
+	    List<String> molecules = new ArrayList<String>();
+	            
+	    try{      
+	    	f = new File("res/test/");
+            paths = f.list();
+	    	for(String path:paths) {
+	    		if (!path.equals(".DS_Store")) {
+	    			molecules.add(path);
+	    		}
+	    	}
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+		return molecules.toArray(new String[molecules.size()]);
+	}
 		
 }
 

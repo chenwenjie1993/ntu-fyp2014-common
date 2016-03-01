@@ -1,6 +1,8 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core;
 
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.FileHandler;
@@ -33,7 +35,7 @@ public class Application {
 		
 		config.put("frame", totalFrame);
 		config.put("dir", dir);
-		config.put("name", "Molecule Name Here");
+		config.put("name", "two_residue");
 		config.put("timeDelta", 0.0002);
 		config.put("forceField", "Amber03");
 		
@@ -48,6 +50,8 @@ public class Application {
 		config.put("ffParams", params);
 		
 		log.info("Application starts");
+		
+		
 	}
 
 	public static void main(String[] args) {
