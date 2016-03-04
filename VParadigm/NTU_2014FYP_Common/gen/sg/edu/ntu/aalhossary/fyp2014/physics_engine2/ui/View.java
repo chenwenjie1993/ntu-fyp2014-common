@@ -18,6 +18,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -56,10 +57,7 @@ public class View extends JFrame{
 	EventListener listener;
 	
 	private JPanel contentPane;
-//	private JSlider coeOfResSlider;
 	private JPanel simulationPanel;
-
-	
 	private JPanel forcesPanel;
 
 	private JTextField commandTextField;
@@ -72,7 +70,14 @@ public class View extends JFrame{
 	
 	private Map<String, Object> config;
 	private Viewer viewer;
+	
+	// Fields in simulation panel
 	private JComboBox cbMolecule;
+	private JTextField tfTimeDelta;
+	private JComboBox cbForceField;
+	
+	// Fields in force panel
+	private ArrayList<JComponent> ffParamComponents = new ArrayList<JComponent>();
 	
 	/**
 	 * Create the main frame.
@@ -146,10 +151,15 @@ public class View extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(stopButton.getText().equals("Stop")){
 					stopButton.setText("Start");
+					pauseButton.setEnabled(false);
+					enableConfig();
 					listener.onStop();
 				}
 				else{
 					stopButton.setText("Stop");
+					pauseButton.setText("Pause");
+					pauseButton.setEnabled(true);
+					saveParams();
 					listener.onRestart();
 					System.out.println("restart done");
 				}
@@ -160,6 +170,10 @@ public class View extends JFrame{
 		restartButton = new JButton("Restart");
 		restartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				stopButton.setText("Stop");
+				pauseButton.setText("Pause");
+				pauseButton.setEnabled(true);
+				saveParams();
 				listener.onRestart();
 			}
 		});
@@ -188,7 +202,7 @@ public class View extends JFrame{
 	}
 	
 	private void reloadViewer() {
-		viewer.evalString("load " + (String) config.get("dir") + "conf.gro");
+		viewer.evalString("load " + (String) config.get("dir") + "/" + (String) config.get("name") + "/" + "conf.gro");
 	}
 	
 	private void reloadParams() {
@@ -215,7 +229,7 @@ public class View extends JFrame{
         gbc_lbTimeDelta.gridy = 0;
         simulationPanel.add(lbTimeDelta, gbc_lbTimeDelta);
                 
-        JTextField tfTimeDelta = new JTextField(config.get("timeDelta").toString());
+        tfTimeDelta = new JTextField(config.get("timeDelta").toString());
         GridBagConstraints gbc_tfTimeDelta = new GridBagConstraints();
         gbc_tfTimeDelta.fill = GridBagConstraints.BOTH;
         gbc_tfTimeDelta.insets = new Insets(0, 0, 5, 0);
@@ -244,12 +258,10 @@ public class View extends JFrame{
 		for (int i=0; i<molecules.length; i++) {
 			System.out.println(molecules[i]);
 			if (name.equals(molecules[i])) {
-				
 				cbMolecule.setSelectedIndex(i);
 				break;
 			}
 		}
-
 		
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -265,7 +277,7 @@ public class View extends JFrame{
 		gbc_lbForceField.gridy = 2;
 		simulationPanel.add(lbForceField, gbc_lbForceField);
 		        
-        JComboBox cbForceField = new JComboBox();
+        cbForceField = new JComboBox();
         cbForceField.setModel(new DefaultComboBoxModel(new String[] {"Amber03"}));
         cbForceField.addActionListener(new ActionListener() {
             @Override
@@ -278,12 +290,25 @@ public class View extends JFrame{
         gbc_cbForceField.gridx = 1;
         gbc_cbForceField.gridy = 2;
         simulationPanel.add(cbForceField, gbc_cbForceField);
+        
+        disableSimulationPanel();
+	}
+	
+	protected void disableSimulationPanel() {
+		tfTimeDelta.setEnabled(false);
+		cbMolecule.setEnabled(false);
+		cbForceField.setEnabled(false);
+	}
+	
+	protected void enableSimulationPanel() {
+		tfTimeDelta.setEnabled(true);
+		cbMolecule.setEnabled(true);
+		cbForceField.setEnabled(true);
 	}
 	
 	private void createForcesPanel(){
 		forcesPanel = new JPanel();
 		forcesPanel.setBorder(BorderFactory.createTitledBorder("Force Field Parameters"));
-//		forcesPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		forcesPanel.setLayout(new BoxLayout(forcesPanel, BoxLayout.Y_AXIS));
 		
 		Map<String, Object> params = (Map<String, Object>) config.get("ffParams");
@@ -292,6 +317,9 @@ public class View extends JFrame{
 			if (e.getValue() instanceof Boolean) {
 				JCheckBox cb = new JCheckBox(e.getKey());
 				cb.setAlignmentX(LEFT_ALIGNMENT);
+				if ((Boolean) e.getValue()) {
+					cb.setSelected(true);
+				}
 				cb.addActionListener(new ActionListener(){
 				    public void actionPerformed(ActionEvent e) {
 				    	JCheckBox cb = (JCheckBox) e.getSource();
@@ -299,12 +327,26 @@ public class View extends JFrame{
 				    }
 				});
 				forcesPanel.add(cb);
+				ffParamComponents.add(cb);
 			}
 		}
 
 	    JLabel label1 = new JLabel("Forces");
 	    label1.setAlignmentX(Component.LEFT_ALIGNMENT);
 	    
+	    disableForcePanel();
+	}
+	
+	protected void disableForcePanel() {
+		for (JComponent c: ffParamComponents) {
+			c.setEnabled(false);
+		}
+	}
+	
+	protected void enableForcePanel() {
+		for (JComponent c: ffParamComponents) {
+			c.setEnabled(true);
+		}
 	}
 
 	/**
@@ -420,6 +462,36 @@ public class View extends JFrame{
 //		});
 		
 //	}
+	
+	protected void saveParams() {
+		// fields in simulation panel
+		config.put("name", (String) cbMolecule.getSelectedItem());
+		config.put("timeDelta", Double.parseDouble(tfTimeDelta.getText()));
+		config.put("forceField", (String) cbForceField.getSelectedItem());
+		// fields in force panel
+		Map<String, Object> params = (Map<String, Object>) config.get("ffParams");
+		
+		for (JComponent c: ffParamComponents) {
+			if (c instanceof JCheckBox) {
+				JCheckBox cb = (JCheckBox) c;
+				String key = cb.getText();
+				Boolean value = cb.isSelected();
+				params.put(key, value);
+			}
+		}
+		System.out.println(params.toString());
+	}
+	
+	protected void disableConfig() {
+		disableSimulationPanel();
+		disableForcePanel();
+	}
+	
+	protected void enableConfig() {
+		enableSimulationPanel();
+		enableForcePanel();
+	}
+	
 	protected String[] getMoleculeList() {
 		File f = null;
 	    String[] paths = {};

@@ -35,7 +35,7 @@ public class Application {
 		
 		config.put("frame", totalFrame);
 		config.put("dir", dir);
-		config.put("name", "twenty_residue");
+		config.put("name", "two_residue");
 		config.put("timeDelta", 0.0002);
 		config.put("forceField", "Amber03");
 		
@@ -50,7 +50,6 @@ public class Application {
 		config.put("ffParams", params);
 		
 		log.info("Application starts");
-		
 		
 	}
 

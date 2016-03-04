@@ -66,6 +66,7 @@ public class GuiController extends Controller implements EventListener {
         		currentFrame = 0;
         		v.reload();
         		buildTopology();
+        		v.disableConfig();
         		status = "Running";
             }
         }, "Restart");
