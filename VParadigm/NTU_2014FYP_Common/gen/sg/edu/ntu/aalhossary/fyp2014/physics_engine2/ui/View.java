@@ -108,7 +108,7 @@ public class View extends JFrame{
 		mediator = new UpdateRegistry(viewer);
 		viewer.setPercentVdwAtom(20);
 		viewer.evalString("");
-		viewer.evalString("load " + (String) config.get("dir") + "/" + (String) config.get("name") + "/conf.gro");
+		viewer.evalString("load " + (String) config.get("dir") + "/" + (String) config.get("name") + "/" + (String) config.get("name") + ".gro");
 		viewer.evalString("wireframe only;wireframe reset;spacefill reset;");
 //		viewer.evalString("set mouseDragFactor 1.0");
         jmolPanel.setMediator(mediator);
@@ -134,7 +134,7 @@ public class View extends JFrame{
 		pauseButton = new JButton("Pause");
 		pauseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (listener.getStatus().equals("Running")){
+				if (listener.getStatus() > 0){
 					pauseButton.setText("Resume");
 					listener.onPause();
 			}
@@ -180,9 +180,9 @@ public class View extends JFrame{
 		controlPanel.add(restartButton);
 		
 		// add text field for user input
-		commandTextField = new JTextField();
-		contentPane.add(commandTextField, BorderLayout.SOUTH);
-		commandTextField.requestFocusInWindow();
+//		commandTextField = new JTextField();
+//		contentPane.add(commandTextField, BorderLayout.SOUTH);
+//		commandTextField.requestFocusInWindow();
 		
 		this.setVisible(true);
 	}
@@ -202,7 +202,7 @@ public class View extends JFrame{
 	}
 	
 	private void reloadViewer() {
-		viewer.evalString("load " + (String) config.get("dir") + "/" + (String) config.get("name") + "/" + "conf.gro");
+		viewer.evalString("load " + (String) config.get("dir") + (String) config.get("name") + "/" + (String) config.get("name") + ".gro");
 	}
 	
 	private void reloadParams() {
@@ -348,120 +348,6 @@ public class View extends JFrame{
 			c.setEnabled(true);
 		}
 	}
-
-	/**
-	 * Add ActionListeners for UI inputs
-	 */
-//	private void addActionListeners() {
-//		DecimalFormat formatter = new DecimalFormat("0.00");
-		
-//		coeOfResSlider.addChangeListener(new ChangeListener() {
-//			public void stateChanged(ChangeEvent event) {
-//                double currentVal = ((JSlider)event.getSource()).getValue()/100.0;
-//                coeOfResLbl.setText(formatter.format(currentVal));
-////                World.COEFFICENT_OF_RESTITUTION = currentVal;
-////                World.resetActiveParticlesVelocities();
-//            }
-//        });
-		
-//		simSpdSlider.addChangeListener(new ChangeListener() {
-//			public void stateChanged(ChangeEvent event) {
-//                int currentVal = ((JSlider)event.getSource()).getValue();
-//                simSpdLbl.setText(String.valueOf(currentVal));
-////                World.frameTime_as = currentVal;
-////                World.resetActiveParticlesVelocities();
-//            }
-//        });
-		
-//		commandTextField.addKeyListener(new KeyAdapter() {
-//            public void keyReleased(KeyEvent e) {
-//            	if(e.getKeyCode() != 10)	// enter key
-//            		return;
-//            	
-//            	JTextField textField = (JTextField) e.getSource();
-//                String command = textField.getText();
-////                commandTextField.setText(text.toUpperCase()); 
-//                try {
-//                	getMediator().getViewer().evalString(command);
-//				} catch (Exception e1) {
-//					e1.printStackTrace();
-//				}
-//            }
-//		});
-		
-//		atomicRadioButton.addActionListener(new ActionListener(){
-//		    public void actionPerformed(ActionEvent e) {
-//		    	JRadioButton button = (JRadioButton) e.getSource();
-//		        if (button.getText().equals("atomic")){
-////		        	World.simulationLvlAtomic = true;
-//		        	electrostaticCheckBox.setEnabled(true);
-////		        	electrostaticCheckBox.setSelected(World.electricForceActive);
-//		        	
-////		        	World.frameTime_as = 50;
-//		        	simSpdLbl.setText("50");
-//		        	simSpdSlider.setValue(50);
-//		        	partialMolCheckBox.setEnabled(false);
-//			    	partialMolCheckBox.setSelected(false);
-////			    	World.simulationStatus = "changed";
-//		        }
-//		    }
-//		});
-		
-//		molecularRadioButton.addActionListener(new ActionListener(){
-//		    public void actionPerformed(ActionEvent e) {
-//		    	JRadioButton button = (JRadioButton) e.getSource();
-//		        if (button.getText().equals("molecular")){
-////		        	World.simulationLvlAtomic = false;
-//		    
-//		        	partialMolCheckBox.setEnabled(true);
-////			    	partialMolCheckBox.setSelected(World.simulationLvlPartial);
-////		        	World.simulationStatus = "changed";
-//		        }
-//		    }
-//		});
-		
-//		lennardJonesCheckBox.addActionListener(new ActionListener(){
-//		    public void actionPerformed(ActionEvent e) {
-//		    	JCheckBox checkBox = (JCheckBox) e.getSource();
-//		        if (checkBox.getText().equals("Lennard-Jones Force")){
-////		        	if(checkBox.isSelected())
-////		        		World.LJForceActive = true;
-////		        	else
-////		        		World.LJForceActive = false;
-//		        }
-////		        World.resetActiveParticlesVelocities();
-//		    }
-//		});
-		
-//		electrostaticCheckBox.addActionListener(new ActionListener(){
-//		    public void actionPerformed(ActionEvent e) {
-//		    	JCheckBox checkBox = (JCheckBox) e.getSource();
-//		        if (checkBox.getText().equals("Electrostatic Force")){
-////		        	if(checkBox.isSelected())
-////		        		World.electricForceActive = true;
-////		        	else
-////		        		World.electricForceActive = false;
-//		        }
-////		        World.resetActiveParticlesVelocities();
-//		     //   World.simulationStatus = "restart";
-//		    }
-//		});
-		
-//		partialMolCheckBox.addActionListener(new ActionListener(){
-//		    public void actionPerformed(ActionEvent e) {
-//		    	JCheckBox checkBox = (JCheckBox) e.getSource();
-//		        if (checkBox.getText().equals("Partial Molecular")){
-////		        	if(checkBox.isSelected())
-////		        		World.simulationLvlPartial = true;
-////		        	else
-////		        		World.simulationLvlPartial = false;
-//		        }
-////		        World.resetActiveParticlesVelocities();
-////		        World.simulationStatus = "changed";
-//		    }
-//		});
-		
-//	}
 	
 	protected void saveParams() {
 		// fields in simulation panel

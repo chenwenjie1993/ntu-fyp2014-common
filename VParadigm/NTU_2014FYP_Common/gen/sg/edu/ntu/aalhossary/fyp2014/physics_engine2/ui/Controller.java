@@ -6,8 +6,12 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology.TypologyBu
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.MolecularSystem;
 
 public abstract class Controller {
+	public static int STOPPED = -1;
+	public static int PAUSED = 0;
+	public static int RUNNING = 1;
+	
 	public Map<String, Object> config;
-	public String status = "Pending";
+	public int status = STOPPED; 
 	protected MolecularSystem m;
 	public int currentFrame = 0;
 	public int totalFrame = 0;
@@ -17,6 +21,7 @@ public abstract class Controller {
 	public Controller(Map<String, Object> config) {
 		this.config = config;
 		totalFrame = (Integer) config.get("frame");
+		init();
 	}
 	
 	public void buildTopology() {
@@ -26,7 +31,11 @@ public abstract class Controller {
    		m.setTimeDelta((Double) config.get("timeDelta"));
 	}
 	
+	public void init() {
+		buildTopology();
+	}
+	
 	public void start() {
-   		buildTopology();
+   		
 	};
 }

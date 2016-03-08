@@ -15,4 +15,8 @@ public class AbstractParticle extends sg.edu.ntu.aalhossary.fyp2014.common.Abstr
 //		System.out.println(a);
 		return a;
 	}
+	
+	public static void resetCount() {
+		particleCount = 0;
+	}
 }

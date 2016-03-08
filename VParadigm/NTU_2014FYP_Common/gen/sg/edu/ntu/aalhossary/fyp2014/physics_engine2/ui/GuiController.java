@@ -16,11 +16,11 @@ public class GuiController extends Controller implements EventListener {
 	@Override
 	public void start() {
 		super.start();
-		status = "Running";
+		status = RUNNING;
 		
 		// main loop
 		while (true) {
-			if (status.equals("Pending")) {
+			if (status <= PAUSED) {
 				// on hold when application is not running
 				System.out.println("Pending...");
 				try {
@@ -44,14 +44,14 @@ public class GuiController extends Controller implements EventListener {
 				}
 				// pause 1s for each frame
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 			else {
 				System.out.println("Simulation ends.");
-				status = "Pending";
+				status = STOPPED;
 			}
 
 		}
@@ -61,27 +61,27 @@ public class GuiController extends Controller implements EventListener {
 	public void onRestart() {
 		Thread t = new Thread(new Runnable(){
             public void run(){
-            	System.out.println("Simulation restarts.");
-        		status = "Pending";
+            	System.out.println("Simulation restarts...");
+        		status = STOPPED;
         		currentFrame = 0;
         		v.reload();
-        		buildTopology();
+        		init();
         		v.disableConfig();
-        		status = "Running";
+        		status = RUNNING;
             }
         }, "Restart");
 		t.start();
 	}
 	
 	@Override
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	@Override
-	public void onConfigurationChange() {
-		
-	}
+//	@Override
+//	public void onConfigurationChange() {
+//		
+//	}
 
 	@Override
 	public void onStop() {
@@ -89,7 +89,7 @@ public class GuiController extends Controller implements EventListener {
             public void run(){
             	System.out.println("Simulaton stops.");
         		currentFrame = 0;
-        		status = "Pending";
+        		status = STOPPED;
             }
         }, "Stop");
 		t.start();
@@ -100,7 +100,7 @@ public class GuiController extends Controller implements EventListener {
 		Thread t = new Thread(new Runnable(){
             public void run(){
             	System.out.println("Simulaton pauses.");
-        		status = "Pending";
+        		status = PAUSED;
             }
         }, "Pause");
 		t.start();
@@ -110,11 +110,11 @@ public class GuiController extends Controller implements EventListener {
 	public void onResume() {
 		Thread t = new Thread(new Runnable(){
             public void run(){
-            	if (status.equals("Running")) {
+            	if (status == STOPPED) {
         			return;
         		}
         		System.out.println("Simulaton resumes.");
-        		status = "Running";
+        		status = RUNNING;
             }
         }, "Resume");
 		t.start();

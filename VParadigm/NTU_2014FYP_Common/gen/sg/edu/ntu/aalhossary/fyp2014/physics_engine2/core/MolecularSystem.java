@@ -12,6 +12,10 @@ public class MolecularSystem {
 	
 	private static final Logger log = Logger.getLogger("main");
 	
+	public MolecularSystem() {
+		AbstractParticle.resetCount();
+	}
+	
 	public double getTimeDelta() {
 		return timeDelta;
 	}

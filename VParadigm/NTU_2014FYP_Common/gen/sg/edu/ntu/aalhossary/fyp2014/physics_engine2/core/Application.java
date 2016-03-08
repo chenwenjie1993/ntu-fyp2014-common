@@ -13,7 +13,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.ui.*;
 
 public class Application {
 	private static boolean enableUI = true;
-	private static int totalFrame = 400;
+	private static int totalFrame =100;
 	private static String dir = "res/amber03_test/";
 	private static Map<String, Object> config = new HashMap<>();
 	private static final Logger log = Logger.getLogger("main");
@@ -35,17 +35,17 @@ public class Application {
 		
 		config.put("frame", totalFrame);
 		config.put("dir", dir);
-		config.put("name", "two_residue");
+		config.put("name", "AFS");
 		config.put("timeDelta", 0.0002);
 		config.put("forceField", "Amber03");
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("Bond", true);
-		params.put("Angle", true);
-		params.put("ProperDihedral", true);
-		params.put("ImproperDihedral", true);
-		params.put("Electrostatic", true);
-		params.put("LennardJones", true);
+		params.put("Angle", false);
+		params.put("ProperDihedral", false);
+		params.put("ImproperDihedral", false);
+		params.put("Electrostatic", false);
+		params.put("LennardJones", false);
 		
 		config.put("ffParams", params);
 		

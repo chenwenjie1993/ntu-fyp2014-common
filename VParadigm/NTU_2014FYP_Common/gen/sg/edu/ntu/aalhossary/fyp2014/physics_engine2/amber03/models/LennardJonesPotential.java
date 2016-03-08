@@ -43,8 +43,8 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		Vector3D force = v_ij.getUnitVector();
 		force.scale(forceMagnitude);
 		
-//		i.addForce(force);
-//		j.addForce(force.getNegativeVector());
+		i.addForce(force);
+		j.addForce(force.getNegativeVector());
 //		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
 		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + force.toString());
 //		System.out.println(i.getAccumulatedForce());

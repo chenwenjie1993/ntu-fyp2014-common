@@ -253,8 +253,7 @@ public class UpdateRegistry extends sg.edu.ntu.aalhossary.fyp2014.moleculeeditor
 	}
 
 	public void updateViewerCoord(List<AbstractParticle> particles) {
-		
-		for(AbstractParticle p: particles){
+		for(AbstractParticle p: particles) {
 			Vector3D position = p.getPosition();
 	    	viewer.ms.setAtomCoord((p.getGUID()-1), (float)position.x*10, (float)position.y*10, (float)position.z*10);
 	    }

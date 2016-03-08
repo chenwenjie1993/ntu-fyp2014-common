@@ -10,5 +10,5 @@ public interface EventListener {
 	
 	public void onResume();
 	
-	public String getStatus();
+	public int getStatus();
 }
