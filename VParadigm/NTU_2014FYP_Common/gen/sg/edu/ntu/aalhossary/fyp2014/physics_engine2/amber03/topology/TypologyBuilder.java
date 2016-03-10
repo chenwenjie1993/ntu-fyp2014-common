@@ -32,7 +32,7 @@ public class TypologyBuilder {
 		m.interactions = new ArrayList<Interaction>();
 		readNameAndPosition(dir + (String) config.get("name") + ".gro");
 		readTopology(dir + (String) config.get("name") +".top");
-		initVelocity();
+//		initVelocity();
 		return m;
 	}
 	
@@ -49,22 +49,22 @@ public class TypologyBuilder {
 		
 		loadAtoms(fileAsList.subList(atoms+1, bonds));
 		
-		if ((Boolean) params.get("Bond")) {
+//		if ((Boolean) params.get("Bond")) {
 			System.out.println("Loading bonds...");
 			loadBonds(fileAsList.subList(bonds+1, pairs));
-		}
-		if ((Boolean) params.get("Angle")) {
+//		}
+//		if ((Boolean) params.get("Angle")) {
 			System.out.println("Loading angles...");
 			loadAngles(fileAsList.subList(angles+1, properDihedrals));
-		}
-		if ((Boolean) params.get("ImproperDihedral")) {
+//		}
+//		if ((Boolean) params.get("ImproperDihedral")) {
 			System.out.println("Loading ImproperDihedral...");
 			loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
-		}
-		if ((Boolean) params.get("ProperDihedral")) {
+//		}
+//		if ((Boolean) params.get("ProperDihedral")) {
 			System.out.println("Loading ProperDihedral...");
 			loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
-		}
+//		}
 		
 		generateNonBondedInteraction();
 	}

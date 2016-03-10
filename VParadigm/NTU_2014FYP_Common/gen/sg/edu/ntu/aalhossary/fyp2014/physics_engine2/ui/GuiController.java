@@ -19,8 +19,12 @@ public class GuiController extends Controller implements EventListener {
 		status = RUNNING;
 		
 		// main loop
-		while (true) {
-			if (status <= PAUSED) {
+		while (currentFrame < totalFrame) {
+			if (status == STOPPED) {
+				break;
+			}
+			
+			if (status == PAUSED) {
 				// on hold when application is not running
 				System.out.println("Pending...");
 				try {
@@ -33,25 +37,20 @@ public class GuiController extends Controller implements EventListener {
 			
 			currentFrame++;
 			System.out.println("Frame " + currentFrame);
-			if (currentFrame < totalFrame) {
-				m.nextFrame();
-				// update Jmol viewer
-				try {
-					v.getMediator().updateViewerCoord(m.particles);
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-				// pause 1s for each frame
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			
+			m.nextFrame();
+			// update Jmol viewer
+			try {
+				v.getMediator().updateViewerCoord(m.particles);
 			}
-			else {
-				System.out.println("Simulation ends.");
-				status = STOPPED;
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			// pause 1s for each frame
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 
 		}
@@ -68,6 +67,7 @@ public class GuiController extends Controller implements EventListener {
         		init();
         		v.disableConfig();
         		status = RUNNING;
+        		start();
             }
         }, "Restart");
 		t.start();

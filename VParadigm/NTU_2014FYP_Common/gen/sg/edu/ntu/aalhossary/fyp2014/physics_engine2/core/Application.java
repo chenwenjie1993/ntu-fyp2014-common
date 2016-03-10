@@ -13,7 +13,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.ui.*;
 
 public class Application {
 	private static boolean enableUI = true;
-	private static int totalFrame =100;
+	private static int totalFrame = 10000;
 	private static String dir = "res/amber03_test/";
 	private static Map<String, Object> config = new HashMap<>();
 	private static final Logger log = Logger.getLogger("main");

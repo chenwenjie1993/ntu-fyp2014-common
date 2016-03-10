@@ -29,6 +29,8 @@ public abstract class Controller {
 		tb = new TypologyBuilder();
 		m = tb.build(config);
    		m.setTimeDelta((Double) config.get("timeDelta"));
+   		Map<String, Object> params = (Map<String, Object>) config.get("ffParams");
+		m.setParams(params);
 	}
 	
 	public void init() {

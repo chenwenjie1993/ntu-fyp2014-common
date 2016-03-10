@@ -1,14 +1,17 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.*;
 
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
 	public ArrayList<Interaction> interactions;
 	private double timeDelta = 0.0002;
+	private Map<String, Object> params;
 	
 	private static final Logger log = Logger.getLogger("main");
 	
@@ -23,7 +26,7 @@ public class MolecularSystem {
 	public void setTimeDelta(double duration) {
 		this.timeDelta = duration;
 	}
-	
+		
 	public void nextFrame() {
 		updateEnergyPotential();
 		integrate();
@@ -31,7 +34,36 @@ public class MolecularSystem {
 	
 	public void updateEnergyPotential() {
 		for (Interaction interaction: interactions) {
-   			interaction.updatePotentialEnergy();
+			if (interaction instanceof Bond) {
+				if ((Boolean) params.get("Bond")) {
+		   			interaction.updatePotentialEnergy();
+				}
+			}
+			else if (interaction instanceof Angle) {
+				if ((Boolean) params.get("Angle")) {
+		   			interaction.updatePotentialEnergy();
+				}
+			}
+			else if (interaction instanceof ProperDihedral) {
+				if ((Boolean) params.get("ProperDihedral")) {
+		   			interaction.updatePotentialEnergy();
+				}
+			}
+			else if (interaction instanceof ImproperDihedral) {
+				if ((Boolean) params.get("ImproperDihedral")) {
+		   			interaction.updatePotentialEnergy();
+				}
+			}
+			else if (interaction instanceof LennardJonesPotential) {
+				if ((Boolean) params.get("LennardJones")) {
+		   			interaction.updatePotentialEnergy();
+				}
+			}
+			else if (interaction instanceof ElectrostaticPotential) {
+				if ((Boolean) params.get("Electrostatic")) {
+		   			interaction.updatePotentialEnergy();
+				}
+			}
    		}
    	}
 	
@@ -64,5 +96,13 @@ public class MolecularSystem {
 //			System.out.println("Positon: " + particle.getPosition());
 //			System.out.println("Velocity: " + particle.getVelocity());
 		}
+	}
+
+	public Map<String, Object> getParams() {
+		return params;
+	}
+
+	public void setParams(Map<String, Object> params) {
+		this.params = params;
 	}
 }
