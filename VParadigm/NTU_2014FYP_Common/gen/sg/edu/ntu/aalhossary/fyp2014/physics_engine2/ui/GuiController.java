@@ -15,25 +15,25 @@ public class GuiController extends Controller implements EventListener {
 
 	@Override
 	public void start() {
-		super.start();
+//		super.start();
 		status = RUNNING;
 		
 		// main loop
 		while (currentFrame < totalFrame) {
-			if (status == STOPPED) {
+			if (status == STOPPED || status == PAUSED) {
 				break;
 			}
 			
-			if (status == PAUSED) {
-				// on hold when application is not running
-				System.out.println("Pending...");
-				try {
-					Thread.sleep(1000);
-					continue;
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
+//			if (status == PAUSED) {
+//				// on hold when application is not running
+//				System.out.println("Pending...");
+//				try {
+//					Thread.sleep(1000);
+//					continue;
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
 			
 			currentFrame++;
 			System.out.println("Frame " + currentFrame);
@@ -48,11 +48,10 @@ public class GuiController extends Controller implements EventListener {
 			}
 			// pause 1s for each frame
 			try {
-				Thread.sleep(10);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 
@@ -77,11 +76,6 @@ public class GuiController extends Controller implements EventListener {
 	public int getStatus() {
 		return status;
 	}
-
-//	@Override
-//	public void onConfigurationChange() {
-//		
-//	}
 
 	@Override
 	public void onStop() {
@@ -114,7 +108,8 @@ public class GuiController extends Controller implements EventListener {
         			return;
         		}
         		System.out.println("Simulaton resumes.");
-        		status = RUNNING;
+        		m.setTimeDelta((Double) config.get("timeDelta"));
+        		start();
             }
         }, "Resume");
 		t.start();

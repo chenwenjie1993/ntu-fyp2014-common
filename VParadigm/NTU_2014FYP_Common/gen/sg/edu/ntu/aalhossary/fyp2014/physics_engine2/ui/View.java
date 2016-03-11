@@ -126,7 +126,6 @@ public class View extends JFrame{
 		createForcesPanel();
 		inputPanel.add(forcesPanel, BorderLayout.CENTER);
 
-		
 		controlPanel = new JPanel();
 		controlPanel.setAlignmentX(LEFT_ALIGNMENT);
 		inputPanel.add(controlPanel, BorderLayout.SOUTH);
@@ -136,10 +135,13 @@ public class View extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (listener.getStatus() > 0){
 					pauseButton.setText("Resume");
+					partialEnableSimulationPanel();
+					enableForcePanel();
 					listener.onPause();
-			}
-				else{
+				}
+				else {
 					pauseButton.setText("Pause");
+					saveParams();
 					listener.onResume();
 				}
 			}
@@ -298,6 +300,12 @@ public class View extends JFrame{
 		tfTimeDelta.setEnabled(false);
 		cbMolecule.setEnabled(false);
 		cbForceField.setEnabled(false);
+	}
+	
+	protected void partialEnableSimulationPanel() {
+		tfTimeDelta.setEnabled(true);
+//		cbMolecule.setEnabled(false);
+//		cbForceField.setEnabled(false);
 	}
 	
 	protected void enableSimulationPanel() {
