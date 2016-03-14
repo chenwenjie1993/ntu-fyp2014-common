@@ -68,15 +68,50 @@ public abstract class Dihedral extends BondedInteraction {
 	        f_k.add(f_l);
 	        f_k.add(svec);
 	        
-//	        atoms.get(0).addForce(f_i);
-//	        atoms.get(1).addForce(f_j.getNegativeVector());
-//	        atoms.get(2).addForce(f_k.getNegativeVector());
-//	        atoms.get(3).addForce(f_l);
+	        atoms.get(0).addForce(f_i);
+	        atoms.get(1).addForce(f_j.getNegativeVector());
+	        atoms.get(2).addForce(f_k.getNegativeVector());
+	        atoms.get(3).addForce(f_l);
 	        
-	        atoms.get(0).addForce(f_i.getNegativeVector());
-	        atoms.get(1).addForce(f_j);
-	        atoms.get(2).addForce(f_k);
-	        atoms.get(3).addForce(f_l.getNegativeVector());
+//	        atoms.get(0).addForce(f_i.getNegativeVector());
+//	        atoms.get(1).addForce(f_j);
+//	        atoms.get(2).addForce(f_k);
+//	        atoms.get(3).addForce(f_l.getNegativeVector());
 	    }
 	}
 }
+
+/*
+    rvec f_i, f_j, f_k, f_l;
+    rvec uvec, vvec, svec, dx_jl;
+    real iprm, iprn, nrkj, nrkj2, nrkj_1, nrkj_2;
+    real a, b, p, q, toler;
+    ivec jt, dt_ij, dt_kj, dt_lj;
+
+    iprm  = iprod(m, m);       
+    iprn  = iprod(n, n);       
+    nrkj2 = iprod(r_kj, r_kj); 
+    toler = nrkj2*GMX_REAL_EPS;
+    if ((iprm > toler) && (iprn > toler))
+    {
+        nrkj_1 = gmx_invsqrt(nrkj2); 
+        nrkj_2 = nrkj_1*nrkj_1;      
+        nrkj   = nrkj2*nrkj_1;       
+        a      = -ddphi*nrkj/iprm; 
+        svmul(a, m, f_i);           
+        b     = ddphi*nrkj/iprn;     
+        svmul(b, n, f_l);        
+        p     = iprod(r_ij, r_kj);   
+        p    *= nrkj_2;            
+        q     = iprod(r_kl, r_kj);   
+        q    *= nrkj_2;             
+        svmul(p, f_i, uvec);       
+        svmul(q, f_l, vvec);         
+        rvec_sub(uvec, vvec, svec); 
+        rvec_sub(f_i, svec, f_j);    
+        rvec_add(f_l, svec, f_k);   
+        rvec_inc(f[i], f_i);         
+        rvec_dec(f[j], f_j);        
+        rvec_dec(f[k], f_k);         
+        rvec_inc(f[l], f_l);         
+*/

@@ -40,8 +40,8 @@ public class Application {
 		config.put("forceField", "Amber03");
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("Bond", true);
-		params.put("Angle", true);
+		params.put("Bond", false);
+		params.put("Angle", false);
 		params.put("ProperDihedral", true);
 		params.put("ImproperDihedral", true);
 		params.put("Electrostatic", false);

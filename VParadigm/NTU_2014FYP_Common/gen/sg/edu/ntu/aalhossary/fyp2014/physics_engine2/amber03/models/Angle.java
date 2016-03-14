@@ -25,13 +25,13 @@ public class Angle extends BondedInteraction {
 		
 		v_ji = atoms.get(0).getPosition().subtractAndReturn(atoms.get(1).getPosition());
 		v_jk = atoms.get(2).getPosition().subtractAndReturn(atoms.get(1).getPosition());
-		System.out.println("v_ji: " + v_ji);
-		System.out.println("v_jk: " + v_jk);
+//		System.out.println("v_ji: " + v_ji);
+//		System.out.println("v_jk: " + v_jk);
 		cosTheta = Geometry.cosTheta(v_ji, v_jk);
-		System.out.println(cosTheta);
+//		System.out.println(cosTheta);
 		cosThetaSqr = cosTheta * cosTheta;
 		theta = Math.acos(cosTheta);
-		System.out.println("th0: " + String.valueOf(th0) + " theta: " + String.valueOf(theta));
+//		System.out.println("th0: " + String.valueOf(th0) + " theta: " + String.valueOf(theta));
 	}
 	
 	@Override

@@ -21,6 +21,7 @@ public abstract class Geometry {
 		if (p < 0) {
 			p *= -1;
 		}
+//		System.out.println(p);
 		return p;
 	}
 }

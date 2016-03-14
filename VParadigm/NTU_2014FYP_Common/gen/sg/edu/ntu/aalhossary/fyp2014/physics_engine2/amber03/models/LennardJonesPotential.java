@@ -19,6 +19,10 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		List<Double>param_j = db.getVdParams(j.type);
 		sigma_i = param_i.get(0);
 		sigma_j = param_j.get(0);
+		
+		sigma_i *= 0.1;
+		sigma_j *= 0.1;
+		
 		epsilon_i = param_i.get(1);
 		epsilon_j = param_j.get(1);
 	}
@@ -38,14 +42,20 @@ public class LennardJonesPotential extends NonBondedInteraction {
 //		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
 //		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
 		
+//		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 12 * cij6 / Math.pow(dist, 7);
 		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 6 * cij6 / Math.pow(dist, 7);
+		
+//		double sigma_ij = (sigma_i + sigma_j) * 0.5;
+//		double epsilon_ij = Math.sqrt(epsilon_i * epsilon_j);
+		
+//		double forceMagnitude = epsilon_ij * (12 * (1 << 6) * Math.pow(sigma_ij, 12) / Math.pow(dist, 13) - 6 * 2 * Math.pow(sigma_ij, 6) / Math.pow(dist, 7) );
 		
 		Vector3D force = v_ij.getUnitVector();
 		force.scale(forceMagnitude);
 		
 		i.addForce(force);
 		j.addForce(force.getNegativeVector());
-//		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
+		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
 		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + force.toString());
 //		System.out.println(i.getAccumulatedForce());
 //		i.potentialEnergy.add(energy.getNegativeVector());
