@@ -35,8 +35,8 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		double cij6 = Math.sqrt(ci6 * cj6);
 		double cij12 = Math.sqrt(ci12 * cj12);
 		
-		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
-		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
+//		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
+//		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
 		
 		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 6 * cij6 / Math.pow(dist, 7);
 		

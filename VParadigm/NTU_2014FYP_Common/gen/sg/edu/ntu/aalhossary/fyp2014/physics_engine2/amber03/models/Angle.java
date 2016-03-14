@@ -20,14 +20,18 @@ public class Angle extends BondedInteraction {
 			query.add(atom.type);
 		}
 		List<Double> params = db.getAngleParams(query);
-		th0 = params.get(0);
+		th0 = Math.toRadians(params.get(0));
 		cth = params.get(1);
 		
 		v_ji = atoms.get(0).getPosition().subtractAndReturn(atoms.get(1).getPosition());
 		v_jk = atoms.get(2).getPosition().subtractAndReturn(atoms.get(1).getPosition());
+		System.out.println("v_ji: " + v_ji);
+		System.out.println("v_jk: " + v_jk);
 		cosTheta = Geometry.cosTheta(v_ji, v_jk);
+		System.out.println(cosTheta);
 		cosThetaSqr = cosTheta * cosTheta;
 		theta = Math.acos(cosTheta);
+		System.out.println("th0: " + String.valueOf(th0) + " theta: " + String.valueOf(theta));
 	}
 	
 	@Override
@@ -38,7 +42,11 @@ public class Angle extends BondedInteraction {
 		cosThetaSqr = cosTheta * cosTheta;
 		theta = Math.acos(cosTheta);
 		
-		double dVdt = - cth * (theta - th0);
+		if (cosThetaSqr >= 1) {
+			return;
+		}
+		
+		double dVdt = - 0.5* cth * (theta - th0);
 		
 //		Vector3D energy = new Vector3D();
 		Vector3D force_i = new Vector3D();
@@ -53,10 +61,10 @@ public class Angle extends BondedInteraction {
 //        double f_i, f_j, f_k;
 		
         st  = dVdt / Math.sqrt(1 - cosThetaSqr);
-        sth = st * cosThetaSqr;
+        sth = st * cosTheta;
         
-        nrij2 = v_ji.getMagnitude();
-        nrkj2 = v_jk.getMagnitude();
+        nrij2 = v_ji.getMagnitude() * v_ji.getMagnitude();
+        nrkj2 = v_jk.getMagnitude() * v_jk.getMagnitude();
 
         nrij_1 = 1 / Math.sqrt(nrij2);
         nrkj_1 = 1 / Math.sqrt(nrkj2);
@@ -69,11 +77,15 @@ public class Angle extends BondedInteraction {
         force_i.y = - (cik * v_jk.y - cii * v_ji.y);
         force_i.z = - (cik * v_jk.z - cii * v_ji.z);
         
-        force_k.x = - (cik * v_ji.x - cii * v_jk.x);
-        force_k.y = - (cik * v_ji.y - cii * v_jk.y);
-        force_k.z = - (cik * v_ji.z - cii * v_jk.z);
+        force_k.x = - (cik * v_ji.x - ckk * v_jk.x);
+        force_k.y = - (cik * v_ji.y - ckk * v_jk.y);
+        force_k.z = - (cik * v_ji.z - ckk * v_jk.z);
         
         force_j = force_i.getNegativeVector().addAndReturn(force_k.getNegativeVector());
+        
+//        atoms.get(0).addForce(force_i.getNegativeVector());
+//        atoms.get(1).addForce(force_j.getNegativeVector());
+//        atoms.get(2).addForce(force_k.getNegativeVector());
         
         atoms.get(0).addForce(force_i);
         atoms.get(1).addForce(force_j);

@@ -16,7 +16,7 @@ public class ProperDihedral extends Dihedral {
 			query.add(atom.type);
 		}
 		List<Double> params = db.getProperDihedralParams(query);
-		phi0 = params.get(0);
+		phi0 = Math.toRadians(params.get(0));
 		kd = params.get(1);
 		mult = params.get(2);
 	}

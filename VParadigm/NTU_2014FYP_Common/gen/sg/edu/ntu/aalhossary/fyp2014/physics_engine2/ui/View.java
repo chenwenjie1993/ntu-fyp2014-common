@@ -142,6 +142,8 @@ public class View extends JFrame{
 				else {
 					pauseButton.setText("Pause");
 					saveParams();
+					disableForcePanel();
+					disableSimulationPanel();
 					listener.onResume();
 				}
 			}

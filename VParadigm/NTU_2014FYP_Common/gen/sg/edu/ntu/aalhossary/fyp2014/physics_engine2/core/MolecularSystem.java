@@ -76,7 +76,7 @@ public class MolecularSystem {
 			Vector3D v = particle.getVelocity();
 			Vector3D a = particle.getAcceleration();
 			Vector3D a2 = particle.getAccumulatedAcceleration();
-			log.info("[ACC]" + a2);
+//			log.info("[ACC]" + a2);
 						
 			Vector3D dr = new Vector3D();
 			dr.x = v.x * timeDelta + 0.5 * a.x * timeDelta * timeDelta;

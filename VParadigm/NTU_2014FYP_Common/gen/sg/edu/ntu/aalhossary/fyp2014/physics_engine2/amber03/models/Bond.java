@@ -37,15 +37,15 @@ public class Bond extends BondedInteraction {
 //		Vector3D energy = new Vector3D();
 		Vector3D force = new Vector3D();
 		double d_x = v_ij.x - bond.x;
-		force.x = - kb * d_x;
+		force.x = - 0.5 * kb * d_x;
 //		energy.x = kb * d_x * d_x;
 		
 		double d_y = v_ij.y - bond.y;
-		force.y = - kb * d_y;
+		force.y = - 0.5 * kb * d_y;
 //		energy.y = kb * d_y * d_y;
 		
 		double d_z = v_ij.z - bond.z;
-		force.z = - kb * d_z;
+		force.z = - 0.5* kb * d_z;
 //		energy.z = kb * d_z;
 		
 //		atoms.get(0).potentialEnergy.add(energy);
