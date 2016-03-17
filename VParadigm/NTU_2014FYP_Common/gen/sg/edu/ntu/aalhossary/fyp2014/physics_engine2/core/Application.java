@@ -42,10 +42,10 @@ public class Application {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("Bond", false);
 		params.put("Angle", false);
-		params.put("ProperDihedral", true);
-		params.put("ImproperDihedral", true);
+		params.put("ProperDihedral", false);
+		params.put("ImproperDihedral", false);
 		params.put("Electrostatic", false);
-		params.put("LennardJones", false);
+		params.put("LennardJones", true);
 		
 		config.put("ffParams", params);
 		

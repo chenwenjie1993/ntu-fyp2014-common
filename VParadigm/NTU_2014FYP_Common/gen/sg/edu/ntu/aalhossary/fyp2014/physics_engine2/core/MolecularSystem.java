@@ -36,32 +36,32 @@ public class MolecularSystem {
 		for (Interaction interaction: interactions) {
 			if (interaction instanceof Bond) {
 				if ((Boolean) params.get("Bond")) {
-		   			interaction.updatePotentialEnergy();
+		   			interaction.calcPotentialEnergyTerm();
 				}
 			}
 			else if (interaction instanceof Angle) {
 				if ((Boolean) params.get("Angle")) {
-		   			interaction.updatePotentialEnergy();
+		   			interaction.calcPotentialEnergyTerm();
 				}
 			}
 			else if (interaction instanceof ProperDihedral) {
 				if ((Boolean) params.get("ProperDihedral")) {
-		   			interaction.updatePotentialEnergy();
+		   			interaction.calcPotentialEnergyTerm();
 				}
 			}
 			else if (interaction instanceof ImproperDihedral) {
 				if ((Boolean) params.get("ImproperDihedral")) {
-		   			interaction.updatePotentialEnergy();
+		   			interaction.calcPotentialEnergyTerm();
 				}
 			}
 			else if (interaction instanceof LennardJonesPotential) {
 				if ((Boolean) params.get("LennardJones")) {
-		   			interaction.updatePotentialEnergy();
+		   			interaction.calcPotentialEnergyTerm();
 				}
 			}
 			else if (interaction instanceof ElectrostaticPotential) {
 				if ((Boolean) params.get("Electrostatic")) {
-		   			interaction.updatePotentialEnergy();
+		   			interaction.calcPotentialEnergyTerm();
 				}
 			}
    		}

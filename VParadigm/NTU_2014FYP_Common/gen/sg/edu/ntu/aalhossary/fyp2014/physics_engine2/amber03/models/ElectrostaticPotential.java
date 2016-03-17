@@ -15,7 +15,7 @@ public class ElectrostaticPotential extends NonBondedInteraction {
 	}
 
 	@Override
-	public void updatePotentialEnergy() {
+	public void calcPotentialEnergyTerm() {
 		// distance from i to j
 		Vector3D v_ij = Geometry.vector(i.getPosition(), j.getPosition());
 		

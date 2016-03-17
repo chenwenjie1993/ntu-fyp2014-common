@@ -35,7 +35,7 @@ public class Angle extends BondedInteraction {
 	}
 	
 	@Override
-	public void updatePotentialEnergy() {
+	public void calcPotentialEnergyTerm() {
 		v_ji = atoms.get(0).getPosition().subtractAndReturn(atoms.get(1).getPosition());
 		v_jk = atoms.get(2).getPosition().subtractAndReturn(atoms.get(1).getPosition());
 		cosTheta = Geometry.cosTheta(v_ji, v_jk);

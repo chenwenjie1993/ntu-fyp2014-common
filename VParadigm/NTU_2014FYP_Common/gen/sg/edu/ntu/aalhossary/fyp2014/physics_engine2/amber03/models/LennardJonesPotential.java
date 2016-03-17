@@ -20,15 +20,15 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		sigma_i = param_i.get(0);
 		sigma_j = param_j.get(0);
 		
-		sigma_i *= 0.1;
-		sigma_j *= 0.1;
+//		sigma_i *= 0.1;
+//		sigma_j *= 0.1;
 		
 		epsilon_i = param_i.get(1);
 		epsilon_j = param_j.get(1);
 	}
 
 	@Override
-	public void updatePotentialEnergy() {
+	public void calcPotentialEnergyTerm() {
 		Vector3D v_ij = Geometry.vector(i.getPosition(), j.getPosition());
 		double dist = v_ij.getMagnitude();
 		
@@ -39,8 +39,8 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		double cij6 = Math.sqrt(ci6 * cj6);
 		double cij12 = Math.sqrt(ci12 * cj12);
 		
-//		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
-//		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
+		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
+		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
 		
 //		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 12 * cij6 / Math.pow(dist, 7);
 		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 6 * cij6 / Math.pow(dist, 7);

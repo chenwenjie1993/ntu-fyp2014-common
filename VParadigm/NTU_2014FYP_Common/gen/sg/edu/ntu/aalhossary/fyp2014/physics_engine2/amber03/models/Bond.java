@@ -26,7 +26,7 @@ public class Bond extends BondedInteraction {
 	}
 
 	@Override
-	public void updatePotentialEnergy() {
+	public void calcPotentialEnergyTerm() {
 		Atom atom1 = atoms.get(0);
 		Atom atom2 = atoms.get(1);
 		Vector3D v_ij = Geometry.vector(atom1.getPosition(), atom2.getPosition());

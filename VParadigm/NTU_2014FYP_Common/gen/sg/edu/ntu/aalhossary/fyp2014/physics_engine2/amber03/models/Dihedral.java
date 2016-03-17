@@ -14,7 +14,7 @@ public abstract class Dihedral extends BondedInteraction {
 		super(atoms);
 	}
 
-	public abstract void updatePotentialEnergy();
+	public abstract void calcPotentialEnergyTerm();
 	
 	public void updateProperties() {
 		v_ji = atoms.get(0).getPosition().subtractAndReturn(atoms.get(1).getPosition());
@@ -28,7 +28,7 @@ public abstract class Dihedral extends BondedInteraction {
 		dp = phi - phi0;
 	}
 	
-	protected void applyForce() {
+	protected void calcForce() {
 		Vector3D f_i, f_j, f_k, f_l;
 	    Vector3D uvec, vvec, svec;
 	    double iprm, iprn, nrkj, nrkj2, nrkj_1, nrkj_2;

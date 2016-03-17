@@ -29,7 +29,7 @@ public class ProperDihedral extends Dihedral {
 	}
 
 	@Override
-	public void updatePotentialEnergy() {
+	public void calcPotentialEnergyTerm() {
 		updateProperties();
 		
 		double mdphi, sdphi;
@@ -37,7 +37,7 @@ public class ProperDihedral extends Dihedral {
 		sdphi = Math.sin(mdphi);
 		dVdphi = - 0.5 * kd * mult * sdphi;
 		
-		applyForce();
+		calcForce();
 	}
 }
 

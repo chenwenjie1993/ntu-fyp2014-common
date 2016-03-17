@@ -1,6 +1,7 @@
 package sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.topology;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -49,24 +50,22 @@ public class TypologyBuilder {
 		
 		loadAtoms(fileAsList.subList(atoms+1, bonds));
 		
-//		if ((Boolean) params.get("Bond")) {
-			System.out.println("Loading bonds...");
-			loadBonds(fileAsList.subList(bonds+1, pairs));
-//		}
-//		if ((Boolean) params.get("Angle")) {
-			System.out.println("Loading angles...");
-			loadAngles(fileAsList.subList(angles+1, properDihedrals));
-//		}
-//		if ((Boolean) params.get("ImproperDihedral")) {
-			System.out.println("Loading ImproperDihedral...");
-			loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
-//		}
-//		if ((Boolean) params.get("ProperDihedral")) {
-			System.out.println("Loading ProperDihedral...");
-			loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
-//		}
+		System.out.println("Loading bonds...");
+		loadBonds(fileAsList.subList(bonds+1, pairs));
 		
-		generateNonBondedInteraction();
+		System.out.println("Loading pairs...");
+		loadPairs(fileAsList.subList(pairs+1, angles));
+		
+		System.out.println("Loading angles...");
+		loadAngles(fileAsList.subList(angles+1, properDihedrals));
+
+		System.out.println("Loading ImproperDihedral...");
+		loadProperDihedrals(fileAsList.subList(properDihedrals+1, improperDihedrals));
+
+		System.out.println("Loading ProperDihedral...");
+		loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
+		
+//		generateNonBondedInteraction();
 	}
 	
 	private void readNameAndPosition(String fileName) {
@@ -108,6 +107,21 @@ public class TypologyBuilder {
 				atoms.add(atom1);
 				atoms.add(atom2);
 				m.interactions.add(new Bond(atoms));
+			}
+		}
+	}
+	
+	private void loadPairs(List<String> pairs) {
+//		System.out.println(pairs.toString());
+		
+		for (String s : pairs) {
+			String[] t = s.split(" +");
+			if (t.length > 3 && !t[0].contains(";")) {
+				System.out.println(Arrays.toString(t));
+				Atom atom1 = (Atom) m.particles.get(Integer.parseInt(t[1])-1);
+				Atom atom2 = (Atom) m.particles.get(Integer.parseInt(t[2])-1);
+				m.interactions.add(new ElectrostaticPotential(atom1, atom2));
+				m.interactions.add(new LennardJonesPotential(atom1, atom2));
 			}
 		}
 	}
