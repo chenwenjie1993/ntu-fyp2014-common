@@ -24,6 +24,10 @@ public class GuiController extends Controller implements EventListener {
 				break;
 			}
 			
+			if (currentFrame % m.getUpdateRlistStep() == 0) {
+				m.initRlist();
+			}
+			
 //			if (status == PAUSED) {
 //				// on hold when application is not running
 //				System.out.println("Pending...");
@@ -48,7 +52,7 @@ public class GuiController extends Controller implements EventListener {
 			}
 			// pause 1s for each frame
 			try {
-				Thread.sleep(10);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

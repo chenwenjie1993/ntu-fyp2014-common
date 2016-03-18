@@ -33,7 +33,7 @@ public class TypologyBuilder {
 		m.interactions = new ArrayList<Interaction>();
 		readNameAndPosition(dir + (String) config.get("name") + ".gro");
 		readTopology(dir + (String) config.get("name") +".top");
-//		initVelocity();
+		initVelocity();
 		return m;
 	}
 	
@@ -65,9 +65,36 @@ public class TypologyBuilder {
 		System.out.println("Loading ProperDihedral...");
 		loadImproperDihedrals(fileAsList.subList(improperDihedrals+1, position_restraints));
 		
+		updateExclude();
 //		generateNonBondedInteraction();
 	}
 	
+	private void updateExclude() {
+		int n = m.particles.size();
+//		boolean visited[] = new boolean[n];
+		
+		for (int i=0; i<n; i++) {
+			Atom atom1 = (Atom) m.particles.get(i);
+			ArrayList<Atom> neighbor = atom1.getNeighbor();
+			for (Atom atom2: neighbor) {
+				m.exclude[atom1.getGUID()-1][atom2.getGUID()-1] = true;
+				ArrayList<Atom> neighbor2 = atom2.getNeighbor();
+				for (Atom atom3: neighbor2) {
+					m.exclude[atom1.getGUID()-1][atom3.getGUID()-1] = true;
+				}
+			}
+		}
+		
+//		for (int i=0; i<n; i++) {
+//			for (int j=0; j<n; j++) {
+//				if (m.exclude[i][j]) {
+//					System.out.println(i + " " + j);
+//				}
+//			}
+//		}
+		
+	}
+
 	private void readNameAndPosition(String fileName) {
 		List<String> fileAsList = FileReader.readFile(fileName);
 		int count = Integer.valueOf(fileAsList.get(1).trim());
@@ -107,21 +134,34 @@ public class TypologyBuilder {
 				atoms.add(atom1);
 				atoms.add(atom2);
 				m.interactions.add(new Bond(atoms));
+				atom1.addNeighbor(atom2);
+				atom2.addNeighbor(atom1);
 			}
 		}
 	}
 	
 	private void loadPairs(List<String> pairs) {
 //		System.out.println(pairs.toString());
+		int n = m.particles.size();
+		m.exclude = new boolean[n][n];
+		
+		for (int i=0; i<n; i++) {
+			for (int j=0; j<n; j++) {
+				m.exclude[i][j] = false;
+			}
+		}
 		
 		for (String s : pairs) {
 			String[] t = s.split(" +");
 			if (t.length > 3 && !t[0].contains(";")) {
-				System.out.println(Arrays.toString(t));
-				Atom atom1 = (Atom) m.particles.get(Integer.parseInt(t[1])-1);
-				Atom atom2 = (Atom) m.particles.get(Integer.parseInt(t[2])-1);
-				m.interactions.add(new ElectrostaticPotential(atom1, atom2));
-				m.interactions.add(new LennardJonesPotential(atom1, atom2));
+//				System.out.println(Arrays.toString(t));
+				int n1 = Integer.parseInt(t[1])-1;
+				int n2 = Integer.parseInt(t[2])-1;
+				
+				m.exclude[n1][n2] = true;
+				m.exclude[n2][n1] = true;
+//				m.interactions.add(new ElectrostaticPotential(atom1, atom2));
+//				m.interactions.add(new LennardJonesPotential(atom1, atom2));
 			}
 		}
 	}

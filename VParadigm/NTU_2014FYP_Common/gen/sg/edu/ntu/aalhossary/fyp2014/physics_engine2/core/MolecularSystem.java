@@ -10,13 +10,46 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.*;
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
 	public ArrayList<Interaction> interactions;
+	public ArrayList<ArrayList<AbstractParticle>> rlist;
+	public boolean[][] exclude;
 	private double timeDelta = 0.0002;
 	private Map<String, Object> params;
+	private final double R = 1;
+	private int updateRlistStep = 20;
 	
 	private static final Logger log = Logger.getLogger("main");
 	
 	public MolecularSystem() {
 		AbstractParticle.resetCount();
+	}
+	
+	public void initRlist() {
+		System.out.println("Rebuild rlist");
+		if (particles == null || particles.size() == 0) {
+			return;
+		}
+		rlist = new ArrayList<ArrayList<AbstractParticle>>();
+		for (int i=0; i<particles.size(); i++) {
+			ArrayList<AbstractParticle> l = new ArrayList<AbstractParticle>();
+			rlist.add(l);
+		}
+	}
+	
+	public void updateRlist() {
+		initRlist();
+		int n = particles.size();
+		
+		for (int i=0; i<n; i++) {
+			for (int j=i+1; j<n; j++) {
+				AbstractParticle p1 = particles.get(i);
+				AbstractParticle p2 = particles.get(j);
+				double dist = p1.getPosition().subtractAndReturn(p2.getPosition()).getMagnitude();
+				if (dist < R && !exclude[i][j]) {
+					rlist.get(i).add(p2);
+					rlist.get(j).add(p1);
+				}
+			}
+		}
 	}
 	
 	public double getTimeDelta() {
@@ -54,17 +87,36 @@ public class MolecularSystem {
 		   			interaction.calcPotentialEnergyTerm();
 				}
 			}
-			else if (interaction instanceof LennardJonesPotential) {
-				if ((Boolean) params.get("LennardJones")) {
-		   			interaction.calcPotentialEnergyTerm();
-				}
-			}
-			else if (interaction instanceof ElectrostaticPotential) {
-				if ((Boolean) params.get("Electrostatic")) {
-		   			interaction.calcPotentialEnergyTerm();
-				}
-			}
    		}
+		
+		if ((Boolean) params.get("LennardJones") || (Boolean) params.get("Electrostatic")) {
+			int n = rlist.size();
+			for (int i=0; i<n; i++) {
+				for (AbstractParticle p: rlist.get(i)) {
+					if (p.getGUID()-1 > i) {
+						if ((Boolean) params.get("LennardJones")) {
+							Interaction ljInteraction = new LennardJonesPotential((Atom)particles.get(i), (Atom)p);
+							ljInteraction.calcPotentialEnergyTerm();
+						}
+						if ((Boolean) params.get("Electrostatic")) {
+							Interaction elecInteraction = new ElectrostaticPotential((Atom)particles.get(i), (Atom)p);
+							elecInteraction.calcPotentialEnergyTerm();
+						}
+					}
+				}
+			}
+		}
+		
+//		if ((Boolean) params.get("LennardJones")) {
+//   			interaction.calcPotentialEnergyTerm();
+//		}
+//		else if (interaction instanceof ElectrostaticPotential) {
+//			if ((Boolean) params.get("Electrostatic")) {
+//	   			interaction.calcPotentialEnergyTerm();
+//			}
+//		}
+		
+		
    	}
 	
 	public void integrate() {
@@ -104,5 +156,13 @@ public class MolecularSystem {
 
 	public void setParams(Map<String, Object> params) {
 		this.params = params;
+	}
+
+	public int getUpdateRlistStep() {
+		return updateRlistStep;
+	}
+
+	public void setUpdateRlistStep(int updateRlistStep) {
+		this.updateRlistStep = updateRlistStep;
 	}
 }

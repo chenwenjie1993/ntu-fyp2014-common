@@ -11,7 +11,7 @@ public abstract class Controller {
 	public static int RUNNING = 1;
 	
 	public Map<String, Object> config;
-	public int status = STOPPED; 
+	public int status = STOPPED;
 	protected MolecularSystem m;
 	public int currentFrame = 0;
 	public int totalFrame = 0;

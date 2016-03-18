@@ -32,17 +32,21 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		Vector3D v_ij = Geometry.vector(i.getPosition(), j.getPosition());
 		double dist = v_ij.getMagnitude();
 		
-		double ci6 = 4 * epsilon_i * Math.pow(sigma_i, 6);
-		double ci12 = 4 * epsilon_i * Math.pow(sigma_i, 12);
-		double cj6 = 4 * epsilon_j * Math.pow(sigma_j, 6);
-		double cj12 = 4 * epsilon_j * Math.pow(sigma_j, 12);
-		double cij6 = Math.sqrt(ci6 * cj6);
-		double cij12 = Math.sqrt(ci12 * cj12);
+//		double ci6 = 4 * epsilon_i * Math.pow(sigma_i, 6);
+//		double ci12 = 4 * epsilon_i * Math.pow(sigma_i, 12);
+//		double cj6 = 4 * epsilon_j * Math.pow(sigma_j, 6);
+//		double cj12 = 4 * epsilon_j * Math.pow(sigma_j, 12);
+//		double cij6 = Math.sqrt(ci6 * cj6);
+//		double cij12 = Math.sqrt(ci12 * cj12);
 		
-		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
-		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
+		double epsilon_ij = Math.sqrt(epsilon_i * epsilon_j);
+		double sigma_ij = 0.5 * (sigma_i + sigma_j);
+		double cij12 = 4 * epsilon_ij * Math.pow(sigma_ij, 12);
+		double cij6 = 4 * epsilon_ij * Math.pow(sigma_ij, 6);
 		
-//		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 12 * cij6 / Math.pow(dist, 7);
+//		log.info("[DIST]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + dist);
+//		log.info("[SIGMA]" + "(" + i.getGUID() + "," + j.getGUID() + ")" + 0.5 * (sigma_i + sigma_j));
+		
 		double forceMagnitude = 12 * cij12 / Math.pow(dist, 13) - 6 * cij6 / Math.pow(dist, 7);
 		
 //		double sigma_ij = (sigma_i + sigma_j) * 0.5;
@@ -55,8 +59,8 @@ public class LennardJonesPotential extends NonBondedInteraction {
 		
 		i.addForce(force);
 		j.addForce(force.getNegativeVector());
-		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
-		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + force.toString());
+//		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + forceMagnitude);
+//		log.info("[L] " + "(" + i.getGUID() + "," + j.getGUID() + ")" + force.toString());
 //		System.out.println(i.getAccumulatedForce());
 //		i.potentialEnergy.add(energy.getNegativeVector());
 //		j.potentialEnergy.add(energy);
