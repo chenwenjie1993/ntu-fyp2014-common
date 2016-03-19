@@ -1,0 +1,2575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.diagrams="http://ns.yatta-solutions.com/umllab/diagrams/1.1.0" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_Q0tvkO2XEeWnDaII1mfokg">
+  <modelElement href="ntu-fyp2014-common4.uml#_SkJF0e2XEeWnDaII1mfokg"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_50szwO2aEeWnDaII1mfokg" sourceAnchor="292.0,83.0" targetAnchor="0.0,86.0" target="_-1xg-e2aEeWnDaII1mfokg" source="_50weIO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlPWce2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_50ta0O2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlPWc-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_50ta0e2aEeWnDaII1mfokg" text="">
+      <visualProperties xmi:id="__WPwwO2aEeWnDaII1mfokg" position="-21.0,2.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_50ta0u2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlPWcu2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__WPJte2aEeWnDaII1mfokg" position="1.0,41.0"/>
+      <visibility xmi:id="_50ta0-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50ta1O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_50ta1e2aEeWnDaII1mfokg" aggregationKind="NONE" name="v" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiPs0O2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__WQX0O2aEeWnDaII1mfokg" position="-26.0,-43.0"/>
+      <visibility xmi:id="_50ta1u2aEeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_50ta1-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_52XnsO2aEeWnDaII1mfokg" sourceAnchor="142.0,0.0" targetAnchor="128.0,192.0" superClass="_54RsMO2aEeWnDaII1mfokg" subClass="_51dBsO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_Ta-nMO2XEeWnDaII1mfokg"/>
+    <bendpoints xmi:id="_ixDrdO26EeWnDaII1mfokg" sourceY="-108" targetX="-158" targetY="79"/>
+    <bendpoints xmi:id="_ixDrde26EeWnDaII1mfokg" sourceX="158" sourceY="-108" targetY="79"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_521hwO2aEeWnDaII1mfokg" sourceAnchor="146.0,0.0" targetAnchor="128.0,192.0" superClass="_54RsMO2aEeWnDaII1mfokg" subClass="_50weIO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TbBqgO2XEeWnDaII1mfokg"/>
+    <bendpoints xmi:id="_ixDrcu26EeWnDaII1mfokg" sourceY="-106" targetX="155" targetY="79"/>
+    <bendpoints xmi:id="_ixDrc-26EeWnDaII1mfokg" sourceX="-155" sourceY="-106" targetY="79"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_53paEO2aEeWnDaII1mfokg" source="_54RsMO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlNhQe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_53paEe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlOIUO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_53paEu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_53paE-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlNhQu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_53paFO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_53paFe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_53paFu2aEeWnDaII1mfokg" aggregationKind="NONE" name="config" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiMpge2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_53paF-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_53paGO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <qualifierHelper xmi:id="_53paGe2aEeWnDaII1mfokg">
+        <qualifiers xmi:id="_53paGu2aEeWnDaII1mfokg">
+          <modelElement href="ntu-fyp2014-common4.uml#_TiMpg-2XEeWnDaII1mfokg"/>
+          <visibility xmi:id="_53paG-2aEeWnDaII1mfokg" label="+"/>
+          <cardinality xmi:id="_53paHO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+          <type xmi:id="_53paHe2aEeWnDaII1mfokg" name="String">
+            <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </type>
+        </qualifiers>
+      </qualifierHelper>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_54JJUO2aEeWnDaII1mfokg" sourceAnchor="0.0,159.0" targetAnchor="267.0,162.0" target="_EORPoO2bEeWnDaII1mfokg" source="_54RsMO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlOIUe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_54JJUe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlOvYO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_54JJUu2aEeWnDaII1mfokg" text="">
+      <visualProperties xmi:id="_EnV28O2bEeWnDaII1mfokg" position="-15.0,2.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_54JJU-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlOIUu2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_EnVP4O2bEeWnDaII1mfokg" position="-26.0,-43.0"/>
+      <visibility xmi:id="_54JJVO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54JJVe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_54JJVu2aEeWnDaII1mfokg" aggregationKind="NONE" name="m" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiN3oO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_EnWeAO2bEeWnDaII1mfokg" position="13.0,-43.0"/>
+      <visibility xmi:id="_54JJV-2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_54JJWO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_54RFIO2aEeWnDaII1mfokg" sourceAnchor="128.0,0.0" targetAnchor="141.0,0.0" target="_KcetQO26EeWnDaII1mfokg" source="_54RsMO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlOvYe2XEeWnDaII1mfokg"/>
+    <bendpoints xmi:id="_ixDrcO26EeWnDaII1mfokg" sourceY="-20" targetX="653" targetY="-15"/>
+    <bendpoints xmi:id="_ixDrce26EeWnDaII1mfokg" sourceX="-653" sourceY="-20" targetY="-15"/>
+    <stereotypes xmi:id="_54RFIe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlPWcO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_54RFIu2aEeWnDaII1mfokg" text="">
+      <visualProperties xmi:id="_K_MYwe26EeWnDaII1mfokg" position="7.181818181818073,-17.00000000000003"/>
+    </nameVisual>
+    <sourceRole xmi:id="_54RFI-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlOvYu2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_K_MYwO26EeWnDaII1mfokg" position="-72.90909090909088,-62.999999999999986"/>
+      <visibility xmi:id="_54RFJO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RFJe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_54RFJu2aEeWnDaII1mfokg" aggregationKind="NONE" name="tb" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiPFwO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_K_M_0O26EeWnDaII1mfokg" position="57.909090909090764,-57.99999999999988"/>
+      <visibility xmi:id="_54RFJ-2aEeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_54RFKO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_57jCoO2aEeWnDaII1mfokg" source="_58hTAO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlLsEe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_58W68u2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlLsE-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_58WT4O2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_58W68O2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlLsEu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_58W69O2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_58W68-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_58W68e2aEeWnDaII1mfokg" aggregationKind="NONE" name="config" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiEGoe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_58W6-O2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58W69-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <qualifierHelper xmi:id="_58W69e2aEeWnDaII1mfokg">
+        <qualifiers xmi:id="_58W69u2aEeWnDaII1mfokg">
+          <modelElement href="ntu-fyp2014-common4.uml#_TiEtse2XEeWnDaII1mfokg"/>
+          <visibility xmi:id="_58W6--2aEeWnDaII1mfokg" label="+"/>
+          <cardinality xmi:id="_58W6_O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+          <type xmi:id="_58W6-u2aEeWnDaII1mfokg" name="String">
+            <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </type>
+        </qualifiers>
+      </qualifierHelper>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_58YJEO2aEeWnDaII1mfokg" source="_58hTAO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlLsFO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_58YJEe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlLsFu2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_58YJEu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_58YJE-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlLsFe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_58YJFO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_58YJFe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_58YJFu2aEeWnDaII1mfokg" aggregationKind="NONE" name="log" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiEtsu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_58YJF-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58YJGO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1U1AO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlTn4e2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1l6wu2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlUO8O2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1lTsO2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1l6wO2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlTn4u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1l6xO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1l6w-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1l6we2aEeWnDaII1mfokg" aggregationKind="NONE" name="config" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiXBk-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1mh0O2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1l6x-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <qualifierHelper xmi:id="_-1l6xe2aEeWnDaII1mfokg">
+        <qualifiers xmi:id="_-1l6xu2aEeWnDaII1mfokg">
+          <modelElement href="ntu-fyp2014-common4.uml#_TiXooe2XEeWnDaII1mfokg"/>
+          <visibility xmi:id="_-1mh0-2aEeWnDaII1mfokg" label="+"/>
+          <cardinality xmi:id="_-1mh1O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+          <type xmi:id="_-1mh0u2aEeWnDaII1mfokg" name="String">
+            <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </type>
+        </qualifiers>
+      </qualifierHelper>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_-1kFkO2aEeWnDaII1mfokg" targetItem="_-1yId-2aEeWnDaII1mfokg" sourceItem="_-1jegO2aEeWnDaII1mfokg"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1nI4O2aEeWnDaII1mfokg" sourceAnchor="211.0,0.0" targetAnchor="128.0,75.0" target="_-55L8O2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlPWdO2XEeWnDaII1mfokg"/>
+    <bendpoints xmi:id="_ixDrdu26EeWnDaII1mfokg" sourceY="-297" targetX="232"/>
+    <stereotypes xmi:id="_-1nI4e2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlP9gO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1nI4u2aEeWnDaII1mfokg" text="">
+      <visualProperties xmi:id="__WQ-4O2aEeWnDaII1mfokg" position="-83.0,1.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_-1nI4-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlPWde2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__WQX0e2aEeWnDaII1mfokg" position="2.0,-74.0"/>
+      <visibility xmi:id="_-1nI5O2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1nI5e2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1nI5u2aEeWnDaII1mfokg" aggregationKind="NONE" name="listener" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiSJEe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__WQ-4e2aEeWnDaII1mfokg" position="36.0,-43.0"/>
+      <visibility xmi:id="_-1nI5-2aEeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_-1nI6O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1nv8O2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlP9ge2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1nv8e2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlP9g-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1nv8u2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1nv8-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlP9gu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1nv9O2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1nv9e2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1nv9u2aEeWnDaII1mfokg" aggregationKind="NONE" name="contentPane" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiSwIe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1nv9-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1nv-O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1oXAO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlP9hO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1oXAe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlQkkO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1oXAu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1oXA-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlP9he2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1oXBO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1oXBe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1oXBu2aEeWnDaII1mfokg" aggregationKind="NONE" name="simulationPanel" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiTXMe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1oXB-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1oXCO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1o-EO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlQkke2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1o-Ee2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlQkk-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1o-Eu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1o-E-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlQkku2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1o-FO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1o-Fe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1o-Fu2aEeWnDaII1mfokg" aggregationKind="NONE" name="forcesPanel" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiT-QO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1o-F-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1o-GO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1plIO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlRLoO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1plIe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlRLou2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1plIu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1plI-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlRLoe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1plJO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1plJe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1plJu2aEeWnDaII1mfokg" aggregationKind="NONE" name="commandTextField" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiT-Qu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1plJ-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1plKO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1qMMO2aEeWnDaII1mfokg" sourceAnchor="0.0,364.0" targetAnchor="331.0,134.0" target="_MYbNoO2bEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlRLo-2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1qMMe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlRysO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1qMMu2aEeWnDaII1mfokg" text="">
+      <visualProperties xmi:id="_M4MS0O2bEeWnDaII1mfokg" position="-12.0,-17.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_-1qMM-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlRLpO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_M4LrwO2bEeWnDaII1mfokg" position="-78.0,-43.0"/>
+      <visibility xmi:id="_-1qMNO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1qMNe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1qMNu2aEeWnDaII1mfokg" aggregationKind="NONE" name="mediator" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiUlUe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_M4MS0e2bEeWnDaII1mfokg" position="13.0,2.0"/>
+      <visibility xmi:id="_-1qMN-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1qMOO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1qzQO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlRyse2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1qzQe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlRys-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1qzQu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1qzQ-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlRysu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1qzRO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1qzRe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1qzRu2aEeWnDaII1mfokg" aggregationKind="NONE" name="controlPanel" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiVMYO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1qzR-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1qzSO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1sBYO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlRytO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1sBYe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlSZwO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1sBYu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1sBY-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlRyte2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1sBZO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1sBZe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1sBZu2aEeWnDaII1mfokg" aggregationKind="NONE" name="pauseButton" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiVzce2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1sBZ-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1sBaO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1socO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlSZwe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1soce2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlTA0O2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1socu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1soc-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlSZwu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1sodO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1sode2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1sodu2aEeWnDaII1mfokg" aggregationKind="NONE" name="stopButton" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiWage2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1sod-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1soeO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1tPgO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlTA0e2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1tPge2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlTn4O2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1tPgu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1tPg-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlTA0u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1tPhO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1tPhe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1tPhu2aEeWnDaII1mfokg" aggregationKind="NONE" name="restartButton" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiXBke2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1tPh-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1tPiO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1t2kO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlUO8e2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1t2ke2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlUO8-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1t2ku2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1t2k-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlUO8u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1t2lO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1t2le2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1t2lu2aEeWnDaII1mfokg" aggregationKind="NONE" name="viewer" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiXoou2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1t2l-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1t2mO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1udoO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlU2AO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1udoe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlU2Au2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1udou2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1udo-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlU2Ae2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1udpO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1udpe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1udpu2aEeWnDaII1mfokg" aggregationKind="NONE" name="cbMolecule" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiYPse2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1udp-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1udqO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1vrwO2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlU2A-2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1vrwe2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlVdEO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1vrwu2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1vrw-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlU2BO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1vrxO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1vrxe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1vrxu2aEeWnDaII1mfokg" aggregationKind="NONE" name="tfTimeDelta" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiYPs-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1vrx-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1vryO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1wS0O2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlVdEe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1wS0e2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlVdE-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1wS0u2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1wS0-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlVdEu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1wS1O2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1wS1e2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1wS1u2aEeWnDaII1mfokg" aggregationKind="NONE" name="cbForceField" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiY2we2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1wS1-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1wS2O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_-1xg8O2aEeWnDaII1mfokg" source="_-1xg-e2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlVdFO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_-1xg8e2aEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlWEIO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_-1xg8u2aEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_-1xg8-2aEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlVdFe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1xg9O2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1xg9e2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_-1xg9u2aEeWnDaII1mfokg" aggregationKind="NONE" name="ffParamComponents" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiY2w-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1xg9-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1xg-O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_-3uBsO2aEeWnDaII1mfokg" sourceAnchor="241.0,0.0" targetAnchor="64.0,150.0" dashed="true" superClass="_-55L8O2aEeWnDaII1mfokg" subClass="_50weIO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TbBDcO2XEeWnDaII1mfokg"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_EOIswO2bEeWnDaII1mfokg" source="_EORPoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlLsF-2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_EOKh9-2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlMTIO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_EOKh9O2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_EOKh9e2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlLsGO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOLwFO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOLwE-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_EOKh9u2bEeWnDaII1mfokg" aggregationKind="NONE" name="particles" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiFUwO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOLwFu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOLwFe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_EOIswe2bEeWnDaII1mfokg" source="_EORPoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlMTIe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_EOLJAO2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlMTI-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_EOKh-O2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_EOKh-e2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlMTIu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOLwGu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOLwGe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_EOKh-u2bEeWnDaII1mfokg" aggregationKind="NONE" name="interactions" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiF70u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOLwHO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOLwG-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_EOIswu2bEeWnDaII1mfokg" source="_EORPoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlMTJO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_EOLJBO2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlM6MO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_EOLJAe2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_EOLJAu2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlMTJe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOMXI-2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOMXIu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_EOLJA-2bEeWnDaII1mfokg" aggregationKind="NONE" name="rlist" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiHJ8e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOMXJe2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOMXJO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_EOJT0O2bEeWnDaII1mfokg" source="_EORPoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlM6Me2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_EOLJCO2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlM6M-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_EOLJBe2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_EOLJBu2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlM6Mu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOMXKe2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOMXKO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_EOLJB-2bEeWnDaII1mfokg" aggregationKind="NONE" name="params" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiI_Ie2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOM-Mu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOM-Me2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <qualifierHelper xmi:id="_EOMXKu2bEeWnDaII1mfokg">
+        <qualifiers xmi:id="_EOM-MO2bEeWnDaII1mfokg">
+          <modelElement href="ntu-fyp2014-common4.uml#_TiI_Iu2XEeWnDaII1mfokg"/>
+          <visibility xmi:id="_EOPace2bEeWnDaII1mfokg" label="+"/>
+          <cardinality xmi:id="_EOPacu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+          <type xmi:id="_EOPacO2bEeWnDaII1mfokg" name="String">
+            <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </type>
+        </qualifiers>
+      </qualifierHelper>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_EOJT0e2bEeWnDaII1mfokg" source="_EORPoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlM6NO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_EOLJDO2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlNhQO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_EOLJCe2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_EOLJCu2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlM6Ne2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOM-NO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EOM-M-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_EOLJC-2bEeWnDaII1mfokg" aggregationKind="NONE" name="log" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiKNQe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EOM-Nu2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_EOM-Ne2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_MYQ1kO2bEeWnDaII1mfokg" targetItem="_MYbNoO2bEeWnDaII1mfokg" sourceItem="_MYFPYO2bEeWnDaII1mfokg"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYSDsO2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huQfke2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYVuE-2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huRGoO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYVuEO2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYVuEe2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huQfku2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYXjQe2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYXjQO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYVuEu2bEeWnDaII1mfokg" aggregationKind="NONE" name="logger" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htJsUe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYXjQ-2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYXjQu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYSqwO2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huRGoe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYWVIu2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huRGo-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYVuFO2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYWVIO2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huRGou2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYXjRu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYXjRe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYWVIe2bEeWnDaII1mfokg" aggregationKind="NONE" name="viewer" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htJsVO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYXjSO2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYXjR-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYSqwe2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huSUwe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYWVJu2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huS70O2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYWVI-2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYWVJO2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huSUwu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYYKUO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYXjSu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYWVJe2bEeWnDaII1mfokg" aggregationKind="NONE" name="selectedAtoms" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htK6ce2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYYKUu2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYYKUe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYTR0O2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huS70e2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYWVKu2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huS70-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYWVJ-2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYWVKO2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huS70u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYYKVu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYYKVe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYWVKe2bEeWnDaII1mfokg" aggregationKind="NONE" name="savedAtoms" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htLhgu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYYKWO2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYYKV-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_MYT44O2bEeWnDaII1mfokg" targetItem="_MYbN5-2bEeWnDaII1mfokg" sourceItem="_MYTR0e2bEeWnDaII1mfokg"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_MYUf8O2bEeWnDaII1mfokg" targetItem="_MYbOEe2bEeWnDaII1mfokg" sourceItem="_MYT44e2bEeWnDaII1mfokg"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYZYcO2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huP4gO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYZYce2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huP4gu2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYZYcu2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYZYc-2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huP4ge2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYZYdO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYZYde2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYZYdu2bEeWnDaII1mfokg" aggregationKind="NONE" name="storeAddAtom" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htIeM-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYZYd-2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYZYeO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYZYee2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huP4g-2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYZYeu2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huQfkO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYZYe-2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYZYfO2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huP4hO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYZYfe2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYZYfu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYZYf-2bEeWnDaII1mfokg" aggregationKind="NONE" name="jmolPanel" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htJFQe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYZYgO2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYZYge2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYZ_gO2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huRGpO2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYZ_ge2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huRtsO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYZ_gu2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYZ_g-2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huRGpe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYZ_hO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYZ_he2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYZ_hu2bEeWnDaII1mfokg" aggregationKind="NONE" name="toolPanel" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htKTYe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYZ_h-2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYZ_iO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_MYamkO2bEeWnDaII1mfokg" source="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huRtse2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_MYamke2bEeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_huSUwO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_MYamku2bEeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_MYamk-2bEeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_huRtsu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYamlO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYamle2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_MYamlu2bEeWnDaII1mfokg" aggregationKind="NONE" name="modelList" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htKTY-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYaml-2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYammO2bEeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_3rSfIO25EeWnDaII1mfokg" sourceAnchor="179.0,0.0" targetAnchor="359.0,200.0" target="_3rpEcO25EeWnDaII1mfokg" source="_3rpEcO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlIoxO2XEeWnDaII1mfokg"/>
+    <bendpoints xmi:id="_ixDrd-26EeWnDaII1mfokg" sourceY="-11" targetX="-180" targetY="-212"/>
+    <bendpoints xmi:id="_ixDreO26EeWnDaII1mfokg" sourceX="195" sourceY="-11" targetX="15" targetY="-212"/>
+    <bendpoints xmi:id="_ixDree26EeWnDaII1mfokg" sourceX="195" sourceY="201" targetX="15"/>
+    <stereotypes xmi:id="_3rjk4-25EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlJP0O2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_3rjk4O25EeWnDaII1mfokg" text="">
+      <visualProperties xmi:id="_4Jxx8O25EeWnDaII1mfokg" position="2.0,100.0"/>
+    </nameVisual>
+    <sourceRole xmi:id="_3rjk4e25EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlIoxe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_4JxK4O25EeWnDaII1mfokg" position="180.0,157.0"/>
+      <visibility xmi:id="_3rkzAe25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rkzAO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_3rjk4u25EeWnDaII1mfokg" aggregationKind="NONE" name="instance" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th6VoO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_4JyZAO25EeWnDaII1mfokg" position="-146.0,-258.0"/>
+      <visibility xmi:id="_3rkzA-25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rkzAu25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_3rghkO25EeWnDaII1mfokg" source="_3rpEcO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlIowe2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_3rkL8-25EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlIow-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_3rkL8O25EeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_3rkL8e25EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlIowu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rlaEu25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rlaEe25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_3rkL8u25EeWnDaII1mfokg" aggregationKind="NONE" name="log" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th5uke2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rlaFO25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rlaE-25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_3rmoMO25EeWnDaII1mfokg" source="_3rpEcO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlJP0e2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_3rmoMe25EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlJP0-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_3rmoMu25EeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_3rmoM-25EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlJP0u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rmoNO25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rmoNe25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_3rmoNu25EeWnDaII1mfokg" aggregationKind="NONE" name="vdParams" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th68su2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rmoN-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rmoOO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_3rnPQO25EeWnDaII1mfokg" source="_3rpEcO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlJP1O2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_3rnPQe25EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlJP1u2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_3rnPQu25EeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_3rnPQ-25EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlJP1e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rnPRO25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rnPRe25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_3rnPRu25EeWnDaII1mfokg" aggregationKind="NONE" name="bondParams" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th8K0e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rnPR-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rnPSO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_3rn2UO25EeWnDaII1mfokg" source="_3rpEcO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlJP1-2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_3rn2Ue25EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlKd8O2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_3rn2Uu25EeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_3rn2U-25EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlJP2O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rn2VO25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rn2Ve25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_3rn2Vu25EeWnDaII1mfokg" aggregationKind="NONE" name="angleParams" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th8x4u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rn2V-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rn2WO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_3rn2We25EeWnDaII1mfokg" source="_3rpEcO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlKd8e2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_3rn2Wu25EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlKd8-2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_3rn2W-25EeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_3rn2XO25EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlKd8u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rn2Xe25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rn2Xu25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_3rn2X-25EeWnDaII1mfokg" aggregationKind="NONE" name="properDihedralParams" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th-AAO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rn2YO25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rn2Ye25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_3rodYO25EeWnDaII1mfokg" source="_3rpEcO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TlKd9O2XEeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_3rodYe25EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlLFAO2XEeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_3rodYu25EeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_3rodY-25EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_TlKd9e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rodZO25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rodZe25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_3rodZu25EeWnDaII1mfokg" aggregationKind="NONE" name="improperDihedralParams" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th-nEe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rodZ-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rodaO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_KbnxoO26EeWnDaII1mfokg" sourceAnchor="282.0,164.0" targetAnchor="0.0,162.0" target="_EORPoO2bEeWnDaII1mfokg" source="_KcetQO26EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_GGIYEO26EeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_Kcab0-26EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_GGI_IO26EeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_Kcab0O26EeWnDaII1mfokg" text="">
+      <visualProperties xmi:id="_K_Nm4e26EeWnDaII1mfokg" position="-23.5,2.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_Kcab0e26EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_GGIYEe26EeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_K_Nm4O26EeWnDaII1mfokg" position="1.0,41.5"/>
+      <visibility xmi:id="_KccRAu26EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_KccRAe26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Kcab0u26EeWnDaII1mfokg" aggregationKind="NONE" name="m" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiAcQe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_K_ON8O26EeWnDaII1mfokg" position="-29.666666666666657,-42.5"/>
+      <visibility xmi:id="_KccRBO26EeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_KccRA-26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_KbzX0O26EeWnDaII1mfokg" source="_KcetQO26EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_GGHxAO26EeWnDaII1mfokg"/>
+    <stereotypes xmi:id="_KccRAO26EeWnDaII1mfokg" name="Reference">
+      <modelElement href="ntu-fyp2014-common4.uml#_GGHxAu26EeWnDaII1mfokg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_Kcbp8O26EeWnDaII1mfokg" text=""/>
+    <sourceRole xmi:id="_Kcbp8e26EeWnDaII1mfokg" aggregationKind="NONE" name="">
+      <modelElement href="ntu-fyp2014-common4.uml#_GGHxAe26EeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcc4Ee26EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_Kcc4EO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Kcbp8u26EeWnDaII1mfokg" aggregationKind="NONE" name="params" navigable="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th_1MO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcc4Fe26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_Kcc4FO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <qualifierHelper xmi:id="_Kcc4Eu26EeWnDaII1mfokg">
+        <qualifiers xmi:id="_Kcc4E-26EeWnDaII1mfokg">
+          <modelElement href="ntu-fyp2014-common4.uml#_TiAcQO2XEeWnDaII1mfokg"/>
+          <visibility xmi:id="_KcdfIe26EeWnDaII1mfokg" label="+"/>
+          <cardinality xmi:id="_KcdfIu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+          <type xmi:id="_KcdfIO26EeWnDaII1mfokg" name="String">
+            <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </type>
+        </qualifiers>
+      </qualifierHelper>
+    </targetRole>
+  </edges>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_-1jegO2aEeWnDaII1mfokg" sourceConnectionVisual="_-1kFkO2aEeWnDaII1mfokg" text="Create the main frame." item="_-1yId-2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TjwIse2XEeWnDaII1mfokg"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_MYFPYO2bEeWnDaII1mfokg" sourceConnectionVisual="_MYQ1kO2bEeWnDaII1mfokg" text="@author Wenjie&#xA; *&#xA; *&#x9;This class acts as the &quot;middle-man&quot; between JmolDisplay &#xA; *&#x9;and back end calculations and object model.&#xA; *&#x9;Contains sections:&#xA; *&#x9;- Methods called when there's changes to object model&#xA; *&#x9;- Methods called when there's changes in JmolDisplay&#xA; *&#x9;- Methods called to notify Viewer of new changes to object Model&#xA; *&#x9;- private methods used only within class." item="_MYbNoO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huGHgO2XEeWnDaII1mfokg"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_MYTR0e2bEeWnDaII1mfokg" sourceConnectionVisual="_MYT44O2bEeWnDaII1mfokg" text="*****************" item="_MYbN5-2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huGHge2XEeWnDaII1mfokg"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_MYT44e2bEeWnDaII1mfokg" sourceConnectionVisual="_MYUf8O2bEeWnDaII1mfokg" text="*******************************************************" item="_MYbOEe2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_huGukO2XEeWnDaII1mfokg"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:InterfaceVisual" xmi:id="_-55L8O2aEeWnDaII1mfokg" name="EventListener" associationsIn="_-1nI4O2aEeWnDaII1mfokg" subclassedBy="_-3uBsO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0q1IO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_-55L8e2aEeWnDaII1mfokg" position="860.0,80.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_-55L8u2aEeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_-55L8-2aEeWnDaII1mfokg" name="status">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0sDQe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-55L9O2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-55L9e2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-55L9u2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_-55L9-2aEeWnDaII1mfokg" name="onRestart">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0q1Ie2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-55L-O2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-55L-e2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-55L-u2aEeWnDaII1mfokg" name="onStop">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0rcMO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-55L--2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-55L_O2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-55L_e2aEeWnDaII1mfokg" name="onPause">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0rcMe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-55L_u2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-55L_-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-55MAO2aEeWnDaII1mfokg" name="onResume">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0sDQO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-55MAe2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-55MAu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_58hTAO2aEeWnDaII1mfokg" name="Application" associationsOut="_57jCoO2aEeWnDaII1mfokg _58YJEO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0XTIO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_58hTAe2aEeWnDaII1mfokg" position="11.0,934.0" size="-1.0,-1.0" visible="false"/>
+    <visibility xmi:id="_58hTAu2aEeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_58hTA-2aEeWnDaII1mfokg" defaultValue="true" name="enableUI" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiC4gO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_58hTBO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiC4gu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_58hTBe2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58hTBu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_58hTB-2aEeWnDaII1mfokg" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_58hTCO2aEeWnDaII1mfokg" defaultValue="10000" name="totalFrame" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiC4g-2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_58hTCe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiDfke2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_58hTCu2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58hTC-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_58hTDO2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_58hTDe2aEeWnDaII1mfokg" defaultValue="&quot;res/amber03_test/&quot;" name="dir" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiDfku2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_58hTDu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiEGoO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_58hTD-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58hTEO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_58hTEe2aEeWnDaII1mfokg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_58hTEu2aEeWnDaII1mfokg" defaultValue="new HashMap&lt;>()" name="config" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiEGoe2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_58hTE-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiEtsO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_58hTFO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58hTFe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_58hTFu2aEeWnDaII1mfokg" name="Object">
+        <modelElement href="ntu-fyp2014-common4.uml#_TWqu8O2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_58hTF-2aEeWnDaII1mfokg" defaultValue="Logger.getLogger(&quot;main&quot;)" name="log" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiEtsu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_58hTGO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58hTGe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_58hTGu2aEeWnDaII1mfokg" name="Logger">
+        <modelElement href="ntu-fyp2014-common4.uml#_TVqpYe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_58hTG-2aEeWnDaII1mfokg" name="init" staticOperation="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0X6MO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_58hTHO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_58hTHe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_58hTHu2aEeWnDaII1mfokg" name="main" staticOperation="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0YhQO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_58hTH-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_58hTIO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_58hTIe2aEeWnDaII1mfokg" name="args">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0YhQe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_58hTIu2aEeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+        <type xmi:id="_58hTI-2aEeWnDaII1mfokg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_55fNIO2aEeWnDaII1mfokg" name="ControllerFactory">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0o_8O2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_55fNIe2aEeWnDaII1mfokg" position="456.0,-7.0" size="-1.0,-1.0" visible="false"/>
+    <visibility xmi:id="_55fNIu2aEeWnDaII1mfokg" label="+"/>
+    <operations xmi:id="_55fNI-2aEeWnDaII1mfokg" name="createController" staticOperation="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Te3osO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_55fNJO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_55fNJe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_55fNJu2aEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_Te3os-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_55fNJ-2aEeWnDaII1mfokg" name="Controller">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0lVkO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_55fNKO2aEeWnDaII1mfokg" name="enableUI">
+        <modelElement href="ntu-fyp2014-common4.uml#_Te3ose2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_55fNKe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_55fNKu2aEeWnDaII1mfokg" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_55fNK-2aEeWnDaII1mfokg" name="config">
+        <modelElement href="ntu-fyp2014-common4.uml#_Te3osu2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_55fNLO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_55fNLe2aEeWnDaII1mfokg" name="Map">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWtyRe2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_50weIO2aEeWnDaII1mfokg" name="GuiController" associationsOut="_50szwO2aEeWnDaII1mfokg" generalizations="_521hwO2aEeWnDaII1mfokg _-3uBsO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0sqUO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_50weIe2aEeWnDaII1mfokg" position="683.0,456.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_50weIu2aEeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_50weI-2aEeWnDaII1mfokg" name="v">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiPs0O2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_50weJO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiPs0e2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_50weJe2aEeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_50weJu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_50weJ-2aEeWnDaII1mfokg" name="View">
+        <modelElement href="ntu-fyp2014-common4.uml#_S05eoO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_50weKO2aEeWnDaII1mfokg" name="start">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0tRYO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_50weKe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0tRYe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_50weKu2aEeWnDaII1mfokg" name="Annotations">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0t4cO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_50weK-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50weLO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_50weLe2aEeWnDaII1mfokg" name="onRestart">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0t4cu2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_50weLu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0t4c-2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_50weL-2aEeWnDaII1mfokg" name="Annotations">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0ufgO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_50weMO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50weMe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_50weMu2aEeWnDaII1mfokg" name="getStatus">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0ufgu2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_50weM-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0vGkO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_50weNO2aEeWnDaII1mfokg" name="Annotations">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0vGke2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_50weNe2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50weNu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_50weN-2aEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0ufg-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_50weOO2aEeWnDaII1mfokg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_50weOe2aEeWnDaII1mfokg" name="onStop">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0vGk-2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_50weOu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0vGlO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_50weO-2aEeWnDaII1mfokg" name="Annotations">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0vtoO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_50wePO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50wePe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_50wePu2aEeWnDaII1mfokg" name="onPause">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0vtou2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_50weP-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0vto-2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_50weQO2aEeWnDaII1mfokg" name="Annotations">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0wUsO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_50weQe2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50weQu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_50weQ-2aEeWnDaII1mfokg" name="onResume">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0wUsu2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_50weRO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0wUs-2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_50weRe2aEeWnDaII1mfokg" name="Annotations">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0wUtO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_50weRu2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50weR-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_50weSO2aEeWnDaII1mfokg" name="GuiController">
+      <modelElement href="ntu-fyp2014-common4.uml#_Te4Pwe2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_50weSe2aEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_50weSu2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_50weS-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_50weTO2aEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_Te420u2XEeWnDaII1mfokg"/>
+        <type xmi:id="_50weTe2aEeWnDaII1mfokg" name="GuiController">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0sqUO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_50weTu2aEeWnDaII1mfokg" name="config">
+        <modelElement href="ntu-fyp2014-common4.uml#_Te4Pwu2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_50weT-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_50weUO2aEeWnDaII1mfokg" name="Map">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWtyRe2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_51dBsO2aEeWnDaII1mfokg" name="CliController" generalizations="_52XnsO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0i5UO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_51dBse2aEeWnDaII1mfokg" position="374.0,458.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_51dBsu2aEeWnDaII1mfokg" label="+"/>
+    <operations xmi:id="_51dBs-2aEeWnDaII1mfokg" name="start">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0jgYO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_51dBtO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0kHcO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_51dBte2aEeWnDaII1mfokg" name="Annotations">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0kHce2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_51dBtu2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_51dBt-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_51dBuO2aEeWnDaII1mfokg" name="CliController">
+      <modelElement href="ntu-fyp2014-common4.uml#_TezXQO2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_51dBue2aEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_51dBuu2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_51dBu-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_51dBvO2aEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_Tez-U-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_51dBve2aEeWnDaII1mfokg" name="CliController">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0i5UO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_51dBvu2aEeWnDaII1mfokg" name="config">
+        <modelElement href="ntu-fyp2014-common4.uml#_Tez-UO2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_51dBv-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_51dBwO2aEeWnDaII1mfokg" name="Map">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWtyRe2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_EORPoO2bEeWnDaII1mfokg" name="MolecularSystem" associationsIn="_54JJUO2aEeWnDaII1mfokg _KbnxoO26EeWnDaII1mfokg" associationsOut="_EOIswO2bEeWnDaII1mfokg _EOIswe2bEeWnDaII1mfokg _EOIswu2bEeWnDaII1mfokg _EOJT0O2bEeWnDaII1mfokg _EOJT0e2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0a9gO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_EORPoe2bEeWnDaII1mfokg" position="202.0,75.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_EORPou2bEeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_EORPo-2bEeWnDaII1mfokg" name="particles">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiFUwO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_EORPpO2bEeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiF70O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_EORPpe2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiF70e2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_EORPpu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORPp-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPqO2bEeWnDaII1mfokg" name="ArrayList">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUPtEO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPqe2bEeWnDaII1mfokg" name="interactions">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiF70u2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_EORPqu2bEeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiGi4O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_EORPq-2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiHJ8O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_EORPrO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORPre2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPru2bEeWnDaII1mfokg" name="ArrayList">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUPtEO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPr-2bEeWnDaII1mfokg" name="rlist">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiHJ8e2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_EORPsO2bEeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiHxAO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_EORPse2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiHxAe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_EORPsu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORPs-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPtO2bEeWnDaII1mfokg" name="ArrayList">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUPtEO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPte2bEeWnDaII1mfokg" name="exclude">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiHxAu2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_EORPtu2bEeWnDaII1mfokg" name="Array">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiIYEe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_EORPt-2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiIYEu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_EORPuO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORPue2bEeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_EORPuu2bEeWnDaII1mfokg" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPu-2bEeWnDaII1mfokg" defaultValue="0.0002" name="timeDelta">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiIYE-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORPvO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORPve2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPvu2bEeWnDaII1mfokg" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPv-2bEeWnDaII1mfokg" name="params">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiI_Ie2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORPwO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORPwe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPwu2bEeWnDaII1mfokg" name="Object">
+        <modelElement href="ntu-fyp2014-common4.uml#_TWqu8O2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPw-2bEeWnDaII1mfokg" defaultValue="1" name="R">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiJmMO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_EORPxO2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiJmMu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_EORPxe2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_EORPxu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPx-2bEeWnDaII1mfokg" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPyO2bEeWnDaII1mfokg" defaultValue="20" name="updateRlistStep">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiJmM-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORPye2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORPyu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPy-2bEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_EORPzO2bEeWnDaII1mfokg" defaultValue="Logger.getLogger(&quot;main&quot;)" name="log" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiKNQe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORPze2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_EORPzu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_EORPz-2bEeWnDaII1mfokg" name="Logger">
+        <modelElement href="ntu-fyp2014-common4.uml#_TVqpYe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_EORP0O2bEeWnDaII1mfokg" name="MolecularSystem">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0cLoO2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_EORP0e2bEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_EORP0u2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORP0-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_EORP1O2bEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0cLo-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_EORP1e2bEeWnDaII1mfokg" name="MolecularSystem">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0a9gO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_EORP1u2bEeWnDaII1mfokg" name="initRlist">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0cysO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORP1-2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORP2O2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_EORP2e2bEeWnDaII1mfokg" name="updateRlist">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0cyse2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORP2u2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORP2-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_EORP3O2bEeWnDaII1mfokg" name="nextFrame">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0cysu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORP3e2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORP3u2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_EORP3-2bEeWnDaII1mfokg" name="updateEnergyPotential">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0dZwO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORP4O2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORP4e2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_EORP4u2bEeWnDaII1mfokg" name="integrate">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0eA0O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_EORP4-2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_EORP5O2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_-1xg-e2aEeWnDaII1mfokg" name="View" associationsIn="_50szwO2aEeWnDaII1mfokg" associationsOut="_-1U1AO2aEeWnDaII1mfokg _-1nI4O2aEeWnDaII1mfokg _-1nv8O2aEeWnDaII1mfokg _-1oXAO2aEeWnDaII1mfokg _-1o-EO2aEeWnDaII1mfokg _-1plIO2aEeWnDaII1mfokg _-1qMMO2aEeWnDaII1mfokg _-1qzQO2aEeWnDaII1mfokg _-1sBYO2aEeWnDaII1mfokg _-1socO2aEeWnDaII1mfokg _-1tPgO2aEeWnDaII1mfokg _-1t2kO2aEeWnDaII1mfokg _-1udoO2aEeWnDaII1mfokg _-1vrwO2aEeWnDaII1mfokg _-1wS0O2aEeWnDaII1mfokg _-1xg8O2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S05eoO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_-1xg-u2aEeWnDaII1mfokg" position="1009.0,453.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_-1xg--2aEeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_-1xg_O2aEeWnDaII1mfokg" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiRiAO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1xg_e2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1xg_u2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1xg_-2aEeWnDaII1mfokg" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1xhAO2aEeWnDaII1mfokg" name="listener">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiSJEe2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1xhAe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiSwIO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1xhAu2aEeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_-1xhA-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1xhBO2aEeWnDaII1mfokg" name="EventListener">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0q1IO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1xhBe2aEeWnDaII1mfokg" name="contentPane">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiSwIe2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1yIAO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiTXMO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIAe2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIAu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIA-2aEeWnDaII1mfokg" name="JPanel">
+        <modelElement href="ntu-fyp2014-common4.uml#_TZuC8e2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIBO2aEeWnDaII1mfokg" name="simulationPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiTXMe2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1yIBe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiTXMu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIBu2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIB-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yICO2aEeWnDaII1mfokg" name="JPanel">
+        <modelElement href="ntu-fyp2014-common4.uml#_TZuC8e2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yICe2aEeWnDaII1mfokg" name="forcesPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiT-QO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1yICu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiT-Qe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIC-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIDO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIDe2aEeWnDaII1mfokg" name="JPanel">
+        <modelElement href="ntu-fyp2014-common4.uml#_TZuC8e2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIDu2aEeWnDaII1mfokg" name="commandTextField">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiT-Qu2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__OWIQO22EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yID-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiUlUO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIEO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIEe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIEu2aEeWnDaII1mfokg" name="JTextField">
+        <modelElement href="ntu-fyp2014-common4.uml#_TWizI-2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIE-2aEeWnDaII1mfokg" name="mediator">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiUlUe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIFO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1yIFe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIFu2aEeWnDaII1mfokg" name="UpdateRegistry">
+        <modelElement href="ntu-fyp2014-common4.uml#_TfD18O2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIF-2aEeWnDaII1mfokg" name="controlPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiVMYO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1yIGO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiVzcO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIGe2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIGu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIG-2aEeWnDaII1mfokg" name="JPanel">
+        <modelElement href="ntu-fyp2014-common4.uml#_TZuC8e2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIHO2aEeWnDaII1mfokg" name="pauseButton">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiVzce2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__OWvUO22EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yIHe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiWagO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIHu2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIH-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIIO2aEeWnDaII1mfokg" name="JButton">
+        <modelElement href="ntu-fyp2014-common4.uml#_TXJ3Ie2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIIe2aEeWnDaII1mfokg" name="stopButton">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiWage2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__OWvUe22EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yIIu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiXBkO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yII-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIJO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIJe2aEeWnDaII1mfokg" name="JButton">
+        <modelElement href="ntu-fyp2014-common4.uml#_TXJ3Ie2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIJu2aEeWnDaII1mfokg" name="restartButton">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiXBke2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__OWvUu22EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yIJ-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiXBku2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIKO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIKe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIKu2aEeWnDaII1mfokg" name="JButton">
+        <modelElement href="ntu-fyp2014-common4.uml#_TXJ3Ie2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIK-2aEeWnDaII1mfokg" name="config">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiXBk-2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1yILO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiXooO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yILe2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yILu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIL-2aEeWnDaII1mfokg" name="Object">
+        <modelElement href="ntu-fyp2014-common4.uml#_TWqu8O2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIMO2aEeWnDaII1mfokg" name="viewer">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiXoou2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1yIMe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiYPsO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIMu2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIM-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yINO2aEeWnDaII1mfokg" name="Viewer">
+        <modelElement href="ntu-fyp2014-common4.uml#_TXOIkO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yINe2aEeWnDaII1mfokg" name="cbMolecule">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiYPse2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_DRlUMO23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yINu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiYPsu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIN-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIOO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIOe2aEeWnDaII1mfokg" name="JComboBox">
+        <modelElement href="ntu-fyp2014-common4.uml#_TXKeMe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIOu2aEeWnDaII1mfokg" name="tfTimeDelta">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiYPs-2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_DRlUMe23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yIO-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiY2wO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIPO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIPe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIPu2aEeWnDaII1mfokg" name="JTextField">
+        <modelElement href="ntu-fyp2014-common4.uml#_TWizI-2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIP-2aEeWnDaII1mfokg" name="cbForceField">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiY2we2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_DRl7QO23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yIQO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiY2wu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIQe2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIQu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yIQ-2aEeWnDaII1mfokg" name="JComboBox">
+        <modelElement href="ntu-fyp2014-common4.uml#_TXKeMe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_-1yIRO2aEeWnDaII1mfokg" defaultValue="new ArrayList&lt;JComponent>()" name="ffParamComponents">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiY2w-2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_-1yIRe2aEeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiZd0O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_-1yIRu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiZd0u2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIR-2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yISO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_-1yISe2aEeWnDaII1mfokg" name="ArrayList">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUPtEO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_-1yISu2aEeWnDaII1mfokg" name="reload">
+      <modelElement href="ntu-fyp2014-common4.uml#_S07T0O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIS-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1yITO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yITe2aEeWnDaII1mfokg" name="reloadViewer">
+      <modelElement href="ntu-fyp2014-common4.uml#_S07T0e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yITu2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIT-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIUO2aEeWnDaII1mfokg" name="reloadParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_S07T0u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIUe2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIUu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIU-2aEeWnDaII1mfokg" name="createSimulationPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0764O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIVO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIVe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIVu2aEeWnDaII1mfokg" name="disableSimulationPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0764e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIV-2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIWO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIWe2aEeWnDaII1mfokg" name="partialEnableSimulationPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0764u2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_8JFngO22EeWnDaII1mfokg" visible="false"/>
+      <visibility xmi:id="_-1yIWu2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIW-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIXO2aEeWnDaII1mfokg" name="enableSimulationPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0764-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIXe2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIXu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIX-2aEeWnDaII1mfokg" name="createForcesPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0765O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIYO2aEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_-1yIYe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIYu2aEeWnDaII1mfokg" name="disableForcePanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0765e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIY-2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIZO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIZe2aEeWnDaII1mfokg" name="enableForcePanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_S08h8O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIZu2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIZ-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIaO2aEeWnDaII1mfokg" name="saveParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_S08h8e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIae2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIau2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIa-2aEeWnDaII1mfokg" name="disableConfig">
+      <modelElement href="ntu-fyp2014-common4.uml#_S08h8u2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIbO2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIbe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIbu2aEeWnDaII1mfokg" name="enableConfig">
+      <modelElement href="ntu-fyp2014-common4.uml#_S08h8-2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_-1yIb-2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIcO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_-1yIce2aEeWnDaII1mfokg" name="getMoleculeList">
+      <modelElement href="ntu-fyp2014-common4.uml#_S08h9O2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_8JFAcO22EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_-1yIcu2aEeWnDaII1mfokg" name="Array">
+        <modelElement href="ntu-fyp2014-common4.uml#_S09JAu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_-1yIc-2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_-1yIdO2aEeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_-1yIde2aEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_S09JAO2XEeWnDaII1mfokg"/>
+        <type xmi:id="_-1yIdu2aEeWnDaII1mfokg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_-1yId-2aEeWnDaII1mfokg" comments="_-1jegO2aEeWnDaII1mfokg" targetConnectionVisual="_-1kFkO2aEeWnDaII1mfokg" name="View">
+      <modelElement href="ntu-fyp2014-common4.uml#_TfFEEO2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_-1yIeO2aEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_-1yIee2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_-1yIeu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_-1yIe-2aEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_TfFrIu2XEeWnDaII1mfokg"/>
+        <type xmi:id="_-1yIfO2aEeWnDaII1mfokg" name="View">
+          <modelElement href="ntu-fyp2014-common4.uml#_S05eoO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_-1yIfe2aEeWnDaII1mfokg" name="listener">
+        <modelElement href="ntu-fyp2014-common4.uml#_TfFEEe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_-1yIfu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_-1yIf-2aEeWnDaII1mfokg" name="EventListener">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0q1IO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_-1yIgO2aEeWnDaII1mfokg" name="config">
+        <modelElement href="ntu-fyp2014-common4.uml#_TfFEEu2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_-1yIge2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_-1yIgu2aEeWnDaII1mfokg" name="Map">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWtyRe2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_MYbNoO2bEeWnDaII1mfokg" comments="_MYFPYO2bEeWnDaII1mfokg" targetConnectionVisual="_MYQ1kO2bEeWnDaII1mfokg" name="UpdateRegistry" associationsIn="_-1qMMO2aEeWnDaII1mfokg" associationsOut="_MYSDsO2bEeWnDaII1mfokg _MYSqwO2bEeWnDaII1mfokg _MYSqwe2bEeWnDaII1mfokg _MYTR0O2bEeWnDaII1mfokg _MYZYcO2bEeWnDaII1mfokg _MYZYee2bEeWnDaII1mfokg _MYZ_gO2bEeWnDaII1mfokg _MYamkO2bEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_TfD18O2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_MYbNoe2bEeWnDaII1mfokg" position="579.0,683.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_MYbNou2bEeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_MYbNo-2bEeWnDaII1mfokg" name="dragMode">
+      <modelElement href="ntu-fyp2014-common4.uml#_htH3IO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_jWrBUO23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNpO2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htIeMO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNpe2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYbNpu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNp-2bEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNqO2bEeWnDaII1mfokg" name="addMode">
+      <modelElement href="ntu-fyp2014-common4.uml#_htIeMe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_jWrBUe23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNqe2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htIeMu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNqu2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYbNq-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNrO2bEeWnDaII1mfokg" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNre2bEeWnDaII1mfokg" name="storeAddAtom">
+      <modelElement href="ntu-fyp2014-common4.uml#_htIeM-2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_jWroYO23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNru2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htJFQO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNr-2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYbNsO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNse2bEeWnDaII1mfokg" name="Atom">
+        <modelElement href="ntu-fyp2014-common4.uml#_SsiM0O2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNsu2bEeWnDaII1mfokg" name="jmolPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_htJFQe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_jWroYe23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNs-2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htJFQu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNtO2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYbNte2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNtu2bEeWnDaII1mfokg" name="JmolDisplay">
+        <modelElement href="ntu-fyp2014-common4.uml#_SwxzoO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNt-2bEeWnDaII1mfokg" name="minimizeMode">
+      <modelElement href="ntu-fyp2014-common4.uml#_htJFQ-2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_jWroYu23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNuO2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htJsUO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNue2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYbNuu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNu-2bEeWnDaII1mfokg" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNvO2bEeWnDaII1mfokg" defaultValue="java.util.logging.Logger.getLogger(UpdateRegistry.class.getName())" name="logger" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_htJsUe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_jWroY-23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNve2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htJsU-2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNvu2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYbNv-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNwO2bEeWnDaII1mfokg" name="Logger">
+        <modelElement href="ntu-fyp2014-common4.uml#_TVqpYe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNwe2bEeWnDaII1mfokg" name="viewer">
+      <modelElement href="ntu-fyp2014-common4.uml#_htJsVO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_MYbNwu2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htKTYO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNw-2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYbNxO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNxe2bEeWnDaII1mfokg" name="Viewer">
+        <modelElement href="ntu-fyp2014-common4.uml#_TXOIkO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNxu2bEeWnDaII1mfokg" name="toolPanel">
+      <modelElement href="ntu-fyp2014-common4.uml#_htKTYe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_ltAmkO23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNx-2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htKTYu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNyO2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYbNye2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbNyu2bEeWnDaII1mfokg" name="ToolPanel">
+        <modelElement href="ntu-fyp2014-common4.uml#_SxCSUO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbNy-2bEeWnDaII1mfokg" name="modelList">
+      <modelElement href="ntu-fyp2014-common4.uml#_htKTY-2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_ltBNoO23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbNzO2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htK6cO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbNze2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYbNzu2bEeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_MYbNz-2bEeWnDaII1mfokg" name="Model">
+        <modelElement href="ntu-fyp2014-common4.uml#_St43sO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbN0O2bEeWnDaII1mfokg" name="selectedAtoms">
+      <modelElement href="ntu-fyp2014-common4.uml#_htK6ce2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_ltBNoe23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbN0e2bEeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_htLhgO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_MYbN0u2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htLhge2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbN0-2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYbN1O2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbN1e2bEeWnDaII1mfokg" name="ArrayList">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUPtEO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbN1u2bEeWnDaII1mfokg" name="savedAtoms">
+      <modelElement href="ntu-fyp2014-common4.uml#_htLhgu2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_ltBNou23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbN1-2bEeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_htMIkO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_MYbN2O2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htMIke2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbN2e2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYbN2u2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbN2-2bEeWnDaII1mfokg" name="ArrayList">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUPtEO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbN3O2bEeWnDaII1mfokg" defaultValue="new double[3]" name="offset">
+      <modelElement href="ntu-fyp2014-common4.uml#_htMIku2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_ltBNo-23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbN3e2bEeWnDaII1mfokg" name="Array">
+        <modelElement href="ntu-fyp2014-common4.uml#_htMvoe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_MYbN3u2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htMvo-2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbN3-2bEeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_MYbN4O2bEeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_MYbN4e2bEeWnDaII1mfokg" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_MYbN4u2bEeWnDaII1mfokg" defaultValue="true" name="atomselected">
+      <modelElement href="ntu-fyp2014-common4.uml#_htNWsO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_ltB0sO23EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_MYbN4-2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_htNWsu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbN5O2bEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_MYbN5e2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_MYbN5u2bEeWnDaII1mfokg" name="boolean">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_MYbN5-2bEeWnDaII1mfokg" comments="_MYTR0e2bEeWnDaII1mfokg" targetConnectionVisual="_MYT44O2bEeWnDaII1mfokg" name="UpdateRegistry">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn0gYO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_cEIAwe23EeWnDaII1mfokg" visible="false"/>
+      <keywords xmi:id="_MYbN6O2bEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_MYbN6e2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbN6u2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_MYbN6-2bEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn1Hcu2XEeWnDaII1mfokg"/>
+        <type xmi:id="_MYbN7O2bEeWnDaII1mfokg" name="UpdateRegistry">
+          <modelElement href="ntu-fyp2014-common4.uml#_TfD18O2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_MYbN7e2bEeWnDaII1mfokg" name="jmolPanel">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn0gYe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbN7u2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbN7-2bEeWnDaII1mfokg" name="JmolDisplay">
+          <modelElement href="ntu-fyp2014-common4.uml#_SwxzoO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_MYbN8O2bEeWnDaII1mfokg" name="toolPanel">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn1HcO2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbN8e2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbN8u2bEeWnDaII1mfokg" name="ToolPanel">
+          <modelElement href="ntu-fyp2014-common4.uml#_SxCSUO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_MYbN8-2bEeWnDaII1mfokg" name="models">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn1Hce2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbN9O2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbN9e2bEeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbN9u2bEeWnDaII1mfokg" name="UpdateRegistry">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn2VkO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_cEIAwO23EeWnDaII1mfokg" visible="false"/>
+      <keywords xmi:id="_MYbN9-2bEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_MYbN-O2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbN-e2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_MYbN-u2bEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn2Vk-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_MYbN--2bEeWnDaII1mfokg" name="UpdateRegistry">
+          <modelElement href="ntu-fyp2014-common4.uml#_TfD18O2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_MYbN_O2bEeWnDaII1mfokg" name="viewer">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn2Vke2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbN_e2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbN_u2bEeWnDaII1mfokg" name="Viewer">
+          <modelElement href="ntu-fyp2014-common4.uml#_TXOIkO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_MYbN_-2bEeWnDaII1mfokg" name="models">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn2Vku2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOAO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOAe2bEeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbOAu2bEeWnDaII1mfokg" name="UpdateRegistry">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn28oe2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_MYbOA-2bEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_MYbOBO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOBe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_MYbOBu2bEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn28o-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_MYbOB-2bEeWnDaII1mfokg" name="UpdateRegistry">
+          <modelElement href="ntu-fyp2014-common4.uml#_TfD18O2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_MYbOCO2bEeWnDaII1mfokg" name="viewer">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn28ou2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOCe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOCu2bEeWnDaII1mfokg" name="Viewer">
+          <modelElement href="ntu-fyp2014-common4.uml#_TXOIkO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbOC-2bEeWnDaII1mfokg" name="UpdateRegistry">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn3jsO2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_MYbODO2bEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_MYbODe2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbODu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_MYbOD-2bEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn3jse2XEeWnDaII1mfokg"/>
+        <type xmi:id="_MYbOEO2bEeWnDaII1mfokg" name="UpdateRegistry">
+          <modelElement href="ntu-fyp2014-common4.uml#_TfD18O2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_MYbOEe2bEeWnDaII1mfokg" comments="_MYT44e2bEeWnDaII1mfokg" targetConnectionVisual="_MYUf8O2bEeWnDaII1mfokg" name="setSelectedAtoms">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn3jtO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYbOEu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOE-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_MYbOFO2bEeWnDaII1mfokg" name="values">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn3jte2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOFe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOFu2bEeWnDaII1mfokg" name="BS">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWAnpO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbOF-2bEeWnDaII1mfokg" name="atomMoved">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn3jtu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYbOGO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOGe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_MYbOGu2bEeWnDaII1mfokg" name="atomsMoved">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn3jt-2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOG-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOHO2bEeWnDaII1mfokg" name="BS">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWAnpO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbOHe2bEeWnDaII1mfokg" name="atomMoved">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn4KwO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_MYbOHu2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_ho--AO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbOH-2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOIO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_MYbOIe2bEeWnDaII1mfokg" name="setModelBonds">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn4Kwe2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_MYbOIu2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_ho--Ae2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbOI-2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOJO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_MYbOJe2bEeWnDaII1mfokg" name="display">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn4Kwu2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYbOJu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOJ-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_MYbOKO2bEeWnDaII1mfokg" name="list">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn4Kw-2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOKe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOKu2bEeWnDaII1mfokg" name="ArrayList">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUPtEO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbOK-2bEeWnDaII1mfokg" name="notifyUpdated">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn4x0e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYbOLO2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOLe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_MYbOLu2bEeWnDaII1mfokg" name="particles">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn4x0u2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOL-2bEeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+        <type xmi:id="_MYbOMO2bEeWnDaII1mfokg" name="AbstractParticle">
+          <modelElement href="ntu-fyp2014-common4.uml#_SzwPI-2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbOMe2bEeWnDaII1mfokg" name="updateViewerCoord">
+      <modelElement href="ntu-fyp2014-common4.uml#_hn4x1O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYbOMu2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOM-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_MYbONO2bEeWnDaII1mfokg" name="particles">
+        <modelElement href="ntu-fyp2014-common4.uml#_hn4x1e2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbONe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbONu2bEeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbON-2bEeWnDaII1mfokg" name="capCoord">
+      <modelElement href="ntu-fyp2014-common4.uml#_hpZ0wO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_MYbOOO2bEeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_MYbOOe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_MYbOOu2bEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_hpZ0wu2XEeWnDaII1mfokg"/>
+        <type xmi:id="_MYbOO-2bEeWnDaII1mfokg" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_MYbOPO2bEeWnDaII1mfokg" name="coord">
+        <modelElement href="ntu-fyp2014-common4.uml#_hpZ0we2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOPe2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOPu2bEeWnDaII1mfokg" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_MYbOP-2bEeWnDaII1mfokg" name="setMouseState">
+      <modelElement href="ntu-fyp2014-common4.uml#_hpab0O2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_MYbOQO2bEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_hpab1O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_MYbOQe2bEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_MYbOQu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_MYbOQ-2bEeWnDaII1mfokg" name="x">
+        <modelElement href="ntu-fyp2014-common4.uml#_hpab0e2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbORO2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbORe2bEeWnDaII1mfokg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_MYbORu2bEeWnDaII1mfokg" name="y">
+        <modelElement href="ntu-fyp2014-common4.uml#_hpab0u2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOR-2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOSO2bEeWnDaII1mfokg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_MYbOSe2bEeWnDaII1mfokg" name="mode">
+        <modelElement href="ntu-fyp2014-common4.uml#_hpab0-2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_MYbOSu2bEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_MYbOS-2bEeWnDaII1mfokg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_3rpEcO25EeWnDaII1mfokg" name="TopologyDatabase" associationsIn="_3rSfIO25EeWnDaII1mfokg" associationsOut="_3rSfIO25EeWnDaII1mfokg _3rghkO25EeWnDaII1mfokg _3rmoMO25EeWnDaII1mfokg _3rnPQO25EeWnDaII1mfokg _3rn2UO25EeWnDaII1mfokg _3rn2We25EeWnDaII1mfokg _3rodYO25EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0GNYO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_3rpEce25EeWnDaII1mfokg" position="76.0,591.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_3rpEcu25EeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_3rpEc-25EeWnDaII1mfokg" defaultValue="Logger.getLogger( TopologyDatabase.class.getName() )" name="log" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th5uke2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="__T_88O25EeWnDaII1mfokg" visible="false"/>
+      <visibility xmi:id="_3rpEdO25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEde25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_3rpEdu25EeWnDaII1mfokg" name="Logger">
+        <modelElement href="ntu-fyp2014-common4.uml#_TVqpYe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_3rpEd-25EeWnDaII1mfokg" defaultValue="null" name="instance" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th6VoO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_3rpEeO25EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th6Voe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_3rpEee25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rpEeu25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_3rpEe-25EeWnDaII1mfokg" name="TopologyDatabase">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0GNYO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_3rpEfO25EeWnDaII1mfokg" name="vdParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th68su2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_3rpEfe25EeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th7jwO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_3rpEfu25EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th8K0O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_3rpEf-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEgO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_3rpEge25EeWnDaII1mfokg" name="HashMap">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUQUIe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_3rpEgu25EeWnDaII1mfokg" name="bondParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th8K0e2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_3rpEg-25EeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th8x4O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_3rpEhO25EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th8x4e2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_3rpEhe25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEhu25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_3rpEh-25EeWnDaII1mfokg" name="HashMap">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUQUIe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_3rpEiO25EeWnDaII1mfokg" name="angleParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th8x4u2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_3rpEie25EeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th9Y8O2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_3rpEiu25EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th9Y8e2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_3rpEi-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEjO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_3rpEje25EeWnDaII1mfokg" name="HashMap">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUQUIe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_3rpEju25EeWnDaII1mfokg" name="properDihedralParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th-AAO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_3rpEj-25EeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th-AAe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_3rpEkO25EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th-nEO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_3rpEke25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEku25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_3rpEk-25EeWnDaII1mfokg" name="HashMap">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUQUIe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_3rpElO25EeWnDaII1mfokg" name="improperDihedralParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th-nEe2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_3rpEle25EeWnDaII1mfokg" name="Generics">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th-nEu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_3rpElu25EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th_OIO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_3rpEl-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEmO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_3rpEme25EeWnDaII1mfokg" name="HashMap">
+        <modelElement href="ntu-fyp2014-common4.uml#_TUQUIe2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_3rpEmu25EeWnDaII1mfokg" name="TopologyDatabase">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0HbgO2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_3rpEm-25EeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_3rpEnO25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEne25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_3rpEnu25EeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0Hbg-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_3rpEn-25EeWnDaII1mfokg" name="TopologyDatabase">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0GNYO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_3rpEoO25EeWnDaII1mfokg" name="getVdParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0ICkO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpEoe25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rpEou25EeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_3rpEo-25EeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0ICku2XEeWnDaII1mfokg"/>
+        <type xmi:id="_3rpEpO25EeWnDaII1mfokg" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_3rpEpe25EeWnDaII1mfokg" name="atom">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0ICke2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpEpu25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpEp-25EeWnDaII1mfokg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpEqO25EeWnDaII1mfokg" name="loadNonBondedParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0JQsO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpEqe25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEqu25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_3rpEq-25EeWnDaII1mfokg" name="loadBondedParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0J3wO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpErO25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpEre25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_3rpEru25EeWnDaII1mfokg" name="getBondParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_TeTA8O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpEr-25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rpEsO25EeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_3rpEse25EeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeTA8u2XEeWnDaII1mfokg"/>
+        <type xmi:id="_3rpEsu25EeWnDaII1mfokg" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_3rpEs-25EeWnDaII1mfokg" name="atoms">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeTA8e2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpEtO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpEte25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpEtu25EeWnDaII1mfokg" name="getAngleParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_TeUPEO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpEt-25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rpEuO25EeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_3rpEue25EeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeUPEu2XEeWnDaII1mfokg"/>
+        <type xmi:id="_3rpEuu25EeWnDaII1mfokg" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_3rpEu-25EeWnDaII1mfokg" name="atoms">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeUPEe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpEvO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpEve25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpEvu25EeWnDaII1mfokg" name="getImproperDihedralParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_TeU2Ie2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpEv-25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rpEwO25EeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_3rpEwe25EeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeVdMe2XEeWnDaII1mfokg"/>
+        <type xmi:id="_3rpEwu25EeWnDaII1mfokg" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_3rpEw-25EeWnDaII1mfokg" name="atoms">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeVdMO2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpExO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpExe25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpExu25EeWnDaII1mfokg" name="getProperDihedralParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_TeWEQe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpEx-25EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_3rpEyO25EeWnDaII1mfokg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_3rpEye25EeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeWEQ-2XEeWnDaII1mfokg"/>
+        <type xmi:id="_3rpEyu25EeWnDaII1mfokg" name="double">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_3rpEy-25EeWnDaII1mfokg" name="atoms">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeWEQu2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpEzO25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpEze25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpEzu25EeWnDaII1mfokg" name="loadVdParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_Tef1QO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpEz-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpE0O25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_3rpE0e25EeWnDaII1mfokg" name="atoms">
+        <modelElement href="ntu-fyp2014-common4.uml#_Tef1Qe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpE0u25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpE0-25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpE1O25EeWnDaII1mfokg" name="loadBondParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_TehDYe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpE1e25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpE1u25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_3rpE1-25EeWnDaII1mfokg" name="bonds">
+        <modelElement href="ntu-fyp2014-common4.uml#_TehDYu2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpE2O25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpE2e25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpE2u25EeWnDaII1mfokg" name="loadAngleParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_TekGsO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpE2-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpE3O25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_3rpE3e25EeWnDaII1mfokg" name="angles">
+        <modelElement href="ntu-fyp2014-common4.uml#_TekGse2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpE3u25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpE3-25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpE4O25EeWnDaII1mfokg" name="loadImproperDihedralParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_TelU0O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpE4e25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpE4u25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_3rpE4-25EeWnDaII1mfokg" name="dihedrals">
+        <modelElement href="ntu-fyp2014-common4.uml#_TelU0e2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpE5O25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpE5e25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_3rpE5u25EeWnDaII1mfokg" name="loadProperDihedralParams">
+      <modelElement href="ntu-fyp2014-common4.uml#_Tel74e2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_3rpE5-25EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_3rpE6O25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_3rpE6e25EeWnDaII1mfokg" name="dihedrals">
+        <modelElement href="ntu-fyp2014-common4.uml#_Tel74u2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_3rpE6u25EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_3rpE6-25EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_KcetQO26EeWnDaII1mfokg" name="TopologyBuilder" associationsIn="_54RFIO2aEeWnDaII1mfokg" associationsOut="_KbnxoO26EeWnDaII1mfokg _KbzX0O26EeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0OJMO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_KcetQe26EeWnDaII1mfokg" position="-120.0,73.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_KcetQu26EeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_KcetQ-26EeWnDaII1mfokg" name="params">
+      <modelElement href="ntu-fyp2014-common4.uml#_Th_1MO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_KcetRO26EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_Th_1Me2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_KcetRe26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_KcetRu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_KcetR-26EeWnDaII1mfokg" name="Object">
+        <modelElement href="ntu-fyp2014-common4.uml#_TWqu8O2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_KcetSO26EeWnDaII1mfokg" defaultValue="new MolecularSystem()" name="m">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiAcQe2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_KcetSe26EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiBDUO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_KcetSu26EeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_KcetS-26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_KcetTO26EeWnDaII1mfokg" name="MolecularSystem">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0a9gO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_KcetTe26EeWnDaII1mfokg" defaultValue="288" name="T">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiBDUe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_WTORwO26EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_KcetTu26EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiBqYO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_KcetT-26EeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_KcetUO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_KcetUe26EeWnDaII1mfokg" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_KcetUu26EeWnDaII1mfokg" defaultValue="8.314510e-3" name="K">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiBqYe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_WTO40O26EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_KcetU-26EeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiCRcO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_KcetVO26EeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_KcetVe26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_KcetVu26EeWnDaII1mfokg" name="double">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_KcetV-26EeWnDaII1mfokg" name="readTopology">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0PXUO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_KcetWO26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_KcetWe26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_KcetWu26EeWnDaII1mfokg" name="fileName">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0P-YO2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_KcetW-26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_KcetXO26EeWnDaII1mfokg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_KcetXe26EeWnDaII1mfokg" name="updateExclude">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0P-Ye2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_KcetXu26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_KcetX-26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_KcetYO26EeWnDaII1mfokg" name="readNameAndPosition">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0QlcO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_KcetYe26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_KcetYu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_KcetY-26EeWnDaII1mfokg" name="fileName">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0Qlce2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_KcetZO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_KcetZe26EeWnDaII1mfokg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_KcetZu26EeWnDaII1mfokg" name="generateNonBondedInteraction">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0RMgO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_KcetZ-26EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_KcetaO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_Kcetae26EeWnDaII1mfokg" name="initVelocity">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0RzkO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcetau26EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_Kceta-26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_KcetbO26EeWnDaII1mfokg" name="build">
+      <modelElement href="ntu-fyp2014-common4.uml#_TeoYIO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcetbe26EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_Kcetbu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_Kcetb-26EeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeoYIu2XEeWnDaII1mfokg"/>
+        <type xmi:id="_KcetcO26EeWnDaII1mfokg" name="MolecularSystem">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0a9gO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_Kcetce26EeWnDaII1mfokg" name="config">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeoYIe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_Kcetcu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kcetc-26EeWnDaII1mfokg" name="Map">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWtyRe2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_KcetdO26EeWnDaII1mfokg" name="loadAtoms">
+      <modelElement href="ntu-fyp2014-common4.uml#_TepmQO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcetde26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_Kcetdu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_Kcetd-26EeWnDaII1mfokg" name="atoms">
+        <modelElement href="ntu-fyp2014-common4.uml#_TepmQe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_KceteO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kcetee26EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_Kceteu26EeWnDaII1mfokg" name="loadBonds">
+      <modelElement href="ntu-fyp2014-common4.uml#_TeqNUe2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcete-26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_KcetfO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_Kcetfe26EeWnDaII1mfokg" name="bonds">
+        <modelElement href="ntu-fyp2014-common4.uml#_TeqNUu2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_Kcetfu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kcetf-26EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_KcetgO26EeWnDaII1mfokg" name="loadPairs">
+      <modelElement href="ntu-fyp2014-common4.uml#_Teq0Ye2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcetge26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_Kcetgu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_Kcetg-26EeWnDaII1mfokg" name="pairs">
+        <modelElement href="ntu-fyp2014-common4.uml#_TerbcO2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_KcethO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kcethe26EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_Kcethu26EeWnDaII1mfokg" name="loadAngles">
+      <modelElement href="ntu-fyp2014-common4.uml#_TesCge2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kceth-26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_KcetiO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_Kcetie26EeWnDaII1mfokg" name="angles">
+        <modelElement href="ntu-fyp2014-common4.uml#_TesCgu2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_Kcetiu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kceti-26EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_KcetjO26EeWnDaII1mfokg" name="loadProperDihedrals">
+      <modelElement href="ntu-fyp2014-common4.uml#_TetQoO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcetje26EeWnDaII1mfokg" label="-"/>
+      <cardinality xmi:id="_Kcetju26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_Kcetj-26EeWnDaII1mfokg" name="dihedrals">
+        <modelElement href="ntu-fyp2014-common4.uml#_TetQoe2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_KcetkO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kcetke26EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_Kcetku26EeWnDaII1mfokg" name="loadImproperDihedrals">
+      <modelElement href="ntu-fyp2014-common4.uml#_Tet3se2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcetk-26EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_KcetlO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_Kcetle26EeWnDaII1mfokg" name="dihedrals">
+        <modelElement href="ntu-fyp2014-common4.uml#_Tet3su2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_Kcetlu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kcetl-26EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_KcetmO26EeWnDaII1mfokg" name="loadNameAndPosition">
+      <modelElement href="ntu-fyp2014-common4.uml#_TevF0O2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_Kcetme26EeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_Kcetmu26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <parameters xmi:id="_Kcetm-26EeWnDaII1mfokg" name="s">
+        <modelElement href="ntu-fyp2014-common4.uml#_TevF0e2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_KcetnO26EeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_Kcetne26EeWnDaII1mfokg" name="List">
+          <modelElement href="ntu-fyp2014-common4.uml#_TUfksO2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_54RsMO2aEeWnDaII1mfokg" name="Controller" abstractClass="true" associationsOut="_53paEO2aEeWnDaII1mfokg _54JJUO2aEeWnDaII1mfokg _54RFIO2aEeWnDaII1mfokg" subclassedBy="_52XnsO2aEeWnDaII1mfokg _521hwO2aEeWnDaII1mfokg">
+    <modelElement href="ntu-fyp2014-common4.uml#_S0lVkO2XEeWnDaII1mfokg"/>
+    <visualProperties xmi:id="_54RsMe2aEeWnDaII1mfokg" position="546.0,78.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_54RsMu2aEeWnDaII1mfokg" label="+"/>
+    <attributes xmi:id="_54RsM-2aEeWnDaII1mfokg" defaultValue="-1" name="STOPPED" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiK0UO2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_UYIeEO26EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_54RsNO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiLbYO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsNe2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsNu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsN-2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsOO2aEeWnDaII1mfokg" defaultValue="0" name="PAUSED" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiLbYe2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_UYH3AO26EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_54RsOe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiMCcO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsOu2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsO-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsPO2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsPe2aEeWnDaII1mfokg" defaultValue="1" name="RUNNING" staticAttribute="true">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiMCce2XEeWnDaII1mfokg"/>
+      <visualProperties xmi:id="_UYIeEe26EeWnDaII1mfokg" visible="false"/>
+      <stereotypes xmi:id="_54RsPu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiMpgO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsP-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsQO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsQe2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsQu2aEeWnDaII1mfokg" name="config">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiMpge2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_54RsQ-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiMpgu2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsRO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsRe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsRu2aEeWnDaII1mfokg" name="Object">
+        <modelElement href="ntu-fyp2014-common4.uml#_TWqu8O2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsR-2aEeWnDaII1mfokg" defaultValue="STOPPED" name="status">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiNQkO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_54RsSO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiNQku2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsSe2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsSu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsS-2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsTO2aEeWnDaII1mfokg" name="m">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiN3oO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_54RsTe2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiN3oe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsTu2aEeWnDaII1mfokg" label="#"/>
+      <cardinality xmi:id="_54RsT-2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsUO2aEeWnDaII1mfokg" name="MolecularSystem">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0a9gO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsUe2aEeWnDaII1mfokg" defaultValue="0" name="currentFrame">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiN3ou2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_54RsUu2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiOesO2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsU-2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsVO2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsVe2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsVu2aEeWnDaII1mfokg" defaultValue="0" name="totalFrame">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiOese2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_54RsV-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiOes-2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsWO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsWe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsWu2aEeWnDaII1mfokg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_54RsW-2aEeWnDaII1mfokg" name="tb">
+      <modelElement href="ntu-fyp2014-common4.uml#_TiPFwO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_54RsXO2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_TiPFwe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsXe2aEeWnDaII1mfokg" label="~"/>
+      <cardinality xmi:id="_54RsXu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <type xmi:id="_54RsX-2aEeWnDaII1mfokg" name="TopologyBuilder">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0OJMO2XEeWnDaII1mfokg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_54RsYO2aEeWnDaII1mfokg" name="buildTopology">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0mjsO2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_54RsYe2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsYu2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_54RsY-2aEeWnDaII1mfokg" name="init">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0mjse2XEeWnDaII1mfokg"/>
+      <visibility xmi:id="_54RsZO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54RsZe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_54RsZu2aEeWnDaII1mfokg" name="start">
+      <modelElement href="ntu-fyp2014-common4.uml#_S0nKwO2XEeWnDaII1mfokg"/>
+      <stereotypes xmi:id="_54RsZ-2aEeWnDaII1mfokg" name="LegacyStyledElement">
+        <modelElement href="ntu-fyp2014-common4.uml#_S0nKwe2XEeWnDaII1mfokg"/>
+      </stereotypes>
+      <visibility xmi:id="_54RsaO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54Rsae2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_54Rsau2aEeWnDaII1mfokg" name="Controller">
+      <modelElement href="ntu-fyp2014-common4.uml#_Te1zgO2XEeWnDaII1mfokg"/>
+      <keywords xmi:id="_54Rsa-2aEeWnDaII1mfokg" keyword="create"/>
+      <visibility xmi:id="_54RsbO2aEeWnDaII1mfokg" label="+"/>
+      <cardinality xmi:id="_54Rsbe2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_54Rsbu2aEeWnDaII1mfokg">
+        <modelElement href="ntu-fyp2014-common4.uml#_Te1zhO2XEeWnDaII1mfokg"/>
+        <type xmi:id="_54Rsb-2aEeWnDaII1mfokg" name="Controller">
+          <modelElement href="ntu-fyp2014-common4.uml#_S0lVkO2XEeWnDaII1mfokg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_54RscO2aEeWnDaII1mfokg" name="config">
+        <modelElement href="ntu-fyp2014-common4.uml#_Te1zge2XEeWnDaII1mfokg"/>
+        <cardinality xmi:id="_54Rsce2aEeWnDaII1mfokg" label="1" max="1" min="1"/>
+        <type xmi:id="_54Rscu2aEeWnDaII1mfokg" name="Map">
+          <modelElement href="ntu-fyp2014-common4.uml#_TWtyRe2XEeWnDaII1mfokg"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

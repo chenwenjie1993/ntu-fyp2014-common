@@ -18,7 +18,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.MolecularSystem;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.core.Interaction;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.FileReader;
 
-public class TypologyBuilder {
+public class TopologyBuilder {
 //	private Map<String, Object> config; 
 	private Map<String, Object> params;
 	MolecularSystem m = new MolecularSystem();

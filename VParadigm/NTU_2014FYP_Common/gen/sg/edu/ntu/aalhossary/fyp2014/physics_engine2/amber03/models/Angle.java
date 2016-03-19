@@ -9,8 +9,8 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.math.Geometry;
 
 public class Angle extends BondedInteraction {
 	public double th0, cth;
-	protected Vector3D v_ji, v_jk;
-	protected double theta, cosTheta, cosThetaSqr;
+	private Vector3D v_ji, v_jk;
+	private double theta, cosTheta, cosThetaSqr;
 	
 	public Angle(List<Atom> atoms) {
 		super(atoms);

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_EDFCYO2SEeWnDaII1mfokg" name="ntu_fyp2014_common2">
+    <eAnnotations xmi:id="_EN81oO2SEeWnDaII1mfokg" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_EN81oe2SEeWnDaII1mfokg" source="codegen">
+        <details xmi:id="_EN81ou2SEeWnDaII1mfokg" key="codegenDirectory" value="/ntu-fyp2014-common/VParadigm/NTU_2014FYP_Common/gen"/>
+      </contents>
+    </eAnnotations>
+    <profileApplication xmi:id="_EN_R4O2SEeWnDaII1mfokg">
+      <eAnnotations xmi:id="_EOEKYO2SEeWnDaII1mfokg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_EOH0wO2SEeWnDaII1mfokg" base_Package="_EDFCYO2SEeWnDaII1mfokg">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+</xmi:XMI>
