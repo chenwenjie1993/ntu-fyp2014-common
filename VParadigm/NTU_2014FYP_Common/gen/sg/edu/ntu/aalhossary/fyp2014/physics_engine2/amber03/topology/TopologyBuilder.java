@@ -22,7 +22,7 @@ public class TopologyBuilder {
 //	private Map<String, Object> config; 
 	private Map<String, Object> params;
 	MolecularSystem m = new MolecularSystem();
-	final double T = 288;
+	final double T = 300;
 	final double K = 8.314510e-3;
 	
 	public MolecularSystem build(Map<String, Object> config) {
@@ -267,7 +267,7 @@ public class TopologyBuilder {
 		double p, m1, m2, v1, v2;
 		AbstractParticle a1, a2;
 		for (int i=0; i<m.particles.size()/2; i++) {
-			p = 0.01 * rand.nextDouble() + 1;
+			p = 0.15 * rand.nextDouble() + 1;
 			a1 = m.particles.get(i);
 			m1 = a1.getMass();
 			a2 = m.particles.get(m.particles.size()-i-1);

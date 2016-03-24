@@ -10,10 +10,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.ui.*;
+import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.LogFormatter;
 
 public class Application {
 	private static boolean enableUI = true;
-	private static int totalFrame = 10000;
+	private static int totalFrame = 5000;
 	private static String dir = "res/amber03_test/";
 	private static Map<String, Object> config = new HashMap<>();
 	private static final Logger log = Logger.getLogger("main");
@@ -22,11 +23,13 @@ public class Application {
 	    FileHandler fh;
 
 		try {
-	        fh = new FileHandler("Log.txt");
+	        fh = new FileHandler("Log.gro");
+	        fh.setFormatter(new LogFormatter());
 	        log.addHandler(fh);
-	        SimpleFormatter formatter = new SimpleFormatter();  
-	        fh.setFormatter(formatter);
+//	        SimpleFormatter formatter = new SimpleFormatter();  
+//	        fh.setFormatter(formatter);
 	        log.setUseParentHandlers(false);
+	        
 	    } catch (SecurityException e) {
 	        e.printStackTrace();  
 	    } catch (IOException e) {  
@@ -40,16 +43,16 @@ public class Application {
 		config.put("forceField", "Amber03");
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("Bond", false);
-		params.put("Angle", false);
-		params.put("ProperDihedral", false);
-		params.put("ImproperDihedral", false);
-		params.put("Electrostatic", false);
+		params.put("Bond", true);
+		params.put("Angle", true);
+		params.put("ProperDihedral", true);
+		params.put("ImproperDihedral", true);
+		params.put("Electrostatic", true);
 		params.put("LennardJones", true);
 		
 		config.put("ffParams", params);
 		
-		log.info("Application starts");
+//		log.info("Application starts");
 		
 	}
 

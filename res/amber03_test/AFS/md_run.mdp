@@ -1,0 +1,49 @@
+:
+title               =  MADP1 and ibv RNA complex simulation
+integrator          =  md;steep
+;define              =  -DPOSRES
+
+; general control
+constraints         =  hbonds
+emtol               =  100.0
+emstep              =  0.005
+dt                  =  0.002      ; in unit of ps !
+nsteps              =  50000000      ; total 100 ns
+nstcomm             =  1 
+; nonbonded control
+nstlist             =  5
+ns_type             =  grid
+rlist               =  1.0
+rcoulomb            =  1.0
+rvdw                =  1.2
+coulombtype         =  PME
+fourierspacing      =  0.16
+pme_order           =  4
+pbc                 =  xyz
+; output control
+nstxout             =  0
+nstxtcout           =  500
+nstvout             =  0
+nstfout             =  0
+nstlog              =  500
+nstenergy           =  500
+
+; temperature control
+Tcoupl              =  V-rescale
+tc-grps             =  Protein   Water_and_ions
+tau_t               =  0.1     0.1 
+ref_t               =  300     300 
+
+; pressure control
+Pcoupl              =  no
+Pcoupltype          = isotropic
+tau_p               =  0.1
+compressibility     =  4.6e-5
+ref_p               =  1.0
+refcoord-scaling    =  all
+
+; Generate velocites  at 300 K.
+gen_vel             =  yes
+gen_temp            =  300
+gen_seed            =  -1
+

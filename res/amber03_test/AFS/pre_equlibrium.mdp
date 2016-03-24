@@ -1,0 +1,63 @@
+;
+;	User spoel (236)
+;	Wed Nov  3 17:12:44 1993
+;	Input file
+;
+;title part and general control
+title               =  ttt
+cpp                 =  /lib/cpp
+constraints         =  hbonds;all-bonds
+define              =  -DPOSRES   ; include the porse.itp file for position constraint 
+integrator          =  md ; steep
+;
+;Output control
+;emtol               =  100.0
+;emstep              =  0.005
+dt                  =  0.002    ; ps !
+nsteps              =  50000  ; total 100 ps.
+;nstcomm             =  1
+nstxout             =  0
+nstxtcout           =  500
+nstvout             =  0
+nstfout             =  0
+nstlog              =  500
+nstenergy           =  0
+;
+;Neighborsearching
+nstlist             =  5
+ns_type             =  grid
+rlist               =  1.0
+rcoulomb            =  1.0
+rvdw                =  1.2
+pbc                 =  xyz
+;
+;Electrostatics control
+coulombtype         =  PME  ;Reaction-Field
+fourierspacing      =  0.16
+pme_order           =  4
+optimize_fft        =  yes
+;
+;epsilon_r           =  54
+;epsilon_rf          =  54
+
+;Berendsen temperature coupling is on in two groups
+tcoupl              =  berendsen
+tc-grps             =  Protein    Water_and_ions
+tau_t               =   0.1          0.1
+ref_t               =    300.000      300.000
+;
+; Energy monitoring
+energygrps          =  Protein   Water_and_ions
+;
+; Isotropic pressure coupling is now on
+Pcoupl              = berendsen
+Pcoupltype          = isotropic
+tau_p               =  0.4
+compressibility     =  4.6e-5  
+ref_p               =  1.0   
+;
+; Generate velocites at 300 K.
+gen_vel             =  yes
+gen_temp            =  300.0
+gen_seed            =  -1;173529
+;unconstrained-start    = yes

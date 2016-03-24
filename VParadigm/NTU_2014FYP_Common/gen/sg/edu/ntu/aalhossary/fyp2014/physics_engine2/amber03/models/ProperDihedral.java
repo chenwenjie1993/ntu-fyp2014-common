@@ -24,7 +24,7 @@ public class ProperDihedral extends Dihedral {
 		
 		updateProperties();
 		
-		System.out.println("phi0: " + String.valueOf(phi0) + " phi: " + String.valueOf(phi) + " kd: " + kd + " mult: " + mult);
+//		System.out.println("phi0: " + String.valueOf(phi0) + " phi: " + String.valueOf(phi) + " kd: " + kd + " mult: " + mult);
 
 	}
 
@@ -35,6 +35,8 @@ public class ProperDihedral extends Dihedral {
 		double mdphi, sdphi;
 		mdphi = mult * phi - phi0;
 		sdphi = Math.sin(mdphi);
+//		System.out.println("sdphi: " + sdphi);
+//		System.out.println(atoms.toString());
 		dVdphi = - 0.5 * kd * mult * sdphi;
 		
 		calcForce();

@@ -167,8 +167,9 @@ public class Vector3D {
 	 * @param scale
 	 */
 	public void addScaledVector(Vector3D vector, double scale) {
-		vector.scale(scale);
-		add(vector);
+		Vector3D v = new Vector3D(vector.x, vector.y, vector.z, vector.metric);
+		v.scale(scale);
+		add(v);
 	}
 
 	/**
