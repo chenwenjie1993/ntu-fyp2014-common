@@ -38,6 +38,7 @@ public abstract class Controller {
 	}
 	
 	public void start() {
-   		
+		System.out.println("Total Particle Count: " + m.particles.size());
+		
 	}
 }

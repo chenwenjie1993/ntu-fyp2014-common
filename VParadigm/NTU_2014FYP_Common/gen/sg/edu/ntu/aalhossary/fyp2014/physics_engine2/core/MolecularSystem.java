@@ -164,7 +164,7 @@ public class MolecularSystem {
 		else if (lambda < 0.8) {
 			lambda = 0.8;
 		}
-		System.out.println("lambda: " + lambda);
+//		System.out.println("lambda: " + lambda);
 		
 		/**
 		 * Velocity Verlet Algorithm
@@ -191,7 +191,7 @@ public class MolecularSystem {
 //			dv.y = 0.5 * (a.y + a2.y) * timeDelta;
 //			dv.z = 0.5 * (a.z + a2.z) * timeDelta;
 			v.add(dv);
-			v.scale(lambda);
+//			v.scale(lambda);
 			
 //			Vector3D dv = new Vector3D();
 //			dv.addScaledVector(a, timeDelta);

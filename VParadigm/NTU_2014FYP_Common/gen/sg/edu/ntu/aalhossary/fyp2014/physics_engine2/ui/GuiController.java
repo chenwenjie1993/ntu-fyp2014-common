@@ -15,9 +15,9 @@ public class GuiController extends Controller implements EventListener {
 
 	@Override
 	public void start() {
-//		super.start();
+		super.start();
 		status = RUNNING;
-		
+		long startTime = System.currentTimeMillis();
 		// main loop
 		while (currentFrame < totalFrame) {
 			if (status == STOPPED || status == PAUSED) {
@@ -50,13 +50,18 @@ public class GuiController extends Controller implements EventListener {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+
 			// pause 1s for each frame
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(10);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 		}
+		long endTime = System.currentTimeMillis();
+
+		System.out.println("Total execution time: " + (endTime - startTime) );
 	}
 
 	@Override
