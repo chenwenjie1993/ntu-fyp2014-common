@@ -36,28 +36,29 @@ public class Bond extends BondedInteraction {
 		
 		bond.scale(b0);
 		
-//		double dr2 = v_ji.getSquaredMagnitude();
-//		double dr = Math.sqrt(dr2);
-//		
-//		double forceMagnitude = - 0.5 * kb * (dr - b0);
+		double dr2 = v_ji.getSquaredMagnitude();
+		double dr = Math.sqrt(dr2);
 		
-//		forceMagnitude /= dr;
+		double forceMagnitude = - kb * (dr - b0);
+		Ep = 0.5 * kb * (dr-b0) * (dr-b0);
 		
-//		Vector3D force = v_ji;
-//		force.scale(forceMagnitude);
+		forceMagnitude /= dr;
+		
+		Vector3D force = v_ji;
+		force.scale(forceMagnitude);
 		
 //		Vector3D energy = new Vector3D();
-		Vector3D force = new Vector3D();
-		double d_x = v_ji.x - bond.x;
-		force.x = - 0.5 * kb * d_x;
+//		Vector3D force = new Vector3D();
+//		double d_x = v_ji.x - bond.x;
+//		force.x = - 0.5 * kb * d_x;
 //		energy.x = kb * d_x * d_x;
 		
-		double d_y = v_ji.y - bond.y;
-		force.y = - 0.5 * kb * d_y;
+//		double d_y = v_ji.y - bond.y;
+//		force.y = - 0.5 * kb * d_y;
 //		energy.y = kb * d_y * d_y;
 		
-		double d_z = v_ji.z - bond.z;
-		force.z = - 0.5* kb * d_z;
+//		double d_z = v_ji.z - bond.z;
+//		force.z = - 0.5* kb * d_z;
 //		energy.z = kb * d_z;
 		
 //		atoms.get(0).potentialEnergy.add(energy);

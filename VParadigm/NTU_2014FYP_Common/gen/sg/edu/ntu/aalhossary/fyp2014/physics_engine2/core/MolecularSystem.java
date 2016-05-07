@@ -24,6 +24,7 @@ public class MolecularSystem {
 	
 	private double t = 0;
 	private double Ekin = 0;
+	private double Ep = 0;
 	private double T = 300;
 	private double k = 8.314510e-3;
 	private double dT = 0;
@@ -70,9 +71,9 @@ public class MolecularSystem {
 	}
 		
 	public void nextFrame() {
-		if (t == 0) {
-			printLog();
-		}
+//		if (t == 0) {
+//			printLog();
+//		}
 		
 		
 		t += timeDelta;
@@ -80,7 +81,7 @@ public class MolecularSystem {
 		updatePotentialEnergy();
 		integrate();
 		
-		printLog();
+//		printLog();
 	}
 	
 	public void updateKineticEnergy() {
@@ -90,10 +91,18 @@ public class MolecularSystem {
 			Ekin += 0.5 * particle.getMass() * v * v;
 		}
 		
+		Ep = 0;
+		for (Interaction interaction: interactions) {
+			Ep += interaction.getPotentialEnergy();
+		}
+		System.out.println("Ekin: " + Ekin);
+		System.out.println("Ep: " + Ep);
+		System.out.println("Total Energy: " + (Ekin+Ep));
+		
 		dT = T;
 		T = 2 * Ekin / (particles.size() - 3) / k;
 		dT = T - dT;
-		System.out.println("T: " + T);
+//		System.out.println("T: " + T);
 	}
 	
 	public void updatePotentialEnergy() {
@@ -156,14 +165,14 @@ public class MolecularSystem {
 //		t = (300 - T) / dT * timeDelta;
 //		System.out.println("t: " + t);
 //		lambda = Math.sqrt(1 + timeDelta * 0.5 / t * (300 / T / (t - 0.5 * timeDelta) - 1));
-		lambda = 1 + (300 / T - 1);
-		
-		if (lambda > 1.25) {
-			lambda = 1.25;
-		}
-		else if (lambda < 0.8) {
-			lambda = 0.8;
-		}
+//		lambda = 1 + (300 / T - 1);
+//		
+//		if (lambda > 1.25) {
+//			lambda = 1.25;
+//		}
+//		else if (lambda < 0.8) {
+//			lambda = 0.8;
+//		}
 //		System.out.println("lambda: " + lambda);
 		
 		/**
@@ -174,6 +183,12 @@ public class MolecularSystem {
 			Vector3D v = particle.getVelocity();
 			Vector3D a = particle.getAcceleration();
 			Vector3D a2 = particle.getAccumulatedAcceleration();
+			if (particle.getGUID() == 1) {
+//				System.out.println(r);
+//				System.out.println(v);
+//				System.out.println(a);
+//				System.out.println(a2);
+			}
 //			log.info("[ACC]" + a2);
 						
 			Vector3D dr = new Vector3D();
@@ -191,7 +206,13 @@ public class MolecularSystem {
 //			dv.y = 0.5 * (a.y + a2.y) * timeDelta;
 //			dv.z = 0.5 * (a.z + a2.z) * timeDelta;
 			v.add(dv);
+			v.scale(0.99);
 //			v.scale(lambda);
+			
+			if (particle.getGUID() == 1) {
+//				System.out.println(dr);
+//				System.out.println(dv);
+			}
 			
 //			Vector3D dv = new Vector3D();
 //			dv.addScaledVector(a, timeDelta);

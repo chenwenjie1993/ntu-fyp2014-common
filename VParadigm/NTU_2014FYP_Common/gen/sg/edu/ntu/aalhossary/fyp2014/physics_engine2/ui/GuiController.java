@@ -53,11 +53,11 @@ public class GuiController extends Controller implements EventListener {
 			
 
 			// pause 1s for each frame
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		long endTime = System.currentTimeMillis();
 

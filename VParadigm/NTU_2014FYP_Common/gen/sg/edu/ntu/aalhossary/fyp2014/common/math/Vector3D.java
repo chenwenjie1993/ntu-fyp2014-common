@@ -62,7 +62,9 @@ public class Vector3D {
 	 * Reset the vector to zero
 	 */
 	public void clear() {
-		x = y = z = 0;
+		x = 0;
+		y = 0;
+		z = 0;
 	}
 	
 	/**
