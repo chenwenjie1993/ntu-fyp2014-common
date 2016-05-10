@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import sg.edu.ntu.aalhossary.fyp2014.common.math.Vector3D;
 import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.amber03.models.*;
+import sg.edu.ntu.aalhossary.fyp2014.moleculeeditor.core.DataManager;;
 
 public class MolecularSystem {
 	public ArrayList<AbstractParticle> particles;
@@ -23,8 +24,9 @@ public class MolecularSystem {
 	
 	
 	private double t = 0;
-	private double Ekin = 0;
-	private double Ep = 0;
+	private double Ekin = -1;
+	private double Ep = -1;
+	private double E = -1;
 	private double T = 300;
 	private double k = 8.314510e-3;
 	private double dT = 0;
@@ -77,14 +79,17 @@ public class MolecularSystem {
 		
 		
 		t += timeDelta;
-		updateKineticEnergy();
-		updatePotentialEnergy();
-		integrate();
 		
-//		printLog();
+		updatePotentialEnergy();
+		updateSystemEnergy();
+		integrate();
+//		System.out.println(particles);
+		
+		printLog();
 	}
 	
-	public void updateKineticEnergy() {
+	public void updateSystemEnergy() {
+		
 		Ekin = 0;
 		for (AbstractParticle particle: particles) {
 			double v = particle.getVelocity().getMagnitude();
@@ -95,14 +100,54 @@ public class MolecularSystem {
 		for (Interaction interaction: interactions) {
 			Ep += interaction.getPotentialEnergy();
 		}
+		
 		System.out.println("Ekin: " + Ekin);
 		System.out.println("Ep: " + Ep);
 		System.out.println("Total Energy: " + (Ekin+Ep));
 		
-		dT = T;
-		T = 2 * Ekin / (particles.size() - 3) / k;
-		dT = T - dT;
+		// E is calculated only the first time and used as target energy
+		if (E < 0) {
+			E = Ep + Ekin;
+			System.out.println("Target energy: " + E);
+			return;
+		}
+		
+		rescale();
+		
+//		dT = T;
+//		T = 2 * Ekin / (particles.size() - 3) / k;
+//		dT = T - dT;
 //		System.out.println("T: " + T);
+	}
+	
+	public void rescale() {
+		double Ekin2 = E - Ep;
+		System.out.println("Ideal Ek: " + Ekin2);
+		if (Ekin2 >= Ekin || Ekin2 < 0) {
+			System.out.println("No need for scaling.");
+			return;
+		}
+		
+		double scale = 1;
+		while (true) {
+			scale -= 0.001;
+			double t = 0;
+			for (AbstractParticle particle: particles) {
+				Vector3D v = new Vector3D();
+				v.add(particle.getVelocity());
+				v.scale(scale);
+				double l = v.getMagnitude();
+				t += 0.5 * particle.getMass() * l * l;
+			}
+			if (t <= Ekin2) {
+				System.out.println("Scaled Ek: " + t);
+				System.out.println("Scale: " + scale);
+				for (AbstractParticle particle: particles) {
+					particle.getVelocity().scale(scale);
+				}
+				return;
+			}
+		}
 	}
 	
 	public void updatePotentialEnergy() {
@@ -183,37 +228,20 @@ public class MolecularSystem {
 			Vector3D v = particle.getVelocity();
 			Vector3D a = particle.getAcceleration();
 			Vector3D a2 = particle.getAccumulatedAcceleration();
-			if (particle.getGUID() == 1) {
-//				System.out.println(r);
-//				System.out.println(v);
-//				System.out.println(a);
-//				System.out.println(a2);
-			}
 //			log.info("[ACC]" + a2);
 						
 			Vector3D dr = new Vector3D();
 			dr.addScaledVector(v, timeDelta);
 			dr.addScaledVector(a, 0.5 * timeDelta * timeDelta);
-//			dr.x = v.x * timeDelta + 0.5 * a.x * timeDelta * timeDelta;
-//			dr.y = v.y * timeDelta + 0.5 * a.y * timeDelta * timeDelta;
-//			dr.z = v.z * timeDelta + 0.5 * a.z * timeDelta * timeDelta;
 			r.add(dr);
 			
 			Vector3D dv = new Vector3D();
 			dv.addScaledVector(a, 0.5 * timeDelta);
 			dv.addScaledVector(a2, 0.5 * timeDelta);
-//			dv.x = 0.5 * (a.x + a2.x) * timeDelta;
-//			dv.y = 0.5 * (a.y + a2.y) * timeDelta;
-//			dv.z = 0.5 * (a.z + a2.z) * timeDelta;
 			v.add(dv);
-			v.scale(0.99);
+//			v.scale(0.99);
 //			v.scale(lambda);
-			
-			if (particle.getGUID() == 1) {
-//				System.out.println(dr);
-//				System.out.println(dv);
-			}
-			
+						
 //			Vector3D dv = new Vector3D();
 //			dv.addScaledVector(a, timeDelta);
 //			v.add(dv);
@@ -253,7 +281,7 @@ public class MolecularSystem {
 	public void printLog() {
 		StringBuilder sb = new StringBuilder();
 		Formatter formatter = new Formatter(sb, Locale.US);
-		formatter.format("MD of AFS, t=%8.4f", t);
+		formatter.format("water, t=%8.4f", t);
 		log.info(formatter.toString());
 		
 		sb = new StringBuilder();
@@ -276,18 +304,20 @@ public class MolecularSystem {
 			double vY = 0;
 			double vZ = 0;
 			
-			if (particle.getGUID() <= 12) {
-				rId = 1;
-				rName = "ALA";
-			}
-			else if (particle.getGUID() <= 32) {
-				rId = 2;
-				rName = "PHE";
-			}
-			else {
-				rId = 3;
-				rName = "SER";
-			}
+			rName = "HOH";
+			
+//			if (particle.getGUID() <= 12) {
+//				rId = 1;
+//				rName = "ALA";
+//			}
+//			else if (particle.getGUID() <= 32) {
+//				rId = 2;
+//				rName = "PHE";
+//			}
+//			else {
+//				rId = 3;
+//				rName = "SER";
+//			}
 			
 			aName = ((Atom) particle).getName();
 			aId = particle.getGUID();
@@ -312,5 +342,20 @@ public class MolecularSystem {
 			
 		}
 		log.info("   0.80649   0.62365   1.03123");
+	}
+	
+	public String getPDB() {
+		StringBuffer sb = new StringBuffer();
+		
+		for (AbstractParticle p: particles) {
+			sg.edu.ntu.aalhossary.fyp2014.common.Atom a = new sg.edu.ntu.aalhossary.fyp2014.common.Atom();
+			a.setSymbol(((Atom)p).getType());
+			a.setChainSeqNum(1);
+			Vector3D v = new Vector3D();
+			v.add(p.getPosition());
+			v.scale(10);
+			DataManager.toPDB(a, p.getGUID(), v, 1, sb);
+		}
+		return sb.toString();
 	}
 }

@@ -21,6 +21,7 @@ public class JMolSelectionListener implements JmolSelectionListener {
 	 */
 	public void selectionChanged(org.jmol.java.BS values) {
 		System.out.println(values);
+		System.out.println(jmolPanel.getMediator());
 		jmolPanel.getMediator().setSelectedAtoms(values);
 	}
 

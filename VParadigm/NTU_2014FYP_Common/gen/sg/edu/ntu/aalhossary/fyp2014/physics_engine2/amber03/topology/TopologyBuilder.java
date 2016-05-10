@@ -33,7 +33,7 @@ public class TopologyBuilder {
 		m.interactions = new ArrayList<Interaction>();
 		readNameAndPosition(dir + (String) config.get("name") + ".gro");
 		readTopology(dir + (String) config.get("name") +".top");
-		initVelocity();
+//		initVelocity();
 		return m;
 	}
 	
@@ -233,9 +233,17 @@ public class TopologyBuilder {
 			double x = Double.parseDouble(t[4]);
 			double y = Double.parseDouble(t[5]);
 			double z = Double.parseDouble(t[6]);
+			
 			Atom atom = new Atom();
 			atom.setPosition(x, y, z, 0);
 			atom.setName(t[2]);
+			
+			if (t.length > 9) {
+				double v_x = Double.parseDouble(t[7]);
+				double v_y = Double.parseDouble(t[8]);
+				double v_z = Double.parseDouble(t[9]);
+				atom.setVelocity(v_x, v_y, v_z);
+			}
 			m.particles.add(atom);
 		}
 	}

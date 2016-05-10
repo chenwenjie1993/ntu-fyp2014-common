@@ -106,9 +106,14 @@ public class View extends JFrame{
 		viewer = jmolPanel.getViewer();
 		viewer.evalString("set debug OFF;");
 		mediator = new UpdateRegistry(viewer);
+		jmolPanel.setMediator(mediator);
 		viewer.setPercentVdwAtom(20);
 		viewer.evalString("");
-		viewer.evalString("load " + (String) config.get("dir") + "/" + (String) config.get("name") + "/" + (String) config.get("name") + ".gro");
+
+		System.out.println((String)config.get("pdb"));
+		viewer.reset(true);
+		viewer.openStringInline((String)config.get("pdb"));
+//		viewer.evalString("load " + (String) config.get("dir") + "/" + (String) config.get("name") + "/" + (String) config.get("name") + ".gro");
 		viewer.evalString("wireframe only;wireframe reset;spacefill reset;");
 //		viewer.evalString("set mouseDragFactor 1.0");
         jmolPanel.setMediator(mediator);
@@ -206,7 +211,9 @@ public class View extends JFrame{
 	}
 	
 	private void reloadViewer() {
-		viewer.evalString("load " + (String) config.get("dir") + (String) config.get("name") + "/" + (String) config.get("name") + ".gro");
+		viewer.reset(true);
+		viewer.openStringInline((String)config.get("pdb"));
+//		viewer.evalString("load " + (String) config.get("dir") + (String) config.get("name") + "/" + (String) config.get("name") + ".gro");
 	}
 	
 	private void reloadParams() {

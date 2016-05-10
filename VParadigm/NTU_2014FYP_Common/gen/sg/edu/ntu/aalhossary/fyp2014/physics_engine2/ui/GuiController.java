@@ -10,6 +10,7 @@ public class GuiController extends Controller implements EventListener {
 	
 	public GuiController(Map<String, Object> config) {
 		super(config);
+		config.put("pdb", m.getPDB());
 		v = new View(this, config);
 	}
 
@@ -54,7 +55,7 @@ public class GuiController extends Controller implements EventListener {
 
 			// pause 1s for each frame
 			try {
-				Thread.sleep(100);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

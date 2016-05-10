@@ -237,7 +237,7 @@ public class DataManager {
 		int    seri       = i       ;
 		String serial     = alignRight(""+seri,5)   ;
 		
-		String fullname   = alignLeft(a.getSymbol(),3)	;
+		String fullname   = alignRight(a.getSymbol(),3)	;
 		Character  altLoc = ' '        			    ;
 		
 		String resName;
@@ -245,7 +245,7 @@ public class DataManager {
 			resName = "TST";
 		else
 			resName = a.getParent().getName();
-		String leftResName = alignLeft(resName,3);
+		String leftResName = alignRight(resName,4);
 		String chainID = "";
 		if(a.getParent() instanceof Residue){
 			chainID = ((Residue)a.getParent()).getParent().getName();
@@ -253,7 +253,7 @@ public class DataManager {
 		else{
 			chainID = " ";
 		}
-		String resseq     = alignRight(""+a.getChainSeqNum(),5);
+		String resseq     = alignRight(""+a.getChainSeqNum(),4);
 		
 		String x          = alignRight(""+d3.format(capCoord(position.x*scale)),8);
 		String y          = alignRight(""+d3.format(capCoord(position.y*scale)),8);

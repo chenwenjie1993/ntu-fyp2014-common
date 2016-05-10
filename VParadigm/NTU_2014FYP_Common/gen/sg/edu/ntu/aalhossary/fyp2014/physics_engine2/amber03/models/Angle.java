@@ -19,6 +19,8 @@ public class Angle extends BondedInteraction {
 		for (Atom atom : atoms) {
 			query.add(atom.type);
 		}
+		System.out.println(atoms);
+		System.out.println(query);
 		List<Double> params = db.getAngleParams(query);
 		th0 = Math.toRadians(params.get(0));
 		cth = params.get(1);
@@ -46,7 +48,8 @@ public class Angle extends BondedInteraction {
 			return;
 		}
 		
-		double dVdt = - 0.5* cth * (theta - th0);
+		Ep = 0.5 * cth * (theta - th0) * (theta - th0);
+		double dVdt = - cth * (theta - th0);
 		
 //		Vector3D energy = new Vector3D();
 		Vector3D force_i = new Vector3D();

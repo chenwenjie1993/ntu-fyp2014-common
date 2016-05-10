@@ -26,6 +26,7 @@ public class ImproperDihedral extends Dihedral {
 	@Override
 	public void calcPotentialEnergyTerm() {
 		updateProperties();
+		Ep = 0.5 * kd * dp * dp;
 		dVdphi = - kd * dp;
 	    calcForce();
 	}
