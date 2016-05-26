@@ -123,31 +123,46 @@ public class MolecularSystem {
 	public void rescale() {
 		double Ekin2 = E - Ep;
 		System.out.println("Ideal Ek: " + Ekin2);
+		
 		if (Ekin2 >= Ekin || Ekin2 <= 0) {
 			System.out.println("No need for scaling.");
 			return;
 		}
 		
-		double scale = 1;
-		while (true) {
-			scale -= 0.001;
-			double t = 0;
-			for (AbstractParticle particle: particles) {
-				Vector3D v = new Vector3D();
-				v.add(particle.getVelocity());
-				v.scale(scale);
-				double l = v.getMagnitude();
-				t += 0.5 * particle.getMass() * l * l;
-			}
-			if (t <= Ekin2) {
-				System.out.println("Scaled Ek: " + t);
-				System.out.println("Scale: " + scale);
-				for (AbstractParticle particle: particles) {
-					particle.getVelocity().scale(scale);
-				}
-				return;
-			}
+		double scale = Ekin2 / Ekin;
+		
+		System.out.println("Scale: " + scale);
+		
+		for (AbstractParticle particle: particles) {
+			double v = particle.getVelocity().getMagnitude();
+			double Ek = 0.5 * particle.getMass() * v * v;
+			
+			Ek *= scale;
+			double v2 = Math.sqrt(Ek * 2 * particle.getInverseMass());
+			double scale2 = v2 / v;
+			particle.getVelocity().scale(scale2);
 		}
+//		
+//		double scale = 1;
+//		while (true) {
+//			scale -= 0.001;
+//			double t = 0;
+//			for (AbstractParticle particle: particles) {
+//				Vector3D v = new Vector3D();
+//				v.add(particle.getVelocity());
+//				v.scale(scale);
+//				double l = v.getMagnitude();
+//				t += 0.5 * particle.getMass() * l * l;
+//			}
+//			if (t <= Ekin2) {
+//				System.out.println("Scaled Ek: " + t);
+//				System.out.println("Scale: " + scale);
+//				for (AbstractParticle particle: particles) {
+//					particle.getVelocity().scale(scale);
+//				}
+//				return;
+//			}
+//		}
 	}
 	
 	public void updatePotentialEnergy() {

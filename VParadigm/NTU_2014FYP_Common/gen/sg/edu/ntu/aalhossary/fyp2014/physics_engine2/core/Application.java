@@ -38,7 +38,7 @@ public class Application {
 		
 		config.put("frame", totalFrame);
 		config.put("dir", dir);
-		config.put("name", "4C");
+		config.put("name", "AFS");
 		config.put("timeDelta", 0.0002);
 		config.put("forceField", "Amber03");
 		
