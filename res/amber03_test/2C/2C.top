@@ -1,0 +1,71 @@
+;
+;	File 'AFS.top' was generated
+;	By user: amr (534)
+;	On host: mars.sbs.ntu.edu.sg
+;	At date: Sat Mar  5 00:38:47 2016
+;
+;	This is a standalone topology file
+;
+;	It was generated using program:
+;	pdb2gmx - VERSION 4.6.5
+;
+;	Command line was:
+;	pdb2gmx -f AFS.pdb -o AFS.gro -p AFS -ignh -his
+;
+;	Force field was read from the standard Gromacs share directory.
+;
+
+; Include forcefield parameters
+#include "amber03.ff/forcefield.itp"
+
+[ moleculetype ]
+; Name            nrexcl
+Four Carbons     3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+; residue   2 PHE rtp PHE  q  0.0
+     1          C      2    PHE      C      1   0.547987      12.01   ; qtot 1.507
+     2         CT      2    PHE     CA      2  -0.030057      12.01   ; qtot 0.8327
+
+[ bonds ]
+;  ai    aj funct            c0            c1            c2            c3
+    1     2     1
+
+[ pairs ]
+;  ai    aj funct            c0            c1            c2            c3
+
+[ angles ]
+;  ai    aj    ak funct            c0            c1            c2            c3
+
+[ dihedrals ]
+;  ai    aj    ak    al funct            c0            c1            c2            c3            c4            c5
+
+[ dihedrals ]
+;  ai    aj    ak    al funct            c0            c1            c2            c3
+
+; Include Position restraint file
+#ifdef POSRES
+#include "posre.itp"
+#endif
+
+; Include water topology
+#include "amber03.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber03.ff/ions.itp"
+
+[ system ]
+; Name
+2 Carbons
+
+[ molecules ]
+; Compound        #mols
+4C					1

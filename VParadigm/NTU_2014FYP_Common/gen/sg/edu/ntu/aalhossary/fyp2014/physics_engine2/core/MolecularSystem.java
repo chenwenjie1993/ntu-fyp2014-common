@@ -123,7 +123,7 @@ public class MolecularSystem {
 	public void rescale() {
 		double Ekin2 = E - Ep;
 		System.out.println("Ideal Ek: " + Ekin2);
-		if (Ekin2 >= Ekin || Ekin2 < 0) {
+		if (Ekin2 >= Ekin || Ekin2 <= 0) {
 			System.out.println("No need for scaling.");
 			return;
 		}

@@ -14,7 +14,7 @@ import sg.edu.ntu.aalhossary.fyp2014.physics_engine2.util.LogFormatter;
 
 public class Application {
 	private static boolean enableUI = true;
-	private static int totalFrame = 30000;
+	private static int totalFrame = 500000;
 	private static String dir = "res/amber03_test/";
 	private static Map<String, Object> config = new HashMap<>();
 	private static final Logger log = Logger.getLogger("main");
@@ -38,7 +38,7 @@ public class Application {
 		
 		config.put("frame", totalFrame);
 		config.put("dir", dir);
-		config.put("name", "water");
+		config.put("name", "4C");
 		config.put("timeDelta", 0.0002);
 		config.put("forceField", "Amber03");
 		
