@@ -6,7 +6,7 @@ package sg.edu.ntu.aalhossary.fyp2014.physics_engine.core;
  */
 public class Units {
 	public enum DISTANCE {
-		m (1e0), mm (1e-3), μm (1e-6), nm (1e-9), A(1e-10), pm (1e-12), fm(1e-15), am (1e-18);
+		m (1e0), mm (1e-3), um (1e-6), nm (1e-9), A(1e-10), pm (1e-12), fm(1e-15), am (1e-18);
 		private double value;
 		
 		private DISTANCE (double value){
@@ -36,7 +36,7 @@ public class Units {
 	}
 
 	public enum TIME {
-		s (1e0), ms (1e-3), μs (1e-6), ns (1e-9), ps (1e-12), fs (1e-15), as (1e-18), zs(1e-21);
+		s (1e0), ms (1e-3), us (1e-6), ns (1e-9), ps (1e-12), fs (1e-15), as (1e-18), zs(1e-21);
 		private double value;
 		
 		private TIME (double value){

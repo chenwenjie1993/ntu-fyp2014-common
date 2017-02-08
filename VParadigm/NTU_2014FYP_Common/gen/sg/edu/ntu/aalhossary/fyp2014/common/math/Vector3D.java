@@ -99,9 +99,9 @@ public class Vector3D {
 	 * Normalize this vector
 	 */
 	public void normalize() {
-		double temp = getMagnitude();
-		if(temp > 0)
-			this.scale(1/temp);
+		double magnitude = getMagnitude();
+		if(magnitude > 0)
+			this.scale(1/magnitude);
 	}
 
 	/**
@@ -109,8 +109,7 @@ public class Vector3D {
 	 * @return unti vector
 	 */
 	public Vector3D getUnitVector() {
-		Vector3D temp = new Vector3D();
-		temp.add(this);
+		Vector3D temp = new Vector3D(this);
 		temp.normalize();
 		return temp;
 	}
@@ -149,8 +148,7 @@ public class Vector3D {
 	}
 	
 	public Vector3D subtractAndReturn(Vector3D vector) {
-		Vector3D temp = new Vector3D();
-		temp.add(this);
+		Vector3D temp = new Vector3D(this);
 		temp.subtract(vector);
 		return temp;
 	}
@@ -169,7 +167,7 @@ public class Vector3D {
 	 * @param scale
 	 */
 	public void addScaledVector(Vector3D vector, double scale) {
-		Vector3D v = new Vector3D(vector.x, vector.y, vector.z, vector.metric);
+		Vector3D v = new Vector3D(vector);
 		v.scale(scale);
 		add(v);
 	}
@@ -260,7 +258,7 @@ public class Vector3D {
 			return formatter.format(value*Math.pow(10, 9)) + "nm";
 	
 		else if (exponent < -3)
-			return formatter.format(value*Math.pow(10, 6)) + " μm";
+			return formatter.format(value*Math.pow(10, 6)) + "um";
 	
 		else if (exponent < 0)
 			return formatter.format(value*Math.pow(10, 3)) + "mm";

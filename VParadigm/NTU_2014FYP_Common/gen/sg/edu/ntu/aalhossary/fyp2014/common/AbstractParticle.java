@@ -194,7 +194,8 @@ public abstract class AbstractParticle implements sg.edu.ntu.aalhossary.fyp2014.
 	 * @param metric
 	 */
 	public void setAcceleration(double x, double y, double z, int metric) {
-		acceleration.x = x; acceleration.y = y; acceleration.z = z; acceleration.metric = metric;
+		acceleration.x = x; acceleration.y = y; acceleration.z = z; 
+		acceleration.metric = metric;
 	}
 
 	/**
