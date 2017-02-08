@@ -50,13 +50,22 @@ public class MolecularSystem {
 	public void updateRlist() {
 		initRlist();
 		int n = particles.size();
-		
-		for (int i=0; i<n; i++) {
+		double R2 = R*R;
+		for (int i=0; i<n; i++) {//FIXME shouldn't this be (n-1) ?
+			AbstractParticle p1 = particles.get(i);
+			Vector3D p1Position = p1.getPosition();
 			for (int j=i+1; j<n; j++) {
-				AbstractParticle p1 = particles.get(i);
+				if (exclude[i][j])
+					continue;
 				AbstractParticle p2 = particles.get(j);
-				double dist = p1.getPosition().subtractAndReturn(p2.getPosition()).getMagnitude();
-				if (dist < R && !exclude[i][j]) {
+				Vector3D p2Position = p2.getPosition();
+//					double dist = p1Position.subtractAndReturn(p2Position).getMagnitude();
+//					if (dist < R) {
+				double dx = p1Position.x - p2Position.x;
+				double dy = p1Position.y - p2Position.y;
+				double dz = p1Position.z - p2Position.z;
+				double dist2 = dx * dx + dy * dy + dz * dz;
+				if (dist2 < R2) {
 					rlist.get(i).add(p2);
 					rlist.get(j).add(p1);
 				}
@@ -241,10 +250,11 @@ public class MolecularSystem {
 		for (AbstractParticle particle: particles) {
 			Vector3D r = particle.getPosition();
 			Vector3D v = particle.getVelocity();
+
 			Vector3D a = particle.getAcceleration();
 			Vector3D a2 = particle.getAccumulatedAcceleration();
 //			log.info("[ACC]" + a2);
-						
+
 			Vector3D dr = new Vector3D();
 			dr.addScaledVector(v, timeDelta);
 			dr.addScaledVector(a, 0.5 * timeDelta * timeDelta);
